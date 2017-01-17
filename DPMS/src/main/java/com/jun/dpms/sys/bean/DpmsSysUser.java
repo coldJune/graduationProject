@@ -1,4 +1,4 @@
-package com.jun.dpms.bean;
+package com.jun.dpms.sys.bean;
 
 import java.util.Date;
 /**
@@ -19,6 +19,7 @@ public class DpmsSysUser {
 	private Date createDate;//账户创建时间
 	private Date lastLogin;//最后一次登录时间
 	private Date birthDay;//出生年月
+	private String email;
 	private int isUse;//当isUse==1时表示账号正在使用，当isUse==0时表示账号停止使用
 	public int getUserId() {
 		return userId;
@@ -97,6 +98,12 @@ public class DpmsSysUser {
 	}
 	public void setIsUse(int isUse) {
 		this.isUse = isUse;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	

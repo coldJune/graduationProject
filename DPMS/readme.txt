@@ -31,4 +31,8 @@
 	         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 	2.向pom.xml文件添加jar依赖
-	3.添加DpmsSysUser.java	
+	3.添加DpmsSysUser.java
+	
+-------------------------2017.1.17 上午----------------------------------------
+	1.完成DpmsSysUser.hbm.xml文件
+	2.创建dao及service java文件	
