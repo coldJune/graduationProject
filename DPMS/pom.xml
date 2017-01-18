@@ -17,27 +17,27 @@
 		
 		<!-- struts2核心包 -->
 		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-core</artifactId>
-			<version>2.3.20</version>
-		</dependency>
+    	<groupId>org.apache.struts</groupId>
+    	<artifactId>struts2-core</artifactId>
+    	<version>2.3.28.1</version>
+    </dependency>
 		<!-- struts2与spring整合的包 -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-spring-plugin</artifactId>
-			<version>2.3.20</version>
+			<version>2.3.28.1</version>
 		</dependency>
 		<!-- 在Struts中要使用Ajax获得Json数据。需要使用此jar -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-json-plugin</artifactId>
-			<version>2.3.20</version>
+			<version>2.3.28.1</version>
 		</dependency>
 		<!-- Hibernate核心包 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.8.Final</version>
+			<version>4.2.21.Final</version>
 		</dependency>
 		<!-- spring3可选的依赖注入 -->
 		<dependency>
@@ -60,20 +60,44 @@
 		</dependency>
 		<!-- Spring包 -->
 		<!-- Spring 核心包 -->
-		<dependency>
-   			<groupId>org.springframework</groupId>
-   			<artifactId>spring-core</artifactId>
-  			<version>4.1.4.RELEASE</version>
-		</dependency>
-
-		<!-- Spring在WEB上的MVC框架上加这个包 -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>4.1.4.RELEASE</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
+		 <dependency>
+	   		<groupId>org.springframework</groupId>
+	   		<artifactId>spring-core</artifactId>
+	   		<version>4.2.5.RELEASE</version>
+	   		<type>jar</type>
+	 	  </dependency>
+	  	 <dependency>
+	   		<groupId>org.springframework</groupId>
+	   		<artifactId>spring-beans</artifactId>
+	   		<version>4.2.5.RELEASE</version>
+	 	 </dependency>
+	
+	   	 <dependency>
+	   		<groupId>org.springframework</groupId>
+	   		<artifactId>spring-web</artifactId>
+	   		<version>4.2.5.RELEASE</version>
+	   	 </dependency>
+	   	 <dependency>
+	   		<groupId>org.springframework</groupId>
+	   		<artifactId>spring-aspects</artifactId>
+	   		<version>4.2.5.RELEASE</version>
+	   	 </dependency>
+	   	
+	   	 <dependency>
+	   		<groupId>org.springframework</groupId>
+	   		<artifactId>spring-orm</artifactId>
+	   		<version>4.2.5.RELEASE</version>
+	   	 </dependency>
+	   	 <dependency>
+	   		<groupId>org.springframework</groupId>
+	   		<artifactId>spring-tx</artifactId>
+	   		<version>4.2.5.RELEASE</version>
+	   	 </dependency>
+	   	 <dependency>
+	   		<groupId>org.springframework</groupId>
+	   		<artifactId>spring-context</artifactId>
+	   		<version>4.2.5.RELEASE</version>
+	   	 </dependency>
 		<!-- log4j日志包 -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -111,7 +135,7 @@
 		<dependency>
    			<groupId>commons-logging</groupId>
     		<artifactId>commons-logging</artifactId>
-    		<version>1.2</version>
+    		<version>1.1.2</version>
 		</dependency>
 		
 	</dependencies>

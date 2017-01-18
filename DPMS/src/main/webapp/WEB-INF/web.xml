@@ -11,7 +11,7 @@
 	</listener>
 	<!-- 定位applicationContext.xml的物理位置 -->
 	<context-param>
-		<param-name>contetConfigLocation</param-name>
+		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 </web-app>
