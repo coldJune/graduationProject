@@ -3,7 +3,7 @@ package com.jun.dpms.sys.service.impl;
 import com.jun.dpms.sys.dao.IDpmsSysUserDao;
 import com.jun.dpms.sys.service.IDpmsSysUserService;
 
-public class DpmsSysUserImpl implements IDpmsSysUserService {
+public class DpmsSysUserServiceImpl implements IDpmsSysUserService {
 	
 	private IDpmsSysUserDao dpmsSysUserDao;
 	@Override

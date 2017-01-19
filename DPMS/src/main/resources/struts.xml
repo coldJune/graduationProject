@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <!-- 告诉Struts由spring容器作为bean工厂 -->
+    <constant name="struts.objectFactory" value="spring"></constant>
+    <!-- 配置action -->
+    <package name=""></package>
+    	
+</struts>

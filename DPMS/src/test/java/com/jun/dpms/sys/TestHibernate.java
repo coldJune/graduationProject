@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,19 +19,24 @@ public class TestHibernate {
 	@Test
 	public void test() {
 		//加载指定目录下的配置文件，得到configuration对象
-		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		DpmsSysUser dpmsSysUser = (DpmsSysUser)context.getBean("dpmsSysUser");
+		dpmsSysUser.setUserName("root");
+		dpmsSysUser.setPassword("root");
+		System.out.println("-------------------------------");
 		//根据configuration对象得到session工厂对象
-		SessionFactory sf=cfg.buildSessionFactory();
+		SessionFactory sf =(SessionFactory) context.getBean("sessionFactory");
+		System.out.println("-------------------------------");
 		//使用工厂类打开一个session
 		Session session = sf.openSession();
 		//开启事务
 		Transaction tx= session.beginTransaction();
 		//创建待插入数据库的对象
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		DpmsSysUser dpmsSysUser = (DpmsSysUser)context.getBean("dpmsSysUser");
-		dpmsSysUser.setUserName("root");
-		dpmsSysUser.setPassword("root");
+		
+		
+		
 		session.save(dpmsSysUser);
+		session.flush();
 		tx.commit();
 		session.close();
 		sf.close();

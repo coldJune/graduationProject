@@ -1,4 +1,4 @@
-------------2017.1.16--------------
+------------2017.1.16------------------------
 	1.Maven默认JDK问题(修改maven的安装目录下setting文件)及使用WEB3.0
 		Window->Preferences->maven->User setting->Global Setting
 		1.1setting.xml添加内容
@@ -48,4 +48,21 @@
 ------------------------2017.1.18 下午----------------------------------------------
 	配置applicationContext.xml
 	配置hibernate.cfg.xml
+	配置db.properties
+	配置log4j。properties
 	问题：测试Hibernate数据库连接不上
+	
+------------------------2017.1.19 上午----------------------------------------------
+	1.解决hibernate数据库连接不上的问题：
+		原因分析：由于在测试文件中先加载hibernate.cfg.xml后加载application.xml，而数据库连接是配置在IOC容器的数据源中的，所以导致始终无法连接数据库
+	2.使用hibernate连接数据库并创建表
+		问题：hibernate的SessionFactory创建失败
+			原因分析：在读取配置文件时由于在application.xml中已经配置了sessionFactory,所以应该通过获取bean的方式获取sessionFactory，如果再获取一遍
+			hibernate.cfg.xml会由于此配置文件信息不全而导致连接数据库失败
+-----------------------2017.1.19 下午-----------------------------------------------
+	1.配置struts.xml
+	2.在Web.xml中添加Struts的拦截器
+	3.将项目部署上Apache8，并启动成功
+		问题:启动项目时无法加载log4j的日志
+		原因分析：由于日志读写需要管理员权限，重新启动Eclipse并已管理员身份运行
+	明日任务：完成登录界面,包括登录，忘记密码等功能

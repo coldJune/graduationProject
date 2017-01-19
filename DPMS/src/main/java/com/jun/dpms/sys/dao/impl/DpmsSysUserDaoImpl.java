@@ -9,11 +9,17 @@ import org.hibernate.SessionFactory;
 import com.jun.dpms.sys.dao.IDpmsSysUserDao;
 
 import com.jun.dpms.sys.bean.*;
-public class DpmsSysUserImpl implements IDpmsSysUserDao {
+public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	private SessionFactory sessionFactory;
 	private Session getCurrentSession(){
 		return sessionFactory.openSession();
 	}
+	
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean checkUser(Object obj) {

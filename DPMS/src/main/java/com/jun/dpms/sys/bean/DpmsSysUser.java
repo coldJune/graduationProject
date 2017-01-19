@@ -21,6 +21,10 @@ public class DpmsSysUser {
 	private Date birthDay;//出生年月
 	private String email;
 	private int isUse;//当isUse==1时表示账号正在使用，当isUse==0时表示账号停止使用
+	
+	public DpmsSysUser() {
+		super();
+	}
 	public int getUserId() {
 		return userId;
 	}
@@ -63,12 +67,6 @@ public class DpmsSysUser {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCardId() {
-		return cardId;
-	}
-	public void setCardId(String cardId) {
-		this.cardId = cardId;
-	}
 	public String getPhone() {
 		return phone;
 	}
@@ -104,6 +102,18 @@ public class DpmsSysUser {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	/**
+	 * @return the cardId
+	 */
+	public String getCardId() {
+		return cardId;
+	}
+	/**
+	 * @param cardId the cardId to set
+	 */
+	public void setCardId(String cardId) {
+		this.cardId = cardId;
 	}
 
 	

@@ -26,11 +26,11 @@
     	<property name="name" type="java.lang.String">
     		<column name="NAME"></column>
     	</property>
-    	<property name="phone" type="String">
+    	<property name="phone" type="java.lang.String">
     		<column name="PHONE"></column>
     	</property>
-    	<property name="cardID" type="String">
-    		<column name="cardID"></column>
+    	<property name="cardId" type="java.lang.String">
+    		<column name="CARD_ID"></column>
     	</property>
     	<property name="createDate" type="java.util.Date">
     		<column name="CREATE_DATE"></column>
