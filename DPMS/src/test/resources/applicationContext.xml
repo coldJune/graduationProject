@@ -37,15 +37,14 @@
 		<!-- 引用hibernate配置文件 -->
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 		<!-- 配置hibernate的hbm.xml mapping -->
-		<property name="mappingLocations" value="classpath:com/jun/dpms/*/bean/*.hbm.xml"></property>
+		<property name="mappingLocations" value="classpath:com/jun/dpms/sys/bean/DpmsSysUser.hbm.xml"></property>
 	</bean>
 	
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<!-- ............................配置数据源完成 。。。。。。。。。。。。。。。。。。。。。。。-->
 	
-	<bean name="dpmsSysUser" class="com.jun.dpms.sys.bean.DpmsSysUser">
-		<property name="name" value="bendan"></property>
-	</bean>
+	<import resource="applicationContext_bean.xml"/>
 </beans>

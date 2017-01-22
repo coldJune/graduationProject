@@ -6,6 +6,10 @@
     <!-- 告诉Struts由spring容器作为bean工厂 -->
     <constant name="struts.objectFactory" value="spring"></constant>
     <!-- 配置action -->
-    <package name=""></package>
+   	<package name="sys" namespace="/sys" extends="json-default,struts-default">
+		<action name="login" class="dpmsSysUserAction" method="Login">
+			<result type="json"></result>
+		</action>
+   	</package>
     	
 </struts>

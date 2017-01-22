@@ -10,8 +10,8 @@ public class DpmsSysUser {
 	private int userId;
 	private String userName;//用于用户登录的名字
 	private String password;
-	private int gender; //gender==1表示为男性；gender==0表示为女性
-	private int age;
+	private Integer gender; //gender==1表示为男性；gender==0表示为女性
+	private Integer age;
 	private String address;
 	private String name;//用户的名字
 	private String cardId;//用户的省份证号
@@ -20,7 +20,7 @@ public class DpmsSysUser {
 	private Date lastLogin;//最后一次登录时间
 	private Date birthDay;//出生年月
 	private String email;
-	private int isUse;//当isUse==1时表示账号正在使用，当isUse==0时表示账号停止使用
+	private Integer isUse;//当isUse==1时表示账号正在使用，当isUse==0时表示账号停止使用
 	
 	public DpmsSysUser() {
 		super();
@@ -43,16 +43,16 @@ public class DpmsSysUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getGender() {
+	public Integer getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 	public String getAddress() {
@@ -91,10 +91,10 @@ public class DpmsSysUser {
 	public void setBirthDay(Date birthDay) {
 		this.birthDay = birthDay;
 	}
-	public int getIsUse() {
+	public Integer getIsUse() {
 		return isUse;
 	}
-	public void setIsUse(int isUse) {
+	public void setIsUse(Integer isUse) {
 		this.isUse = isUse;
 	}
 	public String getEmail() {

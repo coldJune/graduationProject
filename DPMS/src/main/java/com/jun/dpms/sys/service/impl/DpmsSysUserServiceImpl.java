@@ -12,11 +12,19 @@ public class DpmsSysUserServiceImpl implements IDpmsSysUserService {
 		return dpmsSysUserDao.checkUser(obj);
 	}
 
-	/**
-	 * @param dpmsSysUserDao the dpmsSysUserDao to set
-	 */
+	@Override
+	public boolean checkUserName(Object obj) {
+		// TODO Auto-generated method stub
+		return dpmsSysUserDao.checkUserName(obj);
+	}
+
+	public IDpmsSysUserDao getDpmsSysUserDao() {
+		return dpmsSysUserDao;
+	}
+
 	public void setDpmsSysUserDao(IDpmsSysUserDao dpmsSysUserDao) {
 		this.dpmsSysUserDao = dpmsSysUserDao;
 	}
 
+		
 }
