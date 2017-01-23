@@ -7,8 +7,25 @@
     <constant name="struts.objectFactory" value="spring"></constant>
     <!-- 配置action -->
    	<package name="sys" namespace="/sys" extends="json-default,struts-default">
-		<action name="login" class="dpmsSysUserAction" method="Login">
-			<result type="json"></result>
+   		<!--检查用户名的action -->
+		<action name="checkUserName" class="dpmsSysAction" method="logIn">
+			<result type="json" name="CHECKUSERNAME">
+				<param name="root">sessionMap</param>
+			</result>
+		</action>
+		<!-- 生成验证码的action -->
+		<action name="securityCodeImage" class="dpmsSysAction" method="createSecurityCode">
+			<result name="securitycode" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		<!-- 登录的Action -->
+		<action name="logIn" class="dpmsSysAction" method="logIn">
+			<result name="login" type="json">
+				<param name="root">sessionMap</param>
+			</result>
 		</action>
    	</package>
     	

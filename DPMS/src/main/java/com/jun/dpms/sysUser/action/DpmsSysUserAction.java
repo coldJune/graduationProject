@@ -1,13 +1,13 @@
 
-package com.jun.dpms.sys.action;
+package com.jun.dpms.sysUser.action;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.jun.dpms.sys.bean.DpmsSysUser;
-import com.jun.dpms.sys.service.IDpmsSysUserService;
+import com.jun.dpms.sysUser.bean.DpmsSysUser;
+import com.jun.dpms.sysUser.service.IDpmsSysUserService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 /**

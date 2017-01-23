@@ -14,7 +14,7 @@ public class SecurityCode {
 	 * @return String 楠岃瘉鐮�
 	 */
 	public static String getSecurityCode(){
-		return getSecurityCode(4,SecurityCodeLevel.medium,false);
+		return getSecurityCode(6,SecurityCodeLevel.hard,false);
 	}
 	/**
 	 * 浜х敓闀垮害鍜岄毦搴︿换鎰忕殑楠岃瘉鐮�

@@ -10,10 +10,10 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.jun.dpms.sys.action.DpmsSysUserAction;
-import com.jun.dpms.sys.bean.DpmsSysUser;
-import com.jun.dpms.sys.service.IDpmsSysUserService;
-import com.jun.dpms.sys.service.impl.DpmsSysUserServiceImpl;
+import com.jun.dpms.sysUser.action.DpmsSysUserAction;
+import com.jun.dpms.sysUser.bean.DpmsSysUser;
+import com.jun.dpms.sysUser.service.IDpmsSysUserService;
+import com.jun.dpms.sysUser.service.impl.DpmsSysUserServiceImpl;
 
 public class TestLogin {
 
@@ -27,7 +27,7 @@ public class TestLogin {
 		DpmsSysUser user=new DpmsSysUser();
 		user.setUserName("root");
 		System.out.println(dpmsSysUserService.checkUserName(user));
-		user.setPassword("roo");
+		user.setPassWord("roo");
 		System.out.println(dpmsSysUserService.checkUser(user));
 	}
 

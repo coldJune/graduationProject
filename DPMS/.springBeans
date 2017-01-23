@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/applicationContext.xml</config>
 		<config>src/main/resources/applicationContext_bean.xml</config>
+		<config>src/main/resources/applicationContext_sys.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/test/resources/applicationContext.xml</config>

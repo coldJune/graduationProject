@@ -15,65 +15,65 @@ import javax.imageio.stream.ImageOutputStream;
 
 public class SecurityImage {
 	/**
-	 * 鐢熸垚楠岃瘉鐮佸浘鐗�
-	 * @param securityCode 楠岃瘉鐮佸瓧绗�
-	 * @return BufferedImage 鍥剧墖
+	 * 生成验证码图片
+	 * @param securityCode 验证码字符
+	 * @return BufferedImage 图片
 	 */
 	public static BufferedImage createImage(String securityCode){
-		//楠岃瘉鐮侀暱搴�
+		//验证码长度
 		int codeLength=securityCode.length();
-		//瀛椾綋澶у皬
-		int fSize=15;
+		//字体大小
+		int fSize=20;
 		int fWidth=fSize+1;
-		//鍥剧墖瀹藉害
-		int width=codeLength*fWidth+6;
-		//鍥剧墖楂樺害
-		int height = fSize*2+1;
+		//图片宽度
+		int width=250;
+		//图片高度
+		int height =40;
 	
-		//鍥剧墖
+		//图片
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics g = image.createGraphics();
 		
-		//璁剧疆鑳屾櫙鑹�
+		//设置背景色
 		g.setColor(Color.WHITE);
-		//濉厖鑳屾櫙
+		//填充背景
 		g.fillRect(0, 0, width, height);
-		//璁剧疆杈规棰滆壊
+		//设置边框颜色
 		g.setColor(Color.LIGHT_GRAY);
-		//杈规瀛椾綋鏍峰紡
+		//边框字体样式
 		g.setFont(new Font("Arial",Font.BOLD,height-2));
-		//缁樺埗杈规
+		//绘制边框
 		g.drawRect(0, 0, width-1, height-1);
 		
-		//缁樺埗鍣偣
+		//绘制噪点
 		Random rand= new Random();
 		g.setColor(Color.LIGHT_GRAY);
 		for(int i=0;i<codeLength*6;i++){
 			int x = rand.nextInt(width);
 			int y= rand.nextInt(height);
 			
-			//缁樺埗1*1澶у皬鐨勭煩褰�
+			//绘制1*1大小的矩形
 			g.drawRect(x, y, 1, 1 );
 			
 		
 		}
-		//缁樺埗楠岃瘉鐮�
+		//绘制验证码
 		int codeY=height-10;
-		//璁剧疆瀛椾綋棰滆壊鍜屾牱寮�
+		//设置字体颜色和样式
 		g.setColor(new Color(19, 148, 246));
 		g.setFont(new Font("Georgia", Font.BOLD, fSize));
 		for(int i=0;i<codeLength;i++){
-			g.drawString(String.valueOf(securityCode.charAt(i)), i*16+5, codeY);
+			g.drawString(String.valueOf(securityCode.charAt(i)), i*40+5, codeY);
 		}
 		
-		//鍏抽棴璧勬簮
+		//关闭资源
 		g.dispose();
 		return image;
 	}
 	/**
-	 * 杩斿洖楠岃瘉鐮佸浘鐗囨祦鏍煎紡
-	 * @param securityCode 楠岃瘉鐮�
-	 * @return ByteArrayInputStream 鍥剧墖娴�
+	 * 返回验证码图片流格式
+	 * @param securityCode 验证码
+	 * @return ByteArrayInputStream 图片流
 	 */
 	public static ByteArrayInputStream getImageAsInputStream(String securityCode){
 		BufferedImage image = createImage(securityCode);
@@ -81,9 +81,9 @@ public class SecurityImage {
 	}
 	
 	/**
-	 * 灏咮ufferedImage杞崲涓築yteArrayInputStream
-	 * @param image 鍥剧墖
-	 * @return ByteArrayInputStream 娴�
+	 * 将BufferedImage转换为ByteArrayInputStream
+	 * @param image 图片
+	 * @return ByteArrayInputStream 流
 	 */
 	private static ByteArrayInputStream convertImageToStream(BufferedImage image) {
 		// TODO Auto-generated method stub
@@ -94,7 +94,6 @@ public class SecurityImage {
 			iot=ImageIO.createImageOutputStream(bos);
 			ImageIO.write(image, "jpeg", iot);
 			inputStream = new ByteArrayInputStream(bos.toByteArray());
-			System.out.println(inputStream);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.jun.dpms.sys.bean.DpmsSysUser;
+import com.jun.dpms.sysUser.bean.DpmsSysUser;
 
 public class TestHibernate {
 
@@ -22,7 +22,7 @@ public class TestHibernate {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		DpmsSysUser dpmsSysUser = (DpmsSysUser)context.getBean("dpmsSysUser");
 		dpmsSysUser.setUserName("root");
-		dpmsSysUser.setPassword("root");
+		dpmsSysUser.setPassWord("root");
 		System.out.println("-------------------------------");
 		//根据configuration对象得到session工厂对象
 		SessionFactory sf =(SessionFactory) context.getBean("sessionFactory");

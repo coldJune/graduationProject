@@ -1,6 +1,6 @@
-package com.jun.dpms.sys.service;
+package com.jun.dpms.sysUser.dao;
 
-public interface IDpmsSysUserService {
+public interface IDpmsSysUserDao {
 	/*
 	 * 登录检测用户是否合法
 	 */

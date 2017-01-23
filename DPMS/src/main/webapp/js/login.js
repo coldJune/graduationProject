@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	//验证用户名
 	$("#userName").blur(function(){
 		var input=$(this).val();
 		var position=$(this);
@@ -9,22 +10,27 @@ $(document).ready(function(){
 			$('#textfield1').offset({top:offset.top+10,left:offset.left+300})
 			$('#textfield1').show();
 		}else{
-			$('#textfield1').hide();
 			//如果密码不为空,则判断用户名是否存在
 			$.ajax({
-				url:'/DPMS/sys/login',
+				url:'/DPMS/sys/checkUserName',
 				type:'post',
 				data:{'operateType':'checkUserName',userName:input},
 				dataType:'json',
 				success:function(data){
-					$('#textfield1').text(data.username);
-					$('#textfield1').offset({top:offset.top+10,left:offset.left+300})
-					$('#textfield1').show();
+					if(data.msg!=undefined){
+						$('#textfield1').text("*"+data.msg);
+						$('#textfield1').offset({top:offset.top+10,left:offset.left+300})
+						$('#textfield1').show();
+					}
+				},
+				error:function(){
+					alert('系统异常');
 				}
 			});
 		}
 		
 	});
+	//验证密码是否为空
 	$("#passWord").blur(function(){
 		var input=$(this).val();
 		//密码为空提示
@@ -39,7 +45,8 @@ $(document).ready(function(){
 		}
 		
 	});
-	$("#seruityCode").blur(function(){
+	//判断验证码是否为空
+	$("#securityCodeInput").blur(function(){
 		var input=$(this).val();
 		//验证码为空提示
 		if(input==''){
@@ -53,4 +60,37 @@ $(document).ready(function(){
 		}
 		
 	});
+	//登录验证
+	$('#login-button').click(function(){
+		var userName=$('#userName').val();
+		var passWord=$('#passWord').val();
+		var securityCode=$('#securityCodeInput').val();
+		$.post('/DPMS/sys/logIn',
+				{'userName':userName,
+				 'passWord':passWord,
+				 'securityCodeInput':securityCode,
+				 'operateType':'checkUser'},
+				
+			function(data){
+				if(data.msg=='false'){
+					alert('用户名和密码不匹配');
+					$('input').val('');
+				}else if(data.sc=='false'){
+					alert('验证码输入错误');
+					$('#securityCodeInput').val('');
+				}else{
+					$('#form').submit();
+					window.location.href='jsp/home.jsp';
+				}
+			});
+		});
+	//获取验证码
+	$('#securityimg').click(function(){
+		$(this).attr('src','/DPMS/sys/securityCodeImage');		
+	});
 });
+//刷新页面时清空所有值
+window.onload=function(){
+	$('input').val('');
+	$(this).attr('src','/DPMS/sys/securityCodeImage');
+}

@@ -1,7 +1,7 @@
-package com.jun.dpms.sys.service.impl;
+package com.jun.dpms.sysUser.service.impl;
 
-import com.jun.dpms.sys.dao.IDpmsSysUserDao;
-import com.jun.dpms.sys.service.IDpmsSysUserService;
+import com.jun.dpms.sysUser.dao.IDpmsSysUserDao;
+import com.jun.dpms.sysUser.service.IDpmsSysUserService;
 
 public class DpmsSysUserServiceImpl implements IDpmsSysUserService {
 	

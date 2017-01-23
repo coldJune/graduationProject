@@ -1,4 +1,4 @@
-package com.jun.dpms.sys.bean;
+package com.jun.dpms.sysUser.bean;
 
 import java.util.Date;
 /**
@@ -9,7 +9,7 @@ import java.util.Date;
 public class DpmsSysUser {
 	private int userId;
 	private String userName;//用于用户登录的名字
-	private String password;
+	private String passWord;
 	private Integer gender; //gender==1表示为男性；gender==0表示为女性
 	private Integer age;
 	private String address;
@@ -36,12 +36,6 @@ public class DpmsSysUser {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public Integer getGender() {
 		return gender;
@@ -114,6 +108,12 @@ public class DpmsSysUser {
 	 */
 	public void setCardId(String cardId) {
 		this.cardId = cardId;
+	}
+	public String getPassWord() {
+		return passWord;
+	}
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
 	}
 
 	

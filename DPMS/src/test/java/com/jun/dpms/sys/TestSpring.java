@@ -7,7 +7,7 @@ import javax.sql.DataSource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.jun.dpms.sys.bean.DpmsSysUser;
+import com.jun.dpms.sysUser.bean.DpmsSysUser;
 public class TestSpring {
 
 	@org.junit.Test

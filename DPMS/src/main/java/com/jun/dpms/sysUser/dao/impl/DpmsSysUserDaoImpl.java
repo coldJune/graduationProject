@@ -1,4 +1,4 @@
-package com.jun.dpms.sys.dao.impl;
+package com.jun.dpms.sysUser.dao.impl;
 
 import java.util.List;
 
@@ -9,9 +9,8 @@ import org.hibernate.Transaction;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.jun.dpms.sys.dao.IDpmsSysUserDao;
-
-import com.jun.dpms.sys.bean.*;
+import com.jun.dpms.sysUser.bean.*;
+import com.jun.dpms.sysUser.dao.IDpmsSysUserDao;
 public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	private SessionFactory sessionFactory;
 	private Session getCurrentSession(){
@@ -30,7 +29,7 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 		DpmsSysUser dsu = (DpmsSysUser)obj;
 		Query q = this.getCurrentSession().createQuery("from DpmsSysUser d where d.userName=? and d.password=?");
 		q.setString(0, dsu.getUserName());
-		q.setString(1, dsu.getPassword());
+		q.setString(1, dsu.getPassWord());
 		if(q.list()==null ||q.list().isEmpty()){
 			return false;
 		}else{
