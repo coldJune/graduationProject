@@ -65,29 +65,30 @@ $(document).ready(function(){
 		var userName=$('#userName').val();
 		var passWord=$('#passWord').val();
 		var securityCode=$('#securityCodeInput').val();
-		$.post('/DPMS/sys/logIn',
+		$.post('/DPMS/sys/checkUser',
 				{'userName':userName,
 				 'passWord':passWord,
 				 'securityCodeInput':securityCode,
 				 'operateType':'checkUser'},
 				
 			function(data){
-				if(data.msg=='false'){
-					alert('用户名和密码不匹配');
+				if(data.up=='false'){
+					alert('用户名或密码错误');
 					$('input').val('');
 				}else if(data.sc=='false'){
 					alert('验证码输入错误');
+					$('#securityimg').attr('src','/DPMS/sys/securityCodeImage?time='+new Date().getTime());
 					$('#securityCodeInput').val('');
 				}else{
 					$('#form').submit();
-					window.location.href='jsp/home.jsp';
 				}
 			});
 		});
 	//获取验证码
 	$('#securityimg').click(function(){
-		$(this).attr('src','/DPMS/sys/securityCodeImage');		
+		$(this).attr('src','/DPMS/sys/securityCodeImage?time='+new Date().getTime());		
 	});
+	
 });
 //刷新页面时清空所有值
 window.onload=function(){
