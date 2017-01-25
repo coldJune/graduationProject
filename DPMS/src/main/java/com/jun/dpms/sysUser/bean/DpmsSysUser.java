@@ -21,6 +21,7 @@ public class DpmsSysUser {
 	private Date birthDay;//出生年月
 	private String email;
 	private Integer isUse;//当isUse==1时表示账号正在使用，当isUse==0时表示账号停止使用
+	private Integer isSysPass;//是否为系统生成密码;
 	
 	public DpmsSysUser() {
 		super();
@@ -114,6 +115,12 @@ public class DpmsSysUser {
 	}
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
+	}
+	public Integer getIsSysPass() {
+		return isSysPass;
+	}
+	public void setIsSysPass(Integer isSysPass) {
+		this.isSysPass = isSysPass;
 	}
 
 	

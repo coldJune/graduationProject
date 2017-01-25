@@ -8,7 +8,7 @@
     		<column name="USER_ID"></column>
  			<generator class="native"></generator>
     	</id>
-    	<property name="userName" type="java.lang.String">
+    	<property name="userName" type="java.lang.String" unique="true">
     		<column name="USER_NAME"></column>
     	</property>
     	<property name="passWord" type="java.lang.String">
@@ -47,7 +47,9 @@
     	<property name="isUse" type="java.lang.Integer">
     		<column name="IS_USE"></column>
     	</property>
-    	
+    	<property name="isSysPass" type="java.lang.Integer">
+    		<column name="IS_SYS_PASS"></column>
+    	</property>
     	
     </class>
 </hibernate-mapping>

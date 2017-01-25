@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	$('#sendMail').addClass('login-button');
 	$('#sendMail').click(function(){
-		$.post('../../sys/checkEmail',{'email':$('#email').val()},function(data){
-			if(data.mail!=''&&data.mail!=undefined){
+		$.post('../../sys/check',{'email':$('#email').val(),'operateType':'checkEmail'},function(data){
+			if(data!=''&&data!=undefined){
 				var position=$('#email');
 				var offset=position.offset();
 				$('#textfield1').text("*"+data.mail);

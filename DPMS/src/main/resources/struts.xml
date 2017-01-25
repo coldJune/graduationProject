@@ -7,9 +7,24 @@
     <constant name="struts.objectFactory" value="spring"></constant>
     <!-- 配置action -->
    	<package name="sys" namespace="/sys" extends="json-default,struts-default">
-   		<!--检查用户名的action -->
-		<action name="checkUserName" class="dpmsSysAction" method="check">
+   		
+		<action name="check" class="dpmsSysAction" method="check">
+			<!--检查用户名-->
 			<result type="json" name="CHECKUSERNAME">
+				<param name="root">sessionMap</param>
+			</result>
+			
+			<!-- 验证用户和密码匹配 -->
+			<result name="login" type="json">
+				<param name="root">sessionMap</param>
+			</result>
+			
+			<!-- 验证系统生成的密码是否正确 -->
+			<result name="checkSysPass" type="json">
+				<param name="root">sessionMap</param>
+			</result>
+			
+			<result name="checkEmail" type="json">
 				<param name="root">sessionMap</param>
 			</result>
 		</action>
@@ -21,26 +36,21 @@
 				<param name="bufferSize">4096</param>
 			</result>
 		</action>
-		<!--验证用户 -->
-		<action name="checkUser" class="dpmsSysAction" method="check">
-			<result name="login" type="json">
-				<param name="root">sessionMap</param>
-			</result>
-		</action>
 		<!-- 登录 -->
 		<action name="logIn" class="dpmsSysAction" method="logIn">
 			<result name="success">/jsp/home.jsp</result>
 			<result name="fail" type="redirect">/signIn.jsp</result>
+			<result name="changeSysPass" type="dispatcher">/jsp/sys/changePass.jsp</result>
 		</action>
-		<!-- 检验邮箱 -->
-		<action name="checkEmail" class="dpmsSysAction" method="checkEmail">
-			<result name="fail" type="json">
-				<param name="root">sessionMap</param>
-			</result>
-		</action>
+
 		<!-- 系统生成密码 -->
 		<action name="setSysPass"  class="dpmsSysAction" method="setSysPass">
 			<result name="setSysPass" type="redirectAction">
+				<param name="actionName">logIn</param>
+			</result>
+		</action>
+		<action name="changePass" class="dpmsSysAction" method="changePass">
+			<result name="changePass" type="redirectAction">
 				<param name="actionName">logIn</param>
 			</result>
 		</action>

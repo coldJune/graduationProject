@@ -4,6 +4,7 @@ $(document).ready(function(){
 		var input=$(this).val();
 		var position=$(this);
 		var offset=position.offset();
+		$('#textfield1').empty();
 		//用户名为空提示
 		if(input==''){
 			$('#textfield1').text('*请输入用户名');
@@ -12,7 +13,7 @@ $(document).ready(function(){
 		}else{
 			//如果密码不为空,则判断用户名是否存在
 			$.ajax({
-				url:'/DPMS/sys/checkUserName',
+				url:'/DPMS/sys/check',
 				type:'post',
 				data:{'operateType':'checkUserName',userName:input},
 				dataType:'json',
@@ -33,6 +34,7 @@ $(document).ready(function(){
 	//验证密码是否为空
 	$("#passWord").blur(function(){
 		var input=$(this).val();
+		$('#textfield2').empty();
 		//密码为空提示
 		if(input==''){
 			var position=$(this);
@@ -40,14 +42,13 @@ $(document).ready(function(){
 			$('#textfield2').text('*请输入密码');
 			$('#textfield2').offset({top:offset.top+10,left:offset.left+300})
 			$('#textfield2').show();
-		}else{
-			$('#textfield2').hide();
 		}
 		
 	});
 	//判断验证码是否为空
 	$("#securityCodeInput").blur(function(){
 		var input=$(this).val();
+		$('#textfield3').empty();
 		//验证码为空提示
 		if(input==''){
 			var position=$(this);
@@ -55,8 +56,6 @@ $(document).ready(function(){
 			$('#textfield3').text('*请输入验证码');
 			$('#textfield3').offset({top:offset.top+10,left:offset.left+300})
 			$('#textfield3').show();
-		}else{
-			$('#textfield2').hide();
 		}
 		
 	});
@@ -65,7 +64,7 @@ $(document).ready(function(){
 		var userName=$('#userName').val();
 		var passWord=$('#passWord').val();
 		var securityCode=$('#securityCodeInput').val();
-		$.post('/DPMS/sys/checkUser',
+		$.post('/DPMS/sys/check',
 				{'userName':userName,
 				 'passWord':passWord,
 				 'securityCodeInput':securityCode,

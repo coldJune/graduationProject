@@ -3,17 +3,24 @@ package com.jun.dpms.sys.action;
 import java.io.ByteArrayInputStream;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.ApplicationAware;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.context.ApplicationContext;
 
+import com.jun.dpms.sysUser.bean.DpmsSysUser;
+import com.jun.dpms.util.MD5Util;
 import com.jun.dpms.util.SecurityCode;
 import com.jun.dpms.util.SecurityImage;
 import com.jun.dpms.util.SendMail;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.inject.Context;
 
 //import net.sf.json.JSONObject;
 
@@ -31,6 +38,7 @@ public class DpmsSysAction extends ActionSupport {
 	private String securityCodeInput;//输入的验证码
 	private String operateType;
 	private String email;
+	private String syspass;
 	//计算时间差参数
 	private Date timeStamp=null;//生成时间
 	private Date useTime=null;//使用时间
@@ -49,7 +57,7 @@ public class DpmsSysAction extends ActionSupport {
 		//获取需要验证的类型
 		String sql ="from DpmsSysUser u where u.userName=?";
 		Query q =null;
-		
+		this.setSessionMap(null);
 		//验证用户名是否存在
 		if(operateType.equalsIgnoreCase("checkUserName")){
 				q=this.getCurrentSession().createQuery(sql);
@@ -62,8 +70,10 @@ public class DpmsSysAction extends ActionSupport {
 				}
 				return "CHECKUSERNAME";
 		}
+		//验证密码和用户是否匹配
 		if(operateType.equalsIgnoreCase("checkUser")){
 				sql=sql+" and u.passWord=?";
+				passWord=MD5Util.encode2hex(passWord);
 				q=this.getCurrentSession().createQuery(sql);
 				q.setString(0, userName);
 				q.setString(1, passWord);
@@ -73,16 +83,48 @@ public class DpmsSysAction extends ActionSupport {
 					map.clear();
 					map.put("up", "false");//密码和用户名不匹配
 					flag=false;
-				}else if(!securityCode.equalsIgnoreCase(securityCodeInput)){ //如果用户名和密码匹配则判断验证码
+				}else if(securityCode!=null&&securityCode.equalsIgnoreCase(securityCodeInput)){ //如果用户名和密码匹配则判断验证码
+					flag=true;
+				}else{
 					map.clear();
 					map.put("sc","false");//验证码不匹配	
 					flag=false;
-				}else{
-					flag=true;
 				}
 				this.setSessionMap(map);
 
 				return "login";
+		}
+		
+		//验证系统的密码是否正确
+		if(operateType.equalsIgnoreCase("checkSysPass")){
+			String user=(String) ActionContext.getContext().getSession().get("USERNAME");
+			sql=sql+" and u.passWord=?";
+			System.out.println(syspass+":"+user);
+			syspass=MD5Util.encode2hex(syspass);
+			q=this.getCurrentSession().createQuery(sql);
+			q.setString(0, user);
+			q.setString(1, syspass);
+			Map<String, String> map = new HashMap<>();
+			//密码错误
+			if(q.list()==null||q.list().isEmpty()){	
+				map.clear();
+				map.put("sp", "密码错误");//密码错误
+			}
+			this.setSessionMap(map);
+
+			return "checkSysPass";
+		}
+		//检查邮箱是否存在
+		if(operateType.equalsIgnoreCase("checkEmail")){
+			sql ="from DpmsSysUser u where u.email=?";
+			q =this.getCurrentSession().createQuery(sql);
+			Map<String, String> map = new HashMap<>();
+			q.setString(0, email);
+			if(q.list()==null||q.list().isEmpty()){
+				map.put("mail","邮箱不存在");
+				this.setSessionMap(map);
+			}
+			return "checkEmail";
 		}
 		return SUCCESS;
 			
@@ -91,10 +133,22 @@ public class DpmsSysAction extends ActionSupport {
 	/*
 	 * 登录
 	 */
+	@SuppressWarnings("unchecked")
 	public String logIn(){
 		if(flag){
 			flag=false;
-			return SUCCESS;
+			//如果是系统生成密码则跳转修改密码页面
+			Query q = this.getCurrentSession().createQuery("select u.isSysPass from DpmsSysUser u where u.userName=?");
+			q.setString(0, userName);
+			int isSys= (int) q.list().get(0);
+			ActionContext.getContext().getSession().put("USERNAME", userName);
+			if(isSys==1){
+				
+				return "changeSysPass";
+			}else{
+				
+				return SUCCESS;
+			}
 		}else{
 			return "fail";
 		}
@@ -111,34 +165,33 @@ public class DpmsSysAction extends ActionSupport {
 		this.setSessionMap(map);
 		return "securitycode";
 	}
-	/**
-	 * 检查邮箱是否存在
-	 */
-	public String checkEmail(){
-		String sql ="from DpmsSysUser u where u.email=?";
-		Query q =this.getCurrentSession().createQuery(sql);
-		Map<String, String> map = new HashMap<>();
-		q.setString(0, email);
-		if(q.list()==null||q.list().isEmpty()){
-			map.put("mail","邮箱不存在");
-			this.setSessionMap(map);
-		}
-		return "fail";
-	}
+	
 	/**
 	 * 系统自动生成密码
 	 */
 	public String setSysPass(){
 		String newPass=SecurityCode.getSecurityCode();
-		SendMail.send(email, "<p>您正在使用小区物业管理系统的找回密码服务，下面是由系统为您生成的随机密码，请注意保管并及时修改</p><br/>"+"<Strong>"+newPass+"</Strong>");
-		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.passWord=? where u.email=?");
-		q.setString(0, newPass);
+		
+		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.passWord=?,u.isSysPass=1 where u.email=?");
+		String md5pass = MD5Util.encode2hex(newPass);
+		q.setString(0, md5pass);
 		q.setString(1, email);
 		q.executeUpdate();
+		SendMail.send(email, "<p>您正在使用小区物业管理系统的找回密码服务，下面是由系统为您生成的随机密码，请注意保管并及时修改</p><br/>"+"<Strong>"+newPass+"</Strong>");
 		return "setSysPass";
 		
 	}
-
+	/**
+	 * 修改密码
+	 */
+	public String changePass(){
+		userName=(String) ActionContext.getContext().getSession().get("USERNAME");
+		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.passWord=?,u.isSysPass=0 where u.userName=?");
+		q.setString(0, MD5Util.encode2hex(passWord));
+		q.setString(1, userName);
+		q.executeUpdate();
+		return "changePass";
+	}
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -190,6 +243,11 @@ public class DpmsSysAction extends ActionSupport {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+	public void setSyspass(String syspass) {
+		this.syspass = syspass;
 	}
 
 	
