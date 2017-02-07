@@ -1,0 +1,33 @@
+$(document).ready(function(){
+	/*鼠标移上去改变颜色*/
+	$("tr").mouseover(function(){
+		if($(this).children().first().children().children().attr("checked")!="checked"){
+			$(this).toggleClass("choose");
+		}else{
+			$(this).toggleClass("background-color:#39ADB4");
+		}
+		
+	});
+	/*鼠标移出来恢复颜色*/
+	$("tr").mouseout(function(){
+		if($(this).children().first().children().children().attr("checked")!="checked"){
+			$(this).removeClass("choose");
+			$(this).removeClass("background-color:#39ADB4");
+		}
+	});
+	$("tr").click(function(){
+		if($(this).children().first().children().children().attr("checked")!="checked"){
+			$(this).children().first().children().children().attr("checked",true);
+			alert($(this).children().first().children().children().attr("checked"));
+			$(this).toggleClass("background-color:#39ADB4");
+		}else{
+			$(this).children().first().children().children().attr("checked",false);
+			$(this).removeClass("choose");
+			$(this).removeClass("background-color:#39ADB4");
+		}
+	});
+	$("input[type='checkbox']").click(function(e){  
+	    e.stopPropagation();   
+	});  
+	/*删除*/
+});

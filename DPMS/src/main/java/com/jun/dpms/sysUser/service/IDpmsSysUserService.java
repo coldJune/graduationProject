@@ -1,13 +1,12 @@
 package com.jun.dpms.sysUser.service;
 
+import java.util.List;
+
+import com.jun.dpms.sysUser.bean.DpmsSysUser;
+
 public interface IDpmsSysUserService {
-	/*
-	 * 登录检测用户是否合法
-	 */
-	public boolean checkUser(Object obj);
-	/*
-	 * 检查用户名是否存在
-	 */
-	public boolean checkUserName(Object obj);
+	public List<DpmsSysUser> findAll(int eachPage,int currentPage);
+	public int getTotalItem();
+	public DpmsSysUser searchByUserName(String userName);
 	
 }

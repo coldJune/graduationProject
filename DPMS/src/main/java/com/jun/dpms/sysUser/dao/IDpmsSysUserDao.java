@@ -1,13 +1,26 @@
 package com.jun.dpms.sysUser.dao;
 
+import java.util.List;
+
+import com.jun.dpms.sysUser.bean.DpmsSysUser;
+
 public interface IDpmsSysUserDao {
-	/*
-	 * 登录检测用户是否合法
+	/**
+	 * 分页查询
+	 * @param eachPage
+	 * @param currentPage
+	 * @return
 	 */
-	public boolean checkUser(Object obj);
-	/*
-	 * 检查用户名是否存在
+	public List<DpmsSysUser> findAll(int eachPage,int currentPage);
+	/**
+	 * 总条数
+	 * @return
 	 */
-	public boolean checkUserName(Object obj);
-	
+	public int getTotalItem();
+	/**
+	 * 通过用户名查询
+	 * @param userName
+	 * @return
+	 */
+	public DpmsSysUser searchByUserName(String userName);
 }

@@ -13,6 +13,7 @@ import com.jun.dpms.sysUser.bean.*;
 import com.jun.dpms.sysUser.dao.IDpmsSysUserDao;
 public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	private SessionFactory sessionFactory;
+
 	private Session getCurrentSession(){
 		return sessionFactory.openSession();
 	}
@@ -22,35 +23,43 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 		this.sessionFactory = sessionFactory;
 	}
 
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean checkUser(Object obj) {
+	public List<DpmsSysUser> findAll(int eachPage, int currentPage) {
 		// TODO Auto-generated method stub
-		DpmsSysUser dsu = (DpmsSysUser)obj;
-		Query q = this.getCurrentSession().createQuery("from DpmsSysUser d where d.userName=? and d.password=?");
-		q.setString(0, dsu.getUserName());
-		q.setString(1, dsu.getPassWord());
-		if(q.list()==null ||q.list().isEmpty()){
-			return false;
-		}else{
-			return true;
-		}
+		Query q =this.getCurrentSession().createQuery("from DpmsSysUser");
+		q.setMaxResults(eachPage);
+		q.setFirstResult((currentPage-1)*eachPage);
+		return q.list();
 	}
 
 
 	@Override
-	public boolean checkUserName(Object obj) {
+	public int getTotalItem() {
 		// TODO Auto-generated method stub
-		
-		DpmsSysUser user=(DpmsSysUser)obj;
-		Query q = getCurrentSession().createQuery("from DpmsSysUser d where d.userName=?");
-		q.setString(0, user.getUserName());
-		if(q.list()!=null&&!q.list().isEmpty()){
-			return true;
-		}else{
-			return false;
-		}
+		return ((Number)this.getCurrentSession().createQuery("select count(*) from DpmsSysUser").uniqueResult()).intValue();
 	}
+
+	
+	@Override
+	public DpmsSysUser searchByUserName(String userName) {
+		// TODO Auto-generated method stub
+		Query q= this.getCurrentSession().createQuery("from DpmsSysUser u where u.userName=?");
+		q.setString(0, userName);
+		List<DpmsSysUser> results=q.list();
+		if(results!=null||!results.isEmpty()){
+			for (DpmsSysUser dpmsSysUser : results) {
+				return dpmsSysUser;
+			}
+		}else{
+			return null;
+		}
+		return null;
+	}
+
+
+
 
 
 

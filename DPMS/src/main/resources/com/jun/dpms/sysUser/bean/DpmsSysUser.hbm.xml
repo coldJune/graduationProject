@@ -3,15 +3,15 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-5-2 0:40:55 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.jun.dpms.sys.bean.DpmsSysUser" table="DPMSSYSUSER">
+    <class name="com.jun.dpms.sysUser.bean.DpmsSysUser" table="DPMSSYSUSER">
     	<id name="userId" type="int">
     		<column name="USER_ID"></column>
  			<generator class="native"></generator>
     	</id>
-    	<property name="userName" type="java.lang.String">
+    	<property name="userName" type="java.lang.String" unique="true">
     		<column name="USER_NAME"></column>
     	</property>
-    	<property name="password" type="java.lang.String">
+    	<property name="passWord" type="java.lang.String">
     		<column name="PASS_WORD"></column>
     	</property>
     	<property name="gender" type="java.lang.Integer">
@@ -30,7 +30,7 @@
     		<column name="PHONE"></column>
     	</property>
     	<property name="cardId" type="java.lang.String">
-    		<column name="CARD_ID"></column>
+    		<column name="cardID"></column>
     	</property>
     	<property name="createDate" type="java.util.Date">
     		<column name="CREATE_DATE"></column>
@@ -47,7 +47,9 @@
     	<property name="isUse" type="java.lang.Integer">
     		<column name="IS_USE"></column>
     	</property>
-    	
+    	<property name="isSysPass" type="java.lang.Integer">
+    		<column name="IS_SYS_PASS"></column>
+    	</property>
     	
     </class>
 </hibernate-mapping>

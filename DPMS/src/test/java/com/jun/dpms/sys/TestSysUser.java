@@ -1,8 +1,8 @@
 package com.jun.dpms.sys;
 
-import static org.junit.Assert.*;
 
-import org.hibernate.Query;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,12 +10,10 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.jun.dpms.sysUser.action.DpmsSysUserAction;
 import com.jun.dpms.sysUser.bean.DpmsSysUser;
 import com.jun.dpms.sysUser.service.IDpmsSysUserService;
-import com.jun.dpms.sysUser.service.impl.DpmsSysUserServiceImpl;
 
-public class TestLogin {
+public class TestSysUser {
 
 	@Test
 	public void test() {
@@ -24,8 +22,12 @@ public class TestLogin {
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
 		IDpmsSysUserService dpmsSysUserService=(IDpmsSysUserService)context.getBean("dpmsSysUserService");
-		DpmsSysUser user=new DpmsSysUser();
-		user.setUserName("root");
+		/*List<DpmsSysUser> dpmsSysUsers = dpmsSysUserService.findAll(3,1);
+		for (DpmsSysUser dpmsSysUser : dpmsSysUsers) {
+			System.out.println(dpmsSysUser.getUserName()+"|"+dpmsSysUser.getPassWord());
+		}*/
+		DpmsSysUser dpmsSysUser=dpmsSysUserService.searchByUserName("root");
+		System.out.println(dpmsSysUser.getUserName());
 	}
 
 }

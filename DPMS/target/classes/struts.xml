@@ -5,6 +5,23 @@
 <struts>
     <!-- 告诉Struts由spring容器作为bean工厂 -->
     <constant name="struts.objectFactory" value="spring"></constant>
+   	<!-- 配置拦截器 -->
+   	<package name="authority" extends="struts-default">
+   		<!-- 定义一 -->
+   		<interceptors>
+   			<interceptor name="authority" class="authority"></interceptor>
+   			<interceptor-stack name="myStack">
+   				<interceptor-ref name="authority"></interceptor-ref>
+   				<interceptor-ref name="defaultStack"></interceptor-ref>
+   			</interceptor-stack>
+   		</interceptors>
+   		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+   		<!-- 定义全局Result -->
+   		<global-results>
+   			<!-- 当返回login视图时，转入登录界面 -->
+   			<result name="login">/signIn.jsp</result>
+   		</global-results>
+   	</package>
     <!-- 配置action -->
    	<package name="sys" namespace="/sys" extends="json-default,struts-default">
    		
@@ -56,4 +73,6 @@
 		</action>
    	</package>
     	
+    <!-- 引入系统用户管理 -->
+    <include file="struts_sysUser.xml"></include>
 </struts>

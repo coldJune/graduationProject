@@ -24,6 +24,22 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+
+	<!-- 加入登录过滤器
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>com.jun.dpms.sys.filter.LoginFilter</filter-class> -->
+		<!-- 过滤器例外页面
+		<init-param>
+			<param-name>excludePage</param-name>
+			<param-value>/signIn.jsp,/jsp/sys/refindPass.jsp</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping> -->
 	<welcome-file-list>
 		<welcome-file>signIn.jsp</welcome-file>
 	</welcome-file-list>

@@ -37,7 +37,7 @@
 		<!-- 引用hibernate配置文件 -->
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 		<!-- 配置hibernate的hbm.xml mapping -->
-		<property name="mappingLocations" value="classpath:com/jun/dpms/sys/bean/DpmsSysUser.hbm.xml"></property>
+		<property name="mappingLocations" value="classpath:com/jun/dpms/*/bean/*.hbm.xml"></property>
 	</bean>
 	
 	<!-- 配置事务管理器 -->
@@ -47,4 +47,5 @@
 	<!-- ............................配置数据源完成 。。。。。。。。。。。。。。。。。。。。。。。-->
 	
 	<import resource="applicationContext_bean.xml"/>
+	<import resource="applicationContext_sys.xml"/>
 </beans>

@@ -6,6 +6,4 @@
 	<bean name="dpmsSysAction" class="com.jun.dpms.sys.action.DpmsSysAction">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean name="authority" class="com.jun.dpms.sys.interceptor.Authentication">
-	</bean>
 </beans>
