@@ -59,6 +59,15 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	}
 
 
+	@Override
+	public void updateSysUser(DpmsSysUser dpmsSysUser) {
+		// TODO Auto-generated method stub
+		this.getCurrentSession().saveOrUpdate(dpmsSysUser);
+	}
+
+
+
+
 
 
 

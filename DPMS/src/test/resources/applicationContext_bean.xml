@@ -14,5 +14,5 @@
 	<bean id="dpmsSysUserAction" class="com.jun.dpms.sysUser.action.DpmsSysUserAction">
 		<property name="dpmsSysUserService" ref="dpmsSysUserService"></property>
 	</bean>
-
+	
 </beans>

@@ -22,12 +22,26 @@ public class TestSysUser {
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
 		IDpmsSysUserService dpmsSysUserService=(IDpmsSysUserService)context.getBean("dpmsSysUserService");
-		/*List<DpmsSysUser> dpmsSysUsers = dpmsSysUserService.findAll(3,1);
-		for (DpmsSysUser dpmsSysUser : dpmsSysUsers) {
-			System.out.println(dpmsSysUser.getUserName()+"|"+dpmsSysUser.getPassWord());
-		}*/
-		DpmsSysUser dpmsSysUser=dpmsSysUserService.searchByUserName("root");
-		System.out.println(dpmsSysUser.getUserName());
+		/**
+		 * 查找所有用户并分页显示
+		 */
+//		List<DpmsSysUser> dpmsSysUsers = dpmsSysUserService.findAll(3,1);
+//		for (DpmsSysUser dpmsSysUser : dpmsSysUsers) {
+//			System.out.println(dpmsSysUser.getUserName()+"|"+dpmsSysUser.getPassWord());
+//		}
+		/**
+		 * 通过用户名查找用户
+		 */
+//		DpmsSysUser dpmsSysUser=dpmsSysUserService.searchByUserName("root");
+//		System.out.println(dpmsSysUser.getUserName());
+		
+		/**
+		 * 更新用户
+		 */
+		DpmsSysUser dpmsSysUser = (DpmsSysUser)dpmsSysUserService.searchByUserName("test1");
+		dpmsSysUser.setAddress("绵阳");
+		dpmsSysUser.setEmail("1817283294@qq.com");
+		dpmsSysUserService.updateSysUser(dpmsSysUser);		
 	}
 
 }

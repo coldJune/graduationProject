@@ -23,4 +23,10 @@ public interface IDpmsSysUserDao {
 	 * @return
 	 */
 	public DpmsSysUser searchByUserName(String userName);
+	
+	/**
+	 * 更新系统用户
+	 * @param dpmsSysUser
+	 */
+	public void updateSysUser(DpmsSysUser dpmsSysUser);
 }

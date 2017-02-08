@@ -8,5 +8,5 @@ public interface IDpmsSysUserService {
 	public List<DpmsSysUser> findAll(int eachPage,int currentPage);
 	public int getTotalItem();
 	public DpmsSysUser searchByUserName(String userName);
-	
+	public void updateSysUser(DpmsSysUser dpmsSysUser);
 }
