@@ -1,33 +1,27 @@
 $(document).ready(function(){
 	/*鼠标移上去改变颜色*/
-	$("tr").mouseover(function(){
+	/*$("tr").mouseover(function(){
 		if($(this).children().first().children().children().attr("checked")!="checked"){
 			$(this).toggleClass("choose");
-		}else{
-			$(this).toggleClass("background-color:#39ADB4");
 		}
 		
-	});
+	});*/
 	/*鼠标移出来恢复颜色*/
-	$("tr").mouseout(function(){
-		if($(this).children().first().children().children().attr("checked")!="checked"){
+	/*$("tr").mouseout(function(){
+		if($(this).find("input[type='checkbox']").attr("checked")!="checked"){
+			alert($(this).find("input").attr("checked"));
 			$(this).removeClass("choose");
-			$(this).removeClass("background-color:#39ADB4");
 		}
-	});
-	$("tr").click(function(){
-		if($(this).children().first().children().children().attr("checked")!="checked"){
-			$(this).children().first().children().children().attr("checked",true);
-			alert($(this).children().first().children().children().attr("checked"));
-			$(this).toggleClass("background-color:#39ADB4");
-		}else{
-			$(this).children().first().children().children().attr("checked",false);
-			$(this).removeClass("choose");
-			$(this).removeClass("background-color:#39ADB4");
-		}
-	});
+	});*/
 	$("input[type='checkbox']").click(function(e){  
-	    e.stopPropagation();   
+	   if($(this).attr('checked')!='checked'){
+		   $(this).attr('checked',true);
+		   $(this).closest('tr').toggleClass("choose");
+		   /*var tr=$(this).closest('tr').attr('id').val();*/
+	   }else{
+		   $(this).attr('checked',false);
+		   $(this).closest('tr').toggleClass("choose");
+	   }
 	});  
 	/*删除*/
 });

@@ -14,7 +14,7 @@ public class DpmsSysUser {
 	private Integer age;
 	private String address;
 	private String name;//用户的名字
-	private String cardId;//用户的省份证号
+	private String cardId;//用户的身份证号
 	private String phone;
 	private Date createDate;//账户创建时间
 	private Date lastLogin;//最后一次登录时间

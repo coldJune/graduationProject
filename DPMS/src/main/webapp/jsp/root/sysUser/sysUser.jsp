@@ -93,10 +93,10 @@
 							<tr>
 								<td>
 									<div style="z-index: 2px;">
-									<div class="margin-right-15 templatemo-inline-block" style="z-index: 1px;">
-                      					<input type="checkbox" name="dpmsSysUser" id="${dpmsSysUser.userName}" value="${dpmsSysUser.userName}" onclick="parent.parent.parent.click()">
-                     					 <label for="${dpmsSysUser.userName}" class="font-weight-400"><span></span></label>                      
-                    				</div>
+										<div class="margin-right-15 templatemo-inline-block" style="z-index: 1px;">
+	                      					<input type="checkbox" name="${dpmsSysUser.userName}" id="${dpmsSysUser.userName}" value="${dpmsSysUser.userName}">
+	                     					 <label for="${dpmsSysUser.userName}" class="font-weight-400"><span></span></label>                      
+	                    				</div>
                     				</div>
                     			</td>
 								<td>${dpmsSysUser.userId}</td>
@@ -118,19 +118,6 @@
 	            </div>                          
 	          </div>  
 	          <jsp:include page="sysUser_footer.jsp"></jsp:include>
-	           <!--  <ul class="pagination">
-	              <li><a href="#">1</a></li>
-	              <li><a href="#">2</a></li>
-	              <li class="active"><a href="#">3</a></li>
-	              <li><a href="#">4</a></li>
-	              <li><a href="#">5</a></li>
-	              <li>
-	                <a href="#" aria-label="Next">
-	                  <span aria-hidden="true"><i class="fa fa-play"></i></span>
-	                </a>
-	              </li>
-	            </ul>
-	            --> 
 	      </div>
 	       
 	    </div >  
