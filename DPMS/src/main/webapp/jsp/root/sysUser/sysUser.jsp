@@ -10,7 +10,7 @@
     <title>小区物业管理系统</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/templatemo-style.css" rel="stylesheet">
     <link href="../css/table.css" rel="stylesheet">
@@ -57,20 +57,24 @@
 	    	<div class="templatemo-content-container">
 	    		
 	          <div class="templatemo-content-widget white-bg">
-	          <div style="margin: 0 auto;vertical-align: baseline;;width: 100%">
-		          <div class="form-group" style="display: inline-block;width: 60px;height: 20px;">
-	                <input type="button" class="templatemo-blue-button" style=" width: 60px;height: 20px;" value="删除"/> 
-	              </div>    
-			          <form class="templatemo-search-form" role="search" style="display: inline-block;" method="post" action="search">
+	           <div style="width: 150px;margin: 0 auto;font-size: 18px;"><p><strong>系统用户信息</strong></p></div>
+	          <div style="margin: 0 auto;">
+		             <div class="form-group text-left" style="width:60%;float: left;height:40px">
+			          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="search">
 		          		<div class="input-group" style="display: inline-block;">
 		              		<button type="submit" class="fa fa-search"></button>
 		              		<input type="text" class="form-control" placeholder="输入用户名" name="userName" id="srch-term">
 		         		 </div>
 		        	  </form>
-		        	  <div style="width: 150px;float: right;margin: 0 auto;font-size: 18px;"><p><strong>系统用户信息</strong></p></div>
+		        	  </div>
+		        	 
+		        	<div class="form-group text-right" style="width: 40%;float: right;">
+			                <button type="button" class="templatemo-blue-button">添加</button>
+			                <button type="button" class="templatemo-white-button">删除</button>
+			       </div>
 	          </div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">
-	              <table class="table table-striped table-bordered templatemo-user-table">
+	              <table class="table table-bordered templatemo-user-table">
 	                <thead>
 	                  <tr>
 	                    <td class="white-text"><i>删除数据</i></td>
@@ -100,7 +104,7 @@
                     				</div>
                     			</td>
 								<td>${dpmsSysUser.userId}</td>
-								<td><a href="" style="color: black;" class="templatemo-sort-by"><i>${dpmsSysUser.userName}</i></a></td>
+								<td><a href="" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsSysUser.userName}</i></a></td>
 								<td>${dpmsSysUser.gender}</td>
 								<td>${dpmsSysUser.age}</td>
 								<td>${dpmsSysUser.address}</td>

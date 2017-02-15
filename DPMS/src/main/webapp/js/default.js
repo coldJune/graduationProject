@@ -16,6 +16,7 @@ $(document).ready(function(){
 	$("input[type='checkbox']").click(function(e){  
 	   if($(this).attr('checked')!='checked'){
 		   $(this).attr('checked',true);
+		   //$(this).closest('tr').css('background-clolor','none');
 		   $(this).closest('tr').toggleClass("choose");
 		   /*var tr=$(this).closest('tr').attr('id').val();*/
 	   }else{
@@ -23,5 +24,15 @@ $(document).ready(function(){
 		   $(this).closest('tr').toggleClass("choose");
 	   }
 	});  
-	/*删除*/
+	/*手机菜单*/
+	$('.mobile-menu-icon').click(function(){
+		$('.templatemo-left-nav').slideToggle();				
+	});
+
+	/*  */
+	$('.templatemo-content-widget .fa-times').click(function(){
+		$(this).parent().slideUp(function(){
+			$(this).hide();
+		});
+	});
 });

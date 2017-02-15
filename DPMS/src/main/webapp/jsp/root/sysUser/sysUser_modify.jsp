@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
     <title>小区物业管理系统</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome.min.css" rel="stylesheet">
     <link href="../../../css/templatemo-style.css" rel="stylesheet">
     <link href="../../../css/table.css" rel="stylesheet">
@@ -30,11 +30,11 @@
           <div class="profile-photo-overlay"></div>
         </div>
                 <div class="mobile-menu-icon">
-            <i class="fa fa-bars"></i>
+            	<i class="fa fa-bars"></i>
         </div>
         <nav class="templatemo-left-nav">          
           <ul>
-            <li><a href="findAll" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+            <li><a href="DPMS/sysUser/findAll" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
             <li><a href="#"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
@@ -47,19 +47,19 @@
       </div>
       <div class="templatemo-content col-1 light-gray-bg">
 	   		<div class="templatemo-top-nav-container">
-	        <div class="row">
-	         	<nav class="templatemo-top-nav col-lg-12 col-md-12">
-	           	<h1 style="font-size: 26;color: white;text-align: center;"><i><strong>小区物业管理系统</strong></i></h1>  
-            </nav> 
+		        <div class="row">
+		         	<nav class="templatemo-top-nav col-lg-12 col-md-12">
+		           	<h1 style="font-size: 26;color: white;text-align: center;"><i><strong>小区物业管理系统</strong></i></h1>  
+	            </nav> 
 	        </div>
-	      </div>
+	  </div>
 	      
 	    	<div class="templatemo-content-container">
 	    		
 	          <div class="templatemo-content-widget white-bg">
-		          <h2 class="margin-bottom-10">Preferences</h2>
-            		<p>Here goes another form and form controls.</p>
-		          </div>
+		          <h2 class="margin-bottom-10">系统用户信息</h2>
+            		<p>>>修改</p>
+		          
 			           <form action="#" class="templatemo-login-form" method="post" enctype="multipart/form-data">
 			              <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">                  
@@ -119,15 +119,15 @@
 				                </div>  
 			              </div>
 			              <div class="form-group text-right">
-			                <button type="submit" class="templatemo-blue-button">Update</button>
-			                <button type="reset" class="templatemo-white-button">Reset</button>
+			                <button type="submit" class="templatemo-blue-button">更改</button>
+			                <button type="reset" class="templatemo-white-button">重置</button>
 			              </div>                           
 		           	  </form>                        
 	          </div>  
 	      </div>
 	       
 	    </div >  
-	        
+	        </div>
   	 <div class="templatemo-footer col-1 light-gray-bg">
   		<footer class="text-center">
             <p>Copyright &copy; 2017 Company Name 

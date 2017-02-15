@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="../css/font-awesome.min.css" rel="stylesheet">
-<link href="../css/templatemo-style.css" rel="stylesheet">
+<link href="../css/templatemo-style-show.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
