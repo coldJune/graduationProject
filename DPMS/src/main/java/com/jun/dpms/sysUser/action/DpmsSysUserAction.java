@@ -59,10 +59,29 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 		dpmsSysUsers=dpmsSysUserService.findAll(page.getEachPage(),page.getCurrentPage());
 		return SUCCESS;
 	}
-	
+	/**
+	 * 通过用户名查找
+	 * @return
+	 */
 	public String searchByUserName(){
 		dpmsSysUsers.clear();
 		dpmsSysUsers.add(dpmsSysUserService.searchByUserName(((DpmsSysUser)getModel()).getUserName()));
+		return SUCCESS;
+	}
+	
+	/**
+	 * 显式详细信息页面
+	 */
+	public String showDetail(){
+		dpmsSysUser=dpmsSysUserService.searchByUserName(dpmsSysUser.getUserName());
+		return SUCCESS;
+	}
+	/**
+	 * 
+	 */
+	public String saveOrupdate(){
+		System.out.println(dpmsSysUser.getUserId());
+		dpmsSysUserService.updateSysUser(dpmsSysUser);
 		return SUCCESS;
 	}
 	
@@ -81,7 +100,13 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 		this.page=page;
 	}
 
+	public DpmsSysUser getDpmsSysUser() {
+		return dpmsSysUser;
+	}
 
+	public void setDpmsSysUser(DpmsSysUser dpmsSysUser) {
+		this.dpmsSysUser = dpmsSysUser;
+	}
 	
 	
 }

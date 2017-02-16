@@ -32,13 +32,13 @@
     	<property name="cardId" type="java.lang.String">
     		<column name="cardID"></column>
     	</property>
-    	<property name="createDate" type="java.util.Date">
+    	<property name="createDate" type="java.lang.String">
     		<column name="CREATE_DATE"></column>
     	</property>
-    	<property name="lastLogin" type="java.util.Date">
+    	<property name="lastLogin" type="java.lang.String">
     		<column name="LAST_LOGIN"></column>
     	</property>
-    	<property name="birthDay" type="java.util.Date">
+    	<property name="birthDay" type="java.lang.String">
     		<column name="BIRTH_DAY"></column>
     	</property>
     	<property name="email" type="java.lang.String">

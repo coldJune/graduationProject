@@ -60,62 +60,62 @@
 		          <h2 class="margin-bottom-10">系统用户信息</h2>
             		<p>>>修改</p>
 		          
-			           <form action="#" class="templatemo-login-form" method="post" enctype="multipart/form-data">
+			           <form action="sys/sysUser/saveOrupdate" class="templatemo-login-form" method="post" enctype="multipart/form-data">
 			              <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="userId">用户ID</label>
-				                    <input type="text" class="form-control" id="userId" name="userId" placeholder="${dpmsSysUser.userId}" readonly="readonly">                  
+				                    <input type="text" class="form-control" id="userId" name="userId"  value="${dpmsSysUser.userId}" readonly="readonly">                  
 				                </div>		               
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="userName">用户名</label>
-				                    <input type="text" class="form-control" id="userName" name="userName" placeholder="${dpmsSysUser.userName}" readonly="readonly">                  
+				                    <input type="text" class="form-control" id="userName" name="userName" value="${dpmsSysUser.userName}" readonly="readonly">                  
 				                </div> 
  						  </div>
 			              <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="gender">性别</label>
-				                    <input type="text" class="form-control" id="gender" name="gender" placeholder="${dpmsSysUser.gender}">                  
+				                    <input type="text" class="form-control" id="gender" name="gender" value="${dpmsSysUser.gender}" readonly="readonly">                  
 				                </div> 
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="age">年龄</label>
-				                    <input type="text" class="form-control" id="age" name="age" placeholder="${dpmsSysUser.age}" >                  
+				                    <input type="text" class="form-control" id="age" name="age" value="${dpmsSysUser.age}" readonly="readonly">                  
 				                </div> 
 			               </div>
 			               <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="address">地址</label>
-				                    <input type="text" class="form-control" id="address" name="address" placeholder="${dpmsSysUser.address}">                  
+				                    <input type="text" class="form-control" id="address" name="address" value="${dpmsSysUser.address}">                  
 				                </div> 
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="cardId">身份证号</label>
-				                    <input type="text" class="form-control" id="cardId" name="cardId" placeholder="${dpmsSysUser.cardId}">                  
+				                    <input type="text" class="form-control" id="cardId" name="cardId" maxlength="18" min="18"  value="${dpmsSysUser.cardId}">                  
 				                </div> 
 			               </div>
 			               <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for=phone>电话号码</label>
-				                    <input type="text" class="form-control" id="phone" name="phone" placeholder="${dpmsSysUser.phone}" >                  
+				                    <input type="text" class="form-control" id="phone" name="phone" value="${dpmsSysUser.phone}" >                  
 				                </div> 
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="createDate">创建日期</label>
-				                    <input type="date" class="form-control" id="createDate" name="createDate" placeholder="${dpmsSysUser.createDate}" readonly="readonly">                  
+				                    <input type="date" class="form-control" id="createDate" name="createDate" value="${dpmsSysUser.createDate}" readonly="readonly">                  
 				                </div>
 			               </div>
 			               <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="lastLogin">最后一次登录时间</label>
-				                    <input type="datetime" class="form-control" id="lastLogin"  name="lastLogin" placeholder="${dpmsSysUser.lastLogin}" readonly="readonly">                  
+				                    <input type="datetime" class="form-control" id="lastLogin"  name="lastLogin" value="${dpmsSysUser.lastLogin}" readonly="readonly">                  
 				                </div>  
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="birthDay">出生年月</label>
-				                    <input type="date" class="form-control" id="birthDay"  name="birthDay" placeholder="${dpmsSysUser.birthDay}" readonly="readonly">                  
+				                    <input type="date" class="form-control" id="birthDay"  name="birthDay" value="${dpmsSysUser.birthDay}" readonly="readonly">                  
 				                </div> 
 			               </div>
 			               <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">  
 				                                
 				                    <label for="email">邮箱</label>
-				                    <input type="email" class="form-control" id="email"  name="email" placeholder="${dpmsSysUser.birthDay}">                  
+				                    <input type="email" class="form-control" id="email"  name="email" value="${dpmsSysUser.email}">                  
 				                </div>  
 			              </div>
 			              <div class="form-group text-right">

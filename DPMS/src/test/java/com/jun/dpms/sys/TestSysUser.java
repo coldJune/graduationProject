@@ -1,6 +1,7 @@
 package com.jun.dpms.sys;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -11,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.jun.dpms.sysUser.bean.DpmsSysUser;
+import com.jun.dpms.sysUser.dao.IDpmsSysUserDao;
 import com.jun.dpms.sysUser.service.IDpmsSysUserService;
 
 public class TestSysUser {
@@ -22,6 +24,7 @@ public class TestSysUser {
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
 		IDpmsSysUserService dpmsSysUserService=(IDpmsSysUserService)context.getBean("dpmsSysUserService");
+		IDpmsSysUserDao dpmsSysUserDao=(IDpmsSysUserDao) context.getBean("dpmsSysUserDao");
 		/**
 		 * 查找所有用户并分页显示
 		 */
@@ -40,8 +43,14 @@ public class TestSysUser {
 		 */
 		DpmsSysUser dpmsSysUser = (DpmsSysUser)dpmsSysUserService.searchByUserName("test1");
 		dpmsSysUser.setAddress("绵阳");
-		dpmsSysUser.setEmail("1817283294@qq.com");
-		dpmsSysUserService.updateSysUser(dpmsSysUser);		
+		dpmsSysUser.setEmail("1883294@qq.com");
+		dpmsSysUser.setAge(23);
+		dpmsSysUser.setBirthDay(new Date());
+		dpmsSysUser.setCardId("1234567");
+		dpmsSysUser.setPhone("11111111111");
+		dpmsSysUser.setGender(0);
+		dpmsSysUserDao.updateSysUser(dpmsSysUser);
+		
 	}
 
 }

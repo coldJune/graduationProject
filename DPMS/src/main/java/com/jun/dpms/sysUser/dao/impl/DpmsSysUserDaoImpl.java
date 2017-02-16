@@ -62,7 +62,16 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	@Override
 	public void updateSysUser(DpmsSysUser dpmsSysUser) {
 		// TODO Auto-generated method stub
-		this.getCurrentSession().saveOrUpdate(dpmsSysUser);
+		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.gender=?,u.age=?,u.address=?,u.cardId=?,u.phone=?,u.birthDay=?,u.email=? where u.userId=?");
+		q.setInteger(0, dpmsSysUser.getGender());
+		q.setInteger(1, dpmsSysUser.getAge());
+		q.setString(2, dpmsSysUser.getAddress());
+		q.setString(3, dpmsSysUser.getCardId());
+		q.setString(4, dpmsSysUser.getPhone());
+		q.setDate(5, dpmsSysUser.getBirthDay());
+		q.setString(6, dpmsSysUser.getEmail());
+		q.setInteger(7, dpmsSysUser.getUserId());
+		q.executeUpdate();
 	}
 
 

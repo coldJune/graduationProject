@@ -13,5 +13,13 @@
     	<action name="search" class="dpmsSysUserAction" method="searchByUserName">
     		<result>/jsp/root/sysUser/sysUser.jsp</result>
     	</action>
+    	<action name="showDetail" class="dpmsSysUserAction" method="showDetail">
+    		<result>/jsp/root/sysUser/sysUser_modify.jsp</result>
+    	</action>
+    	<action name="saveOrupdate" class="dpmsSysUserAction" method="saveOrupdate">
+    		<result  type="redirectAction">
+				<param name="actionName">findAll</param>
+			</result>
+    	</action>
     </package>
 </struts>
