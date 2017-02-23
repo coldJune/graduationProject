@@ -8,18 +8,26 @@
     <constant name="struts.objectFactory" value="spring"></constant>
     <package name="sysUser" namespace="/sysUser" extends="struts-default">
     	<action name="findAll" class="dpmsSysUserAction" method="findAll">
-    		<result>/jsp/root/sysUser/sysUser.jsp</result>
+    		<result>/jsp/sysUser/sysUser.jsp</result>
     	</action>
     	<action name="search" class="dpmsSysUserAction" method="searchByUserName">
-    		<result>/jsp/root/sysUser/sysUser.jsp</result>
+    		<result>/jsp/sysUser/sysUser.jsp</result>
     	</action>
     	<action name="showDetail" class="dpmsSysUserAction" method="showDetail">
-    		<result>/jsp/root/sysUser/sysUser_modify.jsp</result>
+    		<result>/jsp/sysUser/sysUser_modify.jsp</result>
     	</action>
-    	<action name="saveOrupdate" class="dpmsSysUserAction" method="saveOrupdate">
-    		<result  type="redirectAction">
+    	<action name="update" class="dpmsSysUserAction" method="update">
+    		<result type="redirectAction">
 				<param name="actionName">findAll</param>
 			</result>
+    	</action>
+    	<action name="addB" class="dpmsSysUserAction" method="addB">
+    		<result>/jsp/sysUser/sysUser_add.jsp</result>
+    	</action>
+    	<action name="add" class="dpmsSysUserAction" method="add">
+    		<result type="redirectAction">
+    			<param name="actionName">findAll</param>
+    		</result>
     	</action>
     </package>
 </struts>

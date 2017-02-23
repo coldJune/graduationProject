@@ -9,4 +9,5 @@ public interface IDpmsSysUserService {
 	public int getTotalItem();
 	public DpmsSysUser searchByUserName(String userName);
 	public void updateSysUser(DpmsSysUser dpmsSysUser);
+	public void addSysUser(DpmsSysUser dpmsSysUser);
 }

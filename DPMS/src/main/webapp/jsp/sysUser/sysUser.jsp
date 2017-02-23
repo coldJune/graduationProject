@@ -16,7 +16,6 @@
     <link href="../css/table.css" rel="stylesheet">
     <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
-
   </head>
   <body>
   	<div class="templatemo-flex-row">
@@ -34,7 +33,7 @@
         </div>
         <nav class="templatemo-left-nav">          
           <ul>
-            <li><a href="findAll" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+            <li><a href="/findAll" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
             <li><a href="#"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
@@ -57,22 +56,21 @@
 	    	<div class="templatemo-content-container">
 	    		
 	          <div class="templatemo-content-widget white-bg">
-	           <div style="width: 150px;margin: 0 auto;font-size: 18px;"><p><strong>系统用户信息</strong></p></div>
-	          <div style="margin: 0 auto;">
-		             <div class="form-group text-left" style="width:60%;float: left;height:40px">
-			          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="search">
-		          		<div class="input-group" style="display: inline-block;">
-		              		<button type="submit" class="fa fa-search"></button>
-		              		<input type="text" class="form-control" placeholder="输入用户名" name="userName" id="srch-term">
-		         		 </div>
-		        	  </form>
-		        	  </div>
-		        	 
-		        	<div class="form-group text-right" style="width: 40%;float: right;">
-			                <button type="button" class="templatemo-blue-button">添加</button>
-			                <button type="button" class="templatemo-white-button">删除</button>
-			       </div>
-	          </div>
+	           		<div style="width: 150px;margin: 0 auto;font-size: 18px;"><p><strong>系统用户信息</strong></p></div>
+	          		<div style="margin: 0 auto;">
+			             <div class="form-group text-left" style="width:60%;float: left;height:40px">
+					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="search">
+				          		<div class="input-group" >
+				              		<button type="submit" class="fa fa-search"></button>
+				              		<input type="text" class="form-control" placeholder="输入用户名" name="userName" id="srch-term">
+				         		 </div>
+				        	  </form>
+			        	 </div>
+			        	<div class="form-group text-right" style="width: 40%;float: right;">
+				                <a href="addB"><button type="button" class="templatemo-blue-button" >添加</button></a>
+				                <button id="del" type="button" class="templatemo-white-button">删除</button>
+				       	</div>
+	          		</div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">
 	              <table class="table table-bordered templatemo-user-table">
 	                <thead>
@@ -98,13 +96,13 @@
 								<td>
 									<div style="z-index: 2px;">
 										<div class="margin-right-15 templatemo-inline-block" style="z-index: 1px;">
-	                      					<input type="checkbox" name="${dpmsSysUser.userName}" id="${dpmsSysUser.userName}" value="${dpmsSysUser.userName}">
+	                      					<input type="checkbox" name="check" id="${dpmsSysUser.userName}" value="${dpmsSysUser.userName}">
 	                     					 <label for="${dpmsSysUser.userName}" class="font-weight-400"><span></span></label>                      
 	                    				</div>
                     				</div>
                     			</td>
 								<td>${dpmsSysUser.userId}</td>
-								<td><a href="sys/sysUser/showDetail?userName=${dpmsSysUser.userName}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsSysUser.userName}</i></a></td>
+								<td><a href="showDetail?userName=${dpmsSysUser.userName}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsSysUser.userName}</i></a></td>
 								<td>${dpmsSysUser.gender}</td>
 								<td>${dpmsSysUser.age}</td>
 								<td>${dpmsSysUser.address}</td>

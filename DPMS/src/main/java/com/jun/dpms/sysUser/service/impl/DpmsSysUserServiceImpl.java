@@ -43,6 +43,12 @@ public class DpmsSysUserServiceImpl implements IDpmsSysUserService {
 		dpmsSysUserDao.updateSysUser(dpmsSysUser);
 	}
 
+	@Override
+	public void addSysUser(DpmsSysUser dpmsSysUser) {
+		// TODO Auto-generated method stub
+		dpmsSysUserDao.addSysUser(dpmsSysUser);
+	}
+
 
 
 		

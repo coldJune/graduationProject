@@ -29,4 +29,10 @@ public interface IDpmsSysUserDao {
 	 * @param dpmsSysUser
 	 */
 	public void updateSysUser(DpmsSysUser dpmsSysUser);
+	
+	/**
+	 * 添加系统用户
+	 * @param dpmsSysUser
+	 */
+	public void addSysUser(DpmsSysUser dpmsSysUser);
 }

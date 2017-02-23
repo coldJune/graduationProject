@@ -10,12 +10,12 @@
     <title>小区物业管理系统</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../../css/font-awesome.min.css" rel="stylesheet">
-    <link href="../../../css/templatemo-style.css" rel="stylesheet">
-    <link href="../../../css/table.css" rel="stylesheet">
-    <script type="text/javascript" src="../../../jQuery/jquery-3.1.1.js"></script>
-    <script type="text/javascript" src="../../../js/default.js"></script>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/templatemo-style.css" rel="stylesheet">
+    <link href="../css/table.css" rel="stylesheet">
+    <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="../js/default.js"></script>
 
   </head>
   <body>
@@ -60,7 +60,7 @@
 		          <h2 class="margin-bottom-10">系统用户信息</h2>
             		<p>>>修改</p>
 		          
-			           <form action="sys/sysUser/saveOrupdate" class="templatemo-login-form" method="post" enctype="multipart/form-data">
+			           <form  action="update" class="templatemo-login-form" method="post" enctype="multipart/form-data">
 			              <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="userId">用户ID</label>
@@ -72,7 +72,18 @@
 				                </div> 
  						  </div>
 			              <div class="row form-group">
+			               		<div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="name">姓名</label>
+				                    <input type="text" class="form-control" id="name" name="name" value="${dpmsSysUser.name}" required="required">                  
+				                </div>
 				                <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="cardId">身份证号</label>
+				                    <input type="text" class="form-control" id="cardId" name="cardId" maxlength="18" min="15"  value="${dpmsSysUser.cardId}" required="required">                  
+				                </div>  
+				               
+			               </div>
+			               <div class="row form-group">
+			               		 <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="gender">性别</label>
 				                    <input type="text" class="form-control" id="gender" name="gender" value="${dpmsSysUser.gender}" readonly="readonly">                  
 				                </div> 
@@ -80,44 +91,44 @@
 				                    <label for="age">年龄</label>
 				                    <input type="text" class="form-control" id="age" name="age" value="${dpmsSysUser.age}" readonly="readonly">                  
 				                </div> 
+				                
+				                
 			               </div>
 			               <div class="row form-group">
-				                <div class="col-lg-6 col-md-6 form-group">                  
+			               		<div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="address">地址</label>
-				                    <input type="text" class="form-control" id="address" name="address" value="${dpmsSysUser.address}">                  
-				                </div> 
-				                <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="cardId">身份证号</label>
-				                    <input type="text" class="form-control" id="cardId" name="cardId" maxlength="18" min="18"  value="${dpmsSysUser.cardId}">                  
-				                </div> 
-			               </div>
-			               <div class="row form-group">
-				                <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for=phone>电话号码</label>
-				                    <input type="text" class="form-control" id="phone" name="phone" value="${dpmsSysUser.phone}" >                  
-				                </div> 
-				                <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="createDate">创建日期</label>
-				                    <input type="date" class="form-control" id="createDate" name="createDate" value="${dpmsSysUser.createDate}" readonly="readonly">                  
+				                    <input type="text" class="form-control" id="address" name="address" value="${dpmsSysUser.address}" required="required">                  
 				                </div>
-			               </div>
-			               <div class="row form-group">
-				                <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="lastLogin">最后一次登录时间</label>
-				                    <input type="datetime" class="form-control" id="lastLogin"  name="lastLogin" value="${dpmsSysUser.lastLogin}" readonly="readonly">                  
-				                </div>  
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="birthDay">出生年月</label>
-				                    <input type="date" class="form-control" id="birthDay"  name="birthDay" value="${dpmsSysUser.birthDay}" readonly="readonly">                  
-				                </div> 
+				                    <input type="text" class="form-control" id="birthDay"  name="birthDay"  value="${dpmsSysUser.birthDay}" readonly="readonly">                  
+				                </div>  
+				                
+				               
 			               </div>
 			               <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">  
 				                                
 				                    <label for="email">邮箱</label>
-				                    <input type="email" class="form-control" id="email"  name="email" value="${dpmsSysUser.email}">                  
-				                </div>  
+				                    <input type="email" class="form-control" id="email"  name="email" value="${dpmsSysUser.email}" required="required">                  
+				                </div>
+				                <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for=phone>电话号码</label>
+				                    <input type="text" class="form-control" id="phone" name="phone" value="${dpmsSysUser.phone}" required="required">                  
+				                </div>   
 			              </div>
+			               <div class="row form-group">
+			                	<div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="createDate">创建日期</label>
+				                    <input type="text" class="form-control" id="createDate" name="createDate" value="${dpmsSysUser.createDate}" readonly="readonly" >                  
+				                </div>
+				                <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="lastLogin">最后一次登录时间</label>
+				                    <input type="text" class="form-control" id="lastLogin"  name="lastLogin" value="${dpmsSysUser.lastLogin}" readonly="readonly">                  
+				                </div>  
+				                
+			               </div>
+
 			              <div class="form-group text-right">
 			                <button type="submit" class="templatemo-blue-button">更改</button>
 			                <button type="reset" class="templatemo-white-button">重置</button>

@@ -1,6 +1,10 @@
 
 package com.jun.dpms.sysUser.action;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +14,9 @@ import org.springframework.context.ApplicationContext;
 
 import com.jun.dpms.sysUser.bean.DpmsSysUser;
 import com.jun.dpms.sysUser.service.IDpmsSysUserService;
+import com.jun.dpms.util.MD5Util;
+import com.jun.dpms.util.SecurityCode;
+import com.jun.dpms.util.SendMail;
 import com.jun.dpms.util.pagecut.bean.Page;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -79,12 +86,34 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	/**
 	 * 
 	 */
-	public String saveOrupdate(){
-		System.out.println(dpmsSysUser.getUserId());
+	public String update(){
 		dpmsSysUserService.updateSysUser(dpmsSysUser);
 		return SUCCESS;
 	}
 	
+	public String addB(){
+		return SUCCESS;
+	}
+	public String add(){
+		DpmsSysUser dpmsSysUser = (DpmsSysUser)getModel();
+		System.out.println(dpmsSysUser.getGender()+"---------------------");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String createDate=df.format(new Date());
+		String passWord=SecurityCode.getSecurityCode();
+		String md5pass=MD5Util.encode2hex(passWord);
+		dpmsSysUser.setCreateDate(createDate);
+		dpmsSysUser.setIsUse(1);
+		dpmsSysUser.setIsSysPass(1);
+		dpmsSysUser.setPassWord(md5pass);
+		dpmsSysUser.setLastLogin(null);
+		dpmsSysUserService.addSysUser(dpmsSysUser);
+		SendMail.send(dpmsSysUser.getEmail(), "DPMS<br>您的密码为<strong>"+passWord+"</strong>,请尽快登录系统更改");
+		return SUCCESS;
+	}
+	public String checkUser(){
+		
+		return SUCCESS;
+	}
 	@Override
 	public Object getModel() {
 		// TODO Auto-generated method stub

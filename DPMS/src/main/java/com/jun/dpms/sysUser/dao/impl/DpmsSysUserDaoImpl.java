@@ -5,9 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 import com.jun.dpms.sysUser.bean.*;
 import com.jun.dpms.sysUser.dao.IDpmsSysUserDao;
@@ -45,7 +43,7 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	@Override
 	public DpmsSysUser searchByUserName(String userName) {
 		// TODO Auto-generated method stub
-		Query q= this.getCurrentSession().createQuery("from DpmsSysUser u where u.userName=?");
+		Query q= this.getCurrentSession().createQuery("from DpmsSysUser u where u.userName=? and u.isUse=1");
 		q.setString(0, userName);
 		List<DpmsSysUser> results=q.list();
 		if(results!=null||!results.isEmpty()){
@@ -63,15 +61,22 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	public void updateSysUser(DpmsSysUser dpmsSysUser) {
 		// TODO Auto-generated method stub
 		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.gender=?,u.age=?,u.address=?,u.cardId=?,u.phone=?,u.birthDay=?,u.email=? where u.userId=?");
-		q.setInteger(0, dpmsSysUser.getGender());
+		q.setString(0, dpmsSysUser.getGender());
 		q.setInteger(1, dpmsSysUser.getAge());
 		q.setString(2, dpmsSysUser.getAddress());
 		q.setString(3, dpmsSysUser.getCardId());
 		q.setString(4, dpmsSysUser.getPhone());
-		q.setDate(5, dpmsSysUser.getBirthDay());
+		q.setString(5, dpmsSysUser.getBirthDay());
 		q.setString(6, dpmsSysUser.getEmail());
 		q.setInteger(7, dpmsSysUser.getUserId());
 		q.executeUpdate();
+	}
+
+
+	@Override
+	public void addSysUser(DpmsSysUser dpmsSysUser) {
+		// TODO Auto-generated method stub
+		this.getCurrentSession().save(dpmsSysUser);
 	}
 
 

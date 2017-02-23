@@ -10,18 +10,18 @@ public class DpmsSysUser {
 	private int userId;
 	private String userName;//用于用户登录的名字
 	private String passWord;
-	private Integer gender; //gender==1表示为男性；gender==0表示为女性
+	private String gender; 
 	private Integer age;
 	private String address;
 	private String name;//用户的名字
 	private String cardId;//用户的身份证号
 	private String phone;
-	private Date createDate;//账户创建时间
-	private Date lastLogin;//最后一次登录时间
-	private Date birthDay;//出生年月
+	private String createDate;//账户创建时间
+	private String lastLogin;//最后一次登录时间
+	private String birthDay;//出生年月
 	private String email;
 	private Integer isUse;//当isUse==1时表示账号正在使用，当isUse==0时表示账号停止使用
-	private Integer isSysPass;//是否为系统生成密码;
+	private Integer isSysPass;//是否为系统生成密码,1表示是，0表示否
 	
 	public DpmsSysUser() {
 		super();
@@ -38,10 +38,10 @@ public class DpmsSysUser {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public Integer getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(Integer gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	public Integer getAge() {
@@ -68,22 +68,22 @@ public class DpmsSysUser {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	public Date getLastLogin() {
+	public String getLastLogin() {
 		return lastLogin;
 	}
-	public void setLastLogin(Date lastLogin) {
+	public void setLastLogin(String lastLogin) {
 		this.lastLogin = lastLogin;
 	}
-	public Date getBirthDay() {
+	public String getBirthDay() {
 		return birthDay;
 	}
-	public void setBirthDay(Date birthDay) {
+	public void setBirthDay(String birthDay) {
 		this.birthDay = birthDay;
 	}
 	public Integer getIsUse() {
