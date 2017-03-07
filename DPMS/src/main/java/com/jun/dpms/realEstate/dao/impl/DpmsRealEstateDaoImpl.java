@@ -2,6 +2,7 @@ package com.jun.dpms.realEstate.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -21,16 +22,20 @@ public class DpmsRealEstateDaoImpl implements IDpmsRealEstateDao {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<DpmsRealEstate> findAll(int eachPage, int currentPage) {
 		// TODO Auto-generated method stub
-		return null;
+		Query q = this.getCurrentSession().createQuery("from DpmsRealEstate r");
+		q.setMaxResults(eachPage);
+		q.setFirstResult((currentPage-1)*eachPage);
+		return q.list();
 	}
 
 	@Override
 	public int getTotalItem() {
 		// TODO Auto-generated method stub
-		return 0;
+		return ((Number)(this.getCurrentSession().createQuery("select count(*) from DpmsRealEstate").uniqueResult())).intValue();
 	}
 
 	@Override

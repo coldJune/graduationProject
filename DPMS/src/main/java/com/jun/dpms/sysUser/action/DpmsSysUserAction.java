@@ -61,7 +61,6 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 		page.setTotalPage(page.getTotalItem()/page.getEachPage()+(page.getTotalItem()%page.getEachPage()>0?1:0));
 		try{
 			page.setCurrentPage(Integer.valueOf((ServletActionContext.getRequest().getParameter("currentPage"))).intValue());
-			System.out.println("===============");
 		}catch(Exception e){
 			page.setCurrentPage(1);
 		}

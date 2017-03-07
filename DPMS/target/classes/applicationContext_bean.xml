@@ -21,4 +21,7 @@
 	<bean id="dpmsRealEstateService" class="com.jun.dpms.realEstate.service.impl.DpmsRealEstateServiceImpl">
 		<property name="dpmsRealEstateDao" ref="dpmsRealEstateDao"></property>
 	</bean>
+	<bean id="dpmsRealEstateAction" class="com.jun.dpms.realEstate.action.DpmsRealEstateAction">
+		<property name="dpmsRealEstateService" ref="dpmsRealEstateService"></property>
+	</bean>
 </beans>

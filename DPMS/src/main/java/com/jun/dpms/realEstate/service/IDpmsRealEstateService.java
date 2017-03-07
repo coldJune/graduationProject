@@ -5,7 +5,7 @@ import java.util.List;
 import com.jun.dpms.realEstate.bean.DpmsRealEstate;
 
 
-public interface IDpmsRealEstate {
+public interface IDpmsRealEstateService {
 	public List<DpmsRealEstate> findAll(int eachPage,int currentPage);
 	public int getTotalItem();
 	public DpmsRealEstate searchByEstateNo(int estateNo);

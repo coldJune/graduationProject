@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.jun.dpms.realEstate.bean.DpmsRealEstate;
 import com.jun.dpms.realEstate.dao.IDpmsRealEstateDao;
-import com.jun.dpms.realEstate.service.IDpmsRealEstate;
+import com.jun.dpms.realEstate.service.IDpmsRealEstateService;
 
-public class DpmsRealEstateServiceImpl implements IDpmsRealEstate {
+public class DpmsRealEstateServiceImpl implements IDpmsRealEstateService {
 	
 	private IDpmsRealEstateDao dpmsRealEstateDao;
 

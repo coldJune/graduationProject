@@ -6,7 +6,7 @@
     <class name="com.jun.dpms.realEstate.bean.DpmsRealEstate" table="DPMSREALESTATE">
         <id name="id" type="java.lang.Integer" access="field">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="estateNo" type="java.lang.Integer" access="field" unique="true">
             <column name="ESTATE_NO" />
