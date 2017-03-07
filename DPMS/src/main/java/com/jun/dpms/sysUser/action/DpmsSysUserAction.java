@@ -4,6 +4,7 @@ package com.jun.dpms.sysUser.action;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +36,7 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	private DpmsSysUser dpmsSysUser=new DpmsSysUser();
 	private Page page = new Page();
 	private List<DpmsSysUser> dpmsSysUsers;
+	private String userNames[];
 	public List<DpmsSysUser> getDpmsSysUsers() {
 		return dpmsSysUsers;
 	}
@@ -84,16 +86,23 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 		return SUCCESS;
 	}
 	/**
-	 * 
+	 * 更新系统用户信息
 	 */
 	public String update(){
 		dpmsSysUserService.updateSysUser(dpmsSysUser);
 		return SUCCESS;
 	}
 	
+	/*
+	 * 跳转到添加页面
+	 */
 	public String addB(){
 		return SUCCESS;
 	}
+	/**
+	 * 添加系统用户信息
+	 * @return
+	 */
 	public String add(){
 		DpmsSysUser dpmsSysUser = (DpmsSysUser)getModel();
 		System.out.println(dpmsSysUser.getGender()+"---------------------");
@@ -110,8 +119,12 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 		SendMail.send(dpmsSysUser.getEmail(), "DPMS<br>您的密码为<strong>"+passWord+"</strong>,请尽快登录系统更改");
 		return SUCCESS;
 	}
-	public String checkUser(){
-		
+	/**
+	 * 逻辑删除用户信息
+	 * @return
+	 */
+	public String del(){
+		dpmsSysUserService.delSysUser(userNames);
 		return SUCCESS;
 	}
 	@Override
@@ -135,6 +148,14 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 
 	public void setDpmsSysUser(DpmsSysUser dpmsSysUser) {
 		this.dpmsSysUser = dpmsSysUser;
+	}
+
+	public String[] getUserNames() {
+		return userNames;
+	}
+
+	public void setUserNames(String[] userNames) {
+		this.userNames = userNames;
 	}
 	
 	

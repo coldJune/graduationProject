@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-3-7 10:28:16 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.jun.dpms.realEstate.bean.DpmsRealEstate" table="DPMSREALESTATE">
+        <id name="id" type="java.lang.Integer" access="field">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="estateNo" type="java.lang.Integer" access="field" unique="true">
+            <column name="ESTATE_NO" />
+        </property>
+        <property name="roomNo" type="java.lang.Integer" access="field">
+            <column name="ROOM_NO" />
+        </property>
+        <property name="floorNo" type="java.lang.Integer" access="field">
+            <column name="FLOOR_NO" />
+        </property>
+        <property name="roomInNo" type="java.lang.Integer" access="field">
+            <column name="ROOMIN_NO" />
+        </property>
+        <property name="roomOnSaleNo" type="java.lang.Integer" access="field">
+            <column name="ROOMONSALE_NO" />
+        </property>
+        <property name="elevatorNo" type="java.lang.Integer" access="field">
+            <column name="ELEVATOR_NO" />
+        </property>
+        <property name="unitNo" type="java.lang.Integer" access="field">
+            <column name="UNIT_NO" />
+        </property>
+        <property name="hasDoor" type="java.lang.String" access="field">
+            <column name="HAS_DOOR" />
+        </property>
+        <property name="hasGas" type="java.lang.String" access="field">
+            <column name="HAS_GAS" />
+        </property>
+        <property name="hasBordhand" type="java.lang.String" access="field">
+            <column name="HAS_BORDHAND" />
+        </property>
+        <property name="relatePerson" type="java.lang.String" access="field">
+            <column name="RELATE_PERSON" />
+        </property>
+        <property name="phone" type="java.lang.String" access="field">
+            <column name="PHONE" />
+        </property>
+    </class>
+</hibernate-mapping>

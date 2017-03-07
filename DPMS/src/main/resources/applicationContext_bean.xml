@@ -14,5 +14,11 @@
 	<bean id="dpmsSysUserAction" class="com.jun.dpms.sysUser.action.DpmsSysUserAction">
 		<property name="dpmsSysUserService" ref="dpmsSysUserService"></property>
 	</bean>
-	
+	<!-- 楼盘信息管理 -->
+	<bean id="dpmsRealEstateDao" class="com.jun.dpms.realEstate.dao.impl.DpmsRealEstateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dpmsRealEstateService" class="com.jun.dpms.realEstate.service.impl.DpmsRealEstateServiceImpl">
+		<property name="dpmsRealEstateDao" ref="dpmsRealEstateDao"></property>
+	</bean>
 </beans>

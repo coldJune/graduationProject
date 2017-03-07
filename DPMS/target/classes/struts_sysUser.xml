@@ -7,26 +7,31 @@
 	 <!-- 告诉Struts由spring容器作为bean工厂 -->
     <constant name="struts.objectFactory" value="spring"></constant>
     <package name="sysUser" namespace="/sysUser" extends="struts-default">
-    	<action name="findAll" class="dpmsSysUserAction" method="findAll">
+    	<action name="findAllSysUser" class="dpmsSysUserAction" method="findAll">
     		<result>/jsp/sysUser/sysUser.jsp</result>
     	</action>
-    	<action name="search" class="dpmsSysUserAction" method="searchByUserName">
+    	<action name="searchSysUser" class="dpmsSysUserAction" method="searchByUserName">
     		<result>/jsp/sysUser/sysUser.jsp</result>
     	</action>
-    	<action name="showDetail" class="dpmsSysUserAction" method="showDetail">
+    	<action name="showDetailSysUser" class="dpmsSysUserAction" method="showDetail">
     		<result>/jsp/sysUser/sysUser_modify.jsp</result>
     	</action>
-    	<action name="update" class="dpmsSysUserAction" method="update">
+    	<action name="updateSysUser" class="dpmsSysUserAction" method="update">
     		<result type="redirectAction">
-				<param name="actionName">findAll</param>
+				<param name="actionName">findAllSysUser</param>
 			</result>
     	</action>
-    	<action name="addB" class="dpmsSysUserAction" method="addB">
+    	<action name="addBSysUser" class="dpmsSysUserAction" method="addB">
     		<result>/jsp/sysUser/sysUser_add.jsp</result>
     	</action>
-    	<action name="add" class="dpmsSysUserAction" method="add">
+    	<action name="addSysUser" class="dpmsSysUserAction" method="add">
     		<result type="redirectAction">
-    			<param name="actionName">findAll</param>
+    			<param name="actionName">findAllSysUser</param>
+    		</result>
+    	</action>
+    	<action name="delSysUser" class="dpmsSysUserAction" method="del">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllSysUser</param>
     		</result>
     	</action>
     </package>

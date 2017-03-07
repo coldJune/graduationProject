@@ -54,7 +54,11 @@
         </div>
         <nav class="templatemo-left-nav">          
           <ul>
-            <li><a href="DPMS/sysUser/findAll" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+            <% String sess=(String)session.getAttribute("USERNAME");
+          	 if(sess=="root"){
+          %>
+            <li><a href="findAllSysUser" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+          <%} %>
             <li><a href="#"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
@@ -80,7 +84,7 @@
 		          <h2 class="margin-bottom-10">系统用户信息</h2>
             		<p>>>添加</p>
 		          
-			           <form  action="add" class="templatemo-login-form" method="post" enctype="multipart/form-data">
+			           <form  action="addSysUser" class="templatemo-login-form" method="post" enctype="multipart/form-data">
 			              <div class="row form-group">	               
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="userName">用户名</label>

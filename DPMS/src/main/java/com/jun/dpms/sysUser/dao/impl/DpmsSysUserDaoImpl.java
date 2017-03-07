@@ -26,7 +26,7 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	@Override
 	public List<DpmsSysUser> findAll(int eachPage, int currentPage) {
 		// TODO Auto-generated method stub
-		Query q =this.getCurrentSession().createQuery("from DpmsSysUser");
+		Query q =this.getCurrentSession().createQuery("from DpmsSysUser u where u.isUse=1");
 		q.setMaxResults(eachPage);
 		q.setFirstResult((currentPage-1)*eachPage);
 		return q.list();
@@ -60,7 +60,7 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	@Override
 	public void updateSysUser(DpmsSysUser dpmsSysUser) {
 		// TODO Auto-generated method stub
-		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.gender=?,u.age=?,u.address=?,u.cardId=?,u.phone=?,u.birthDay=?,u.email=? where u.userId=?");
+		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.gender=?,u.age=?,u.address=?,u.cardId=?,u.phone=?,u.birthDay=?,u.email=?,u.name=? where u.userId=?");
 		q.setString(0, dpmsSysUser.getGender());
 		q.setInteger(1, dpmsSysUser.getAge());
 		q.setString(2, dpmsSysUser.getAddress());
@@ -68,7 +68,8 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 		q.setString(4, dpmsSysUser.getPhone());
 		q.setString(5, dpmsSysUser.getBirthDay());
 		q.setString(6, dpmsSysUser.getEmail());
-		q.setInteger(7, dpmsSysUser.getUserId());
+		q.setString(7, dpmsSysUser.getName());
+		q.setInteger(8, dpmsSysUser.getUserId());
 		q.executeUpdate();
 	}
 
@@ -77,6 +78,17 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	public void addSysUser(DpmsSysUser dpmsSysUser) {
 		// TODO Auto-generated method stub
 		this.getCurrentSession().save(dpmsSysUser);
+	}
+
+
+	@Override
+	public void delSysUser(String[] userNames) {
+		// TODO Auto-generated method stub
+		Query q = getCurrentSession().createQuery("update DpmsSysUser u set u.isUse =0 where u.userName=?");
+		for (String userName : userNames) {
+			q.setString(0, userName);
+			q.executeUpdate();
+		}
 	}
 
 

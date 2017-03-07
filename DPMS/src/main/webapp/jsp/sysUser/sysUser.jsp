@@ -16,6 +16,34 @@
     <link href="../css/table.css" rel="stylesheet">
     <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$('#del').click(function(){
+    			var userNames=[];
+    			$('input:checkbox[name=check]:checked').each(function(){
+    				userNames.push($(this).val());
+    			});
+    			if(userNames==null){
+    				alert('请选择删除的内容');
+    			}else{
+        			$.ajax({
+        				type:'post',
+        				url:'del',
+        				data:{'userNames':userNames},
+        				traditional:true,
+        				async: false,
+        				success:function(){
+        					window.location.reload();
+        				},
+        				failure:function(){
+        					alert('删除失败');
+        				}
+        			});
+    			}
+
+    		});
+    	});
+    </script>
   </head>
   <body>
   	<div class="templatemo-flex-row">
@@ -33,7 +61,11 @@
         </div>
         <nav class="templatemo-left-nav">          
           <ul>
-            <li><a href="/findAll" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+          <% String sess=(String)session.getAttribute("USERNAME");
+          	 if(sess=="root"){
+          %>
+            <li><a href="findAllSysUser" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+          <%} %>
             <li><a href="#"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
@@ -59,7 +91,7 @@
 	           		<div style="width: 150px;margin: 0 auto;font-size: 18px;"><p><strong>系统用户信息</strong></p></div>
 	          		<div style="margin: 0 auto;">
 			             <div class="form-group text-left" style="width:60%;float: left;height:40px">
-					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="search">
+					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="searchSysUser">
 				          		<div class="input-group" >
 				              		<button type="submit" class="fa fa-search"></button>
 				              		<input type="text" class="form-control" placeholder="输入用户名" name="userName" id="srch-term">
@@ -67,8 +99,8 @@
 				        	  </form>
 			        	 </div>
 			        	<div class="form-group text-right" style="width: 40%;float: right;">
-				                <a href="addB"><button type="button" class="templatemo-blue-button" >添加</button></a>
-				                <button id="del" type="button" class="templatemo-white-button">删除</button>
+				                <a href="addBSysUser"><button type="button" class="templatemo-blue-button" >添加</button></a>
+				                <button id="delSysUser" type="button" class="templatemo-white-button">删除</button>
 				       	</div>
 	          		</div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">

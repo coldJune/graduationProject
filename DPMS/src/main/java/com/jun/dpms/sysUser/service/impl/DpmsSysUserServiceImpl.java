@@ -49,6 +49,14 @@ public class DpmsSysUserServiceImpl implements IDpmsSysUserService {
 		dpmsSysUserDao.addSysUser(dpmsSysUser);
 	}
 
+	@Override
+	public void delSysUser(String[] userNames) {
+		// TODO Auto-generated method stub
+		dpmsSysUserDao.delSysUser(userNames);
+	}
+
+
+
 
 
 		

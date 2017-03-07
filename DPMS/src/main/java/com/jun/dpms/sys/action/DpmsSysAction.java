@@ -146,8 +146,11 @@ public class DpmsSysAction extends ActionSupport {
 				
 				return "changeSysPass";
 			}else{
-				
-				return SUCCESS;
+				if(userName=="root"){
+					return "root";
+				}else{
+					return SUCCESS;
+				}
 			}
 		}else{
 			return "fail";

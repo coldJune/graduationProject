@@ -35,4 +35,9 @@ public interface IDpmsSysUserDao {
 	 * @param dpmsSysUser
 	 */
 	public void addSysUser(DpmsSysUser dpmsSysUser);
+	/**
+	 * 通过用户名逻辑删除用户
+	 * @param userName
+	 */
+	public void delSysUser(String[] userNames);
 }

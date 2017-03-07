@@ -58,6 +58,7 @@ $(document).ready(function(){
              $('#age').val('');
              $('#birthDay').val('');
              $('#gender').val('');
+             $('#cardId').val('');
              return false;
          }
          else if (reg.test(cardId) === false){
@@ -65,6 +66,7 @@ $(document).ready(function(){
              $('#age').val('');
              $('#birthDay').val('');
              $('#gender').val('');
+             $('#cardId').val('');
              return false;
          }
          else if (!city[cardId.substr(0, 2)]) {
@@ -72,6 +74,7 @@ $(document).ready(function(){
              $('#age').val('');
              $('#birthDay').val('');
              $('#gender').val('');
+             $('#cardId').val('');
              return false;
          }
          //处理18位的身份证号码
@@ -79,6 +82,7 @@ $(document).ready(function(){
              sex = sexCheck(cardId.substr(14, 3));
        
              if (!(dateCheck(parseInt(cardId.substr(6, 4)), parseInt(cardId.substr(10, 2)), parseInt(cardId.substr(12, 2))))) {
+            	 $('#cardId').val('');
                  return false;
              }
              birYear=cardId.substr(6, 4).toString();
@@ -107,6 +111,7 @@ $(document).ready(function(){
                      $('#age').val('');
                      $('#birthDay').val('');
                      $('#gender').val('');
+                     $('#cardId').val('');
                      return false;
                  }
              }
@@ -116,6 +121,7 @@ $(document).ready(function(){
              birth = "19" + cardId.substr(6, 2) + "-" + cardId.substr(8, 2) + "-" + cardId.substr(10, 2);
              sex = sexCheck(cardId.substr(12, 3));
              if (!(dateCheck(parseInt(cardId.substr(6, 2)), parseInt(cardId.substr(8, 2)), parseInt(cardId.substr(10, 2))))){
+            	 $('#cardId').val('');
                  return false;
              }
              year = parseInt(cardId.substr(6, 2));
@@ -132,17 +138,12 @@ $(document).ready(function(){
 	$('#phone').blur(function(){
 		var phone=$(this).val();
 		if(!(/^1[34578]\d{9}$/.test(phone))){
+			$(this).val('');
 			alert('请输入正确的手机号');
 		}
 	});
 	
-	$('#del').click(function(){
-		var userNames=[];
-		$('input:checkbox[name=check]:checked').each(function(){
-			userNames.push($(this).val());
-		});
-		$.ajax();
-	});
+
 });
 
 function sexCheck(sex)
