@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    
+<struts>
+	 <!-- 告诉Struts由spring容器作为bean工厂 -->
+    <constant name="struts.objectFactory" value="spring"></constant>
+    <!-- 系统用户管理模块 -->
+    <package name="sysUser" namespace="/sysUser" extends="struts-default">
+    	<action name="findAllSysUser" class="dpmsSysUserAction" method="findAll">
+    		<result>/jsp/sysUser/sysUser.jsp</result>
+    	</action>
+    	<action name="searchSysUser" class="dpmsSysUserAction" method="searchByUserName">
+    		<result>/jsp/sysUser/sysUser.jsp</result>
+    	</action>
+    	<action name="showDetailSysUser" class="dpmsSysUserAction" method="showDetail">
+    		<result>/jsp/sysUser/sysUser_modify.jsp</result>
+    	</action>
+    	<action name="updateSysUser" class="dpmsSysUserAction" method="update">
+    		<result type="redirectAction">
+				<param name="actionName">findAllSysUser</param>
+			</result>
+    	</action>
+    	<action name="addBSysUser" class="dpmsSysUserAction" method="addB">
+    		<result>/jsp/sysUser/sysUser_add.jsp</result>
+    	</action>
+    	<action name="addSysUser" class="dpmsSysUserAction" method="add">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllSysUser</param>
+    		</result>
+    	</action>
+    	<action name="delSysUser" class="dpmsSysUserAction" method="del">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllSysUser</param>
+    		</result>
+    	</action>
+    </package>
+    <!-- 楼盘信息管理模块 -->
+    
+    <package name="realEstate" namespace="/realEstate" extends="struts-default">
+    	<action name="findAllRealEstate" class="dpmsRealEstateAction" method="findAll">
+    		<result>/jsp/realEstate/realEstate.jsp</result>
+    	</action>
+    	<action name="showDetailRealEstate" class="dpmsRealEstateAction" method="showDetail">
+    		<result>/jsp/realEstate/realEstate_modify.jsp</result>
+    	</action>
+    </package>
+</struts>

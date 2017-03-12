@@ -6,6 +6,7 @@
 <struts>
 	 <!-- 告诉Struts由spring容器作为bean工厂 -->
     <constant name="struts.objectFactory" value="spring"></constant>
+    <!-- 系统用户管理模块 -->
     <package name="sysUser" namespace="/sysUser" extends="struts-default">
     	<action name="findAllSysUser" class="dpmsSysUserAction" method="findAll">
     		<result>/jsp/sysUser/sysUser.jsp</result>
@@ -33,6 +34,16 @@
     		<result type="redirectAction">
     			<param name="actionName">findAllSysUser</param>
     		</result>
+    	</action>
+    </package>
+    <!-- 楼盘信息管理模块 -->
+    
+    <package name="realEstate" namespace="/realEstate" extends="struts-default">
+    	<action name="findAllRealEstate" class="dpmsRealEstateAction" method="findAll">
+    		<result>/jsp/realEstate/realEstate.jsp</result>
+    	</action>
+    	<action name="showDetailRealEstate" class="dpmsRealEstateAction" method="showDetail">
+    		<result>/jsp/realEstate/realEstate_modify.jsp</result>
     	</action>
     </package>
 </struts>

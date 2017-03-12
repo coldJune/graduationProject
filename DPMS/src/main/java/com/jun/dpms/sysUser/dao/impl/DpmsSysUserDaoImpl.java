@@ -46,7 +46,7 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 		Query q= this.getCurrentSession().createQuery("from DpmsSysUser u where u.userName=? and u.isUse=1");
 		q.setString(0, userName);
 		List<DpmsSysUser> results=q.list();
-		if(results!=null||!results.isEmpty()){
+		if(results!=null&&!results.isEmpty()){
 			for (DpmsSysUser dpmsSysUser : results) {
 				return dpmsSysUser;
 			}

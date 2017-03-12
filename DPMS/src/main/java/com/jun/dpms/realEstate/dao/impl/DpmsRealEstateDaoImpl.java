@@ -41,6 +41,17 @@ public class DpmsRealEstateDaoImpl implements IDpmsRealEstateDao {
 	@Override
 	public DpmsRealEstate searchByEstateNo(int estateNo) {
 		// TODO Auto-generated method stub
+		Query q =this.getCurrentSession().createQuery("from DpmsRealEstate r where r.estateNo=?");
+		q.setInteger(0, estateNo);
+		
+		List<DpmsRealEstate> results=q.list();
+		if(results!=null&&!results.isEmpty()){
+			for (DpmsRealEstate dpmsRealEstate : results) {
+				return dpmsRealEstate;
+			}
+		}else{
+			return null;
+		}
 		return null;
 	}
 

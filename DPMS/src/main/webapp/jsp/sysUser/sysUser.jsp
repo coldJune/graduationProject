@@ -134,7 +134,7 @@
                     				</div>
                     			</td>
 								<td>${dpmsSysUser.userId}</td>
-								<td><a href="showDetail?userName=${dpmsSysUser.userName}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsSysUser.userName}</i></a></td>
+								<td><a href="showDetailSysUser?userName=${dpmsSysUser.userName}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsSysUser.userName}</i></a></td>
 								<td>${dpmsSysUser.gender}</td>
 								<td>${dpmsSysUser.age}</td>
 								<td>${dpmsSysUser.address}</td>

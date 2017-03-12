@@ -45,7 +45,21 @@ public class DpmsRealEstateAction extends ActionSupport implements ModelDriven{
 		return SUCCESS;
 	}
 	
+	/*
+	 *添加跳转动作 
+	 */
+	public String addB(){
+		return SUCCESS;
+	}
 	
+	/**
+	 * 显示详情页面
+	 * @return
+	 */
+	public String showDetail(){
+		dpmsRealEstate=dpmsRealEstateService.searchByEstateNo(dpmsRealEstate.getEstateNo());
+		return SUCCESS;
+	}
 	
 	
 	

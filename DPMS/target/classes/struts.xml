@@ -79,5 +79,5 @@
    	</package>
     	
     <!-- 引入系统用户管理 -->
-    <include file="struts_sysUser.xml"></include>
+    <include file="struts_sys.xml"></include>
 </struts>
