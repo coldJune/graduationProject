@@ -38,12 +38,33 @@
     </package>
     <!-- 楼盘信息管理模块 -->
     
-    <package name="realEstate" namespace="/realEstate" extends="struts-default">
+    <package name="realEstate" namespace="/realEstate" extends="struts-default,json-default">
     	<action name="findAllRealEstate" class="dpmsRealEstateAction" method="findAll">
     		<result>/jsp/realEstate/realEstate.jsp</result>
     	</action>
     	<action name="showDetailRealEstate" class="dpmsRealEstateAction" method="showDetail">
     		<result>/jsp/realEstate/realEstate_modify.jsp</result>
+    	</action>
+    	<action name="searchRealEstate" class="dpmsRealEstateAction" method="searchByEstateNo">
+    		<result>/jsp/realEstate/realEstate.jsp</result>
+    	</action>
+    	<action name="addBRealEstate" class="dpmsRealEstateAction" method="addB">
+    		<result>/jsp/realEstate/realEstate_add.jsp</result>
+    	</action>
+    	<action name="addRealEstate" class="dpmsRealEstateAction" method="add">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllRealEstate</param>
+    		</result>
+    	</action> 
+    	<action name="updateRealEstate" class="dpmsRealEstateAction" method="update">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllRealEstate</param>
+    		</result>
+    	</action>
+    	<action name="checkByEstateNo" class="dpmsRealEstateAction" method="checkByEstateNo">
+    		<result type="json">
+    			<param name="root">sessionMap</param>
+    		</result>
     	</action>
     </package>
 </struts>

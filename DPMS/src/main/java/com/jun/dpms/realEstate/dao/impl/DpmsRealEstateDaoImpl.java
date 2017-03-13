@@ -58,12 +58,26 @@ public class DpmsRealEstateDaoImpl implements IDpmsRealEstateDao {
 	@Override
 	public void updateRealEstat(DpmsRealEstate dpmsRealEstate) {
 		// TODO Auto-generated method stub
-
+		Query q =this.getCurrentSession().createQuery("update DpmsRealEstate r set r.roomNo=?,r.floorNo=?,r.roomInNo=?,r.roomOnSaleNo=?,r.elevatorNo=?,r.unitNo=?,r.hasDoor=?,r.hasGas=?,r.hasBordhand=?,r.relatePerson=?,r.phone=? where r.estateNo=?");
+		q.setInteger(0, dpmsRealEstate.getRoomNo());
+		q.setInteger(1, dpmsRealEstate.getFloorNo());
+		q.setInteger(2, dpmsRealEstate.getRoomInNo());
+		q.setInteger(3, dpmsRealEstate.getRoomOnSaleNo());
+		q.setInteger(4, dpmsRealEstate.getElevatorNo());
+		q.setInteger(5, dpmsRealEstate.getUnitNo());
+		q.setString(6, dpmsRealEstate.getHasDoor());
+		q.setString(7, dpmsRealEstate.getHasGas());
+		q.setString(8, dpmsRealEstate.getHasBordhand());
+		q.setString(9, dpmsRealEstate.getRelatePerson());
+		q.setString(10, dpmsRealEstate.getPhone());
+		q.setInteger(11, dpmsRealEstate.getEstateNo());
+		q.executeUpdate();
 	}
 
 	@Override
 	public void addRealEstat(DpmsRealEstate dpmsRealEstate) {
 		// TODO Auto-generated method stub
+		this.getCurrentSession().save(dpmsRealEstate);
 
 	}
 

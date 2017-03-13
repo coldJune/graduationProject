@@ -1,6 +1,8 @@
 package com.jun.dpms.realEstate.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -26,6 +28,7 @@ public class DpmsRealEstateAction extends ActionSupport implements ModelDriven{
 	private Page page = new Page();
 	private List<DpmsRealEstate> dpmsRealEstates;
 	private int[] estateNos;
+	private Map<String, String> sessionMap;
 	/*
 	 * 查询所有数据
 	 */
@@ -61,9 +64,46 @@ public class DpmsRealEstateAction extends ActionSupport implements ModelDriven{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 通过楼栋编号查找
+	 * @return
+	 */
+	public String searchByEstateNo(){
+		dpmsRealEstates.clear();
+		dpmsRealEstates.add(dpmsRealEstateService.searchByEstateNo(((DpmsRealEstate)getModel()).getEstateNo()));
+		return SUCCESS;
+	}
+	/**
+	 * 检查楼栋是否存在
+	 * @return
+	 */
+	public String checkByEstateNo(){
+		DpmsRealEstate dpmsRealEstate = dpmsRealEstateService.searchByEstateNo(((DpmsRealEstate)getModel()).getEstateNo());
+		Map<String,String> map= new HashMap<String,String>();
+		if(dpmsRealEstate==null){
+			map.put("msg", "true");
+		}else{
+			map.put("msg", "false");
+		}
+		this.setSessionMap(map);
+		return SUCCESS;
+	}
+	/**
+	 * 添加楼盘信息
+	 * @return
+	 */
+	public String add(){
+		DpmsRealEstate dpmsRealEstate =(DpmsRealEstate)getModel();
+		int roomOnSaleNo = dpmsRealEstate.getRoomNo()-dpmsRealEstate.getRoomInNo();
+		dpmsRealEstate.setRoomOnSaleNo(roomOnSaleNo);
+		dpmsRealEstateService.addRealEstat(dpmsRealEstate);
+		return SUCCESS;
+	}
 	
-	
-	
+	public String update(){
+		dpmsRealEstateService.updateRealEstat(dpmsRealEstate);
+		return SUCCESS;
+	}
 	
 	
 	
@@ -110,6 +150,14 @@ public class DpmsRealEstateAction extends ActionSupport implements ModelDriven{
 
 	public void setEstateNos(int[] estateNos) {
 		this.estateNos = estateNos;
+	}
+
+	public Map<String, String> getSessionMap() {
+		return sessionMap;
+	}
+
+	public void setSessionMap(Map<String, String> sessionMap) {
+		this.sessionMap = sessionMap;
 	}
 
 	@Override

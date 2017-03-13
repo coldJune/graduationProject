@@ -104,7 +104,6 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	 */
 	public String add(){
 		DpmsSysUser dpmsSysUser = (DpmsSysUser)getModel();
-		System.out.println(dpmsSysUser.getGender()+"---------------------");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String createDate=df.format(new Date());
 		String passWord=SecurityCode.getSecurityCode();

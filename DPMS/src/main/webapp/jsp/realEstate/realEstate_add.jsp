@@ -16,23 +16,35 @@
     <link href="../css/table.css" rel="stylesheet">
     <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#roomInNo').blur(function(){
-				var roomNo=$('#roomNo').val();
-				var roomInNo=$(this).val();
-				if(roomInNo>roomNo){
-					alert("已售套数应小于总套数");
-					$(this).val('');
-				}else{
-					var roomOnSaleNo=roomNo-roomInNo;
-					$('#roomOnSaleNo').val(roomOnSaleNo);
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$('#estateNo').blur(function(){
+    		$.ajax({
+				url:'/DPMS/realEstate/checkByEstateNo',
+				type:'post',
+				data:{estateNo:$(this).val()},
+				dataType:'json',
+				success:function(data){
+					if(data.msg=='false'){
+						alert('楼栋已存在');
+						$('#estateNo').val('');
+						return false;
+					}
 				}
-				
-			});
-			
+    		});
+    	});
+    	$('#roomInNo').blur(function(){
+			var roomNo=$('#roomNo').val();
+			var roomInNo=$(this).val();
+			if(roomInNo>roomNo){
+				alert("已售套数应小于总套数");
+				$(this).val('');
+			}			
 		});
-	</script>
+    });
+    	
+    </script>
+
   </head>
   <body>
   	<div class="templatemo-flex-row">
@@ -53,9 +65,9 @@
             <% String sess=(String)session.getAttribute("USERNAME");
           	 if(sess=="root"){
           %>
-            <li><a href="../sysUser/findAllSysUser" ><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+            <li><a href="findAllSysUser" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
           <%} %>
-            <li><a href="findAllRealEstate" class="active"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
+            <li><a href="#"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
             <li><a href="#"><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
@@ -77,19 +89,19 @@
 	    	<div class="templatemo-content-container">
 	    		
 	          <div class="templatemo-content-widget white-bg">
-		          <h2 class="margin-bottom-10">楼盘信息</h2>
-            		<p>>>修改</p>
+		          <h2 class="margin-bottom-10">系统用户信息</h2>
+            		<p>>>添加</p>
 		          
-			           <form  action="updateRealEstate" class="templatemo-login-form" method="post" enctype="multipart/form-data">
-			              <div class="row form-group">
-				                <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="id">ID</label>
-				                    <input type="text" class="form-control" id="id" name="id"  value="${dpmsRealEstate.id}" readonly="readonly">                  
-				                </div>		               
+			            <form  action="addRealEstate" class="templatemo-login-form" method="post" enctype="multipart/form-data">
+			              <div class="row form-group">	               
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="estateNo">楼栋编号</label>
-				                    <input type="number" min="0" class="form-control" id="estateNo" name="estateNo" value="${dpmsRealEstate.estateNo}" readonly="readonly">                  
-				                </div> 
+				                    <input type="number" min="0" class="form-control" id="estateNo" name="estateNo" value="${dpmsRealEstate.estateNo}" required="required">                  
+				                </div>
+				                 <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="floorNo">层数</label>
+				                    <input type="number"  class="form-control" id="floorNo" name="floorNo" min="0"  value="${dpmsRealEstate.floorNo}" required="required">                  
+				                </div>   
  						  </div>
 			              <div class="row form-group">
 			               		<div class="col-lg-6 col-md-6 form-group">                  
@@ -97,21 +109,12 @@
 				                    <input type="number" min="0" class="form-control" id="roomNo" name="roomNo" value="${dpmsRealEstate.roomNo}" required="required">                  
 				                </div>
 				                <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="floorNo">层数</label>
-				                    <input type="number"  class="form-control" id="floorNo" name="floorNo" min="0"  value="${dpmsRealEstate.floorNo}" required="required">                  
-				                </div>  
-				               
-			               </div>
-			               <div class="row form-group">
-			               		 <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="roomInNo">已售套数</label>
 				                    <input type="number" min="0" class="form-control" id="roomInNo" name="roomInNo" value="${dpmsRealEstate.roomInNo}" required="required">                 
-				                </div> 
-				                <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="roomOnSaleNo">待售套数</label>
-				                    <input type="number" class="form-control" min="0" id="roomOnSaleNo" name="roomOnSaleNo" value="${dpmsRealEstate.roomOnSaleNo}" readonly="readonly">                  
-				                </div>      
+				                </div>
+				               
 			               </div>
+
 			               <div class="row form-group">
 			               		<div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="elevatorNo">电梯台数</label>
@@ -128,15 +131,15 @@
 				                <div class="col-lg-6 col-md-6 form-group">  
 				                     <label class="control-label templatemo-block">是否有门禁</label>                 
 					                 <select name="hasDoor" class="form-control">
-					                    <option value="是" <c:if test='${dpmsRealEstate.hasDoor=="是"}'>selected</c:if> >是</option>
-					                    <option value="否" <c:if test='${dpmsRealEstate.hasDoor=="否"}'>selected</c:if> >否</option>
+					                    <option value="是" selected>是</option>
+					                    <option value="否" >否</option>
 					                  </select>                  
 				                </div>
 				               <div class="col-lg-6 col-md-6 form-group">  
 				                     <label class="control-label templatemo-block">是否通燃气</label>                 
 					                 <select name="hasGas" class="form-control">
-					                    <option value="是" <c:if test='${dpmsRealEstate.hasGas=="是"}'>selected</c:if> >是</option>
-					                    <option value="否" <c:if test='${dpmsRealEstate.hasGas=="否"}'>selected</c:if> >否</option>
+					                    <option value="是" selected>是</option>
+					                    <option value="否" >否</option>
 					                  </select>                  
 				                </div>   
 			              </div>
@@ -144,8 +147,8 @@
 			                	<div class="col-lg-6 col-md-6 form-group">  
 				                     <label class="control-label templatemo-block">是否有宽带</label>                 
 					                 <select name="hasBordhand" class="form-control">
-					                    <option value="是" <c:if test='${dpmsRealEstate.hasBordhand=="是"}'>selected</c:if> >是</option>
-					                    <option value="否" <c:if test='${dpmsRealEstate.hasBordhand=="否"}'>selected</c:if> >否</option>
+					                    <option value="是" selected>是</option>
+					                    <option value="否" >否</option>
 					                  </select>                  
 				                </div> 
 				                
@@ -163,10 +166,10 @@
 			               </div>
 
 			              <div class="form-group text-right">
-			                <button type="submit" class="templatemo-blue-button">更改</button>
+			                <button type="submit" class="templatemo-blue-button">添加</button>
 			                <button type="reset" class="templatemo-white-button">重置</button>
 			              </div>                           
-		           	  </form>                        
+		           	  </form>                                 
 	          </div>  
 	      </div>
 	       
