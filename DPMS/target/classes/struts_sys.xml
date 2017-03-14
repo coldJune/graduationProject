@@ -61,6 +61,11 @@
     			<param name="actionName">findAllRealEstate</param>
     		</result>
     	</action>
+    	<action name="delRealEstate" class="dpmsRealEstateAction" method="del">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllRealEstate</param>
+    		</result>
+    	</action>
     	<action name="checkByEstateNo" class="dpmsRealEstateAction" method="checkByEstateNo">
     		<result type="json">
     			<param name="root">sessionMap</param>

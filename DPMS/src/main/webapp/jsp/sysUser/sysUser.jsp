@@ -28,11 +28,12 @@
     			}else{
         			$.ajax({
         				type:'post',
-        				url:'del',
+        				url:'delSysUser',
         				data:{'userNames':userNames},
         				traditional:true,
         				async: false,
         				success:function(){
+        					alert("删除成功");
         					window.location.reload();
         				},
         				failure:function(){

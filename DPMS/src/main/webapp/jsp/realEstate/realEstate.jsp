@@ -19,20 +19,21 @@
     <script type="text/javascript">
     	$(document).ready(function(){
     		$('#del').click(function(){
-    			var userNames=[];
+    			var estateNos=[];
     			$('input:checkbox[name=check]:checked').each(function(){
-    				userNames.push($(this).val());
+    				estateNos.push($(this).val());
     			});
-    			if(userNames==null){
+    			if(estateNos==null){
     				alert('请选择删除的内容');
     			}else{
         			$.ajax({
         				type:'post',
-        				url:'del',
-        				data:{'userNames':userNames},
+        				url:'delRealEstate',
+        				data:{'estateNos':estateNos},
         				traditional:true,
         				async: false,
         				success:function(){
+        					alert('删除成功');
         					window.location.reload();
         				},
         				failure:function(){
@@ -100,7 +101,7 @@
 			        	 </div>
 			        	<div class="form-group text-right" style="width: 40%;float: right;">
 				                <a href="addBRealEstate"><button type="button" class="templatemo-blue-button" >添加</button></a>
-				                <button id="delSysUser" type="button" class="templatemo-white-button">删除</button>
+				                <button id="del" type="button" class="templatemo-white-button">删除</button>
 				       	</div>
 	          		</div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">

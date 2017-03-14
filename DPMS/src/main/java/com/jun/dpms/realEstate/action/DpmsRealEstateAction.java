@@ -99,9 +99,17 @@ public class DpmsRealEstateAction extends ActionSupport implements ModelDriven{
 		dpmsRealEstateService.addRealEstat(dpmsRealEstate);
 		return SUCCESS;
 	}
-	
+	/**
+	 * 更新楼盘信息
+	 * @return
+	 */
 	public String update(){
 		dpmsRealEstateService.updateRealEstat(dpmsRealEstate);
+		return SUCCESS;
+	}
+	
+	public String del(){
+		dpmsRealEstateService.delRealEstate(estateNos);
 		return SUCCESS;
 	}
 	

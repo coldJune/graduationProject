@@ -84,7 +84,11 @@ public class DpmsRealEstateDaoImpl implements IDpmsRealEstateDao {
 	@Override
 	public void delRealEstate(int[] estateNos) {
 		// TODO Auto-generated method stub
-
+		Query q = this.getCurrentSession().createQuery("delete from DpmsRealEstate where estateNo=?");
+		for (int i : estateNos) {
+			q.setInteger(0, i);
+			q.executeUpdate();
+		}
 	}
 
 }
