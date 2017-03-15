@@ -24,4 +24,15 @@
 	<bean id="dpmsRealEstateAction" class="com.jun.dpms.realEstate.action.DpmsRealEstateAction">
 		<property name="dpmsRealEstateService" ref="dpmsRealEstateService"></property>
 	</bean>
+	
+	<!-- 住户信息管理 -->
+	<bean id="dpmsHouseholdDao" class="com.jun.dpms.household.dao.impl.DpmsHouseholdDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dpmsHouseholdService" class="com.jun.dpms.household.service.impl.DpmsHouseholdServiceImpl">
+		<property name="dpmsHouseholdDao" ref="dpmsHouseholdDao"></property>
+	</bean>
+	<bean id="dpmsHouseholdAction" class="com.jun.dpms.household.action.DpmsHouseholdAction">
+		<property name="dpmsHouseholdService" ref="dpmsHouseholdService"></property>
+	</bean>
 </beans>

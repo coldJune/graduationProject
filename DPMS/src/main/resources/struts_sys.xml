@@ -71,5 +71,13 @@
     			<param name="root">sessionMap</param>
     		</result>
     	</action>
+    	
+    	
+    </package>
+    <package name="household" namespace="/household" extends="struts-default">
+    	<!-- 住户信息管理 -->
+    	<action name="findAllHousehold" class="dpmsHouseholdAction" method="findAll">
+    		<result>/jsp/household/household.jsp</result>
+    	</action>
     </package>
 </struts>
