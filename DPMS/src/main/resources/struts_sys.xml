@@ -12,7 +12,7 @@
     		<result>/jsp/sysUser/sysUser.jsp</result>
     	</action>
     	<action name="searchSysUser" class="dpmsSysUserAction" method="searchByUserName">
-    		<result>/jsp/sysUser/sysUser.jsp</result>
+    		<result>/jsp/sysUser/sysUser_search.jsp</result>
     	</action>
     	<action name="showDetailSysUser" class="dpmsSysUserAction" method="showDetail">
     		<result>/jsp/sysUser/sysUser_modify.jsp</result>
@@ -46,7 +46,7 @@
     		<result>/jsp/realEstate/realEstate_modify.jsp</result>
     	</action>
     	<action name="searchRealEstate" class="dpmsRealEstateAction" method="searchByEstateNo">
-    		<result>/jsp/realEstate/realEstate.jsp</result>
+    		<result>/jsp/realEstate/realEstate_search.jsp</result>
     	</action>
     	<action name="addBRealEstate" class="dpmsRealEstateAction" method="addB">
     		<result>/jsp/realEstate/realEstate_add.jsp</result>
@@ -78,6 +78,22 @@
     	<!-- 住户信息管理 -->
     	<action name="findAllHousehold" class="dpmsHouseholdAction" method="findAll">
     		<result>/jsp/household/household.jsp</result>
+    	</action>
+    	<action name="showDetailHousehold" class="dpmsHouseholdAction" method="showDetail">
+    		<result>/jsp/household/household_modify.jsp</result>
+    	</action>
+    	<action name="updateHousehold" class="dpmsHouseholdAction" method="update">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllHousehold</param>
+    		</result>
+    	</action>
+    	<action name="delHousehold" class="dpmsHouseholdAction" method="del">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllHousehold</param>
+    		</result>
+    	</action>
+    	<action name="searchHousehold" class="dpmsHouseholdAction" method="searchByHoldName">
+    		<result>/jsp/household/household_search.jsp</result>
     	</action>
     </package>
 </struts>

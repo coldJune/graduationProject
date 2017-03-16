@@ -13,37 +13,38 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/templatemo-style.css" rel="stylesheet">
+    <link href="../css/templatemo-style-show.css" rel="stylesheet">
     <link href="../css/table.css" rel="stylesheet">
     <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
     <script type="text/javascript">
-    	$(document).ready(function(){
-    		$('#del').click(function(){
-    			var ids=[];
-    			$('input:checkbox[name=check]:checked').each(function(){
-    				ids.push($(this).val());
-    			});
-    			if(ids==null){
-    				alert('请选择删除的内容');
-    			}else{
-        			$.ajax({
-        				type:'post',
-        				url:'delHousehold',
-        				data:{'ids':ids},
-        				traditional:true,
-        				async: false,
-        				success:function(){
-        					alert('删除成功');
-        					window.location.reload();
-        				},
-        				failure:function(){
-        					alert('删除失败');
-        				}
-        			});
-    			}
-
-    		});
-    	});
+	    $(document).ready(function(){
+			$('#del').click(function(){
+				var ids=[];
+				$('input:checkbox[name=check]:checked').each(function(){
+					ids.push($(this).val());
+				});
+				if(ids==null){
+					alert('请选择删除的内容');
+				}else{
+	    			$.ajax({
+	    				type:'post',
+	    				url:'delHousehold',
+	    				data:{'ids':ids},
+	    				traditional:true,
+	    				async: false,
+	    				success:function(){
+	    					alert('删除成功');
+	    					window.location.href='findAllHousehold';
+	    				},
+	    				failure:function(){
+	    					alert('删除失败');
+	    				}
+	    			});
+				}
+	
+			});
+		});
     </script>
   </head>
   <body>
@@ -67,7 +68,7 @@
           %>
             <li><a href="../sysUser/findAllSysUser" ><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
           <%} %>
-            <li><a href="../realEstate/findAllRealEstate" ><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
+            <li><a href="../realEstate/findAllRealEstate"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
             <li><a href="findAllHousehold" class="active"><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
@@ -89,7 +90,8 @@
 	    	<div class="templatemo-content-container">
 	    		
 	          <div class="templatemo-content-widget white-bg">
-	           		<div style="width: 150px;margin: 0 auto;font-size: 18px;"><p><strong>住户信息</strong></p></div>
+	           		<h2 class="margin-bottom-10"><strong>住户信息</strong></h2>
+            			<p><i>>>查询结果</i></p>
 	          		<div style="margin: 0 auto;">
 			             <div class="form-group text-left" style="width:60%;float: left;height:40px">
 					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="searchHousehold">
@@ -100,8 +102,7 @@
 				        	  </form>
 			        	 </div>
 			        	<div class="form-group text-right" style="width: 40%;float: right;">
-				                <a href="addBHousehold"><button type="button" class="templatemo-blue-button" >添加</button></a>
-				                <button id="del" type="button" class="templatemo-white-button">删除</button>
+				                <button id="del" type="button" class="templatemo-blue-button">删除</button>
 				       	</div>
 	          		</div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">
@@ -152,7 +153,6 @@
 	              </table>    
 	            </div>                          
 	          </div>  
-	          <jsp:include page="household_footer.jsp"></jsp:include>
 	      </div>
 	       
 	    </div >  

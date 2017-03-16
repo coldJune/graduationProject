@@ -32,15 +32,15 @@ public class DpmsHouseholdServiceImpl implements IDpmsHouseholdService {
 	}
 
 	@Override
-	public DpmsHousehold searchByHoldName(String holdName) {
+	public List<DpmsHousehold> searchByHoldName(String holdName) {
 		// TODO Auto-generated method stub
-		return null;
+		return dpmsHouseholdDao.searchByHoldName(holdName);
 	}
 
 	@Override
 	public void updateRealEstat(DpmsHousehold dpmsHousehold) {
 		// TODO Auto-generated method stub
-		
+		dpmsHouseholdDao.updateRealEstat(dpmsHousehold);
 	}
 
 	@Override
@@ -52,7 +52,13 @@ public class DpmsHouseholdServiceImpl implements IDpmsHouseholdService {
 	@Override
 	public void delHousehold(int[] ids) {
 		// TODO Auto-generated method stub
-		
+		dpmsHouseholdDao.delHousehold(ids);
+	}
+
+	@Override
+	public DpmsHousehold searchById(int id) {
+		// TODO Auto-generated method stub
+		return dpmsHouseholdDao.searchById(id);
 	}
 
 }

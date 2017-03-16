@@ -35,10 +35,10 @@
 			<c:forEach var="x" begin="1" end="${page.totalPage }">
 				<c:choose>
 					<c:when test="${x==page.currentPage}">
-						<li><a href="findAllHousehold?currentPage=${x}" class="c1" >${x}</a></li>
+						<li class="active"><a href="findAllHousehold?currentPage=${x}" >${x}</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="findAllHousehold?currentPage=${x}"  class="c1">${x}</a></li>
+						<li ><a href="findAllHousehold?currentPage=${x}">${x}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -47,10 +47,10 @@
 			<c:forEach var="x" begin="1" end="${page.totalPage }">
 				<c:choose>
 					<c:when test="${x==page.currentPage}">
-						<li><a href="findAllHousehold?currentPage=${x}"  class="c1">${x}</a></li>
+						<li class="active"><a href="findAllHousehold?currentPage=${x}">${x}</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="findAllHousehold?currentPage=${x}"  class="c1">${x}</a></li>
+						<li ><a href="findAllHousehold?currentPage=${x}">${x}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -59,10 +59,10 @@
 			<c:forEach var="x" begin="${page.totalPage-4}" end="${page.totalPage}">
 				<c:choose>
 					<c:when test="${x==page.currentPage}">
-						<li><a href="findAllHousehold?currentPage=${x}" class="c1">${x}</a></li>
+						<li class="active"><a href="findAllHousehold?currentPage=${x}">${x}</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="findAllHousehold?currentPage=${x}"  class="c1">${x}</a></li>
+						<li ><a href="findAllHousehold?currentPage=${x}">${x}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -71,10 +71,10 @@
 			<c:forEach var="x" begin="${page.currentPage-2}" end="${page.currentPage+2}">
 				<c:choose>
 					<c:when test="${x==page.currentPage}">
-						<li><a href="findAllHousehold?currentPage=${x}" class="c1">${x}</a></li>
+						<li class="active"><a href="findAllHousehold?currentPage=${x}">${x}</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="findAllHousehold?currentPage=${x}"  class="c1">${x}</a></li>
+						<li ><a href="findAllHousehold?currentPage=${x}">${x}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>

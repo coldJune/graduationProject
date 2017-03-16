@@ -22,7 +22,7 @@ public interface IDpmsHouseholdService {
 	 * @param userName
 	 * @return
 	 */
-	public DpmsHousehold searchByHoldName(String holdName);
+	public List<DpmsHousehold> searchByHoldName(String holdName);
 	
 	/**
 	 * 更新住户信息
@@ -40,5 +40,11 @@ public interface IDpmsHouseholdService {
 	 * @param userName
 	 */
 	public void delHousehold(int[] ids);
+	/**
+	 * 通过id查找住户
+	 * @param id
+	 * @return
+	 */
+	public DpmsHousehold searchById(int id);
 
 }
