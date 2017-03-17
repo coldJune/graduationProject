@@ -46,5 +46,23 @@ public interface IDpmsHouseholdService {
 	 * @return
 	 */
 	public DpmsHousehold searchById(int id);
+	
+	/**
+	 * 查找所有的楼栋
+	 * @return
+	 */
+	public List searchRealEstate();
+	/**
+	 * 通过楼栋号查询对应的层数和单元数
+	 * @param relateRealEstate
+	 * @return
+	 */
+	public List searchUnitAndFloor(int relateRealEstate);
 
+	/**
+	 * 检查住户合法性
+	 * @param dpmsHousehold
+	 * @return
+	 */
+	public boolean checkRelate(DpmsHousehold dpmsHousehold);
 }

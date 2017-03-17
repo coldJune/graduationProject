@@ -65,12 +65,12 @@
             <% String sess=(String)session.getAttribute("USERNAME");
           	 if(sess=="root"){
           %>
-            <li><a href="findAllSysUser" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+            <li><a href="。。/sysUser/findAllSysUser"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
           <%} %>
-            <li><a href="#"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
+            <li><a href="findAllRealEstate" class="active"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
-            <li><a href="#"><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
+            <li><a href="../household/findAllHousehold"><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
             <li><a href="#"><i class="fa fa-sliders fa-fw"></i>住户保修管理</a></li>
             <li><a href="#"><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
             <li><a href="#"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
@@ -89,7 +89,7 @@
 	    	<div class="templatemo-content-container">
 	    		
 	          <div class="templatemo-content-widget white-bg">
-		          <h2 class="margin-bottom-10">系统用户信息</h2>
+		          <h2 class="margin-bottom-10">楼盘信息</h2>
             		<p>>>添加</p>
 		          
 			            <form  action="addRealEstate" class="templatemo-login-form" method="post" enctype="multipart/form-data">

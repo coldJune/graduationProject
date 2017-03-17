@@ -74,7 +74,7 @@
     	
     	
     </package>
-    <package name="household" namespace="/household" extends="struts-default">
+    <package name="household" namespace="/household" extends="struts-default,json-default">
     	<!-- 住户信息管理 -->
     	<action name="findAllHousehold" class="dpmsHouseholdAction" method="findAll">
     		<result>/jsp/household/household.jsp</result>
@@ -94,6 +94,24 @@
     	</action>
     	<action name="searchHousehold" class="dpmsHouseholdAction" method="searchByHoldName">
     		<result>/jsp/household/household_search.jsp</result>
+    	</action>
+    	<action name="searchRelate" class="dpmsHouseholdAction" method="searchRelate">
+    		<result type="json">
+    			<param name="root">sessionMap</param>
+    		</result>
+    	</action>
+    	<action name="addBHousehold" class="dpmsHouseholdAction" method="addB">
+    		<result>/jsp/household/household_add.jsp</result>
+    	</action>
+    	<action name="checkRelate" class="dpmsHouseholdAction" method="checkRelate">
+    		<result type="json">
+    			<param name="root">sessionMap</param>
+    		</result>
+    	</action>
+    	<action name="addHousehold" class="dpmsHouseholdAction" method="add">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllHousehold</param>
+    		</result>
     	</action>
     </package>
 </struts>

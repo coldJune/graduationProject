@@ -38,7 +38,7 @@
         <property name="holdPhone" type="java.lang.String">
             <column name="HOLD_PHONE" />
         </property>
-        <property name="checkInDate" type="java.util.Date">
+        <property name="checkInDate" type="java.lang.String">
             <column name="CHECKIN_DATE" />
         </property>
     </class>

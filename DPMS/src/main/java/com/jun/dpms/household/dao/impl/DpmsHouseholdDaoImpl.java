@@ -61,7 +61,7 @@ public class DpmsHouseholdDaoImpl implements IDpmsHouseholdDao {
 	@Override
 	public void addRealEstat(DpmsHousehold dpmsHousehold) {
 		// TODO Auto-generated method stub
-		
+		this.getCurrentSession().save(dpmsHousehold);
 	}
 
 	@Override
@@ -88,6 +88,37 @@ public class DpmsHouseholdDaoImpl implements IDpmsHouseholdDao {
 			return null;
 		}
 		return null;
+	}
+
+	@Override
+	public List searchRealEstate() {
+		// TODO Auto-generated method stub
+		Query q=this.getCurrentSession().createQuery("select r.estateNo from DpmsRealEstate r ");
+		return q.list();
+	}
+
+	@Override
+	public List searchUnitAndFloor(int relateRealEstate) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("select r.unitNo,r.floorNo from DpmsRealEstate r where r.estateNo=?");
+		q.setInteger(0, relateRealEstate);
+		return q.list();
+	}
+
+	@Override
+	public boolean checkRelate(DpmsHousehold dpmsHousehold) {
+		// TODO Auto-generated method stub
+		Query q =this.getCurrentSession().createQuery("from DpmsHousehold h where h.relateRealEstate=? and h.relateFloor=? and h.relateUnit=? and h.relateNo=?");
+		q.setInteger(0, dpmsHousehold.getRelateRealEstate());
+		q.setInteger(1, dpmsHousehold.getRelateFloor());
+		q.setInteger(2, dpmsHousehold.getRelateUnit());
+		q.setInteger(3, dpmsHousehold.getRelateNo());
+		
+		if(q.list()==null||q.list().isEmpty()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }

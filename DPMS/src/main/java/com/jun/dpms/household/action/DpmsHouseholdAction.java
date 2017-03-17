@@ -1,6 +1,11 @@
 package com.jun.dpms.household.action;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -22,7 +27,9 @@ public class DpmsHouseholdAction extends ActionSupport {
 	private Page page = new Page();
 	private List<DpmsHousehold> dpmsHouseholds;
 	private int[] ids;
-	
+	private String searchOperate;
+	private Map sessionMap;
+	private int relateRealEstate;
 	
 	/**
 	 * 查找所有用户
@@ -68,11 +75,75 @@ public class DpmsHouseholdAction extends ActionSupport {
 		dpmsHouseholds=dpmsHouseholdService.searchByHoldName(dpmsHousehold.getHoldName());
 		return SUCCESS;
 	}
-	
+	/**
+	 * 查找所属楼栋信息
+	 * @return
+	 */
+	public String searchRelate(){
+		if(searchOperate=="searRealEstate"||searchOperate.equalsIgnoreCase("searRealEstate")){
+			Map<String, List> map= new HashMap<>();
+			map.put("estateNos", dpmsHouseholdService.searchRealEstate());
+			this.setSessionMap(map);
+			return SUCCESS;
+		}
+		if(searchOperate=="searchUnitAndFloor"||searchOperate.equalsIgnoreCase("searchUnitAndFloor")){
+			Map<String, List> map= new HashMap<>();
+			map.put("unitAndfloor", dpmsHouseholdService.searchUnitAndFloor(relateRealEstate));
+			this.setSessionMap(map);
+			return SUCCESS;
+		}
+		return SUCCESS;
+	}
+	/**
+	 * 删除住户信息
+	 * @return
+	 */
 	public String del(){
 		dpmsHouseholdService.delHousehold(ids);
 		return SUCCESS;
 	}
+	/**
+	 * 添加页面
+	 * @return
+	 */
+	public String addB(){
+		return SUCCESS;
+	}
+	
+	/**
+	 * 检查房间号合法性
+	 * @return
+	 */
+	public String checkRelate(){
+		boolean b=dpmsHouseholdService.checkRelate(dpmsHousehold);
+		Map<String, String> map=null;
+		if(!b){
+			map=new HashMap<>();
+			map.put("msg", "false");
+		}else{
+			map=new HashMap<>();
+			map.put("msg", "true");
+		}
+		setSessionMap(map);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 添加住户信息
+	 * @return
+	 */
+	public String add(){
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String checkIndate=df.format(new Date());
+		dpmsHousehold.setCheckInDate(checkIndate);
+		dpmsHouseholdService.addRealEstat(dpmsHousehold);
+		return SUCCESS;
+	}
+	
+	
+	
+	
+	
 	public IDpmsHouseholdService getDpmsHouseholdService() {
 		return dpmsHouseholdService;
 	}
@@ -102,6 +173,30 @@ public class DpmsHouseholdAction extends ActionSupport {
 	}
 	public void setPage(Page page) {
 		this.page = page;
+	}
+
+	public String getSearchOperate() {
+		return searchOperate;
+	}
+
+	public void setSearchOperate(String searchOperate) {
+		this.searchOperate = searchOperate;
+	}
+
+	public Map getSessionMap() {
+		return sessionMap;
+	}
+
+	public void setSessionMap(Map sessionMap) {
+		this.sessionMap = sessionMap;
+	}
+
+	public int getRelateRealEstate() {
+		return relateRealEstate;
+	}
+
+	public void setRelateRealEstate(int relateRealEstate) {
+		this.relateRealEstate = relateRealEstate;
 	}
 	
 

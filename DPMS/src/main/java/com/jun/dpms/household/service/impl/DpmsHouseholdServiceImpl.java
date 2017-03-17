@@ -46,7 +46,7 @@ public class DpmsHouseholdServiceImpl implements IDpmsHouseholdService {
 	@Override
 	public void addRealEstat(DpmsHousehold dpmsHousehold) {
 		// TODO Auto-generated method stub
-		
+		dpmsHouseholdDao.addRealEstat(dpmsHousehold);
 	}
 
 	@Override
@@ -59,6 +59,24 @@ public class DpmsHouseholdServiceImpl implements IDpmsHouseholdService {
 	public DpmsHousehold searchById(int id) {
 		// TODO Auto-generated method stub
 		return dpmsHouseholdDao.searchById(id);
+	}
+
+	@Override
+	public List searchRealEstate() {
+		// TODO Auto-generated method stub
+		return dpmsHouseholdDao.searchRealEstate();
+	}
+
+	@Override
+	public List searchUnitAndFloor(int relateRealEstate) {
+		// TODO Auto-generated method stub
+		return dpmsHouseholdDao.searchUnitAndFloor(relateRealEstate);
+	}
+
+	@Override
+	public boolean checkRelate(DpmsHousehold dpmsHousehold) {
+		// TODO Auto-generated method stub
+		return dpmsHouseholdDao.checkRelate(dpmsHousehold);
 	}
 
 }

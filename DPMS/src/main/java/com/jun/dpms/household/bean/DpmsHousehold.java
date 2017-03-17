@@ -14,7 +14,7 @@ public class DpmsHousehold {
 	private Integer relateFloor;//所属层数
 	private Integer relateNo;//所属门牌号
 	private String holdPhone;//户主电话
-	private Date checkInDate;//入住时间
+	private String checkInDate;//入住时间
 	public Integer getId() {
 		return id;
 	}
@@ -81,10 +81,10 @@ public class DpmsHousehold {
 	public void setHoldPhone(String holdPhone) {
 		this.holdPhone = holdPhone;
 	}
-	public Date getCheckInDate() {
+	public String getCheckInDate() {
 		return checkInDate;
 	}
-	public void setCheckInDate(Date checkInDate) {
+	public void setCheckInDate(String checkInDate) {
 		this.checkInDate = checkInDate;
 	}
 	
