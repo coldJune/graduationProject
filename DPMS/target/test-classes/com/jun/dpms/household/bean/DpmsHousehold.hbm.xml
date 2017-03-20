@@ -38,8 +38,12 @@
         <property name="holdPhone" type="java.lang.String">
             <column name="HOLD_PHONE" />
         </property>
-        <property name="checkInDate" type="java.util.Date">
+        <property name="checkInDate" type="java.lang.String">
             <column name="CHECKIN_DATE" />
         </property>
+        <set name="dpmsComplains"  cascade="all">
+        	<key column="HOUSEHOLD_ID"></key>
+        	<one-to-many class="com.jun.dpms.complain.bean.DpmsComplain"/>
+        </set>
     </class>
 </hibernate-mapping>

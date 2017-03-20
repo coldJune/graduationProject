@@ -1,5 +1,0 @@
-com\jun\dpms\sys\bean\DpmsSysUser.class
-com\jun\dpms\sys\dao\impl\DpmsSysUserImpl.class
-com\jun\dpms\sys\service\impl\DpmsSysUserImpl.class
-com\jun\dpms\sys\dao\IDpmsSysUserDao.class
-com\jun\dpms\sys\service\IDpmsSysUserService.class

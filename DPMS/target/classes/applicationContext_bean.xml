@@ -35,4 +35,15 @@
 	<bean id="dpmsHouseholdAction" class="com.jun.dpms.household.action.DpmsHouseholdAction">
 		<property name="dpmsHouseholdService" ref="dpmsHouseholdService"></property>
 	</bean>
+	
+	<!-- 投诉信 息管理-->
+	<bean id="dpmsComplainDao" class="com.jun.dpms.complain.dao.impl.DpmsComplainDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dpmsComplainService" class="com.jun.dpms.complain.service.impl.DpmsComplainServiceImpl">
+		<property name="dpmsComplainDao" ref="dpmsComplainDao"></property>
+	</bean>
+	<bean id="dpmsComplainAction" class="com.jun.dpms.complain.action.DpmsComplainAction">
+		<property name="dpmsComplainService" ref="dpmsComplainService"></property>
+	</bean>
 </beans>
