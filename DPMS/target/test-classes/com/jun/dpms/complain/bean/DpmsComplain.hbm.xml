@@ -14,5 +14,11 @@
         <property name="details" type="java.lang.String">
             <column name="DETAILS" />
         </property>
+        <property name="complainDate" type="java.lang.String">
+        	<column name="COMPLAIN_DATE"></column>
+        </property>
+        <property name="isDeal" type="java.lang.String">
+        	<column name="IS_DEAL"></column>
+        </property>
     </class>
 </hibernate-mapping>

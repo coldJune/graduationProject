@@ -54,4 +54,10 @@ public class DpmsComplainServiceImpl implements IDpmsComplainService {
 		this.dpmsComplainDao = dpmsComplainDao;
 	}
 
+	@Override
+	public DpmsComplain searchById(int id) {
+		// TODO Auto-generated method stub
+		return dpmsComplainDao.searchById(id);
+	}
+
 }

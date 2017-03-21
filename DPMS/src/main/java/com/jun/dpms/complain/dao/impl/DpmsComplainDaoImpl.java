@@ -25,7 +25,7 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 	@Override
 	public List<DpmsComplain> findAll(int eachPage, int currentPage) {
 		// TODO Auto-generated method stub
-		Query q = this.getCurrentSession().createQuery("select c.dpmsHousehold,c.id,c.details from DpmsComplain c");
+		Query q = this.getCurrentSession().createQuery("select c.dpmsHousehold,c.id,c.details,c.complainDate,c.isDeal from DpmsComplain c");
 		q.setMaxResults(eachPage);
 		q.setFirstResult((currentPage-1)*eachPage);
 		List<Object> objs=q.list();
@@ -35,10 +35,14 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 			DpmsHousehold dpmsHousehold=(DpmsHousehold)objects[0];
 			int id = (int) objects[1];
 			String details=(String)objects[2];
+			String complainDate=(String)objects[3];
+			String isDeal=(String)objects[4];
 			DpmsComplain dpmsComplain = new DpmsComplain();
 			dpmsComplain.setDpmsHousehold(dpmsHousehold);
 			dpmsComplain.setId(id);
 			dpmsComplain.setDetails(details);
+			dpmsComplain.setComplainDate(complainDate);
+			dpmsComplain.setIsDeal(isDeal);
 			dpmsComplains.add(dpmsComplain);
 		}
 		return dpmsComplains;
@@ -47,7 +51,7 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 	@Override
 	public int getTotalItem() {
 		// TODO Auto-generated method stub
-		return 0;
+		return ((Number)(this.getCurrentSession().createQuery("select  count(*) from DpmsComplain")).uniqueResult()).intValue();
 	}
 
 	@Override
@@ -59,7 +63,11 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 	@Override
 	public void updateComplain(DpmsComplain dpmsComplain) {
 		// TODO Auto-generated method stub
-
+		Query q = this.getCurrentSession().createQuery("update DpmsComplain c set c.details=?,c.isDeal=? where c.id=?");
+		q.setString(0, dpmsComplain.getDetails());
+		q.setString(1, dpmsComplain.getIsDeal());
+		q.setInteger(2, dpmsComplain.getId());
+		q.executeUpdate();
 	}
 
 	@Override
@@ -71,6 +79,34 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 	@Override
 	public void delComplaine(int[] ids) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public DpmsComplain searchById(int id) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("select c.dpmsHousehold,c.id,c.details,c.complainDate,c.isDeal from DpmsComplain c where c.id=?");
+		q.setInteger(0, id);
+		List<Object> objs=q.list();
+		if(objs!=null&&!objs.isEmpty()){
+			for (Object object : objs) {
+				Object[] objects=(Object[]) object;
+				DpmsHousehold dpmsHousehold=(DpmsHousehold)objects[0];
+				String details=(String)objects[2];
+				String complainDate=(String)objects[3];
+				String isDeal=(String)objects[4];
+				DpmsComplain dpmsComplain = new DpmsComplain();
+				dpmsComplain.setDpmsHousehold(dpmsHousehold);
+				dpmsComplain.setId(id);
+				dpmsComplain.setDetails(details);
+				dpmsComplain.setComplainDate(complainDate);
+				dpmsComplain.setIsDeal(isDeal);
+				return dpmsComplain;
+			}
+		}else{
+			return null;
+		}
+		return null;
 		
 	}
 

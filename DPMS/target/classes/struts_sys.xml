@@ -114,4 +114,19 @@
     		</result>
     	</action>
     </package>
+    
+    <!-- 投诉信息管理 -->
+    <package name="complain" namespace="/complain" extends="struts-default">
+    	<action name="findAllComplain" class="dpmsComplainAction" method="findAll">
+    		<result>/jsp/complain/complain.jsp</result>
+    	</action>
+    	<action name="showDetailComplain" class="dpmsComplainAction" method="showDetail">
+    		<result>/jsp/complain/complain_modify.jsp</result>
+    	</action>
+    	<action name="updateComplain" class="dpmsComplainAction" method="update">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllComplain</param>
+    		</result>
+    	</action>
+    </package>
 </struts>

@@ -18,26 +18,33 @@ public interface IDpmsComplainService {
 	 */
 	public int getTotalItem();
 	/**
-	 * 通过楼栋号查询
+	 * 通过住户名查询
 	 * @param userName
 	 * @return
 	 */
 	public DpmsComplain searchByHoldName(String holdName);
 	
 	/**
-	 * 更新楼盘信息
+	 * 更新投诉信息
 	 * @param DpmsComplain
 	 */
 	public void updateComplain(DpmsComplain dpmsComplain);
 	
 	/**
-	 * 添加楼盘信息
+	 * 添加投诉信息
 	 * @param DpmsComplain
 	 */
 	public void addComplain(DpmsComplain dpmsComplain);
 	/**
-	 * 通过楼栋号逻辑删除楼
+	 * 通过id删除投诉信息
 	 * @param userName
 	 */
 	public void delComplaine(int[] ids);
+	
+	/**
+	 * 通过id查找
+	 * @param id
+	 * @return
+	 */
+	public DpmsComplain searchById(int id);
 }
