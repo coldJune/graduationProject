@@ -128,5 +128,13 @@
     			<param name="actionName">findAllComplain</param>
     		</result>
     	</action>
+    	<action name="searchComplain" class="dpmsComplainAction" method="searchByHoldName">
+    		<result>/jsp/complain/complain_search.jsp</result>
+    	</action>
+    	<action name="delComplain" class="dpmsComplainAction" method="del">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllComplain</param>
+    		</result>
+    	</action>
     </package>
 </struts>

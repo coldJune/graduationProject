@@ -55,9 +55,28 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 	}
 
 	@Override
-	public DpmsComplain searchByHoldName(String	holdName) {
+	public List<DpmsComplain> searchByHoldName(String	holdName) {
 		// TODO Auto-generated method stub
-		return null;
+		Query q = this.getCurrentSession().createQuery("select c.dpmsHousehold,c.id,c.details,c.complainDate,c.isDeal from DpmsComplain c where c.dpmsHousehold.holdName=?");
+		q.setString(0, holdName);
+		List<Object> objs=q.list();
+		List<DpmsComplain> dpmsComplains = new ArrayList<>();
+		for (Object object : objs) {
+			Object[] objects=(Object[]) object;
+			DpmsHousehold dpmsHousehold=(DpmsHousehold)objects[0];
+			int id = (int) objects[1];
+			String details=(String)objects[2];
+			String complainDate=(String)objects[3];
+			String isDeal=(String)objects[4];
+			DpmsComplain dpmsComplain = new DpmsComplain();
+			dpmsComplain.setDpmsHousehold(dpmsHousehold);
+			dpmsComplain.setId(id);
+			dpmsComplain.setDetails(details);
+			dpmsComplain.setComplainDate(complainDate);
+			dpmsComplain.setIsDeal(isDeal);
+			dpmsComplains.add(dpmsComplain);
+		}
+		return dpmsComplains;
 	}
 
 	@Override
@@ -79,7 +98,11 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 	@Override
 	public void delComplaine(int[] ids) {
 		// TODO Auto-generated method stub
-		
+		Query q =this.getCurrentSession().createQuery("delete from DpmsComplain c where c.id=?");
+		for (int i : ids) {
+			q.setInteger(0, i);
+			q.executeUpdate();
+		}
 	}
 
 	@Override

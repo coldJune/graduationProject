@@ -23,7 +23,7 @@ public class DpmsComplainServiceImpl implements IDpmsComplainService {
 	}
 
 	@Override
-	public DpmsComplain searchByHoldName(String HoldName) {
+	public List<DpmsComplain> searchByHoldName(String HoldName) {
 		// TODO Auto-generated method stub
 		return dpmsComplainDao.searchByHoldName(HoldName);
 	}

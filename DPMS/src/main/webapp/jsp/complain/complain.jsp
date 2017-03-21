@@ -28,7 +28,7 @@
     			}else{
         			$.ajax({
         				type:'post',
-        				url:'delHousehold',
+        				url:'delComplain',
         				data:{'ids':ids},
         				traditional:true,
         				async: false,
@@ -92,10 +92,10 @@
 	           		<div style="width: 150px;margin: 0 auto;font-size: 18px;"><p><strong>住户投诉信息</strong></p></div>
 	          		<div style="margin: 0 auto;">
 			             <div class="form-group text-left" style="width:60%;float: left;height:40px">
-					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="searchHousehold">
+					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="searchComplain">
 				          		<div class="input-group" >
 				              		<button type="submit" class="fa fa-search"></button>
-				              		<input type="text" class="form-control" placeholder="请输入户主名" name="dpmsComplain.holdName" id="srch-term">
+				              		<input type="text" class="form-control" placeholder="请输入户主名" name="dpmsComplain.dpmsHousehold.holdName" id="srch-term">
 				         		 </div>
 				        	  </form>
 			        	 </div>

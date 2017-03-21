@@ -20,7 +20,7 @@ public class DpmsComplainAction extends ActionSupport {
 	private List<DpmsComplain> dpmsComplains;
 	private Page page=new Page();
 	private DpmsComplain dpmsComplain;	
-	
+	private int[] ids;
 	/**
 	 * 投诉信息分页查询
 	 * @return
@@ -54,7 +54,19 @@ public class DpmsComplainAction extends ActionSupport {
 		dpmsComplainService.updateComplain(dpmsComplain);
 		return SUCCESS;
 	}
+	/**
+	 * 查找住户的投诉信息
+	 * @return
+	 */
+	public String searchByHoldName(){
+		dpmsComplains=dpmsComplainService.searchByHoldName(dpmsComplain.getDpmsHousehold().getHoldName());
+		return SUCCESS;
+	}
 	
+	public String del(){
+		dpmsComplainService.delComplaine(ids);
+		return SUCCESS;
+	}
 	public IDpmsComplainService getDpmsComplainService() {
 		return dpmsComplainService;
 	}
@@ -82,5 +94,11 @@ public class DpmsComplainAction extends ActionSupport {
 	}
 	public void setDpmsComplain(DpmsComplain dpmsComplain) {
 		this.dpmsComplain = dpmsComplain;
+	}
+	public int[] getIds() {
+		return ids;
+	}
+	public void setIds(int[] ids) {
+		this.ids = ids;
 	}
 }

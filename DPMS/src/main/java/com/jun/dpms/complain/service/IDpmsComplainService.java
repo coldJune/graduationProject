@@ -22,7 +22,7 @@ public interface IDpmsComplainService {
 	 * @param userName
 	 * @return
 	 */
-	public DpmsComplain searchByHoldName(String holdName);
+	public List<DpmsComplain> searchByHoldName(String holdName);
 	
 	/**
 	 * 更新投诉信息
