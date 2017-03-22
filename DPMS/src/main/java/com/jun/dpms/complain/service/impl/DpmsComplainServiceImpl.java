@@ -6,6 +6,7 @@ import com.jun.dpms.complain.bean.DpmsComplain;
 import com.jun.dpms.complain.dao.IDpmsComplainDao;
 import com.jun.dpms.complain.dao.impl.DpmsComplainDaoImpl;
 import com.jun.dpms.complain.service.IDpmsComplainService;
+import com.jun.dpms.household.bean.DpmsHousehold;
 
 public class DpmsComplainServiceImpl implements IDpmsComplainService {
 	private IDpmsComplainDao dpmsComplainDao;
@@ -58,6 +59,12 @@ public class DpmsComplainServiceImpl implements IDpmsComplainService {
 	public DpmsComplain searchById(int id) {
 		// TODO Auto-generated method stub
 		return dpmsComplainDao.searchById(id);
+	}
+
+	@Override
+	public String checkHousehold(DpmsHousehold dpmsHousehold) {
+		// TODO Auto-generated method stub
+		return dpmsComplainDao.checkHousehold(dpmsHousehold);
 	}
 
 }

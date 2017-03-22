@@ -22,7 +22,7 @@
 		var relateUnit='';	
     	$.ajax({
     		type:'post',
-    		url:'searchRelate',
+    		url:'../sys/searchRelate',
     		data:{'searchOperate':'searRealEstate'},
     		success:function(data){
     			var option='';
@@ -37,7 +37,7 @@
     	$('#relateRealEstate').change(function(){
     		$.ajax({
     			type:'post',
-    			url:'searchRelate',
+    			url:'../sys/searchRelate',
     			data:{'searchOperate':'searchUnitAndFloor','relateRealEstate':$('#relateRealEstate').val()},
     			success:function(data){
     				var optionUnit='';

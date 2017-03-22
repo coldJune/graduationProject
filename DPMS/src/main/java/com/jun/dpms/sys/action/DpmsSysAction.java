@@ -39,12 +39,13 @@ public class DpmsSysAction extends ActionSupport {
 	private String operateType;
 	private String email;
 	private String syspass;
+	private String searchOperate;
 	//计算时间差参数
 	private Date timeStamp=null;//生成时间
 	private Date useTime=null;//使用时间
 	//传出内容
 	private ByteArrayInputStream imageStream;
-	private Map<String, String> sessionMap;
+	private Map sessionMap;
 	//内部使用参数
 	private String securityCode;//生成的验证码
 	private boolean flag=false;//是否验证通过
@@ -199,7 +200,27 @@ public class DpmsSysAction extends ActionSupport {
 		this.userName = userName;
 	}
 
-
+	/**
+	 * 查找所属楼栋信息
+	 * @return
+	 */
+	public String searchRelate(){
+		if(searchOperate=="searRealEstate"||searchOperate.equalsIgnoreCase("searRealEstate")){
+			Map<String, List> map= new HashMap<>();
+			map.put("estateNos",this.getCurrentSession().createQuery("select r.estateNo from DpmsRealEstate r ").list());
+			this.setSessionMap(map);
+			return SUCCESS;
+		}
+		if(searchOperate=="searchUnitAndFloor"||searchOperate.equalsIgnoreCase("searchUnitAndFloor")){
+			Map<String, List> map= new HashMap<>();
+			Query q =this.getCurrentSession().createQuery("select r.unitNo,r.floorNo from DpmsRealEstate r where r.estateNo=?");
+			q.setInteger(0, Integer.valueOf(ServletActionContext.getRequest().getParameter("relateRealEstate")).intValue());
+			map.put("unitAndfloor", q.list());
+			this.setSessionMap(map);
+			return SUCCESS;
+		}
+		return SUCCESS;
+	}
 
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
@@ -212,11 +233,11 @@ public class DpmsSysAction extends ActionSupport {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public Map<String, String> getSessionMap() {
+	public Map getSessionMap() {
 		return sessionMap;
 	}
 
-	public void setSessionMap(Map<String, String> sessionMap) {
+	public void setSessionMap(Map sessionMap) {
 		this.sessionMap = sessionMap;
 	}
 
@@ -251,6 +272,14 @@ public class DpmsSysAction extends ActionSupport {
 
 	public void setSyspass(String syspass) {
 		this.syspass = syspass;
+	}
+
+	public String getSearchOperate() {
+		return searchOperate;
+	}
+
+	public void setSearchOperate(String searchOperate) {
+		this.searchOperate = searchOperate;
 	}
 
 	

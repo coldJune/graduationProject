@@ -75,25 +75,7 @@ public class DpmsHouseholdAction extends ActionSupport {
 		dpmsHouseholds=dpmsHouseholdService.searchByHoldName(dpmsHousehold.getHoldName());
 		return SUCCESS;
 	}
-	/**
-	 * 查找所属楼栋信息
-	 * @return
-	 */
-	public String searchRelate(){
-		if(searchOperate=="searRealEstate"||searchOperate.equalsIgnoreCase("searRealEstate")){
-			Map<String, List> map= new HashMap<>();
-			map.put("estateNos", dpmsHouseholdService.searchRealEstate());
-			this.setSessionMap(map);
-			return SUCCESS;
-		}
-		if(searchOperate=="searchUnitAndFloor"||searchOperate.equalsIgnoreCase("searchUnitAndFloor")){
-			Map<String, List> map= new HashMap<>();
-			map.put("unitAndfloor", dpmsHouseholdService.searchUnitAndFloor(relateRealEstate));
-			this.setSessionMap(map);
-			return SUCCESS;
-		}
-		return SUCCESS;
-	}
+	
 	/**
 	 * 删除住户信息
 	 * @return

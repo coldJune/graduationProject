@@ -3,6 +3,7 @@ package com.jun.dpms.complain.service;
 import java.util.List;
 
 import com.jun.dpms.complain.bean.DpmsComplain;
+import com.jun.dpms.household.bean.DpmsHousehold;
 
 public interface IDpmsComplainService {
 	/**
@@ -47,4 +48,11 @@ public interface IDpmsComplainService {
 	 * @return
 	 */
 	public DpmsComplain searchById(int id);
+	
+	/**
+	 * 检查用户的合法性
+	 * @param dpmsHousehold
+	 * @return
+	 */
+	public String checkHousehold(DpmsHousehold dpmsHousehold);
 }

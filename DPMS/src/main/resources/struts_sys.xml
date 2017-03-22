@@ -116,7 +116,7 @@
     </package>
     
     <!-- 投诉信息管理 -->
-    <package name="complain" namespace="/complain" extends="struts-default">
+    <package name="complain" namespace="/complain" extends="struts-default,json-default">
     	<action name="findAllComplain" class="dpmsComplainAction" method="findAll">
     		<result>/jsp/complain/complain.jsp</result>
     	</action>
@@ -134,6 +134,14 @@
     	<action name="delComplain" class="dpmsComplainAction" method="del">
     		<result type="redirectAction">
     			<param name="actionName">findAllComplain</param>
+    		</result>
+    	</action>
+    	<action name="addBComplain" class="dpmsComplainAction" method="addB">
+    		<result>/jsp/complain/complain_add.jsp</result>
+    	</action>
+    	<action name="checkHousehold" class="dpmsComplainAction" method="checkHousehold">
+    		<result type="json">
+    			<param name="root">sessionMap</param>
     		</result>
     	</action>
     </package>

@@ -1,12 +1,14 @@
 package com.jun.dpms.complain.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.context.ApplicationContext;
 
 import com.jun.dpms.complain.bean.DpmsComplain;
 import com.jun.dpms.complain.service.IDpmsComplainService;
+import com.jun.dpms.household.bean.DpmsHousehold;
 import com.jun.dpms.util.pagecut.bean.Page;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -20,7 +22,9 @@ public class DpmsComplainAction extends ActionSupport {
 	private List<DpmsComplain> dpmsComplains;
 	private Page page=new Page();
 	private DpmsComplain dpmsComplain;	
+	private DpmsHousehold dpmsHousehold;
 	private int[] ids;
+	private Map<String,String> sessionMap;
 	/**
 	 * 投诉信息分页查询
 	 * @return
@@ -62,9 +66,26 @@ public class DpmsComplainAction extends ActionSupport {
 		dpmsComplains=dpmsComplainService.searchByHoldName(dpmsComplain.getDpmsHousehold().getHoldName());
 		return SUCCESS;
 	}
-	
+	/**
+	 * 删除投诉信息
+	 * @return
+	 */
 	public String del(){
 		dpmsComplainService.delComplaine(ids);
+		return SUCCESS;
+	}
+	
+	public String addB(){
+		return SUCCESS;
+	}
+	/**
+	 * 检查账户合法性
+	 * @return
+	 */
+	public String checkHousehold(){
+		Map<String,String> map = new HashMap<>();
+		map.put("msg", dpmsComplainService.checkHousehold(dpmsHousehold));
+		setSessionMap(map);
 		return SUCCESS;
 	}
 	public IDpmsComplainService getDpmsComplainService() {
@@ -100,5 +121,17 @@ public class DpmsComplainAction extends ActionSupport {
 	}
 	public void setIds(int[] ids) {
 		this.ids = ids;
+	}
+	public Map<String,String> getSessionMap() {
+		return sessionMap;
+	}
+	public void setSessionMap(Map<String,String> sessionMap) {
+		this.sessionMap = sessionMap;
+	}
+	public DpmsHousehold getDpmsHousehold() {
+		return dpmsHousehold;
+	}
+	public void setDpmsHousehold(DpmsHousehold dpmsHousehold) {
+		this.dpmsHousehold = dpmsHousehold;
 	}
 }

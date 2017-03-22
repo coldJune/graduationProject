@@ -1,7 +1,9 @@
 package com.jun.dpms.complain.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -133,4 +135,27 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 		
 	}
 
+	@Override
+	public String checkHousehold(DpmsHousehold dpmsHousehold) {
+		// TODO Auto-generated method stub
+		Query q=this.getCurrentSession().createQuery("from DpmsHousehold h where h.relateRealEstate=? and h.relateFloor=? and h.relateUnit=? and h.relateNo=?");
+		q.setInteger(0, dpmsHousehold.getRelateRealEstate());
+		q.setInteger(1, dpmsHousehold.getRelateFloor());
+		q.setInteger(2, dpmsHousehold.getRelateUnit());
+		q.setInteger(3, dpmsHousehold.getRelateNo());
+		List<DpmsHousehold> dpmsHouseholds = q.list();
+		if(dpmsHouseholds!=null&&!dpmsHouseholds.isEmpty()){
+			for (DpmsHousehold d: dpmsHouseholds) {
+				if(d!=null){
+					return "'holdName':'"+d.getHoldName()+"','holdPhone':'"+d.getHoldPhone()+"'";
+				}else{
+					return "false";
+				}
+			}
+		}else{
+			return "false";
+		
+		}
+		return "false";
+	}
 }
