@@ -1,6 +1,7 @@
 package com.jun.dpms.complain.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.jun.dpms.complain.bean.DpmsComplain;
 import com.jun.dpms.household.bean.DpmsHousehold;
@@ -54,5 +55,5 @@ public interface IDpmsComplainDao {
 	 * @param dpmsHousehold
 	 * @return
 	 */
-	public String checkHousehold(DpmsHousehold dpmsHousehold);
+	public Map<String,String> checkHousehold(DpmsHousehold dpmsHousehold);
 }

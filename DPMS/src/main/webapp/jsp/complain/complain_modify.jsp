@@ -97,7 +97,7 @@
 			                <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="holdPhone">户主电话</label>
-				                    <input type="text" class="form-control" id="phone"  name="dpmsComplain.dpmsHousehold.holdPhone" value="${dpmsComplain.dpmsHousehold.holdPhone}" readonly="readonly">                  
+				                    <input type="text" class="form-control" id="holdPhone"  name="dpmsComplain.dpmsHousehold.holdPhone" value="${dpmsComplain.dpmsHousehold.holdPhone}" readonly="readonly">                  
 				                </div>
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="complainDate">投诉时间</label>
@@ -105,11 +105,17 @@
 				                </div>       
 			               </div>
 							<div class="row form-group">
+								<div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="sparePhone">备用电话</label>
+				                    <input type="text" class="form-control" id="phone"  name="dpmsComplain.sparePhone" value="${dpmsComplain.sparePhone}">                  
+				                </div>  
+				                <div class="col-lg-6 col-md-6 form-group">  
 								 <label class="control-label templatemo-block">是否处理</label>                 
 					                 <select name="dpmsComplain.isDeal" class="form-control">
 					                    <option value="是" <c:if test='${dpmsComplain.isDeal=="是"}'>selected</c:if> >是</option>
 					                    <option value="否" <c:if test='${dpmsComplain.isDeal=="否"}'>selected</c:if> >否</option>
 					                  </select> 
+					            </div>
 							</div>
 						  <div class="row form-group">
 				                <div class="col-lg-12 form-group">                   

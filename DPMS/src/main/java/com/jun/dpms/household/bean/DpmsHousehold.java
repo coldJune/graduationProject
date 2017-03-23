@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import com.jun.dpms.complain.bean.DpmsComplain;
+import com.jun.dpms.repair.bean.DpmsRepair;
 
 public class DpmsHousehold {
 	private Integer id;
@@ -19,6 +20,7 @@ public class DpmsHousehold {
 	private String holdPhone;//户主电话
 	private String checkInDate;//入住时间
 	private Set<DpmsComplain> dpmsComplains;//投诉类容
+	private Set<DpmsRepair> dpmsRepairs;//报修内容
 	public Integer getId() {
 		return id;
 	}
@@ -96,6 +98,12 @@ public class DpmsHousehold {
 	}
 	public void setDpmsComplains(Set<DpmsComplain> dpmsComplains) {
 		this.dpmsComplains = dpmsComplains;
+	}
+	public Set<DpmsRepair> getDpmsRepairs() {
+		return dpmsRepairs;
+	}
+	public void setDpmsRepairs(Set<DpmsRepair> dpmsRepairs) {
+		this.dpmsRepairs = dpmsRepairs;
 	}
 	
 	

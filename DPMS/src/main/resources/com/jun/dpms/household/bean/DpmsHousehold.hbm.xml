@@ -45,5 +45,9 @@
         	<key column="HOUSEHOLD_ID"></key>
         	<one-to-many class="com.jun.dpms.complain.bean.DpmsComplain"/>
         </set>
+        <set name="dpmsRepairs" cascade="all">
+        	<key column="HOUSEHOLD_ID"></key>
+        	<one-to-many class="com.jun.dpms.repair.bean.DpmsRepair"/>
+        </set>
     </class>
 </hibernate-mapping>

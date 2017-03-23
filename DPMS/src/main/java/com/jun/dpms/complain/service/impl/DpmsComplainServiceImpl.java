@@ -1,6 +1,7 @@
 package com.jun.dpms.complain.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.jun.dpms.complain.bean.DpmsComplain;
 import com.jun.dpms.complain.dao.IDpmsComplainDao;
@@ -62,7 +63,7 @@ public class DpmsComplainServiceImpl implements IDpmsComplainService {
 	}
 
 	@Override
-	public String checkHousehold(DpmsHousehold dpmsHousehold) {
+	public Map<String,String> checkHousehold(DpmsHousehold dpmsHousehold) {
 		// TODO Auto-generated method stub
 		return dpmsComplainDao.checkHousehold(dpmsHousehold);
 	}

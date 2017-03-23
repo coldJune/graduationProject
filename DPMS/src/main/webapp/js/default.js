@@ -137,10 +137,13 @@ $(document).ready(function(){
 	
 	$('#phone').blur(function(){
 		var phone=$(this).val();
-		if(!(/^1[34578]\d{9}$/.test(phone))){
-			$(this).val('');
-			alert('请输入正确的手机号');
+		if(phone!=null&&phone!=''){
+			if(!(/^1[34578]\d{9}$/.test(phone))){
+				$(this).val('');
+				alert('请输入正确的手机号');
+			}
 		}
+		
 	});
 	
 

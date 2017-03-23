@@ -8,6 +8,7 @@ public class DpmsComplain {
 	private String details;//详情
 	private String complainDate;//投诉时间
 	private String isDeal;//是否处理
+	private String sparePhone;
 	public int getId() {
 		return id;
 	}
@@ -37,6 +38,12 @@ public class DpmsComplain {
 	}
 	public void setIsDeal(String isDeal) {
 		this.isDeal = isDeal;
+	}
+	public String getSparePhone() {
+		return sparePhone;
+	}
+	public void setSparePhone(String sparePhone) {
+		this.sparePhone = sparePhone;
 	}
 	
 }

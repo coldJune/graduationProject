@@ -144,5 +144,10 @@
     			<param name="root">sessionMap</param>
     		</result>
     	</action>
+    	<action name="addComplain" class="dpmsComplainAction" method="add">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllComplain</param>
+    		</result>
+    	</action>
     </package>
 </struts>

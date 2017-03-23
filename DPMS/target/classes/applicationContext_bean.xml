@@ -46,4 +46,15 @@
 	<bean id="dpmsComplainAction" class="com.jun.dpms.complain.action.DpmsComplainAction">
 		<property name="dpmsComplainService" ref="dpmsComplainService"></property>
 	</bean>
+	
+	<!--报修信息管理  -->
+	<bean id="dpmsRepairDao" class="com.jun.dpms.repair.dao.impl.DpmsRepairDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dpmsRepairService" class="com.jun.dpms.repair.service.impl.DpmsRepairServiceImpl">
+		<property name="dpmsRepairDao" ref="dpmsRepairDao"></property>
+	</bean>
+	<bean id="dpmsRepairAction" class="com.jun.dpms.repair.action.DpmsRepairAction">
+		<property name="dpmsRepairService" ref="dpmsRepairService"></property>
+	</bean>
 </beans>

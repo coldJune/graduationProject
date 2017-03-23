@@ -20,5 +20,8 @@
         <property name="isDeal" type="java.lang.String">
         	<column name="IS_DEAL"></column>
         </property>
+        <property name="sparePhone" type="java.lang.String">
+        	<column name="SPARE_PHONE"></column>
+        </property>
     </class>
 </hibernate-mapping>

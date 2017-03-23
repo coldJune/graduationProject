@@ -84,8 +84,13 @@ public class DpmsComplainAction extends ActionSupport {
 	 */
 	public String checkHousehold(){
 		Map<String,String> map = new HashMap<>();
-		map.put("msg", dpmsComplainService.checkHousehold(dpmsHousehold));
+		map=dpmsComplainService.checkHousehold(dpmsHousehold);
 		setSessionMap(map);
+		return SUCCESS;
+	}
+	
+	public String add(){
+		dpmsComplainService.addComplain(dpmsComplain);
 		return SUCCESS;
 	}
 	public IDpmsComplainService getDpmsComplainService() {

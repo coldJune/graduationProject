@@ -44,6 +44,11 @@
 				}
 	
 			});
+			var text=$('table tbody tr td:nth-child(10)').text();
+			if(text.length>6){
+				text=text.substring(0,6)+"...";
+			}
+			$('table tbody tr td:nth-child(10)').text(text);
 		});
     </script>
   </head>
@@ -117,6 +122,7 @@
 	                    <td class="white-text">所属单元</td>
 	                    <td class="white-text">门牌号</td>
 	                    <td class="white-text">户主电话</td>
+	                     <td class="white-text">备用电话</td>
 	                    <td class="white-text">投诉内容</td>
 	                    <td class="white-text">投诉时间</td>
 	                    <td class="white-text">是否处理</td>	                  	
@@ -135,12 +141,13 @@
                     			</td>
 								<td style="text-align: center;"><a href="showDetailComplain?dpmsComplain.id=${dpmsComplain.id}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsComplain.id}</i></a></td>
 								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.holdName}</td>
-								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateRealEstate}</td>
-								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateUnit}</td>
-								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateFloor}</td>
+								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateRealEstate}栋</td>
+								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateUnit}单元</td>
+								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateFloor}层</td>
 								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateNo}</td>
 								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.holdPhone}</td>
-								<td style="text-align: center;text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">${dpmsComplain.details}</td>
+								<td style="text-align: center;">${dpmsComplain.sparePhone}</td>
+								<td style="text-align: center;">${dpmsComplain.details}</td>
 								<td style="text-align: center;">${dpmsComplain.complainDate}</td>
 								<td style="text-align: center;">${dpmsComplain.isDeal }</td>
 							</tr>

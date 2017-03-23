@@ -85,9 +85,11 @@
     					$('#relateFloor').append('<option value="" selected>---请选择楼层---</option>');
     					$('#relateNo').empty();
     					$('#relateNo').append('<option value="" selected>---门牌号---</option>');
+    					$('#holdName').val('');
+    					$('#holdPhone').val('');
     				}else{
-    					$('#holdName').val(data.msg.holdName);
-    					$('#holdPhone').val(data.msg.holdPhone);
+    					$('#holdName').val(data.holdName);
+    					$('#holdPhone').val(data.holdPhone);
     				}
     			}
     		});
@@ -145,13 +147,13 @@
 			               <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">  
 				                     <label class="control-label templatemo-block">所属楼栋</label>                 
-					                 <select id="relateRealEstate" name="dpmsHousehold.relateRealEstate" class="form-control" required="required">
+					                 <select id="relateRealEstate" name="dpmsComplain.dpmsHousehold.relateRealEstate" class="form-control" required="required">
 					                    <option value="" selected>---请选择楼栋---</option>
 					                  </select>                 
 				                </div>
 				               <div class="col-lg-6 col-md-6 form-group">  
 				                     <label class="control-label templatemo-block">所属单元</label>                 
-					                 <select id="relateUnit" name="dpmsHousehold.relateUnit" class="form-control" required="required">
+					                 <select id="relateUnit" name="dpmsComplain.dpmsHousehold.relateUnit" class="form-control" required="required">
 					                    <option value="" selected>---请选择单元---</option>
 					                  </select>                  
 				                </div> 
@@ -159,13 +161,13 @@
 			               <div class="row form-group">
 				                <div class="col-lg-6 col-md-6 form-group">  
 				                     <label class="control-label templatemo-block">所属楼层</label>                 
-					                 <select id="relateFloor" name="dpmsHousehold.relateFloor" class="form-control" required="required">
+					                 <select id="relateFloor" name="dpmsComplain.dpmsHousehold.relateFloor" class="form-control" required="required">
 					                    <option value="" selected>---请选择楼层---</option>
 					                  </select>                  
 				                </div>
 				                <div class="col-lg-6 col-md-6 form-group">  
 				                     <label class="control-label templatemo-block">门牌号</label>                 
-					                 <select id="relateNo" name="dpmsHousehold.relateNo" class="form-control" required="required">
+					                 <select id="relateNo" name="dpmsComplain.dpmsHousehold.relateNo" class="form-control" required="required">
 					                    <option value="" selected>---门牌号---</option>
 					                  </select>                  
 				                </div>  
@@ -177,15 +179,21 @@
 				                </div> 
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="holdPhone">户主电话</label>
-				                    <input type="text" class="form-control" id="phone"  name="dpmsComplain.dpmsHousehold.holdPhone" value="${dpmsComplain.dpmsHousehold.holdPhone}" readonly="readonly">                  
+				                    <input type="text" class="form-control" id="holdPhone"  name="dpmsComplain.dpmsHousehold.holdPhone" value="${dpmsComplain.dpmsHousehold.holdPhone}" readonly="readonly">                  
 				                </div>     
 			               </div>
 							<div class="row form-group">
+								 <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="sparePhone">备用电话</label>
+				                    <input type="text" class="form-control" id="phone"  name="dpmsComplain.sparePhone" value="${dpmsComplain.sparePhone}">                  
+				                </div>  
+				                <div class="col-lg-6 col-md-6 form-group">  
 								 <label class="control-label templatemo-block">是否处理</label>                 
 					                 <select name="dpmsComplain.isDeal" class="form-control">
-					                   <option value="否" <c:if test='${dpmsComplain.isDeal=="否"}'>selected</c:if> >否</option>
-					                  <option value="是" <c:if test='${dpmsComplain.isDeal=="是"}'>selected</c:if> >是</option>
+					                    <option value="是" <c:if test='${dpmsComplain.isDeal=="是"}'>selected</c:if> >是</option>
+					                    <option value="否" <c:if test='${dpmsComplain.isDeal=="否"}'>selected</c:if> >否</option>
 					                  </select> 
+					            </div>
 							</div>
 						  <div class="row form-group">
 				                <div class="col-lg-12 form-group">                   
@@ -194,7 +202,7 @@
 				                </div>
 				          </div>
 			              <div class="form-group text-right">
-			                <button type="submit" class="templatemo-blue-button">更改</button>
+			                <button type="submit" class="templatemo-blue-button">添加</button>
 			                <button type="reset" class="templatemo-white-button">重置</button>
 			              </div>                           
 		           	  </form>                        
