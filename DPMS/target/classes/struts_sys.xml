@@ -149,5 +149,37 @@
     			<param name="actionName">findAllComplain</param>
     		</result>
     	</action>
+    	
+    </package>
+    
+    <!-- 住户投诉管理 -->
+    <package name="repair" namespace="/repair" extends="struts-default,json-default">
+		<action name="findAllRepair" class="dpmsRepairAction" method="findAll">
+    		<result>/jsp/repair/repair.jsp</result>
+    	</action>
+    	<action name="searchRepair" class="dpmsRepairAction" method="searchByHoldName">
+    		<result>/jsp/repair/repair_search.jsp</result>
+    	</action>
+    	<action name="addBRepair" class="dpmsRepairAction" method="addB">
+    		<result>/jsp/repair/repair_add.jsp</result>
+    	</action>
+    	<action name="addRepair" class="dpmsRepairAction" method="add">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllRepair</param>
+    		</result>
+    	</action>
+    	<action name="delRepair" class="dpmsRepairAction" method="del">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllRepair</param>
+    		</result>
+    	</action>
+    	<action name="showDetailRepair" class="dpmsRepairAction" method="showDetail">
+    		<result>/jsp/repair/repair_modify.jsp</result>
+    	</action>
+    	<action name="updateRepair" class="dpmsRepairAction" method="update">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllRepair</param>
+    		</result>
+    	</action>
     </package>
 </struts>

@@ -2,6 +2,7 @@ package com.jun.dpms.repair.dao.impl;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -26,25 +27,73 @@ public class DpmsRepairDaoImpl implements IDpmsRepairDao {
 	@Override
 	public List<DpmsRepair> findAll(int eachPage, int currentPage) {
 		// TODO Auto-generated method stub
-		return null;
+		Query q = this.getCurrentSession().createQuery("select r.dpmsHousehold,r.id,r.details,r.repairDate,r.isDeal,r.sparePhone from DpmsRepair r");
+		q.setMaxResults(eachPage);
+		q.setFirstResult((currentPage-1)*eachPage);
+		List<Object> objs=q.list();
+		List<DpmsRepair> dpmsComplains = new ArrayList<>();
+		for (Object object : objs) {
+			Object[] objects=(Object[]) object;
+			DpmsHousehold dpmsHousehold=(DpmsHousehold)objects[0];
+			int id = (int) objects[1];
+			String details=(String)objects[2];
+			String repairDate=(String)objects[3];
+			String isDeal=(String)objects[4];
+			String sparePhone=(String)objects[5];
+			DpmsRepair dpmsRepair = new DpmsRepair();
+			dpmsRepair.setDpmsHousehold(dpmsHousehold);
+			dpmsRepair.setId(id);
+			dpmsRepair.setDetails(details);
+			dpmsRepair.setRepairDate(repairDate);
+			dpmsRepair.setIsDeal(isDeal);
+			dpmsRepair.setSparePhone(sparePhone);
+			dpmsComplains.add(dpmsRepair);
+		}
+		return dpmsComplains;
 	}
 
 	@Override
 	public int getTotalItem() {
 		// TODO Auto-generated method stub
-		return 0;
+		return ((Number)this.getCurrentSession().createQuery("select count(*) from DpmsRepair r ").uniqueResult()).intValue();
 	}
 
 	@Override
 	public List<DpmsRepair> searchByHoldName(String holdName) {
 		// TODO Auto-generated method stub
-		return null;
+		Query q = this.getCurrentSession().createQuery("select r.dpmsHousehold,r.id,r.details,r.repairDate,r.isDeal,r.sparePhone from DpmsRepair r where r.dpmsHousehold.holdName=?");
+		q.setString(0, holdName);
+		List<Object> objs=q.list();
+		List<DpmsRepair> dpmsComplains = new ArrayList<>();
+		for (Object object : objs) {
+			Object[] objects=(Object[]) object;
+			DpmsHousehold dpmsHousehold=(DpmsHousehold)objects[0];
+			int id = (int) objects[1];
+			String details=(String)objects[2];
+			String repairDate=(String)objects[3];
+			String isDeal=(String)objects[4];
+			String sparePhone=(String)objects[5];
+			DpmsRepair dpmsRepair = new DpmsRepair();
+			dpmsRepair.setDpmsHousehold(dpmsHousehold);
+			dpmsRepair.setId(id);
+			dpmsRepair.setDetails(details);
+			dpmsRepair.setRepairDate(repairDate);
+			dpmsRepair.setIsDeal(isDeal);
+			dpmsRepair.setSparePhone(sparePhone);
+			dpmsComplains.add(dpmsRepair);
+		}
+		return dpmsComplains;
 	}
 
 	@Override
 	public void updateRepair(DpmsRepair dpmsRepair) {
 		// TODO Auto-generated method stub
-		
+		Query q = this.getCurrentSession().createQuery("update DpmsRepair r set r.details=?,r.isDeal=?,r.sparePhone=? where r.id=?");
+		q.setString(0, dpmsRepair.getDetails());
+		q.setString(1, dpmsRepair.getIsDeal());
+		q.setString(2, dpmsRepair.getSparePhone());
+		q.setInteger(3, dpmsRepair.getId());
+		q.executeUpdate();
 	}
 
 	@Override
@@ -73,12 +122,39 @@ public class DpmsRepairDaoImpl implements IDpmsRepairDao {
 	@Override
 	public void delRepair(int[] ids) {
 		// TODO Auto-generated method stub
-		
+		Query q =this.getCurrentSession().createQuery("delete from DpmsRepair r where r.id=?");
+		for (int i : ids) {
+			q.setInteger(0, i);
+			q.executeUpdate();
+		}
 	}
 
 	@Override
 	public DpmsRepair searchById(int id) {
 		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("select r.dpmsHousehold,r.id,r.details,r.repairDate,r.isDeal,r.sparePhone from DpmsRepair r where r.id=?");
+		q.setInteger(0, id);
+		List<Object> objs=q.list();
+		if(objs!=null&&!objs.isEmpty()){
+			for (Object object : objs) {
+				Object[] objects=(Object[]) object;
+				DpmsHousehold dpmsHousehold=(DpmsHousehold)objects[0];
+				String details=(String)objects[2];
+				String repairDate=(String)objects[3];
+				String isDeal=(String)objects[4];
+				String sparePhone=(String)objects[5];
+				DpmsRepair dpmsRepair = new DpmsRepair();
+				dpmsRepair.setDpmsHousehold(dpmsHousehold);
+				dpmsRepair.setId(id);
+				dpmsRepair.setDetails(details);
+				dpmsRepair.setRepairDate(repairDate);
+				dpmsRepair.setIsDeal(isDeal);
+				dpmsRepair.setSparePhone(sparePhone);
+				return dpmsRepair;
+			}
+		}else{
+			return null;
+		}
 		return null;
 	}
 

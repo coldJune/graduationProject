@@ -55,5 +55,5 @@ public interface IDpmsComplainDao {
 	 * @param dpmsHousehold
 	 * @return
 	 */
-	public Map<String,String> checkHousehold(DpmsHousehold dpmsHousehold);
+	/*public Map<String,String> checkHousehold(DpmsHousehold dpmsHousehold);*/
 }

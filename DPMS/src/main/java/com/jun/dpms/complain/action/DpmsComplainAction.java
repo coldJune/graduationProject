@@ -82,12 +82,12 @@ public class DpmsComplainAction extends ActionSupport {
 	 * 检查账户合法性
 	 * @return
 	 */
-	public String checkHousehold(){
+	/*public String checkHousehold(){
 		Map<String,String> map = new HashMap<>();
 		map=dpmsComplainService.checkHousehold(dpmsHousehold);
 		setSessionMap(map);
 		return SUCCESS;
-	}
+	}*/
 	
 	public String add(){
 		dpmsComplainService.addComplain(dpmsComplain);

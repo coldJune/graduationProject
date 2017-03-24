@@ -13,37 +13,38 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/templatemo-style.css" rel="stylesheet">
+    <link href="../css/templatemo-style-show.css" rel="stylesheet">
     <link href="../css/table.css" rel="stylesheet">
     <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
     <script type="text/javascript">
-    	$(document).ready(function(){
-    		$('#del').click(function(){
-    			var ids=[];
-    			$('input:checkbox[name=check]:checked').each(function(){
-    				ids.push($(this).val());
-    			});
-    			if(ids==null){
-    				alert('请选择删除的内容');
-    			}else{
-        			$.ajax({
-        				type:'post',
-        				url:'delComplain',
-        				data:{'ids':ids},
-        				traditional:true,
-        				async: false,
-        				success:function(){
-        					alert('删除成功');
-        					window.location.reload();
-        				},
-        				failure:function(){
-        					alert('删除失败');
-        				}
-        			});
-    			}
-
-    		});
-    		$('table tbody tr').each(function(){
+	    $(document).ready(function(){
+			$('#del').click(function(){
+				var ids=[];
+				$('input:checkbox[name=check]:checked').each(function(){
+					ids.push($(this).val());
+				});
+				if(ids==null){
+					alert('请选择删除的内容');
+				}else{
+	    			$.ajax({
+	    				type:'post',
+	    				url:'delRepair',
+	    				data:{'ids':ids},
+	    				traditional:true,
+	    				async: false,
+	    				success:function(){
+	    					alert('删除成功');
+	    					window.location.href='findAllRepair';
+	    				},
+	    				failure:function(){
+	    					alert('删除失败');
+	    				}
+	    			});
+				}
+	
+			});
+			$('table tbody tr').each(function(){
 				
 				var text=$(this).find('td:nth-child(10)').text();
     			if(text.length>6){
@@ -51,7 +52,7 @@
     			}
     			$(this).find('td:nth-child(10)').text(text);
 			});
-    	});
+		});
     </script>
   </head>
   <body>
@@ -79,8 +80,8 @@
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
             <li><a href="../household/findAllHousehold" ><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
-            <li><a href="../repair/findAllRepair"><i class="fa fa-sliders fa-fw"></i>住户报修管理</a></li>
-            <li><a href="findAllComplain" class="active"><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
+            <li><a href="findAllRepair" class="active"><i class="fa fa-sliders fa-fw"></i>住户报修管理</a></li>
+            <li><a href="../complain/findAllComplain" ><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
             <li><a href="#"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
           </ul>  
         </nav>
@@ -97,19 +98,19 @@
 	    	<div class="templatemo-content-container">
 	    		
 	          <div class="templatemo-content-widget white-bg">
-	           		<div style="width: 150px;margin: 0 auto;font-size: 18px;"><p><strong>住户投诉信息</strong></p></div>
+	           		<h2 class="margin-bottom-10"><strong>住户报修信息</strong></h2>
+            			<p><i>>>查询结果</i></p>
 	          		<div style="margin: 0 auto;">
 			             <div class="form-group text-left" style="width:60%;float: left;height:40px">
-					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="searchComplain">
+					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="searchRepair">
 				          		<div class="input-group" >
 				              		<button type="submit" class="fa fa-search"></button>
-				              		<input type="text" class="form-control" placeholder="请输入户主名" name="dpmsComplain.dpmsHousehold.holdName" id="srch-term">
+				              		<input type="text" class="form-control" placeholder="请输入户主名" name="dpmsRepair.dpmsHousehold.holdName" id="srch-term">
 				         		 </div>
 				        	  </form>
 			        	 </div>
 			        	<div class="form-group text-right" style="width: 40%;float: right;">
-				                <a href="addBComplain"><button type="button" class="templatemo-blue-button" >添加</button></a>
-				                <button id="del" type="button" class="templatemo-white-button">删除</button>
+				                <button id="del" type="button" class="templatemo-blue-button">删除</button>
 				       	</div>
 	          		</div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">
@@ -125,40 +126,39 @@
 	                    <td class="white-text">门牌号</td>
 	                    <td class="white-text">户主电话</td>
 	                     <td class="white-text">备用电话</td>
-	                    <td class="white-text">投诉内容</td>
-	                    <td class="white-text">投诉时间</td>
+	                    <td class="white-text">报修详情</td>
+	                    <td class="white-text">保修时间</td>
 	                    <td class="white-text">是否处理</td>	                  	
 	                  </tr>
 	                </thead>
 	                <tbody>
-						<c:forEach items="${dpmsComplains}" var="dpmsComplain">
+						<c:forEach items="${dpmsRepairs}" var="dpmsRepair">
 							<tr>
 								<td>
 									<div style="z-index: 2px;">
 										<div class="margin-right-15 templatemo-inline-block" style="z-index: 1px;">
-	                      					<input type="checkbox" name="check" id="${dpmsComplain.id}" value="${dpmsComplain.id}">
-	                     					 <label for="${dpmsComplain.id}" class="font-weight-400"><span></span></label>                      
+	                      					<input type="checkbox" name="check" id="${dpmsRepair.id}" value="${dpmsRepair.id}">
+	                     					 <label for="${dpmsRepair.id}" class="font-weight-400"><span></span></label>                      
 	                    				</div>
                     				</div>
                     			</td>
-								<td style="text-align: center;"><a href="showDetailComplain?dpmsComplain.id=${dpmsComplain.id}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsComplain.id}</i></a></td>
-								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.holdName}</td>
-								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateRealEstate}栋</td>
-								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateUnit}单元</td>
-								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateFloor}层</td>
-								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.relateNo}</td>
-								<td style="text-align: center;">${dpmsComplain.dpmsHousehold.holdPhone}</td>
-								<td style="text-align: center;">${dpmsComplain.sparePhone}</td>
-								<td style="text-align: center;">${dpmsComplain.details}</td>
-								<td style="text-align: center;">${dpmsComplain.complainDate}</td>
-								<td style="text-align: center;">${dpmsComplain.isDeal }</td>
+								<td style="text-align: center;"><a href="showDetailComplain?dpmsRepair.id=${dpmsRepair.id}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsRepair.id}</i></a></td>
+								<td style="text-align: center;">${dpmsRepair.dpmsHousehold.holdName}</td>
+								<td style="text-align: center;">${dpmsRepair.dpmsHousehold.relateRealEstate}栋</td>
+								<td style="text-align: center;">${dpmsRepair.dpmsHousehold.relateUnit}单元</td>
+								<td style="text-align: center;">${dpmsRepair.dpmsHousehold.relateFloor}层</td>
+								<td style="text-align: center;">${dpmsRepair.dpmsHousehold.relateNo}</td>
+								<td style="text-align: center;">${dpmsRepair.dpmsHousehold.holdPhone}</td>
+								<td style="text-align: center;">${dpmsRepair.sparePhone}</td>
+								<td style="text-align: center;">${dpmsRepair.details}</td>
+								<td style="text-align: center;">${dpmsRepair.repairDate}</td>
+								<td style="text-align: center;">${dpmsRepair.isDeal }</td>
 							</tr>
 						</c:forEach>                
 	                </tbody>
-	              </table>    
+	              </table>
 	            </div>                          
 	          </div>  
-	          <jsp:include page="complain_footer.jsp"></jsp:include>
 	      </div>
 	       
 	    </div >  

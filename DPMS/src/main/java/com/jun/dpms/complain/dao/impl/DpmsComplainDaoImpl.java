@@ -162,8 +162,7 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 		
 	}
 
-	@Override
-	public Map<String,String> checkHousehold(DpmsHousehold dpmsHousehold) {
+	/*public Map<String,String> checkHousehold(DpmsHousehold dpmsHousehold) {
 		// TODO Auto-generated method stub
 		Query q=this.getCurrentSession().createQuery("from DpmsHousehold h where h.relateRealEstate=? and h.relateFloor=? and h.relateUnit=? and h.relateNo=?");
 		q.setInteger(0, dpmsHousehold.getRelateRealEstate());
@@ -190,5 +189,5 @@ public class DpmsComplainDaoImpl implements IDpmsComplainDao {
 		}
 		map.put("msg", "false");
 		return map;
-	}
+	}*/
 }

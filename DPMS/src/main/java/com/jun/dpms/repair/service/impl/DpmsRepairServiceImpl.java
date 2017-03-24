@@ -22,25 +22,25 @@ public class DpmsRepairServiceImpl implements IDpmsRepairService {
 	@Override
 	public List<DpmsRepair> findAll(int eachPage, int currentPage) {
 		// TODO Auto-generated method stub
-		return null;
+		return dpmsRepairDao.findAll(eachPage, currentPage);
 	}
 
 	@Override
 	public int getTotalItem() {
 		// TODO Auto-generated method stub
-		return 0;
+		return dpmsRepairDao.getTotalItem();
 	}
 
 	@Override
 	public List<DpmsRepair> searchByHoldName(String holdName) {
 		// TODO Auto-generated method stub
-		return null;
+		return dpmsRepairDao.searchByHoldName(holdName);
 	}
 
 	@Override
 	public void updateRepair(DpmsRepair dpmsRepair) {
 		// TODO Auto-generated method stub
-		
+		dpmsRepairDao.updateRepair(dpmsRepair);
 	}
 
 	@Override
@@ -52,13 +52,13 @@ public class DpmsRepairServiceImpl implements IDpmsRepairService {
 	@Override
 	public void delRepair(int[] ids) {
 		// TODO Auto-generated method stub
-		
+		dpmsRepairDao.delRepair(ids);
 	}
 
 	@Override
 	public DpmsRepair searchById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return dpmsRepairDao.searchById(id);
 	}
 
 	@Override

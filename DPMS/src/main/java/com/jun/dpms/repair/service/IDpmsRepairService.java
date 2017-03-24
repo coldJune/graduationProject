@@ -27,19 +27,19 @@ public interface IDpmsRepairService {
 	public List<DpmsRepair> searchByHoldName(String holdName);
 	
 	/**
-	 * 更新投诉信息
+	 * 更新报修信息
 	 * @param DpmsRepair
 	 */
 	public void updateRepair(DpmsRepair dpmsRepair);
 	
 	/**
-	 * 添加投诉信息
+	 * 添加报修信息
 	 * @param DpmsRepair
 	 */
 	public void addRepair(DpmsRepair dpmsRepair);
 	/**
-	 * 通过id删除楼
-	 * @param userName
+	 * 通过id删除
+	 * @param ids
 	 */
 	public void delRepair(int[] ids);
 	/**

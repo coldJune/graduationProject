@@ -62,10 +62,9 @@ public class DpmsComplainServiceImpl implements IDpmsComplainService {
 		return dpmsComplainDao.searchById(id);
 	}
 
-	@Override
-	public Map<String,String> checkHousehold(DpmsHousehold dpmsHousehold) {
+	/*public Map<String,String> checkHousehold(DpmsHousehold dpmsHousehold) {
 		// TODO Auto-generated method stub
 		return dpmsComplainDao.checkHousehold(dpmsHousehold);
 	}
-
+*/
 }

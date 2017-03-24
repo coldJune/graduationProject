@@ -81,6 +81,11 @@
 				<param name="root">sessionMap</param>
 			</result>
 		</action>
+		<action name="checkHousehold" class="dpmsSysAction" method="checkHousehold">
+			<result type="json">
+				<param name="root">sessionMap</param>
+			</result>
+		</action>
    	</package>
     	
     <!-- 引入系统用户管理 -->

@@ -13,6 +13,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 
+import com.jun.dpms.household.bean.DpmsHousehold;
 import com.jun.dpms.sysUser.bean.DpmsSysUser;
 import com.jun.dpms.util.MD5Util;
 import com.jun.dpms.util.SecurityCode;
@@ -40,6 +41,7 @@ public class DpmsSysAction extends ActionSupport {
 	private String email;
 	private String syspass;
 	private String searchOperate;
+	private DpmsHousehold dpmsHousehold;
 	//计算时间差参数
 	private Date timeStamp=null;//生成时间
 	private Date useTime=null;//使用时间
@@ -221,7 +223,39 @@ public class DpmsSysAction extends ActionSupport {
 		}
 		return SUCCESS;
 	}
-
+	
+	public String checkHousehold(){
+		Query q=this.getCurrentSession().createQuery("from DpmsHousehold h where h.relateRealEstate=? and h.relateFloor=? and h.relateUnit=? and h.relateNo=?");
+		q.setInteger(0, dpmsHousehold.getRelateRealEstate());
+		q.setInteger(1, dpmsHousehold.getRelateFloor());
+		q.setInteger(2, dpmsHousehold.getRelateUnit());
+		q.setInteger(3, dpmsHousehold.getRelateNo());
+		List<DpmsHousehold> dpmsHouseholds = q.list();
+		Map<String,String> map = new HashMap<>();
+		if(dpmsHouseholds!=null&&!dpmsHouseholds.isEmpty()){
+			for (DpmsHousehold d: dpmsHouseholds) {
+				if(d!=null){
+					map.put("holdName", d.getHoldName());
+					map.put("holdPhone", d.getHoldPhone());
+					setSessionMap(map);
+					return SUCCESS;
+				}else{
+					map.put("msg", "false");
+					setSessionMap(map);
+					return SUCCESS;
+				}
+			}
+		}else{
+			map.put("msg", "false");
+			setSessionMap(map);
+			return SUCCESS;
+		
+		}
+		map.put("msg", "false");
+		setSessionMap(map);
+		return SUCCESS;
+		
+	}
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
@@ -280,6 +314,14 @@ public class DpmsSysAction extends ActionSupport {
 
 	public void setSearchOperate(String searchOperate) {
 		this.searchOperate = searchOperate;
+	}
+
+	public DpmsHousehold getDpmsHousehold() {
+		return dpmsHousehold;
+	}
+
+	public void setDpmsHousehold(DpmsHousehold dpmsHousehold) {
+		this.dpmsHousehold = dpmsHousehold;
 	}
 
 	
