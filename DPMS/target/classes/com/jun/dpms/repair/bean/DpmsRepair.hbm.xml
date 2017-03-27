@@ -15,13 +15,13 @@
             <column name="DETAILS" />
         </property>
         <property name="repairDate" type="java.lang.String">
-            <column name="REPAIRDATE" />
+            <column name="REPAIR_DATE" />
         </property>
         <property name="isDeal" type="java.lang.String">
-            <column name="ISDEAL" />
+            <column name="IS_DEAL" />
         </property>
         <property name="sparePhone" type="java.lang.String">
-            <column name="SPAREPHONE" />
+            <column name="SPARE_PHONE" />
         </property>
     </class>
 </hibernate-mapping>

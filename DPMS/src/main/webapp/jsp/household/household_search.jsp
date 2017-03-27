@@ -116,12 +116,13 @@
 	                    <td class="white-text">户主年龄</td>
 	                    <td class="white-text">家庭人数</td>
 	                    <td class="white-text">是否有购买车位</td>
+	                     <td class="white-text">车牌号</td>
 	                    <td class="white-text">所属楼栋</td>
 	                    <td class="white-text">所属层数</td>
 	                    <td class="white-text">所属单元</td>
 	                    <td class="white-text">门牌号</td>
 	                    <td class="white-text">户主电话</td>
-	                    <td class="white-text">入住时间</td>	                  	
+	                    <td class="white-text">入住时间</td>	            	
 	                  </tr>
 	                </thead>
 	                <tbody>
@@ -141,6 +142,7 @@
 								<td style="text-align: center;">${dpmsHousehold.holdAge}</td>
 								<td style="text-align: center;">${dpmsHousehold.familyNo}</td>
 								<td style="text-align: center;">${dpmsHousehold.hasPackin}</td>
+								<td style="text-align: center;">${dpmsHousehold.plateNumber}</td>
 								<td style="text-align: center;">${dpmsHousehold.relateRealEstate}</td>
 								<td style="text-align: center;">${dpmsHousehold.relateUnit}</td>
 								<td style="text-align: center;">${dpmsHousehold.relateFloor}</td>

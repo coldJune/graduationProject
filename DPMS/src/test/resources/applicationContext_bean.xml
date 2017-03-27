@@ -57,4 +57,15 @@
 	<bean id="dpmsRepairAction" class="com.jun.dpms.repair.action.DpmsRepairAction">
 		<property name="dpmsRepairService" ref="dpmsRepairService"></property>
 	</bean>
+	
+	<!-- 停车场收费管理 -->
+	<bean id="dpmsParkDao" class="com.jun.dpms.park.dao.impl.DpmsParkDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dpmsParkService" class="com.jun.dpms.park.service.impl.DpmsParkServiceImpl">
+		<property name="dpmsParkDao" ref="dpmsParkDao"></property>
+	</bean>
+	<bean id="dpmsParkAction" class="com.jun.dpms.park.action.DpmsParkAction">
+		<property name="dpmsParkService" ref="dpmsParkService"></property>
+	</bean>
 </beans>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-3-15 10:00:01 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.jun.dpms.household.bean.DpmsHousehold" table="DPMSHOUSEHOLD">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="holdName" type="java.lang.String">
+            <column name="HOLD_NAME" />
+        </property>
+        <property name="holdGender" type="java.lang.String">
+            <column name="HOLD_GENDER" />
+        </property>
+        <property name="holdAge" type="java.lang.Integer">
+            <column name="HOLD_AGE" />
+        </property>
+        <property name="familyNo" type="java.lang.Integer">
+            <column name="FAMILY_NO" />
+        </property>
+        <property name="hasPackin" type="java.lang.String">
+            <column name="HAS_PACKIN" />
+        </property>
+        <property name="relateRealEstate" type="java.lang.Integer">
+            <column name="RELATE_REALESTATE" />
+        </property>
+        <property name="relateUnit" type="java.lang.Integer">
+            <column name="RELATE_UNIT" />
+        </property>
+        <property name="relateFloor" type="java.lang.Integer">
+            <column name="RELATE_FLOOR" />
+        </property>
+        <property name="relateNo" type="java.lang.Integer">
+            <column name="RELATE_NO" />
+        </property>
+        <property name="holdPhone" type="java.lang.String">
+            <column name="HOLD_PHONE" />
+        </property>
+        <property name="checkInDate" type="java.lang.String">
+            <column name="CHECKIN_DATE" />
+        </property>
+        <set name="dpmsComplains"  cascade="all">
+        	<key column="HOUSEHOLD_ID"></key>
+        	<one-to-many class="com.jun.dpms.complain.bean.DpmsComplain"/>
+        </set>
+        <set name="dpmsRepairs" cascade="all">
+        	<key column="HOUSEHOLD_ID"></key>
+        	<one-to-many class="com.jun.dpms.repair.bean.DpmsRepair"/>
+        </set>
+        <set name="dpmsParks" cascade="all">
+        	<key column="HOUSEHOLD_ID"></key>
+        	<one-to-many class="com.jun.dpms.park.bean.DpmsPark"/>
+        </set>
+    </class>
+</hibernate-mapping>

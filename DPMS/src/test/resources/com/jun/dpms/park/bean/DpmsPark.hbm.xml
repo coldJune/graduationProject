@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-3-24 16:19:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.jun.dpms.park.bean.DpmsPark" table="DPMSPARK">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+     
+        <property name="plateNumber" type="java.lang.String" unique="true">
+            <column name="PLATE_NUMBER" />
+        </property>
+        <property name="startTime" type="java.lang.String">
+            <column name="START_TIME" />
+        </property>
+        <property name="endTime" type="java.lang.String">
+            <column name="END_TIME" />
+        </property>
+        <property name="price" type="java.lang.String">
+            <column name="PRICE" />
+        </property>
+        <property name="isCharge" type="java.lang.String">
+            <column name="IS_CHARGE" />
+        </property>
+          <many-to-one name="dpmsHousehold" class="com.jun.dpms.household.bean.DpmsHousehold" lazy="false" >
+            <column name="HOUSEHOLD_ID" />
+        </many-to-one> 
+    </class>
+</hibernate-mapping>

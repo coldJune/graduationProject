@@ -166,7 +166,18 @@
                					 </div>
 					               
 			               </div>
-
+							 <div class="row form-group">
+			              
+				                <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="phone">户主电话</label>
+				                    <input type="text" class="form-control" id="phone"  name="dpmsHousehold.holdPhone" required="required">                  
+				                </div> 
+				            	<div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="plateNumber">车牌号</label>
+				                    <input type="text" class="form-control" id="plateNumber"  name="dpmsHousehold.plateNumber" >                  
+				                </div> 
+				                
+			               </div>
 			               <div class="row form-group">
 			               		<div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="familyNo">家庭人数</label>
@@ -209,14 +220,6 @@
 					                    <option value="" selected>---门牌号---</option>
 					                  </select>                  
 				                </div>  
-				                
-			               </div>
-			               <div class="row form-group">
-			              
-				                <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="phone">户主电话</label>
-				                    <input type="text" class="form-control" id="phone"  name="dpmsHousehold.holdPhone" required="required">                  
-				                </div> 
 				                
 			               </div>
 

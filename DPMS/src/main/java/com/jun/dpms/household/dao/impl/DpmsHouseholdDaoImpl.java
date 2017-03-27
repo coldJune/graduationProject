@@ -48,13 +48,14 @@ public class DpmsHouseholdDaoImpl implements IDpmsHouseholdDao {
 	@Override
 	public void updateRealEstat(DpmsHousehold dpmsHousehold) {
 		// TODO Auto-generated method stub
-		Query q = this.getCurrentSession().createQuery("update DpmsHousehold h  set h.holdAge=?,h.familyNo=?,h.hasPackin=?,h.relateNo=?,h.holdPhone=? where h.id=?");
+		Query q = this.getCurrentSession().createQuery("update DpmsHousehold h  set h.holdAge=?,h.familyNo=?,h.hasPackin=?,h.relateNo=?,h.holdPhone=?,h.plateNumber=? where h.id=?");
 		q.setInteger(0, dpmsHousehold.getHoldAge());
 		q.setInteger(1, dpmsHousehold.getFamilyNo());
 		q.setString(2, dpmsHousehold.getHasPackin());
 		q.setInteger(3, dpmsHousehold.getRelateNo());
 		q.setString(4, dpmsHousehold.getHoldPhone());
-		q.setInteger(5, dpmsHousehold.getId());
+		q.setString(5, dpmsHousehold.getPlateNumber());
+		q.setInteger(6, dpmsHousehold.getId());
 		q.executeUpdate();
 	}
 

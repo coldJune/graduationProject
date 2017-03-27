@@ -103,6 +103,12 @@
 			              </div>
 			               <div class="row form-group">
 			               		 <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="plateNumber">车牌号</label>
+				                    <input type="number" min="0" class="form-control" id="plateNumber" name="dpmsHousehold.plateNumber" value="${dpmsHousehold.plateNumber}"  >                 
+				                </div>     
+			               </div>
+			               <div class="row form-group">
+			               		 <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="relateRealEstate">所属楼栋</label>
 				                    <input type="number" min="0" class="form-control" id="relateRealEstate" name="dpmsHousehold.relateRealEstate" value="${dpmsHousehold.relateRealEstate}" readonly="readonly" >                 
 				                </div> 

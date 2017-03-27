@@ -182,4 +182,17 @@
     		</result>
     	</action>
     </package>
+    
+    <!-- 停车场收费管理 -->
+    <package name="park" namespace="/park" extends="struts-default,json-default">
+    	<action name="findAllPark" class="dpmsParkAction" method="findAll">
+    		<result>/jsp/park/park.jsp</result>
+    	</action>
+    	<action name="findHisAllPark" class="dpmsParkAction" method="findHisAll">
+    		<result>/jsp/park/park_his.jsp</result>
+    	</action>
+    	<action name="searchPark" class="dpmsParkAction" method="search">
+    		<result>/jsp/park/park_search.jsp</result>
+    	</action>
+    </package>
 </struts>

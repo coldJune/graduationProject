@@ -49,5 +49,9 @@
         	<key column="HOUSEHOLD_ID"></key>
         	<one-to-many class="com.jun.dpms.repair.bean.DpmsRepair"/>
         </set>
+        <set name="dpmsParks" cascade="all" lazy="false">
+        	<key column="HOUSEHOLD_ID"></key>
+        	<one-to-many class="com.jun.dpms.park.bean.DpmsPark"/>
+        </set>
     </class>
 </hibernate-mapping>
