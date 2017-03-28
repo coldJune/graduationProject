@@ -1,8 +1,12 @@
 package com.jun.dpms.park.dao.impl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -100,6 +104,38 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 			}
 		}
 		return null;
+	}
+	@Override
+	public boolean updateLeave(String plateNumber) {
+		// TODO Auto-generated method stub
+		try {
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String endTime = df.format(new Date());
+			Query q = this.getCurrentSession().createQuery("update DpmsPark p set p.isCharge='ÊÇ',p.price='0',p.endTime=? where p.plateNumber=?");
+			q.setString(0, endTime);
+			q.setString(1, plateNumber);
+			q.executeUpdate();
+			return true;
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			return false;
+		}
+	}
+	@Override
+	public boolean updateCharge(DpmsPark dpmsPark) {
+		// TODO Auto-generated method stub
+		try {
+			Query q = this.getCurrentSession().createQuery("update DpmsPark p set p.isCharge='ÊÇ',p.price=?,p.endTime=? where p.plateNumber=?");
+			System.out.println(dpmsPark.getPlateNumber());
+			q.setString(0, dpmsPark.getPrice());
+			q.setString(1, dpmsPark.getEndTime());
+			q.setString(2, dpmsPark.getPlateNumber());
+			q.executeUpdate();
+			return true;
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			return false;
+		}
 	}
 	
 }

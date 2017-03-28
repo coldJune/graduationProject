@@ -46,4 +46,16 @@ public class DpmsParkServiceImpl implements IDpmsParkService {
 		// TODO Auto-generated method stub
 		return dpmsParkDao.searchByPlateNumber(plateNumber);
 	}
+
+	@Override
+	public boolean updateLeave(String plateNumber) {
+		// TODO Auto-generated method stub
+		return dpmsParkDao.updateLeave(plateNumber);
+	}
+
+	@Override
+	public boolean updateCharge(DpmsPark dpmsPark) {
+		// TODO Auto-generated method stub
+		return dpmsParkDao.updateCharge(dpmsPark);
+	}
 }

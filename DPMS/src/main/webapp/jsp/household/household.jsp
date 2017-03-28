@@ -69,7 +69,7 @@
           <%} %>
             <li><a href="../realEstate/findAllRealEstate" ><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
-            <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
+            <li><a href="../park/findAllPark"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
             <li><a href="findAllHousehold" class="active"><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
             <li><a href="#"><i class="fa fa-sliders fa-fw"></i>住户保修管理</a></li>
             <li><a href="#"><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>

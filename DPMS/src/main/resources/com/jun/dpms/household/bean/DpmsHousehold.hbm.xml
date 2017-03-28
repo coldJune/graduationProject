@@ -23,6 +23,9 @@
         <property name="hasPackin" type="java.lang.String">
             <column name="HAS_PACKIN" />
         </property>
+        <property name="plateNumber" type="java.lang.String">
+        	<column name="PLATE_NUMBER"></column>
+        </property>
         <property name="relateRealEstate" type="java.lang.Integer">
             <column name="RELATE_REALESTATE" />
         </property>

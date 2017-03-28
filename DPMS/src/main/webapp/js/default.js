@@ -146,6 +146,30 @@ $(document).ready(function(){
 		
 	});
 	
+	/**
+	 * 停车信息管理
+	 */
+	$('#leavePark').click(function(){
+		$.ajax({
+			url:'leavePark',
+			data:{'dpmsPark.plateNumber':$(this).find('input').val()},
+			type:'post',
+			async:false,
+			success:function(response){
+				
+				if(response.result=='true'){
+					alert(response.msg);
+					window.location.reload();
+				}else{
+					alert(response.msg);
+					window.location.reload();
+				}
+			},
+			failure:function(){
+				alert('离场失败');
+			}
+		});
+	});
 
 });
 

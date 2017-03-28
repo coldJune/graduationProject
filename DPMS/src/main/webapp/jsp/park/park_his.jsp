@@ -138,7 +138,7 @@
                     			</td>
                   				<td style="text-align: center;">${dpmsPark.id}</td>
 								<td style="text-align: center;"><a href="showDetailPark?plateNumber=${dpmsPark.plateNumber}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPark.plateNumber}</i></a></td>
-								<td style="text-align: center;">${dpmsPark.price}</td>
+								<td style="text-align: center;">${dpmsPark.price}元</td>
 								<td style="text-align: center;">${dpmsPark.startTime}</td>
 								<td style="text-align: center;">${dpmsPark.endTime}</td>
 							</tr>

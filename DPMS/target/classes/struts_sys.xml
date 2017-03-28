@@ -194,5 +194,18 @@
     	<action name="searchPark" class="dpmsParkAction" method="search">
     		<result>/jsp/park/park_search.jsp</result>
     	</action>
+    	<action name="leavePark" class="dpmsParkAction" method="leave">
+    		<result type="json">
+    			<param name="root">sessionMap</param>
+    		</result>
+    	</action>
+    	<action name="chargeBPark" class="dpmsParkAction" method="chargeB">
+    		<result>/jsp/park/park_charge.jsp</result>
+    	</action>
+    	<action name="chargePark" class="dpmsParkAction" method="charge">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllPark</param>
+    		</result>
+    	</action>
     </package>
 </struts>

@@ -36,4 +36,16 @@ public interface IDpmsParkService {
 	 * @return
 	 */
 	public DpmsPark searchByPlateNumber(String plateNumber);
+	
+	/**
+	 * ¿Î≥°
+	 * @param plateNumber
+	 */
+	public boolean updateLeave(String plateNumber);
+	/**
+	 *  ’∑—
+	 * @param dpmsPark
+	 * @return
+	 */
+	public boolean updateCharge(DpmsPark dpmsPark);
 }
