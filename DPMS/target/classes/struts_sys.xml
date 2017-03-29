@@ -207,5 +207,8 @@
     			<param name="actionName">findAllPark</param>
     		</result>
     	</action>
+    	<action name="showDetailPark" class="dpmsParkAction" method="showDetail">
+    		<result>/jsp/park/park_detail.jsp</result>
+    	</action>
     </package>
 </struts>

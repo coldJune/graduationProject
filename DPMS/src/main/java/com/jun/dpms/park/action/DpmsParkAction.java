@@ -106,6 +106,11 @@ public class DpmsParkAction extends ActionSupport{
 		dpmsParkService.updateCharge(dpmsPark);
 		return SUCCESS;
 	}
+	
+	public String showDetail(){
+		dpmsPark=dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber());
+		return SUCCESS;
+	}
 	public List<DpmsPark> getDpmsParks() {
 		return dpmsParks;
 	}

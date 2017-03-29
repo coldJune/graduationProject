@@ -34,7 +34,7 @@
     			var startH=startTime.getHours();
     			var endH=endTime.getHours();
     			//在白天停车
-    			if(startH>8&&startH<19&&endH>8&&endH<19){
+    			if(startH>8&&startH<19&&endH>startH&&endH<19){
     				//如果停车小时数为整数
     				if(hours>1){
     					if(Math.floor(hours)==hours){
@@ -64,7 +64,7 @@
     				var h=Math.abs(night.getTime()-endTime.getTime)/(1000*60*60.0);
     				price+=(h/4)*2+(h%4>0?2:0);
     			//白天停到隔天白天
-    			}else if(startH>8&&startH<19&&endH>8){
+    			}else if(startH>8&&startH<19&&endH>8&&endH<startH){
     				var startM=startTime.getMinutes();
     				if(startM<30){
     					price=2+(19-startH-1);

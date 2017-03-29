@@ -137,10 +137,9 @@
                     				</div>
                     			</td>
                   				<td style="text-align: center;">${dpmsPark.id}</td>
-								<td style="text-align: center;"><a href="showDetailPark?plateNumber=${dpmsPark.plateNumber}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPark.plateNumber}</i></a></td>
+								<td style="text-align: center;"><a href="showDetailPark?dpmsPark.plateNumber=${dpmsPark.plateNumber}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPark.plateNumber}</i></a></td>
 								<td style="text-align: center;">${dpmsPark.startTime}</td>
-								<c:choose>
-									
+								<c:choose>						
 									<c:when test="${dpmsPark.dpmsHousehold.hasPackin=='是'&&dpmsPark.dpmsHousehold.plateNumber==dpmsPark.plateNumber}">
 										<td style="text-align: center;"><a href="#" id="leavePark" class="templatemo-edit-btn" ><input value="${dpmsPark.plateNumber }" hidden="true"/>离场</a></td>
 									</c:when>
