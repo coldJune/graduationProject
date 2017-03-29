@@ -58,4 +58,10 @@ public class DpmsParkServiceImpl implements IDpmsParkService {
 		// TODO Auto-generated method stub
 		return dpmsParkDao.updateCharge(dpmsPark);
 	}
+
+	@Override
+	public void addPark(DpmsPark dpmsPark) {
+		// TODO Auto-generated method stub
+		dpmsParkDao.addPark(dpmsPark);
+	}
 }

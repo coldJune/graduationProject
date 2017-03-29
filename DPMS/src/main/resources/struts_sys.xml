@@ -210,5 +210,13 @@
     	<action name="showDetailPark" class="dpmsParkAction" method="showDetail">
     		<result>/jsp/park/park_detail.jsp</result>
     	</action>
+    	<action name="addBPark" class="dpmsParkAction" method="addB">
+    		<result>/jsp/park/park_add.jsp</result>
+    	</action>
+    	<action name="addPark" class="dpmsParkAction" method="add">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllPark</param>
+    		</result>
+    	</action>
     </package>
 </struts>

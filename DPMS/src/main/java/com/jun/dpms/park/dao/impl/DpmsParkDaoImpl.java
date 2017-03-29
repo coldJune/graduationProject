@@ -137,5 +137,23 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 			return false;
 		}
 	}
+	@Override
+	public void addPark(DpmsPark dpmsPark) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("from DpmsHousehold h where h.hasPackin='ÊÇ' and h.plateNumber=?");
+		q.setString(0, dpmsPark.getPlateNumber());
+		DateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String startTime=df.format(new Date());
+		dpmsPark.setStartTime(startTime);
+		dpmsPark.setIsCharge("·ñ");
+		dpmsPark.setPlateNumber(dpmsPark.getPlateNumber());
+		List<DpmsHousehold> dpmsHouseholds = q.list();
+		if(dpmsHouseholds!=null&&!dpmsHouseholds.isEmpty()){
+			for (DpmsHousehold dpmsHousehold : dpmsHouseholds) {
+				dpmsPark.setDpmsHousehold(dpmsHousehold);
+			}
+		}
+		this.getCurrentSession().save(dpmsPark);
+	}
 	
 }

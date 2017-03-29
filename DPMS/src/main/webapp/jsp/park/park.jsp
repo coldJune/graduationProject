@@ -110,7 +110,7 @@
 				        	  </form>
 			        	 </div>
 			        	<div class="form-group text-right" style="width: 40%;float: right;">
-				                <a href="addBHousehold"><button type="button" class="templatemo-blue-button" >入场</button></a>
+				                <a href="addBPark"><button type="button" class="templatemo-blue-button" >入场</button></a>
 				                <button id="del" type="button" class="templatemo-white-button">删除</button>
 				       	</div>
 	          		</div>

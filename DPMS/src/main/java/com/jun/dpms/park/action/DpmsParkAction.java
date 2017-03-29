@@ -106,9 +106,26 @@ public class DpmsParkAction extends ActionSupport{
 		dpmsParkService.updateCharge(dpmsPark);
 		return SUCCESS;
 	}
-	
+	/**
+	 * 显示详情页面
+	 * @return
+	 */
 	public String showDetail(){
 		dpmsPark=dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber());
+		return SUCCESS;
+	}
+	/**
+	 * 入科前跳转
+	 */
+	public String addB(){
+		return SUCCESS;
+	}
+	/***
+	 * 入库
+	 * @return
+	 */
+	public String add(){
+		dpmsParkService.addPark(dpmsPark);
 		return SUCCESS;
 	}
 	public List<DpmsPark> getDpmsParks() {

@@ -48,4 +48,9 @@ public interface IDpmsParkService {
 	 * @return
 	 */
 	public boolean updateCharge(DpmsPark dpmsPark);
+	/**
+	 * Èë¿â
+	 * @param dpmsPark
+	 */
+	public void addPark(DpmsPark dpmsPark);
 }

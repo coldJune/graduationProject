@@ -17,6 +17,16 @@
     <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
     <script type="text/javascript">
+  /// <summary> 
+  /// 格式化显示日期时间 
+  /// </summary> 
+  /// <param name="x">待显示的日期时间，例如new Date()</param> 
+  /// <param name="y">需要显示的格式，例如yyyy-MM-dd hh:mm:ss</param> 
+		  function date2str(x,y) { 
+		    var z = {M:x.getMonth()+1,d:x.getDate(),h:x.getHours(),m:x.getMinutes(),s:x.getSeconds()}; 
+		    y = y.replace(/(M+|d+|h+|m+|s+)/g,function(v) {return ((v.length>1?"搜索0":"")+eval('z.'+v.slice(-1))).slice(-2)}); 
+		    return y.replace(/(y+)/g,function(v) {return x.getFullYear().toString().slice(-v.length)}); 
+		  } 
     	$(document).ready(function(){
     		/**
     		白天收费标准（8:00—19:00）：起价2元/小时（不足1小时按1小时计费），第一小时后每小时1元（不足半小时按半小时计费）
@@ -34,7 +44,7 @@
     			var startH=startTime.getHours();
     			var endH=endTime.getHours();
     			//在白天停车
-    			if(startH>8&&startH<19&&endH>startH&&endH<19){
+    			if(startH>8&&startH<19&&endH>=startH&&endH<19){
     				//如果停车小时数为整数
     				if(hours>1){
     					if(Math.floor(hours)==hours){
@@ -125,11 +135,11 @@
     			}
     		}else{
     			
-    			hours-=24;
+    			hours-=24*Math.floor(days);
     			var startH=startTime.getHours();
     			var endH=endTime.getHours();
     			//在白天停车
-    			if(startH>8&&startH<19&&endH>8&&endH<19){
+    			if(startH>8&&startH<19&&endH>=startH&&endH<19){
     				if(hours>1){
     					if(Math.floor(hours)==hours){
         					price=2+(endH-startH-1);
@@ -220,7 +230,7 @@
     			price+=Math.floor(days)*20;
     		}
     		$('#price').val(price);
-    		$('#endTime').val(endTime.getFullYear()+'-'+endTime.getMonth()+'-'+endTime.getDate()+' '+endTime.getHours()+':'+endTime.getMinutes()+':'+endTime.getSeconds())
+    		$('#endTime').val(date2str(endTime,'yyyy-MM-dd hh:mm:ss'));
     		
     		$('#realPrice').blur(function(){
     			var price=$('#price').val();
