@@ -34,7 +34,7 @@ public interface IDpmsParkDao {
 	 * @param plateNumber
 	 * @return
 	 */
-	public DpmsPark searchByPlateNumber(String plateNumber);
+	public List<DpmsPark> searchByPlateNumber(String plateNumber);
 	/**
 	 * 离场
 	 * @param plateNumber
@@ -51,4 +51,9 @@ public interface IDpmsParkDao {
 	 * @param dpmsPark
 	 */
 	public void addPark(DpmsPark dpmsPark);
+	/**
+	 * 删除停车场信息
+	 * @param ids
+	 */
+	public void delPark(int[] ids);
 }

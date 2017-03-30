@@ -16,6 +16,25 @@
     <link href="../css/table.css" rel="stylesheet">
     <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$('#plateNumber').val('');
+    		$('#plateNumber').blur(function(){
+    			$.ajax({
+    				url:'checkPark',
+    				data:{'dpmsPark.plateNumber':$(this).val()},
+    				type:'post',
+    				success:function(response){
+    					if(response.result='false'){
+    						alert(response.msg);
+    						$(this).val('');
+    					}
+    				}
+    				
+    			});
+    		});
+    	});
+    </script>
   </head>
   <body>
   	<div class="templatemo-flex-row">

@@ -218,5 +218,15 @@
     			<param name="actionName">findAllPark</param>
     		</result>
     	</action>
+    	<action name="checkPark" class="dpmsParkAction" method="checkPark">
+    		<result type="json">
+    			<param name="root">sessionMap</param>
+    		</result>
+    	</action>
+    	<action name="delPark" class="dpmsParkAction" method="del">
+    		<result type="json">
+    			<param name="root">sessionMap</param>
+    		</result>
+    	</action>
     </package>
 </struts>

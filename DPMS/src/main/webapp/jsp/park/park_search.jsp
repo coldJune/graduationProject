@@ -20,22 +20,22 @@
     <script type="text/javascript">
     	$(document).ready(function(){
     		$('#del').click(function(){
-    			var estateNos=[];
+    			var ids=[];
     			$('input:checkbox[name=check]:checked').each(function(){
-    				estateNos.push($(this).val());
+    				ids.push($(this).val());
     			});
-    			if(estateNos==null){
+    			if(ids==null){
     				alert('请选择删除的内容');
     			}else{
         			$.ajax({
         				type:'post',
-        				url:'delRealEstate',
-        				data:{'estateNos':estateNos},
+        				url:'delPark',
+        				data:{'ids':ids},
         				traditional:true,
         				async: false,
         				success:function(){
         					alert('删除成功');
-        					window.location.href='findAllRealEstate';
+        					window.location.reload();
         				},
         				failure:function(){
         					alert('删除失败');
@@ -132,13 +132,13 @@
                     				</div>
                     			</td>
                   				<td style="text-align: center;">${dpmsPark.id}</td>
-								<td style="text-align: center;"><a href="showDetailPark?dpmsPark.plateNumber=${dpmsPark.plateNumber}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPark.plateNumber}</i></a></td>
+								<td style="text-align: center;"><a href="showDetailPark?dpmsPark.plateNumber=${dpmsPark.plateNumber}&dpmsPark.id=${dpmsPark.id}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPark.plateNumber}</i></a></td>
 								<td style="text-align: center;">${dpmsPark.price}</td>
 								<td style="text-align: center;">${dpmsPark.startTime}</td>
 								<td style="text-align: center;">${dpmsPark.endTime}</td>
 								<c:choose>
 									<c:when test="${dpmsPark.isCharge=='是'}">
-										<td style="text-align: center;"><a href="" class="templatemo-edit-btn">已收费</a></td>
+										<td style="text-align: center;"><a href="javascript:volid(0);" class="templatemo-edit-btn" >已收费</a></td>
 									</c:when>
 									<c:when test="${dpmsPark.dpmsHousehold.hasPackin=='是'&&dpmsPark.dpmsHousehold.plateNumber==dpmsPark.plateNumber}">
 										<td style="text-align: center;"><a href="#" id="leavePark" class="templatemo-edit-btn" ><input value="${dpmsPark.plateNumber }" hidden="true"/>离场</a></td>

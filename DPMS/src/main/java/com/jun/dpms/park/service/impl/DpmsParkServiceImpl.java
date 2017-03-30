@@ -42,7 +42,7 @@ public class DpmsParkServiceImpl implements IDpmsParkService {
 	}
 
 	@Override
-	public DpmsPark searchByPlateNumber(String plateNumber) {
+	public List<DpmsPark> searchByPlateNumber(String plateNumber) {
 		// TODO Auto-generated method stub
 		return dpmsParkDao.searchByPlateNumber(plateNumber);
 	}
@@ -63,5 +63,11 @@ public class DpmsParkServiceImpl implements IDpmsParkService {
 	public void addPark(DpmsPark dpmsPark) {
 		// TODO Auto-generated method stub
 		dpmsParkDao.addPark(dpmsPark);
+	}
+
+	@Override
+	public void delPark(int[] ids) {
+		// TODO Auto-generated method stub
+		dpmsParkDao.delPark(ids);
 	}
 }

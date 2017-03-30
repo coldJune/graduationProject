@@ -22,6 +22,7 @@ public class DpmsParkAction extends ActionSupport{
 	private Page page=new Page();
 	private DpmsPark dpmsPark;
 	private Map sessionMap;
+	private int[] ids;
 	
 	/**
 	 * 查询停车场信息
@@ -69,7 +70,8 @@ public class DpmsParkAction extends ActionSupport{
 	public String search(){
 		if(dpmsParks!=null&&!dpmsParks.isEmpty()){
 			dpmsParks.clear();
-		}		dpmsParks.add(dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber()));
+		}		
+		dpmsParks=dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber());
 		return SUCCESS;
 	}
 	/**
@@ -95,7 +97,13 @@ public class DpmsParkAction extends ActionSupport{
 	 * @return
 	 */
 	public String chargeB(){
-		dpmsPark=dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber());
+		List<DpmsPark> dpmsParks =dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber());
+		for (DpmsPark dpmsPars : dpmsParks) {
+			if(dpmsPars.getIsCharge().equals("否")){
+				dpmsPark=dpmsPars;
+				return SUCCESS;
+			}
+		}
 		return SUCCESS;
 	}
 	/**
@@ -111,7 +119,13 @@ public class DpmsParkAction extends ActionSupport{
 	 * @return
 	 */
 	public String showDetail(){
-		dpmsPark=dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber());
+		List<DpmsPark> results=dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber());
+		for (DpmsPark dpmsPar : results) {
+			if(dpmsPar.getId()==dpmsPark.getId()){
+				dpmsPark=dpmsPar;
+				return SUCCESS;
+			}
+		}
 		return SUCCESS;
 	}
 	/**
@@ -126,6 +140,30 @@ public class DpmsParkAction extends ActionSupport{
 	 */
 	public String add(){
 		dpmsParkService.addPark(dpmsPark);
+		return SUCCESS;
+	}
+	
+	public String checkPark(){
+		List<DpmsPark> results=dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber());
+		if(results!=null&&!results.isEmpty()){
+			for (DpmsPark dpmsPar : results) {
+				if(dpmsPar!=null){
+					if(!dpmsPar.getIsCharge().equals("是")){
+						Map<String, String> map = new HashMap<>();
+						map.put("result", "false");
+						map.put("msg", "该车已经在库中");
+						setSessionMap(map);
+						return SUCCESS;
+					}	
+				}
+			}
+		}
+		
+		return SUCCESS;
+	}
+	
+	public String del(){
+		dpmsParkService.delPark(ids);
 		return SUCCESS;
 	}
 	public List<DpmsPark> getDpmsParks() {
@@ -159,5 +197,11 @@ public class DpmsParkAction extends ActionSupport{
 	}
 	public void setSessionMap(Map sessionMap) {
 		this.sessionMap = sessionMap;
+	}
+	public int[] getIds() {
+		return ids;
+	}
+	public void setIds(int[] ids) {
+		this.ids = ids;
 	}
 }

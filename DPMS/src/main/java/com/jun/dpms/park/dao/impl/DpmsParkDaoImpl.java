@@ -52,9 +52,11 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 		}
 		
 		for (String plateNumber : plateNumbers) {
-			DpmsPark dpmsPark=this.searchByPlateNumber(plateNumber);
-			if(dpmsPark!=null){
-				dpmsParks.add(dpmsPark);
+			List<DpmsPark> rs=this.searchByPlateNumber(plateNumber);
+			if(rs!=null&&!rs.isEmpty()){
+				for (DpmsPark dpmsPark : rs) {
+					dpmsParks.add(dpmsPark);
+				}
 			}
 		}
 		
@@ -70,11 +72,12 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 		return q.list();
 	}
 	@Override
-	public DpmsPark searchByPlateNumber(String plateNumber) {
+	public List<DpmsPark> searchByPlateNumber(String plateNumber) {
 		// TODO Auto-generated method stub
 		Query q = this.getCurrentSession().createQuery("select p.dpmsHousehold,p.startTime,p.endTime,p.price,p.isCharge from DpmsPark p where p.plateNumber=?");
 		q.setString(0, plateNumber);
 		List<Object> objs=q.list();
+		List<DpmsPark> dpmsParks=new ArrayList<>();
 		if(objs!=null&&!objs.isEmpty()){
 			for (Object object : objs) {
 				Object[] objects=(Object[])object;
@@ -91,19 +94,15 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 				dpmsPark.setEndTime(endTime);
 				dpmsPark.setPrice(price);
 				dpmsPark.setIsCharge(isCharge);
-				return dpmsPark;
+				dpmsParks.add(dpmsPark);
 			}
+			return dpmsParks;
 		}else{
 			q=this.getCurrentSession().createQuery("from DpmsPark p where p.plateNumber=?");
 			q.setString(0, plateNumber);
-			List<DpmsPark> dpmsParks=q.list();
-			if(dpmsParks!=null&&!dpmsParks.isEmpty()){
-				for (DpmsPark dpmsPark : dpmsParks) {
-					return dpmsPark;
-				}
-			}
+			dpmsParks=q.list();
+			return dpmsParks;
 		}
-		return null;
 	}
 	@Override
 	public boolean updateLeave(String plateNumber) {
@@ -154,6 +153,15 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 			}
 		}
 		this.getCurrentSession().save(dpmsPark);
+	}
+	@Override
+	public void delPark(int[] ids) {
+		// TODO Auto-generated method stub
+		Query q =this.getCurrentSession().createQuery("delete from DpmsPark p where p.id=?");
+		for (int i : ids) {
+			q.setInteger(0, i);
+			q.executeUpdate();
+		}
 	}
 	
 }
