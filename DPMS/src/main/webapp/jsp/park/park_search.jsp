@@ -138,7 +138,7 @@
 								<td style="text-align: center;">${dpmsPark.endTime}</td>
 								<c:choose>
 									<c:when test="${dpmsPark.isCharge=='是'}">
-										<td style="text-align: center;"><a href="javascript:volid(0);" class="templatemo-edit-btn" >已收费</a></td>
+										<td style="text-align: center;"><a href="javascript:void(0);" class="templatemo-edit-btn" >已收费</a></td>
 									</c:when>
 									<c:when test="${dpmsPark.dpmsHousehold.hasPackin=='是'&&dpmsPark.dpmsHousehold.plateNumber==dpmsPark.plateNumber}">
 										<td style="text-align: center;"><a href="#" id="leavePark" class="templatemo-edit-btn" ><input value="${dpmsPark.plateNumber }" hidden="true"/>离场</a></td>

@@ -40,4 +40,9 @@ public interface IDpmsSysUserDao {
 	 * @param userName
 	 */
 	public void delSysUser(String[] userNames);
+	/**
+	 * ±£´æÍ¼Æ¬Â·¾¶
+	 * @param dpmsSysUser
+	 */
+	public void updateImg(DpmsSysUser dpmsSysUser);
 }

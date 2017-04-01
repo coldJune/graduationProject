@@ -1,17 +1,21 @@
 
 package com.jun.dpms.sysUser.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.context.ApplicationContext;
+import org.apache.struts2.json.annotations.JSON;
 
 import com.jun.dpms.sysUser.bean.DpmsSysUser;
 import com.jun.dpms.sysUser.service.IDpmsSysUserService;
@@ -19,7 +23,6 @@ import com.jun.dpms.util.MD5Util;
 import com.jun.dpms.util.SecurityCode;
 import com.jun.dpms.util.SendMail;
 import com.jun.dpms.util.pagecut.bean.Page;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 /**
@@ -37,6 +40,11 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	private Page page = new Page();
 	private List<DpmsSysUser> dpmsSysUsers;
 	private String userNames[];
+	private File imgHead;
+	private String imgHeadFileName;
+	private String imgHeadContentType;
+	private InputStream imageStream;
+	private Map sessionMap;
 	public List<DpmsSysUser> getDpmsSysUsers() {
 		return dpmsSysUsers;
 	}
@@ -125,6 +133,54 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 		dpmsSysUserService.delSysUser(userNames);
 		return SUCCESS;
 	}
+	
+	/**
+	 * 上传图片
+	 */
+	
+	public String uploadImg(){
+		try {
+			InputStream is = new FileInputStream(imgHead);
+			String userName="root";//(String)ServletActionContext.getRequest().getAttribute("USERNAME");
+			String fileName=userName+imgHeadFileName.substring(imgHeadFileName.lastIndexOf('.'), imgHeadFileName.length());
+			String savePath=this.getClass().getClassLoader().getResource("").getPath();
+			savePath=savePath.split("WEB-INF/classes")[0]+"head/";
+			File myPath=new File(savePath);
+			if(!myPath.exists()){
+				myPath.mkdir();
+			}
+			String imgPath=savePath+fileName;
+			OutputStream os = new FileOutputStream(imgPath);
+			byte[] buffer = new byte[1024];
+			int count=0;
+			while((count = is.read(buffer)) > 0){
+				os.write(buffer, 0, count);
+			}
+			os.flush();
+			os.close();
+			is.close();
+			dpmsSysUser.setImgPath(imgPath);
+			dpmsSysUser.setUserName(userName);
+			dpmsSysUserService.updateImg(dpmsSysUser);
+		} catch (Exception e) {
+			// TODO: handle exception
+			Map<String, String> map = new HashMap<>();
+			map.put("false", "上传失败");
+			setSessionMap(map);
+		}
+		return SUCCESS;
+	}
+	
+	public String showHead(){
+		try {
+			String userName=(String) ServletActionContext.getRequest().getAttribute("USERNAME");
+			imageStream=new FileInputStream(new File(dpmsSysUserService.searchByUserName("root").getImgPath()));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
 	@Override
 	public Object getModel() {
 		// TODO Auto-generated method stub
@@ -155,6 +211,48 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	public void setUserNames(String[] userNames) {
 		this.userNames = userNames;
 	}
+	@JSON(serialize=false)
+	public File getImgHead() {
+		return imgHead;
+	}
+
+	public void setImgHead(File imgHead) {
+		this.imgHead = imgHead;
+	}
+
+	public Map getSessionMap() {
+		return sessionMap;
+	}
+
+	public void setSessionMap(Map sessionMap) {
+		this.sessionMap = sessionMap;
+	}
+
+	public String getImgHeadContentType() {
+		return imgHeadContentType;
+	}
+
+	public void setImgHeadContentType(String imgHeadContentType) {
+		this.imgHeadContentType = imgHeadContentType;
+	}
+
+	public String getImgHeadFileName() {
+		return imgHeadFileName;
+	}
+
+	public void setImgHeadFileName(String imgHeadFileName) {
+		this.imgHeadFileName = imgHeadFileName;
+	}
+
+	public InputStream getImageStream() {
+		return imageStream;
+	}
+
+	public void setImageStream(InputStream imageStream) {
+		this.imageStream = imageStream;
+	}
+
+
 	
 	
 }

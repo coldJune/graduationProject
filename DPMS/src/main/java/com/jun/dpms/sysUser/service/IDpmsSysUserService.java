@@ -12,4 +12,9 @@ public interface IDpmsSysUserService {
 	public void addSysUser(DpmsSysUser dpmsSysUser);
 	
 	public void delSysUser(String[] userNames);
+	/**
+	 * ±£´æÍ¼Æ¬Â·¾¶
+	 * @param dpmsSysUser
+	 */
+	public void updateImg(DpmsSysUser dpmsSysUser);
 }

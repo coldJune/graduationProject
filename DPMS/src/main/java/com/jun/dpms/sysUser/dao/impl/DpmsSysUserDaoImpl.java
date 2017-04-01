@@ -92,6 +92,16 @@ public class DpmsSysUserDaoImpl implements IDpmsSysUserDao {
 	}
 
 
+	@Override
+	public void updateImg(DpmsSysUser dpmsSysUser) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.imgPath=? where u.userName=?");
+		q.setString(0, dpmsSysUser.getImgPath());
+		q.setString(1, dpmsSysUser.getUserName());
+		q.executeUpdate();
+	}
+
+
 
 
 

@@ -55,6 +55,12 @@ public class DpmsSysUserServiceImpl implements IDpmsSysUserService {
 		dpmsSysUserDao.delSysUser(userNames);
 	}
 
+	@Override
+	public void updateImg(DpmsSysUser dpmsSysUser) {
+		// TODO Auto-generated method stub
+		dpmsSysUserDao.updateImg(dpmsSysUser);
+	}
+
 
 
 

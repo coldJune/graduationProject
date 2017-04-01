@@ -16,6 +16,7 @@ public class DpmsSysUser {
 	private String name;//用户的名字
 	private String cardId;//用户的身份证号
 	private String phone;
+	private String imgPath;
 	private String createDate;//账户创建时间
 	private String lastLogin;//最后一次登录时间
 	private String birthDay;//出生年月
@@ -121,6 +122,12 @@ public class DpmsSysUser {
 	}
 	public void setIsSysPass(Integer isSysPass) {
 		this.isSysPass = isSysPass;
+	}
+	public String getImgPath() {
+		return imgPath;
+	}
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 
 	

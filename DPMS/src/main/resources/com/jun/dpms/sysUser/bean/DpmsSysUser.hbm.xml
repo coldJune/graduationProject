@@ -50,6 +50,8 @@
     	<property name="isSysPass" type="java.lang.Integer">
     		<column name="IS_SYS_PASS"></column>
     	</property>
-    	
+    	<property name="imgPath" type="java.lang.String">
+    		<column name="IMG_PATH"></column>
+    	</property>
     </class>
 </hibernate-mapping>
