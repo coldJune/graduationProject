@@ -1,5 +1,20 @@
 package com.jun.dpms.propertyCharge.service;
 
-public interface IDpmsPropertyChargeService {
+import java.util.List;
 
+import com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge;
+
+public interface IDpmsPropertyChargeService {
+	/**
+	 * 分页查询
+	 * @param eachPage
+	 * @param currentPage
+	 * @return
+	 */
+	public List<DpmsPropertyCharge> findAll(int eachPage,int currentPage);
+	/**
+	 * 总条数
+	 * @return
+	 */
+	public int getTotalItem();
 }

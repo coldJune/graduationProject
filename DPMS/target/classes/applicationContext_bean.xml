@@ -68,4 +68,15 @@
 	<bean id="dpmsParkAction" class="com.jun.dpms.park.action.DpmsParkAction">
 		<property name="dpmsParkService" ref="dpmsParkService"></property>
 	</bean>
+	
+	<!-- 物业收费模块 -->
+	<bean id="dpmsPropertyChargerDao" class="com.jun.dpms.propertyCharge.dao.impl.DpmsPropertyChargeDaoImpl">
+		<property name="sessinFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dpmsPropertyChargeService" class="com.jun.dpms.propertyCharge.service.impl.DpmsPropertyChargeServiceImpl">
+		<property name="dpmsPropertyChargeDao" ref="dpmsPropertyChargerDao"></property>
+	</bean>
+	<bean id="dpmsPropertyChargeAction" class="com.jun.dpms.propertyCharge.action.DpmsPropertyChargeAction">
+		<property name="dpmsPropertyChargeService" ref="dpmsPropertyChargeService"></property>
+	</bean>
 </beans>
