@@ -140,6 +140,7 @@
 								<td style="text-align: center;">${dpmsHousehold.holdGender}</td>
 								<td style="text-align: center;">${dpmsHousehold.holdAge}</td>
 								<td style="text-align: center;">${dpmsHousehold.familyNo}</td>
+								<td style="text-align: center;">${dpmsHousehold.area}</td>
 								<td style="text-align: center;">${dpmsHousehold.hasPackin}</td>
 								<td style="text-align: center;">${dpmsHousehold.plateNumber}</td>
 								<td style="text-align: center;">${dpmsHousehold.relateRealEstate}</td>

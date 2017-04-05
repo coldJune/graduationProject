@@ -68,21 +68,28 @@
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="id">ID</label>
 				                    <input type="text" class="form-control" id="id" name="dpmsHousehold.id"  value="${dpmsHousehold.id}" readonly="readonly">                  
-				                </div>		               
+				                </div>
+				          </div>
+				         <div class="row form-group">          
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="holdName">户主姓名</label>
 				                    <input type="text"  class="form-control" id="holdName" name="dpmsHousehold.holdName" value="${dpmsHousehold.holdName}" readonly="readonly">                  
+				                </div>
+				                <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="holdAge">户主年龄</label>
+				                    <input type="number" min="0" class="form-control" id="holdAge" name="dpmsHousehold.holdAge" value="${dpmsHousehold.holdAge}" required="required">                  
 				                </div> 
  						  </div>
 			              <div class="row form-group">
-			               		<div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="holdAge">户主年龄</label>
-				                    <input type="number" min="0" class="form-control" id="holdAge" name="dpmsHousehold.holdAge" value="${dpmsHousehold.holdAge}" required="required">                  
-				                </div>
+			               		
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="familyNo">家庭人数</label>
 				                    <input type="number"  class="form-control" id="familyNo" name="dpmsHousehold.familyNo" min="0"  value="${dpmsHousehold.familyNo}" required="required">                  
-				                </div>  
+				                </div>
+				                <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="area">面积</label>
+				                    <input type="number"  class="form-control" id="area" name="dpmsHousehold.area" min="0"  value="${dpmsHousehold.area}" required="required">                  
+				                </div>   
 				               
 			               </div>
 			               <div class="row form-group">

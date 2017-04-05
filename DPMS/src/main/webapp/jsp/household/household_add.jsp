@@ -153,8 +153,11 @@
 				                </div> 		                 
  						  </div>
 			              <div class="row form-group">
-			               		 
-				               <div class="col-lg-12 form-group">                   
+			               		<div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="area">面积</label>
+				                    <input type="number"  class="form-control" id="area" name="dpmsHousehold.area" min="0"  value="${dpmsHousehold.area}" required="required">                  
+				                </div>  
+				               <div class="col-lg-6 form-group">                   
 				                    <div class="margin-right-15 templatemo-inline-block">
 				                      <input type="radio" name="dpmsHousehold.holdGender" id="r4" value="男" checked="checked">
 				                      <label for="r4" class="font-weight-400"><span></span>男</label>

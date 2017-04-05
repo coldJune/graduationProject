@@ -115,6 +115,7 @@
 	                    <td class="white-text">户主性别</td>
 	                    <td class="white-text">户主年龄</td>
 	                    <td class="white-text">家庭人数</td>
+	                    <td class="white-text">面积(平方米)</td>
 	                    <td class="white-text">是否有购买车位</td>
 	                     <td class="white-text">车牌号</td>
 	                    <td class="white-text">所属楼栋</td>
@@ -141,6 +142,7 @@
 								<td style="text-align: center;">${dpmsHousehold.holdGender}</td>
 								<td style="text-align: center;">${dpmsHousehold.holdAge}</td>
 								<td style="text-align: center;">${dpmsHousehold.familyNo}</td>
+								<td style="text-align: center;">${dpmsHousehold.area}</td>
 								<td style="text-align: center;">${dpmsHousehold.hasPackin}</td>
 								<td style="text-align: center;">${dpmsHousehold.plateNumber}</td>
 								<td style="text-align: center;">${dpmsHousehold.relateRealEstate}</td>

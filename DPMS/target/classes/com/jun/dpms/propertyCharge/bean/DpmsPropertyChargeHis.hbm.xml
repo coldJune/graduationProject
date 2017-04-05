@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-5 16:00:00 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis" table="DPMSPROPERTYCHARGEHIS">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="dpmsHousehold" class="com.jun.dpms.household.bean.DpmsHousehold" fetch="join">
+            <column name="DPMSHOUSEHOLD" />
+        </many-to-one>
+        <many-to-one name="dpmsPropertyCharge" class="com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge" fetch="join">
+            <column name="DPMSPROPERTYCHARGE" />
+        </many-to-one>
+        <property name="chargeTime" type="java.lang.String">
+            <column name="CHARGE_TIME" />
+        </property>
+    </class>
+</hibernate-mapping>

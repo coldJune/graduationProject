@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-4-5 16:00:00 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge" table="DPMSPROPERTYCHARGE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="propertyName" type="java.lang.String">
+            <column name="PROPERTY_NAME" />
+        </property>
+        <property name="createDate" type="java.lang.String">
+            <column name="CREATE_DATE" />
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" />
+        </property>
+        <property name="standard" type="java.lang.String">
+            <column name="STANDARD" />
+        </property>
+        <property name="isNecessary" type="java.lang.String">
+        	<column name="IS_NECESSARY"></column>
+        </property>
+       	<property name="cycle" type="java.lang.Integer">
+        	<column name="cycle"></column>
+        </property>
+        <set name="dpmsPropertyChargeHiss" table="DPMSPROPERTYCHARGEHIS" inverse="false" lazy="false">
+            <key>
+                <column name="PROPERTY_ID" />
+            </key>
+            <one-to-many class="com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis" />
+        </set>
+    </class>
+</hibernate-mapping>

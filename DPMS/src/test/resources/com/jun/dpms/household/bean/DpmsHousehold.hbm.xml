@@ -41,6 +41,9 @@
         <property name="checkInDate" type="java.lang.String">
             <column name="CHECKIN_DATE" />
         </property>
+        <property name="area" type="java.lang.Double">
+            <column name="AREA" />
+        </property>
         <set name="dpmsComplains"  cascade="all" >
         	<key column="HOUSEHOLD_ID"></key>
         	<one-to-many class="com.jun.dpms.complain.bean.DpmsComplain" />
@@ -52,6 +55,10 @@
         <set name="dpmsParks" cascade="all" lazy="false">
         	<key column="HOUSEHOLD_ID"></key>
         	<one-to-many class="com.jun.dpms.park.bean.DpmsPark"/>
+        </set>
+        <set name="dpmsPropertyChargeHiss" cascade="all" lazy="false">
+        	<key column="HOUSEHOLD_ID"></key>
+        	<one-to-many class="com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis"/>
         </set>
     </class>
 </hibernate-mapping>

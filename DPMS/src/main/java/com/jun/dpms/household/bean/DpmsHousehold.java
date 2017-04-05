@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.jun.dpms.complain.bean.DpmsComplain;
 import com.jun.dpms.park.bean.DpmsPark;
+import com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis;
 import com.jun.dpms.repair.bean.DpmsRepair;
 
 public class DpmsHousehold {
@@ -18,12 +19,20 @@ public class DpmsHousehold {
 	private Integer relateUnit;//所属单元
 	private Integer relateFloor;//所属层数
 	private Integer relateNo;//所属门牌号
+	private Double area;//面积
 	private String holdPhone;//户主电话
 	private String checkInDate;//入住时间
-	private Set<DpmsComplain> dpmsComplains;//投诉类容
+	private Set<DpmsComplain> dpmsComplains;//投诉内容
 	private Set<DpmsRepair> dpmsRepairs;//报修内容
 	private String plateNumber;
 	private Set<DpmsPark> dpmsParks;
+	private Set<DpmsPropertyChargeHis> dpmsPropertyChargeHiss;
+	public Set<DpmsPropertyChargeHis> getDpmsPropertyChargeHiss() {
+		return dpmsPropertyChargeHiss;
+	}
+	public void setDpmsPropertyChargeHiss(Set<DpmsPropertyChargeHis> dpmsPropertyChargeHiss) {
+		this.dpmsPropertyChargeHiss = dpmsPropertyChargeHiss;
+	}
 	public Set<DpmsPark> getDpmsParks() {
 		return dpmsParks;
 	}
@@ -83,6 +92,12 @@ public class DpmsHousehold {
 	}
 	public void setRelateUnit(Integer relateUnit) {
 		this.relateUnit = relateUnit;
+	}
+	public Double getArea() {
+		return area;
+	}
+	public void setArea(Double area) {
+		this.area = area;
 	}
 	public Integer getRelateFloor() {
 		return relateFloor;
