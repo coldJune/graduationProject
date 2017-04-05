@@ -196,7 +196,14 @@ public class DpmsSysAction extends ActionSupport {
 		q.setString(0, MD5Util.encode2hex(passWord));
 		q.setString(1, userName);
 		q.executeUpdate();
-		return "changePass";
+		if(ServletActionContext.getRequest().getParameter("type").equals("personal")){
+			Map<String,String> map = new HashMap<>();
+			map.put("msg", "ÐÞ¸Ä³É¹¦");
+			setSessionMap(map);
+			return "personal";
+		}else{
+			return "changePass";
+		}
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;

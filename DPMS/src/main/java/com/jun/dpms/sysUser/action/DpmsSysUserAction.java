@@ -16,6 +16,8 @@ import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.json.annotations.JSON;
+import org.springframework.context.ApplicationContext;
+import org.springframework.http.client.support.HttpAccessor;
 
 import com.jun.dpms.sysUser.bean.DpmsSysUser;
 import com.jun.dpms.sysUser.service.IDpmsSysUserService;
@@ -96,8 +98,18 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	 * 更新系统用户信息
 	 */
 	public String update(){
-		dpmsSysUserService.updateSysUser(dpmsSysUser);
-		return SUCCESS;
+		System.out.println(ServletActionContext.getRequest().getParameter("type"));
+		if(ServletActionContext.getRequest().getParameter("type").equals("personal")){
+			dpmsSysUserService.updateSysUser(dpmsSysUser);
+			Map<String, String> map= new HashMap<>();
+			map.put("msg", "修改成功");
+			setSessionMap(map);
+			return "personal";
+		}else{
+			dpmsSysUserService.updateSysUser(dpmsSysUser);
+			return SUCCESS;
+		}
+		
 	}
 	
 	/*
@@ -170,7 +182,10 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 		}
 		return SUCCESS;
 	}
-	
+	/**
+	 * 显示图片
+	 * @return
+	 */
 	public String showHead(){
 		try {
 			String userName=(String) ServletActionContext.getRequest().getAttribute("USERNAME");
@@ -179,6 +194,11 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return SUCCESS;
+	}
+	
+	public String showPersonal(){
+		dpmsSysUser = dpmsSysUserService.searchByUserName(dpmsSysUser.getUserName());
 		return SUCCESS;
 	}
 	@Override

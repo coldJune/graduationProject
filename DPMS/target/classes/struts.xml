@@ -72,6 +72,9 @@
 			</result>
 		</action>
 		<action name="changePass" class="dpmsSysAction" method="changePass">
+			<result name="personal" type="json">
+				<param name="root">sessinMap</param>
+			</result>
 			<result name="changePass" type="redirectAction">
 				<param name="actionName">logIn</param>
 			</result>

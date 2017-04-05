@@ -65,7 +65,6 @@ $(document).ready(function(){
 	
 	
 	$('#changePass').click(function(){
-		alert(flag1+":"+flag2+":"+flag3);
 		if(flag1==1&&flag2==1&&flag3==1){
 			$('form').submit();
 		}else{

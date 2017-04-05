@@ -55,26 +55,31 @@
     </script>
   </head>
   <body>
+  		 <% 
+  		 String sess=(String)session.getAttribute("USERNAME");
+          %>
   	<div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <header class="templatemo-site-header">
           <div class="square"></div>
-          <h1>Root</h1>
+          <h1><a href="../sysUser/showPersonal?dpmsSysUser.userName=root">Root </a></h1>
         </header>
         <div class="profile-photo-container">
-          <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">  
-          <div class="profile-photo-overlay"></div>
+          <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive"> 
+         <div class="profile-photo-overlay"></div>
         </div>
                 <div class="mobile-menu-icon">
             <i class="fa fa-bars"></i>
         </div>
         <nav class="templatemo-left-nav">          
           <ul>
-          <% String sess=(String)session.getAttribute("USERNAME");
-          	 if(sess=="root"){
-          %>
+         <%
+         	if(sess=="root"){        	 
+       	%>
             <li><a href="../sysUser/findAllSysUser" ><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
-          <%} %>
+          <%
+         	 }
+          %>
             <li><a href="../realEstate/findAllRealEstate" ><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>

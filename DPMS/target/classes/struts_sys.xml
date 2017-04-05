@@ -22,7 +22,10 @@
     		<result>/jsp/sysUser/sysUser_modify.jsp</result>
     	</action>
     	<action name="updateSysUser" class="dpmsSysUserAction" method="update">
-    		<result type="redirectAction">
+    		<result name="personal" type="json">
+    			<param name="root">sessionMap</param>
+    		</result>
+    		<result name="success" type="redirectAction">
 				<param name="actionName">findAllSysUser</param>
 			</result>
     	</action>
@@ -50,6 +53,9 @@
 				<param name="inputName">imageStream</param>
 				<param name="bufferSize">4096</param>
 			</result>
+    	</action>
+    	<action name="showPersonal" class="dpmsSysUserAction" method="showPersonal">
+    		<result>/personal.jsp</result>
     	</action>
     </package>
     <!-- 楼盘信息管理模块 -->
