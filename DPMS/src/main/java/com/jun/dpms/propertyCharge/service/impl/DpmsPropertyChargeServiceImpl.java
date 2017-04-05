@@ -20,13 +20,13 @@ public class DpmsPropertyChargeServiceImpl implements IDpmsPropertyChargeService
 	@Override
 	public List<DpmsPropertyCharge> findAll(int eachPage, int currentPage) {
 		// TODO Auto-generated method stub
-		return null;
+		return dpmsPropertyChargeDao.findAll(eachPage, currentPage);
 	}
 
 	@Override
 	public int getTotalItem() {
 		// TODO Auto-generated method stub
-		return 0;
+		return dpmsPropertyChargeDao.getTotalItem();
 	}
 
 }

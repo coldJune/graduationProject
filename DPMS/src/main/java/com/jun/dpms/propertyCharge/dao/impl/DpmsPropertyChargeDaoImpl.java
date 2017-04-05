@@ -2,6 +2,7 @@ package com.jun.dpms.propertyCharge.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -20,13 +21,16 @@ public class DpmsPropertyChargeDaoImpl implements IDpmsPropertyChargeDao{
 	@Override
 	public List<DpmsPropertyCharge> findAll(int eachPage, int currentPage) {
 		// TODO Auto-generated method stub
-		return null;
+		Query q = this.getCurrentSession().createQuery("from DpmsPropertyCharge p");
+		q.setMaxResults(eachPage);
+		q.setFirstResult((currentPage-1)*eachPage);
+		return q.list();
 	}
 
 	@Override
 	public int getTotalItem() {
 		// TODO Auto-generated method stub
-		return 0;
+		return ((Number)(this.getCurrentSession().createQuery("select  count(*) from DpmsPropertyCharge p").uniqueResult())).intValue();
 	}
-
+	
 }
