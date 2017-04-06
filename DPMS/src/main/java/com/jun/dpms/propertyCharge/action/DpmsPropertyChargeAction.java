@@ -1,6 +1,8 @@
 package com.jun.dpms.propertyCharge.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -19,8 +21,12 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	private Page page=new Page();
 	private DpmsPropertyCharge dpmsPropertyCharge;
 	private List<DpmsPropertyCharge> dpmsPropertyCharges;
+	private Map sessionMap;
 	
-	
+	/**
+	 * 分页查询
+	 * @return
+	 */
 	public String findAll(){
 		page.setEachPage(5);
 		page.setTotalItem(dpmsPropertyChargeService.getTotalItem());
@@ -32,6 +38,23 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 			page.setCurrentPage(1);
 		}
 		dpmsPropertyCharges=dpmsPropertyChargeService.findAll(page.getEachPage(), page.getCurrentPage());
+		return SUCCESS;
+	}
+	/**
+	 * 添加前跳转
+	 * @return
+	 */
+	public String addB(){
+		return SUCCESS;
+	}
+	
+	public String checkPropertyName(){
+		dpmsPropertyCharge=dpmsPropertyChargeService.searchByPropertyName(dpmsPropertyCharge.getPropertyName());
+		if(dpmsPropertyCharge!=null){
+			Map<String, String> map = new HashMap<>();
+			map.put("msg", "该项目已经存在");
+			setSessionMap(map);
+		}
 		return SUCCESS;
 	}
 	public IDpmsPropertyChargeService getDpmsPropertyChargeService() {
@@ -57,5 +80,11 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	}
 	public void setDpmsPropertyCharges(List<DpmsPropertyCharge> dpmsPropertyCharges) {
 		this.dpmsPropertyCharges = dpmsPropertyCharges;
+	}
+	public Map getSessionMap() {
+		return sessionMap;
+	}
+	public void setSessionMap(Map sessionMap) {
+		this.sessionMap = sessionMap;
 	}
 }

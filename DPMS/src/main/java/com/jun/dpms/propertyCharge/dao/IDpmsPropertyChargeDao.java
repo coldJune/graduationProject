@@ -17,4 +17,11 @@ public interface IDpmsPropertyChargeDao {
 	 * @return
 	 */
 	public int getTotalItem();
+	
+	/**
+	 * 根据项目名查找项目
+	 * @param PropertyName
+	 * @return
+	 */
+	public DpmsPropertyCharge searchByPropertyName(String propertyName);
 }

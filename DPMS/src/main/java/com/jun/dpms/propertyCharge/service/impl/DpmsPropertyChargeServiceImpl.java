@@ -29,4 +29,10 @@ public class DpmsPropertyChargeServiceImpl implements IDpmsPropertyChargeService
 		return dpmsPropertyChargeDao.getTotalItem();
 	}
 
+	@Override
+	public DpmsPropertyCharge searchByPropertyName(String propertyName) {
+		// TODO Auto-generated method stub
+		return dpmsPropertyChargeDao.searchByPropertyName(propertyName);
+	}
+
 }

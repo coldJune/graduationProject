@@ -32,5 +32,20 @@ public class DpmsPropertyChargeDaoImpl implements IDpmsPropertyChargeDao{
 		// TODO Auto-generated method stub
 		return ((Number)(this.getCurrentSession().createQuery("select  count(*) from DpmsPropertyCharge p").uniqueResult())).intValue();
 	}
+	@Override
+	public DpmsPropertyCharge searchByPropertyName(String propertyName) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("from DpmsPropertyCharge p where p.propertyName=?");
+		q.setString(0, propertyName);
+		List<DpmsPropertyCharge> dpmsPropertyCharges=q.list();
+		if(dpmsPropertyCharges!=null&&!dpmsPropertyCharges.isEmpty()){
+			for (DpmsPropertyCharge dpmsPropertyCharge : dpmsPropertyCharges) {
+				return dpmsPropertyCharge;
+			}
+		}else{
+			return null;
+		}
+		return null;
+	}
 	
 }

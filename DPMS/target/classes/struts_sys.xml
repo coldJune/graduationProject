@@ -257,5 +257,13 @@
     	<action name="findAllProperty" class="dpmsPropertyChargeAction" method="findAll">
     		<result>/jsp/property/property.jsp</result>
     	</action>
+    	<action name="addBProperty" class="dpmsPropertyChargeAction" method="addB">
+    		<result>/jsp/property/property_add.jsp</result>
+    	</action>
+    	<action name="checkPropertyName" class="dpmsPropertyChargeAction" method="checkPropertyName">
+    		<result type="json">
+    			<param name="root">sessionMap</param>
+    		</result>
+    	</action>
     </package>
 </struts>
