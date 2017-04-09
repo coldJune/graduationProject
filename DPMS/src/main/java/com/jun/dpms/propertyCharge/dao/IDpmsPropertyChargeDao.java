@@ -24,4 +24,22 @@ public interface IDpmsPropertyChargeDao {
 	 * @return
 	 */
 	public DpmsPropertyCharge searchByPropertyName(String propertyName);
+	
+	/**
+	 * 添加项目
+	 * @param dpmsPropertyCharge
+	 */
+	
+	public void addPropertyName(DpmsPropertyCharge dpmsPropertyCharge);
+	
+	/**
+	 * 修改物业收费项目
+	 * @param dpmsPropertyCharge
+	 */
+	public void updatePropertyCharge(DpmsPropertyCharge dpmsPropertyCharge);
+	/**
+	 * 删除项目
+	 * @param ids
+	 */
+	public void delPropertyCharge(int[] ids);
 }

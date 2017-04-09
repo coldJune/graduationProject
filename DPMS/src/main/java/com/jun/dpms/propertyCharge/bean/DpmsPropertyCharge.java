@@ -9,6 +9,9 @@ public class DpmsPropertyCharge {
 	private String remark;
 	private String standard;
 	private String isNecessary;
+	private String createPerson;
+	private String modifyPerson;
+	private String modifyDate;
 	private Integer cycle;//ÖÜÆÚ
 	private Set<DpmsPropertyChargeHis> dpmsPropertyChargeHiss;
 	public Integer getId() {
@@ -58,5 +61,23 @@ public class DpmsPropertyCharge {
 	}
 	public void setCycle(Integer cycle) {
 		this.cycle = cycle;
+	}
+	public String getCreatePerson() {
+		return createPerson;
+	}
+	public void setCreatePerson(String createPerson) {
+		this.createPerson = createPerson;
+	}
+	public String getModifyPerson() {
+		return modifyPerson;
+	}
+	public void setModifyPerson(String modifyPerson) {
+		this.modifyPerson = modifyPerson;
+	}
+	public String getModifyDate() {
+		return modifyDate;
+	}
+	public void setModifyDate(String modifyDate) {
+		this.modifyDate = modifyDate;
 	}
 }

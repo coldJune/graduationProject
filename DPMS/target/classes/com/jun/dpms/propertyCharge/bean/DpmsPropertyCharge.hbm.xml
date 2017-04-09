@@ -17,6 +17,9 @@
         <property name="remark" type="java.lang.String">
             <column name="REMARK" />
         </property>
+        <property name="createPerson" type="java.lang.String">
+            <column name="CREATE_PERSON" />
+        </property>
         <property name="standard" type="java.lang.String">
             <column name="STANDARD" />
         </property>
@@ -24,7 +27,13 @@
         	<column name="IS_NECESSARY"></column>
         </property>
        	<property name="cycle" type="java.lang.Integer">
-        	<column name="cycle"></column>
+        	<column name="CYCLE"></column>
+        </property>
+         	<property name="modifyPerson" type="java.lang.String">
+        	<column name="MODIFY_PERSON"></column>
+        </property>
+         <property name="modifyDate" type="java.lang.String">
+        	<column name="MODIFY_DATE"></column>
         </property>
         <set name="dpmsPropertyChargeHiss" table="DPMSPROPERTYCHARGEHIS" inverse="false" lazy="false">
             <key>

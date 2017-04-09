@@ -28,7 +28,7 @@
     			}else{
         			$.ajax({
         				type:'post',
-        				url:'delHousehold',
+        				url:'delPropertyCharge',
         				data:{'ids':ids},
         				traditional:true,
         				async: false,
@@ -103,7 +103,7 @@
 					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="searchHousehold">
 				          		<div class="input-group" >
 				              		<button type="submit" class="fa fa-search"></button>
-				              		<input type="text" class="form-control" placeholder="请输入户主名" name="dpmsPropertyCharge.holdName" id="srch-term">
+				              		<input type="text" class="form-control" placeholder="请输入项目名" name="dpmsPropertyCharge.holdName" id="srch-term">
 				         		 </div>
 				        	  </form>
 			        	 </div>
@@ -123,7 +123,10 @@
 	                    <td class="white-text">是否必须</td>
 	                    <td class="white-text">收费周期</td>
 	                    <td class="white-text">项目描述</td>
-	                     <td class="white-text">创建日期</td>	                  	
+	                     <td class="white-text">创建日期</td>
+	                     <td class="white-text">创建人</td>
+	                     <td class="white-text">上一次修改人</td>
+	                     <td class="white-text">上一次修改日期</td>		                  	
 	                  </tr>
 	                </thead>
 	                <tbody>
@@ -137,13 +140,23 @@
 	                    				</div>
                     				</div>
                     			</td>
-								<td style="text-align: center;"><a href="showDetailHousehold?dpmsPropertyCharge.id=${dpmsPropertyCharge.id}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPropertyCharge.id}</i></a></td>
-								<td style="text-align: center;">${dpmsPropertyCharge.propertyName}</td>
+								<td style="text-align: center;">${dpmsPropertyCharge.id}</td>
+								<td style="text-align: center;"><a href="showDetailProperty?dpmsPropertyCharge.propertyName=${dpmsPropertyCharge.propertyName}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPropertyCharge.propertyName}</i></a></td>
 								<td style="text-align: center;">${dpmsPropertyCharge.standard}</td>
 								<td style="text-align: center;">${dpmsPropertyCharge.isNecessary}</td>
-								<td style="text-align: center;">${dpmsPropertyCharge.cycle}</td>
+								<c:choose>
+									<c:when test="${dpmsPropertyCharge.cycle!=-1}">
+										<td style="text-align: center;">${dpmsPropertyCharge.cycle}</td>
+									</c:when>
+									<c:otherwise>
+										<td style="text-align: center;">无</td>
+									</c:otherwise>
+								</c:choose>
 								<td style="text-align: center;">${dpmsPropertyCharge.remark}</td>
 								<td style="text-align: center;">${dpmsPropertyCharge.createDate}</td>
+								<td style="text-align: center;">${dpmsPropertyCharge.createPerson }</td>
+								<td style="text-align: center;">${dpmsPropertyCharge.modifyPerson}</td>
+								<td style="text-align: center;">${dpmsPropertyCharge.modifyDate }</td>
 							</tr>
 						</c:forEach>                
 	                </tbody>

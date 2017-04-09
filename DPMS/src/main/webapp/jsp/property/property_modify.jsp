@@ -18,15 +18,29 @@
     <script type="text/javascript" src="../js/default.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			if($('#isNecessary').val()=='是'){
+				$('#cyclediv').show();
+				$('#cycle').attr('required','required');
+			}else{
+				$('#cyclediv').hide();
+				$('#cycle').val('');
+				$('#cycle').removeAttr('required')
+
+			}
+			
+			var standard=$('#standard').val();
+			var standardPrice=standard.split('(')[0];
+			var standardUnit=standard.split('(')[1].replace(')','');
+			$('#standardPrice').val(standardPrice);
+			$('#standardUnit').val(standardUnit);
 			$('#isNecessary').change(function(){
-				if($('#isNecessary').val()=='是'){
+				if($(this).val()=='是'){
 					$('#cyclediv').show();
 					$('#cycle').attr('required','required');
 				}else{
 					$('#cyclediv').hide();
 					$('#cycle').val('');
-					$('#cycle').removeAttr('required')
-
+					$('#cycle').removeAttr('required');
 				}
 			});
 			$('#standardPrice').blur(function(){
@@ -98,55 +112,80 @@
 	    		
 	          <div class="templatemo-content-widget white-bg">
 		          <h2 class="margin-bottom-10">物业收费信息</h2>
-            		<p>>>添加</p>
+            		<p>>>修改</p>
 		          
-			            <form  action="addPropertyCharge" class="templatemo-login-form" method="post" enctype="multipart/form-data">
+			            <form  action="updatePropertyCharge" class="templatemo-login-form" method="post" enctype="multipart/form-data">
 			              <div class="row form-group">	               
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="propertyName">项目名称</label>
-				                    <input type="text" class="form-control" id="propertyName" name="dpmsPropertyCharge.propertyName"  required="required">                  
+				                    <input type="text" class="form-control" id="propertyName" name="dpmsPropertyCharge.propertyName" value="${dpmsPropertyCharge.propertyName }" readonly="readonly" required="required">                  
 				                </div>
 				                <div class="col-lg-6 col-md-6 form-group">  
 				                     <label class="control-label templatemo-block">是否必须</label>                 
 					                 <select name="dpmsPropertyCharge.isNecessary" class="form-control" id="isNecessary" required="required">
-					                    <option value="是" >是</option>
-					                    <option value="否" selected>否</option>
+					                    <option value="是" <c:if test="${dpmsPropertyCharge.isNecessary=='是' }">selected</c:if> >是</option>
+					                    <option value="否" <c:if test="${dpmsPropertyCharge.isNecessary=='否' }">selected</c:if>>否</option>
 					                  </select>                  
 				                </div> 
 				                    
  						  </div>
 			              <div class="row form-group">
 			              	 
-			               		<div class="col-lg-6 col-md-6 form-group" id="cyclediv" hidden="true">                  
-				                    <label for="cycle">收费周期(天)</label>
-				                    <input type="number" min="0" class="form-control"  id="cycle" name="dpmsPropertyCharge.cycle" required="required">                  
-				                </div>
+			               		
 				               
 			               </div>
 			               <div class="row form-group">   
-					             <input   type="text" id="standard" name="dpmsPropertyCharge.standard" min="0" hidden="true" required="required">                  
-					             <label for="standarddiv"><strong>收费标准</strong></label>
-					            <div class="row form-group" id="standarddiv">
-					            	<div class="col-lg-3 col-md-3 form-group">                  
-					                    <label for="standardPrice">收取单价(元)</label>
-					                    <input type="number"  class="form-control" id="standardPrice" required="required">                  
-						            </div>
-						            <div class="col-lg-3 col-md-3 form-group">                  
-						                    <label for="standardUnit">单位</label>
-						                    <input type="text"  class="form-control" id="standardUnit"  required="required">                  
+					             <input   type="text" id="standard" name="dpmsPropertyCharge.standard" min="0" hidden="true" value="${dpmsPropertyCharge.standard}" required="required">                  
+					             <div class="col-lg-6 col-md-6 form-group" id="cyclediv" hidden="true">                  
+				                    <label for="cycle">收费周期(天)</label>
+				                    <input type="number" min="0" class="form-control"  id="cycle" name="dpmsPropertyCharge.cycle" value="${dpmsPropertyCharge.cycle }" required="required" >                  
+				                </div>
+					            
+						            <div class="col-lg-6 col-md-6 form-group">
+						            	 <label for="standarddiv"><strong>收费标准</strong></label>
+					           			 <div class="row form-group" id="standarddiv"> 
+						            	<div class="col-lg-3 col-md-3 form-group">                  
+						                    <label for="standardPrice">收取单价(元)</label>
+						                    <input type="number"  class="form-control" id="standardPrice"  required="required">                  
+							            </div>
+							            <div class="col-lg-3 col-md-3 form-group">                  
+							                    <label for="standardUnit">单位</label>
+							                    <input type="text"  class="form-control" id="standardUnit"  required="required">                  
+							            </div>
 						            </div>
 					            </div>
-					            
 				          </div>
+				          <div class="row form-group">
+			              	 
+			               		<div class="col-lg-6 col-md-6 form-group" >                  
+				                    <label for="createPerson">创建人</label>
+				                    <input type="text" min="0" class="form-control"  id="createPerson" name="dpmsPropertyCharge.createPerson" value="${dpmsPropertyCharge.createPerson }" readonly="readonly" >                  
+				                </div>
+				               <div class="col-lg-6 col-md-6 form-group" >                  
+				                    <label for="createDate">创建时间</label>
+				                    <input type="text" min="0" class="form-control"  id="createDate" name="dpmsPropertyCharge.createDate" value="${dpmsPropertyCharge.createDate }" readonly="readonly">                  
+				                </div>
+			               </div>
+			               <div class="row form-group">
+			              	 
+			               		<div class="col-lg-6 col-md-6 form-group"  >                  
+				                    <label for="modifyPerson">上一次修改人</label>
+				                    <input type="text" min="0" class="form-control"  id="modifyPerson" name="dpmsPropertyCharge.modifyPerson" value="${dpmsPropertyCharge.modifyPerson }" readonly="readonly">                  
+				                </div>
+				               <div class="col-lg-6 col-md-6 form-group" >                  
+				                    <label for="modifyDate">上一次修改时间</label>
+				                    <input type="text" min="0" class="form-control"  id="modifyDate" name="dpmsPropertyCharge.modifyDate" value="${dpmsPropertyCharge.modifyDate }"  readonly="readonly" >                  
+				                </div>
+			               </div>
 							<div class="row form-group">
 				                <div class="col-lg-12 form-group">                   
 				                    <label class="control-label" for="remark">项目详细描述</label>
-				                    <textarea class="form-control" id="remark" name="dpmsPropertyCharge.remark" rows="3"  required="required"></textarea>
+				                    <textarea class="form-control" id="remark" name="dpmsPropertyCharge.remark" rows="3"  required="required">${dpmsPropertyCharge.remark}</textarea>
 				                </div>
 				          </div>
 				          
 			              <div class="form-group text-right">
-			                <button type="submit" class="templatemo-blue-button">添加</button>
+			                <button type="submit" class="templatemo-blue-button">修改</button>
 			                <button type="reset" class="templatemo-white-button">重置</button>
 			              </div>                           
 		           	  </form>                                 

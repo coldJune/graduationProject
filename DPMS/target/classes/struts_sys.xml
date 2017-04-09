@@ -265,5 +265,23 @@
     			<param name="root">sessionMap</param>
     		</result>
     	</action>
+    	<action name="addPropertyCharge" class="dpmsPropertyChargeAction" method="add">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllProperty</param>
+    		</result>
+    	</action>
+    	<action name="showDetailProperty" class="dpmsPropertyChargeAction" method="showDetail">
+    		<result>/jsp/property/property_modify.jsp</result>
+    	</action>
+    	<action name="updatePropertyCharge" class="dpmsPropertyChargeAction" method="update">
+    		<result type="redirectAction">
+    			<param name="actionName">findAllProperty</param>
+    		</result>
+    	</action>
+    	<action name="delPropertyCharge" class="dpmsPropertyChargeAction" method="del">
+    		<result type="json">
+    			<param name="root">sessionMap</param>
+    		</result>
+    	</action>
     </package>
 </struts>

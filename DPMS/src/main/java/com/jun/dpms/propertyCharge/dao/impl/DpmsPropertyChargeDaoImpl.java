@@ -47,5 +47,31 @@ public class DpmsPropertyChargeDaoImpl implements IDpmsPropertyChargeDao{
 		}
 		return null;
 	}
+	@Override
+	public void addPropertyName(DpmsPropertyCharge dpmsPropertyCharge) {
+		// TODO Auto-generated method stub
+		this.getCurrentSession().save(dpmsPropertyCharge);
+	}
+	@Override
+	public void updatePropertyCharge(DpmsPropertyCharge dpmsPropertyCharge) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("update DpmsPropertyCharge p set p.isNecessary=?,p.cycle=?,p.standard=?,p.modifyPerson=?,p.modifyDate=? where p.propertyName=?");
+		q.setString(0, dpmsPropertyCharge.getIsNecessary());
+		q.setInteger(1, dpmsPropertyCharge.getCycle());
+		q.setString(2, dpmsPropertyCharge.getStandard());
+		q.setString(3, dpmsPropertyCharge.getModifyPerson());
+		q.setString(4, dpmsPropertyCharge.getModifyDate());
+		q.setString(5, dpmsPropertyCharge.getPropertyName());
+		q.executeUpdate();
+	}
+	@Override
+	public void delPropertyCharge(int[] ids) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("delete from DpmsPropertyCharge p where p.id=?");
+		for (int i : ids) {
+			q.setInteger(0,i);
+			q.executeUpdate();
+		}
+	}
 	
 }

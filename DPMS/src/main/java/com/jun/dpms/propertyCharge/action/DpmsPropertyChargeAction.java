@@ -1,5 +1,8 @@
 package com.jun.dpms.propertyCharge.action;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +25,7 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	private DpmsPropertyCharge dpmsPropertyCharge;
 	private List<DpmsPropertyCharge> dpmsPropertyCharges;
 	private Map sessionMap;
+	private int[] ids;
 	
 	/**
 	 * 分页查询
@@ -47,7 +51,27 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	public String addB(){
 		return SUCCESS;
 	}
-	
+	/**
+	 * 添加收费项目
+	 * @return
+	 */
+	public String add(){
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String createDate = df.format(new Date());
+		String createPerson="root";/*(String)ServletActionContext.getRequest().getAttribute("USERNAME");*/
+		dpmsPropertyCharge.setCreateDate(createDate);
+		dpmsPropertyCharge.setCreatePerson(createPerson);
+		dpmsPropertyChargeService.addPropertyName(dpmsPropertyCharge);
+		return SUCCESS;
+	}
+	public String showDetail(){
+		dpmsPropertyCharge=dpmsPropertyChargeService.searchByPropertyName(dpmsPropertyCharge.getPropertyName());
+		return SUCCESS;
+	}
+	/**
+	 * 检查项目名是否已经存在
+	 * @return
+	 */
 	public String checkPropertyName(){
 		dpmsPropertyCharge=dpmsPropertyChargeService.searchByPropertyName(dpmsPropertyCharge.getPropertyName());
 		if(dpmsPropertyCharge!=null){
@@ -55,6 +79,31 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 			map.put("msg", "该项目已经存在");
 			setSessionMap(map);
 		}
+		return SUCCESS;
+	}
+	/**
+	 * 更新
+	 * @return
+	 */
+	public String update(){
+		String modifyPerson="root";/*(String)ServletActionContext.getRequest().getAttribute("USERNAME");*/
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String modifyDate = df.format(new Date());
+		if(dpmsPropertyCharge.getIsNecessary().equals("否")){
+			dpmsPropertyCharge.setCycle(-1);
+		}
+		dpmsPropertyCharge.setModifyPerson(modifyPerson);
+		dpmsPropertyCharge.setModifyDate(modifyDate);
+		dpmsPropertyChargeService.updatePropertyCharge(dpmsPropertyCharge);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 删除
+	 * @return
+	 */
+	public String del(){
+		dpmsPropertyChargeService.delPropertyCharge(ids);
 		return SUCCESS;
 	}
 	public IDpmsPropertyChargeService getDpmsPropertyChargeService() {
@@ -86,5 +135,11 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	}
 	public void setSessionMap(Map sessionMap) {
 		this.sessionMap = sessionMap;
+	}
+	public int[] getIds() {
+		return ids;
+	}
+	public void setIds(int[] ids) {
+		this.ids = ids;
 	}
 }
