@@ -126,7 +126,8 @@
 	                     <td class="white-text">创建日期</td>
 	                     <td class="white-text">创建人</td>
 	                     <td class="white-text">上一次修改人</td>
-	                     <td class="white-text">上一次修改日期</td>		                  	
+	                     <td class="white-text">上一次修改日期</td>	
+	                     <td class="white-text">操作</td>		                  	
 	                  </tr>
 	                </thead>
 	                <tbody>
@@ -157,6 +158,14 @@
 								<td style="text-align: center;">${dpmsPropertyCharge.createPerson }</td>
 								<td style="text-align: center;">${dpmsPropertyCharge.modifyPerson}</td>
 								<td style="text-align: center;">${dpmsPropertyCharge.modifyDate }</td>
+								<c:choose>
+									<c:when test="${dpmsPropertyCharge.isNecessary=='是' }">
+											<td style="text-align: center;"><a href="showChargeList?dpmsPropertyCharge.propertyName=${dpmsPropertyCharge.propertyName}" class="templatemo-edit-btn" >名单</a></td>
+									</c:when>
+									<c:otherwise>
+											<td style="text-align: center;"><a href="chargeBPark?dpmsPark.plateNumber=${dpmsPark.plateNumber}" id="chargePark" class="templatemo-edit-btn" >交费</a></td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:forEach>                
 	                </tbody>

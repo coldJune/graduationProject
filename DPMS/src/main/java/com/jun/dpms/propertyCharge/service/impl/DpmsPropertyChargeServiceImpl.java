@@ -1,8 +1,10 @@
 package com.jun.dpms.propertyCharge.service.impl;
 
+import java.text.ParseException;
 import java.util.List;
 
 import com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge;
+import com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis;
 import com.jun.dpms.propertyCharge.dao.IDpmsPropertyChargeDao;
 import com.jun.dpms.propertyCharge.service.IDpmsPropertyChargeService;
 
@@ -51,6 +53,13 @@ public class DpmsPropertyChargeServiceImpl implements IDpmsPropertyChargeService
 	public void delPropertyCharge(int[] ids) {
 		// TODO Auto-generated method stub
 		dpmsPropertyChargeDao.delPropertyCharge(ids);
+	}
+
+	@Override
+	public List<DpmsPropertyChargeHis> searchByPropertyCharge(DpmsPropertyCharge dpmsPropertyCharge)
+			throws ParseException {
+		// TODO Auto-generated method stub
+		return dpmsPropertyChargeDao.searchByPropertyCharge(dpmsPropertyCharge);
 	}
 
 }

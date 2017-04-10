@@ -1,6 +1,7 @@
 package com.jun.dpms.propertyCharge.action;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Map;
 import org.apache.struts2.ServletActionContext;
 
 import com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge;
+import com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis;
 import com.jun.dpms.propertyCharge.service.IDpmsPropertyChargeService;
 import com.jun.dpms.util.pagecut.bean.Page;
 import com.opensymphony.xwork2.ActionSupport;
@@ -24,6 +26,7 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	private Page page=new Page();
 	private DpmsPropertyCharge dpmsPropertyCharge;
 	private List<DpmsPropertyCharge> dpmsPropertyCharges;
+	private List<DpmsPropertyChargeHis> dpmsPropertyChargeHiss;
 	private Map sessionMap;
 	private int[] ids;
 	
@@ -106,6 +109,16 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 		dpmsPropertyChargeService.delPropertyCharge(ids);
 		return SUCCESS;
 	}
+	
+	public String showChargeList(){
+		try {
+			dpmsPropertyChargeHiss=dpmsPropertyChargeService.searchByPropertyCharge(dpmsPropertyCharge);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			dpmsPropertyChargeHiss=null;
+		}
+		return SUCCESS;
+	}
 	public IDpmsPropertyChargeService getDpmsPropertyChargeService() {
 		return dpmsPropertyChargeService;
 	}
@@ -141,5 +154,11 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	}
 	public void setIds(int[] ids) {
 		this.ids = ids;
+	}
+	public List<DpmsPropertyChargeHis> getDpmsPropertyChargeHiss() {
+		return dpmsPropertyChargeHiss;
+	}
+	public void setDpmsPropertyChargeHiss(List<DpmsPropertyChargeHis> dpmsPropertyChargeHiss) {
+		this.dpmsPropertyChargeHiss = dpmsPropertyChargeHiss;
 	}
 }

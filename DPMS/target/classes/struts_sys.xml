@@ -283,5 +283,8 @@
     			<param name="root">sessionMap</param>
     		</result>
     	</action>
+    	<action name="showChargeList" class="dpmsPropertyChargeAction" method="showChargeList">
+    		<result>/jsp/property/property_chargeList.jsp</result>
+    	</action>
     </package>
 </struts>

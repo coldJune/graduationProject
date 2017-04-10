@@ -56,5 +56,9 @@
         	<key column="HOUSEHOLD_ID"></key>
         	<one-to-many class="com.jun.dpms.park.bean.DpmsPark"/>
         </set>
+        <set name="dpmsPropertyChargeHiss" cascade="all" lazy="false">
+        	<key column="HOUSEHOLD_ID"></key>
+        	<one-to-many class="com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis"/>
+        </set>
     </class>
 </hibernate-mapping>

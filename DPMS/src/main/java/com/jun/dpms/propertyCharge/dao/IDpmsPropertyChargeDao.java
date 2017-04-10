@@ -1,8 +1,10 @@
 package com.jun.dpms.propertyCharge.dao;
 
+import java.text.ParseException;
 import java.util.List;
 
 import com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge;
+import com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis;
 
 public interface IDpmsPropertyChargeDao {
 	/**
@@ -42,4 +44,11 @@ public interface IDpmsPropertyChargeDao {
 	 * @param ids
 	 */
 	public void delPropertyCharge(int[] ids);
+	/**
+	 * 查询收费名单
+	 * @param dpmsPropertyCharge
+	 * @return
+	 * @throws ParseException
+	 */
+	public List<DpmsPropertyChargeHis> searchByPropertyCharge(DpmsPropertyCharge dpmsPropertyCharge) throws ParseException;
 }
