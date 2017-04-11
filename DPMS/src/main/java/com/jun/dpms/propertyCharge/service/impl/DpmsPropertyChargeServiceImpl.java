@@ -62,4 +62,16 @@ public class DpmsPropertyChargeServiceImpl implements IDpmsPropertyChargeService
 		return dpmsPropertyChargeDao.searchByPropertyCharge(dpmsPropertyCharge);
 	}
 
+	@Override
+	public DpmsPropertyChargeHis searchChargeDetail(DpmsPropertyChargeHis dpmsPropertyChargeHis) {
+		// TODO Auto-generated method stub
+		return dpmsPropertyChargeDao.searchChargeDetail(dpmsPropertyChargeHis);
+	}
+
+	@Override
+	public void addChargeHis(DpmsPropertyChargeHis dpmsPropertyChargeHis) {
+		// TODO Auto-generated method stub
+		dpmsPropertyChargeDao.addChargeHis(dpmsPropertyChargeHis);
+	}
+
 }

@@ -7,6 +7,13 @@ public class DpmsPropertyChargeHis {
 	private DpmsHousehold dpmsHousehold;
 	private DpmsPropertyCharge dpmsPropertyCharge;
 	private String chargeTime;
+	private String price;
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
 	public Integer getId() {
 		return id;
 	}

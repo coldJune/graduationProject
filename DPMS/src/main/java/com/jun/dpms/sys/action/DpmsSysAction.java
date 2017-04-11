@@ -244,6 +244,8 @@ public class DpmsSysAction extends ActionSupport {
 				if(d!=null){
 					map.put("holdName", d.getHoldName());
 					map.put("holdPhone", d.getHoldPhone());
+					map.put("holdId", d.getId()+"");
+					map.put("holdArea", d.getArea()+"");
 					setSessionMap(map);
 					return SUCCESS;
 				}else{

@@ -8,7 +8,7 @@
             <column name="ID" />
             <generator class="native" />
         </id>
-        <property name="propertyName" type="java.lang.String">
+        <property name="propertyName" type="java.lang.String" unique="true">
             <column name="PROPERTY_NAME" />
         </property>
         <property name="createDate" type="java.lang.String">
@@ -35,7 +35,7 @@
          <property name="modifyDate" type="java.lang.String">
         	<column name="MODIFY_DATE"></column>
         </property>
-        <set name="dpmsPropertyChargeHiss" table="DPMSPROPERTYCHARGEHIS" inverse="false" lazy="false">
+        <set name="dpmsPropertyChargeHiss" table="DPMSPROPERTYCHARGEHIS" cascade="delete"  inverse="true" lazy="false">
             <key>
                 <column name="PROPERTY_ID" />
             </key>

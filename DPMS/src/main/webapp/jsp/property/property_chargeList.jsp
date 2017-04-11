@@ -61,12 +61,16 @@
 	    	<div class="templatemo-content-container">
 	    		
 	          <div class="templatemo-content-widget white-bg">
-	           		<div style="width: 150px;margin: 0 auto;font-size: 18px;"><p><strong>物业收费信息(收费列表)</strong></p></div>
+	           		<div style="width: 200px;margin: 0 auto;font-size: 18px;"><p><strong>物业收费信息(收费列表)</strong></p></div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">
 	              <table class="table table-bordered templatemo-user-table">
 	                <thead>
 	                  <tr>
 	                    <td class="white-text" style="text-align: center;"><i>需缴费人</i></td>   
+	                    <td class="white-text" style="text-align: center;"><i>所属楼栋</i></td>
+	                    <td class="white-text" style="text-align: center;"><i>所属单元</i></td>
+	                    <td class="white-text" style="text-align: center;"><i>所属楼层</i></td>   
+	                    <td class="white-text" style="text-align: center;"><i>门牌号</i></td>   
 	                    <td class="white-text" style="text-align: center;"><i>缴费项目</i></td>
 	                    <td class="white-text" style="text-align: center;"><i>操作</i></td>              	
 	                  </tr>
@@ -75,6 +79,10 @@
 						<c:forEach items="${dpmsPropertyChargeHiss}" var="dpmsPropertyChargeHis">
 							<tr>
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.holdName }</td>
+								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.relateRealEstate }</td>
+								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.relateUnit }</td>
+								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.relateFloor }</td>
+								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.relateNo }</td>
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsPropertyCharge.propertyName }</td>
 								<td style="text-align: center;"><a href="chargeDetail?dpmsPropertyChargeHis.dpmsHousehold.id=${dpmsPropertyChargeHis.dpmsHousehold.id}&dpmsPropertyChargeHis.dpmsPropertyCharge.propertyName=${dpmsPropertyChargeHis.dpmsPropertyCharge.propertyName }"  class="templatemo-edit-btn" >收费</a></td>
 							</tr>

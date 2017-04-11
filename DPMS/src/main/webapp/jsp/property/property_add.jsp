@@ -18,6 +18,15 @@
     <script type="text/javascript" src="../js/default.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			if($('#isNecessary').val()=='是'){
+				$('#cyclediv').show();
+				$('#cycle').attr('required','required');
+			}else{
+				$('#cyclediv').hide();
+				$('#cycle').val('');
+				$('#cycle').removeAttr('required')
+
+			}
 			$('#isNecessary').change(function(){
 				if($('#isNecessary').val()=='是'){
 					$('#cyclediv').show();

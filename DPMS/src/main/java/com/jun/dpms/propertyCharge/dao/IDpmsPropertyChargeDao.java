@@ -51,4 +51,15 @@ public interface IDpmsPropertyChargeDao {
 	 * @throws ParseException
 	 */
 	public List<DpmsPropertyChargeHis> searchByPropertyCharge(DpmsPropertyCharge dpmsPropertyCharge) throws ParseException;
+	/**
+	 * 查询收费详情
+	 * @param dpmsPropertyChargeHis
+	 * @return
+	 */
+	public DpmsPropertyChargeHis searchChargeDetail(DpmsPropertyChargeHis dpmsPropertyChargeHis);
+	/**
+	 * 添加收费信息
+	 * @param dpmsPropertyChargeHis
+	 */
+	public void addChargeHis(DpmsPropertyChargeHis dpmsPropertyChargeHis);
 }

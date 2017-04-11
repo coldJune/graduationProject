@@ -286,5 +286,22 @@
     	<action name="showChargeList" class="dpmsPropertyChargeAction" method="showChargeList">
     		<result>/jsp/property/property_chargeList.jsp</result>
     	</action>
+    	<action name="chargeDetail" class="dpmsPropertyChargeAction" method="chargeDetailNecessary">
+    		<result>/jsp/property/property_Necessary.jsp</result>
+    	</action>
+    	<action name="addChargeHis" class="dpmsPropertyChargeAction" method="addHis">
+    		<result name="necessary" type="redirectAction">
+    			<param name="actionName">showChargeList</param>
+    		</result>
+    		<result name="nonecessary" type="redirectAction">
+    			<param name="actionName">findAllProperty</param>
+    		</result>
+    	</action>
+    	<action name="chargeNoDetail" class="dpmsPropertyChargeAction" method="showDetail">
+    		<result>/jsp/property/property_noNecessary.jsp</result>
+    	</action>
+    	<action name="searchProperty" class="dpmsPropertyChargeAction" method="showDetail">
+    		<result>/jsp/property/property_search.jsp</result>
+    	</action>
     </package>
 </struts>

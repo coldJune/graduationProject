@@ -74,10 +74,13 @@ public class DpmsPropertyChargeDaoImpl implements IDpmsPropertyChargeDao{
 	@Override
 	public void delPropertyCharge(int[] ids) {
 		// TODO Auto-generated method stub
-		Query q = this.getCurrentSession().createQuery("delete from DpmsPropertyCharge p where p.id=?");
+		Query q1 = this.getCurrentSession().createQuery("delete from DpmsPropertyCharge p where p.id=?");
+		Query q2 =this.getCurrentSession().createSQLQuery("delete from dpmspropertychargehis  where PROPERTY_ID=?");
 		for (int i : ids) {
-			q.setInteger(0,i);
-			q.executeUpdate();
+			q2.setInteger(0, i);
+			q2.executeUpdate();
+			q1.setInteger(0,i);
+			q1.executeUpdate();
 		}
 	}
 	@Override
@@ -138,6 +141,37 @@ public class DpmsPropertyChargeDaoImpl implements IDpmsPropertyChargeDao{
 		
 		
 		return null;
+	}
+	@Override
+	public DpmsPropertyChargeHis searchChargeDetail(DpmsPropertyChargeHis dpmsPropertyChargeHis) {
+		// TODO Auto-generated method stub
+		//查询该收费项对应的项目
+		Query q = this.getCurrentSession().createQuery("from DpmsPropertyCharge p where p.propertyName=?");
+		q.setString(0, dpmsPropertyChargeHis.getDpmsPropertyCharge().getPropertyName());
+		List<DpmsPropertyCharge> dpmsPropertyCharges=q.list();
+		DpmsPropertyChargeHis dChargeHis=new DpmsPropertyChargeHis();
+		if(dpmsPropertyCharges!=null&&!dpmsPropertyCharges.isEmpty()){
+			for (DpmsPropertyCharge dpmsPropertyCharge : dpmsPropertyCharges) {
+				dChargeHis.setDpmsPropertyCharge(dpmsPropertyCharge);
+				break;
+			}
+		}
+		//查询缴费的人
+		q=this.getCurrentSession().createQuery("from DpmsHousehold h where h.id=?");
+		q.setInteger(0, dpmsPropertyChargeHis.getDpmsHousehold().getId());
+		List<DpmsHousehold> dpmsHouseholds = q.list();
+		if(dpmsHouseholds!=null&&!dpmsHouseholds.isEmpty()){
+			for (DpmsHousehold dpmsHousehold : dpmsHouseholds) {
+				dChargeHis.setDpmsHousehold(dpmsHousehold);
+				break;
+			}
+		}
+		return dChargeHis;
+	}
+	@Override
+	public void addChargeHis(DpmsPropertyChargeHis dpmsPropertyChargeHis) {
+		// TODO Auto-generated method stub
+		this.getCurrentSession().save(dpmsPropertyChargeHis);
 	}
 	
 }

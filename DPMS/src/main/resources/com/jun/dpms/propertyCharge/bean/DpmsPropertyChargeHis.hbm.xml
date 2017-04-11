@@ -8,14 +8,17 @@
             <column name="ID" />
             <generator class="native" />
         </id>
-        <many-to-one name="dpmsHousehold" class="com.jun.dpms.household.bean.DpmsHousehold" fetch="join">
-            <column name="DPMSHOUSEHOLD" />
+        <many-to-one name="dpmsHousehold" class="com.jun.dpms.household.bean.DpmsHousehold" fetch="join" lazy="false">
+            <column name="HOUSEHOLD_ID" />
         </many-to-one>
-        <many-to-one name="dpmsPropertyCharge" class="com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge" fetch="join">
-            <column name="DPMSPROPERTYCHARGE" />
+        <many-to-one name="dpmsPropertyCharge" class="com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge" fetch="join" lazy="false">
+            <column name="PROPERTY_ID" />
         </many-to-one>
         <property name="chargeTime" type="java.lang.String">
             <column name="CHARGE_TIME" />
+        </property>
+        <property name="price" type="java.lang.String">
+        	<column name="PRICE"></column>
         </property>
     </class>
 </hibernate-mapping>

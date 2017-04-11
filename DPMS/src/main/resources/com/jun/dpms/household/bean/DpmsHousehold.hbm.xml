@@ -20,6 +20,9 @@
         <property name="familyNo" type="java.lang.Integer">
             <column name="FAMILY_NO" />
         </property>
+        <property name="area" type="java.lang.Double">
+        	<column name="AREA"></column>
+        </property>
         <property name="hasPackin" type="java.lang.String">
             <column name="HAS_PACKIN" />
         </property>
@@ -44,19 +47,19 @@
         <property name="checkInDate" type="java.lang.String">
             <column name="CHECKIN_DATE" />
         </property>
-        <set name="dpmsComplains"  cascade="all">
+        <set name="dpmsComplains" inverse="true" cascade="delete" lazy="false">
         	<key column="HOUSEHOLD_ID"></key>
         	<one-to-many class="com.jun.dpms.complain.bean.DpmsComplain"/>
         </set>
-        <set name="dpmsRepairs" cascade="all">
+        <set name="dpmsRepairs" inverse="true" cascade="delete" lazy="false">
         	<key column="HOUSEHOLD_ID"></key>
         	<one-to-many class="com.jun.dpms.repair.bean.DpmsRepair"/>
         </set>
-        <set name="dpmsParks" cascade="all" lazy="false">
+        <set name="dpmsParks" inverse="true" cascade="delete" lazy="false">
         	<key column="HOUSEHOLD_ID"></key>
         	<one-to-many class="com.jun.dpms.park.bean.DpmsPark"/>
         </set>
-        <set name="dpmsPropertyChargeHiss" cascade="all" lazy="false">
+        <set name="dpmsPropertyChargeHiss" inverse="true" cascade="delete" lazy="false">
         	<key column="HOUSEHOLD_ID"></key>
         	<one-to-many class="com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis"/>
         </set>

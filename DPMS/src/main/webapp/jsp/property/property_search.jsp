@@ -13,6 +13,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/templatemo-style.css" rel="stylesheet">
+    <link href="../css/templatemo-style-show.css" rel="stylesheet">
     <link href="../css/table.css" rel="stylesheet">
     <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
@@ -118,7 +119,6 @@
 				        	  </form>
 			        	 </div>
 			        	<div class="form-group text-right" style="width: 40%;float: right;">
-				                <a href="addBProperty"><button type="button" class="templatemo-blue-button" >添加</button></a>
 				                <button id="del" type="button" class="templatemo-white-button">删除</button>
 				       	</div>
 	          		</div>
@@ -141,7 +141,6 @@
 	                  </tr>
 	                </thead>
 	                <tbody>
-						<c:forEach items="${dpmsPropertyCharges}" var="dpmsPropertyCharge">
 							<tr>
 								<td>
 									<div style="z-index: 2px;">
@@ -177,12 +176,10 @@
 									</c:otherwise>
 								</c:choose>
 							</tr>
-						</c:forEach>                
 	                </tbody>
 	              </table>    
 	            </div>                          
 	          </div>  
-	          <jsp:include page="property_footer.jsp"></jsp:include>
 	      </div>
 	       
 	    </div >  

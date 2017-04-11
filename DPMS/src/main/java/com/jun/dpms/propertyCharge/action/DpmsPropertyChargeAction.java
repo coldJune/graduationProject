@@ -27,6 +27,7 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	private DpmsPropertyCharge dpmsPropertyCharge;
 	private List<DpmsPropertyCharge> dpmsPropertyCharges;
 	private List<DpmsPropertyChargeHis> dpmsPropertyChargeHiss;
+	private DpmsPropertyChargeHis dpmsPropertyChargeHis;
 	private Map sessionMap;
 	private int[] ids;
 	
@@ -109,7 +110,10 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 		dpmsPropertyChargeService.delPropertyCharge(ids);
 		return SUCCESS;
 	}
-	
+	/**
+	 * 必交项目的人员列表显示
+	 * @return
+	 */
 	public String showChargeList(){
 		try {
 			dpmsPropertyChargeHiss=dpmsPropertyChargeService.searchByPropertyCharge(dpmsPropertyCharge);
@@ -118,6 +122,32 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 			dpmsPropertyChargeHiss=null;
 		}
 		return SUCCESS;
+	}
+	/**
+	 *显示必要收费项收费详情
+	 * @return
+	 */
+	public String chargeDetailNecessary(){
+		dpmsPropertyChargeHis=dpmsPropertyChargeService.searchChargeDetail(dpmsPropertyChargeHis);
+		return SUCCESS;
+	}
+	/**
+	 * 添加收费记录
+	 * @return
+	 */
+	public String addHis(){
+		DateFormat df =new  SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String chargeDate = df.format(new Date());
+		dpmsPropertyChargeHis.setChargeTime(chargeDate);
+		System.out.println(dpmsPropertyChargeHis.getDpmsPropertyCharge().getIsNecessary());
+		if(dpmsPropertyChargeHis.getDpmsPropertyCharge().getIsNecessary().equals("是")){
+			dpmsPropertyChargeService.addChargeHis(dpmsPropertyChargeHis);
+			return "necessary";
+		}else{
+			dpmsPropertyChargeService.addChargeHis(dpmsPropertyChargeHis);
+			
+			return "nonecessary";
+		}
 	}
 	public IDpmsPropertyChargeService getDpmsPropertyChargeService() {
 		return dpmsPropertyChargeService;
@@ -160,5 +190,11 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	}
 	public void setDpmsPropertyChargeHiss(List<DpmsPropertyChargeHis> dpmsPropertyChargeHiss) {
 		this.dpmsPropertyChargeHiss = dpmsPropertyChargeHiss;
+	}
+	public DpmsPropertyChargeHis getDpmsPropertyChargeHis() {
+		return dpmsPropertyChargeHis;
+	}
+	public void setDpmsPropertyChargeHis(DpmsPropertyChargeHis dpmsPropertyChargeHis) {
+		this.dpmsPropertyChargeHis = dpmsPropertyChargeHis;
 	}
 }

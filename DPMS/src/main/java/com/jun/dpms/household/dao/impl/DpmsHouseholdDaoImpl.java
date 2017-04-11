@@ -70,7 +70,19 @@ public class DpmsHouseholdDaoImpl implements IDpmsHouseholdDao {
 	public void delHousehold(int[] ids) {
 		// TODO Auto-generated method stub
 		Query q = this.getCurrentSession().createQuery("delete from DpmsHousehold h where h.id=?");
+		Query deldpmsComplains= this.getCurrentSession().createSQLQuery("del from dpmscomplain where household_id=?");
+		Query deldpmsRepairs= this.getCurrentSession().createSQLQuery("del from dpmsrepair where household_id=?");
+		Query deldpmsParks= this.getCurrentSession().createSQLQuery("del from dpmspark where household_id=?");
+		Query deldpmsPropertyChargeHiss= this.getCurrentSession().createSQLQuery("del from dpmspropertychargehis where household_id=?");
 		for (int i : ids) {
+			deldpmsComplains.setInteger(0, i);
+			deldpmsComplains.executeUpdate();
+			deldpmsRepairs.setInteger(0, i);
+			deldpmsRepairs.executeUpdate();
+			deldpmsParks.setInteger(0, i);
+			deldpmsParks.executeUpdate();
+			deldpmsPropertyChargeHiss.setInteger(0, i);
+			deldpmsPropertyChargeHiss.executeUpdate();
 			q.setInteger(0, i);
 			q.executeUpdate();
 		}
