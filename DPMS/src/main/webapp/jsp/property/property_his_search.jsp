@@ -15,7 +15,7 @@
     <link href="../css/templatemo-style.css" rel="stylesheet">
     <link href="../css/templatemo-style-show.css" rel="stylesheet">
     <link href="../css/table.css" rel="stylesheet">
-    <script type="text/javascript" src="../jQuery/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
     
   </head>
