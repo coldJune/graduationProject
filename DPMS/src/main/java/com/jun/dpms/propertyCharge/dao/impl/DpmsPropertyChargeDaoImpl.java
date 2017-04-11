@@ -15,6 +15,7 @@ import com.jun.dpms.household.bean.DpmsHousehold;
 import com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge;
 import com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis;
 import com.jun.dpms.propertyCharge.dao.IDpmsPropertyChargeDao;
+import com.jun.dpms.sysUser.bean.DpmsSysUser;
 
 public class DpmsPropertyChargeDaoImpl implements IDpmsPropertyChargeDao{
 	private SessionFactory sessinFactory;
@@ -171,7 +172,114 @@ public class DpmsPropertyChargeDaoImpl implements IDpmsPropertyChargeDao{
 	@Override
 	public void addChargeHis(DpmsPropertyChargeHis dpmsPropertyChargeHis) {
 		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("from DpmsSysUser u where u.userName=?");
+		q.setString(0,dpmsPropertyChargeHis.getOpPerson());
+		List<DpmsSysUser> dpmsSysUsers=q.list();
+		if(dpmsSysUsers!=null&&!dpmsSysUsers.isEmpty()){
+			for (DpmsSysUser dpmsSysUser : dpmsSysUsers) {
+				dpmsPropertyChargeHis.setOpPerson(dpmsSysUser.getName());
+				dpmsPropertyChargeHis.setOpPhone(dpmsSysUser.getPhone());
+				break;
+			}
+		}
 		this.getCurrentSession().save(dpmsPropertyChargeHis);
+	}
+	@Override
+	public List<DpmsPropertyChargeHis> findAllHis(int eachPage, int currentPage) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("select ph.dpmsHousehold,ph.dpmsPropertyCharge,ph.id,ph.chargeTime,ph.price,ph.opPerson,ph.opPhone,ph.id from DpmsPropertyChargeHis ph");
+		q.setMaxResults(eachPage);
+		q.setFirstResult((currentPage-1)*eachPage);
+		List<Object> objects=q.list();
+		List<DpmsPropertyChargeHis> dpmsPropertyChargeHiss=new ArrayList<>();
+		if(objects!=null&&!objects.isEmpty()){
+			for (Object object : objects) {
+				Object[] objs=(Object[])object;
+				DpmsPropertyChargeHis dpmsPropertyChargeHis = new DpmsPropertyChargeHis();
+				DpmsHousehold dpmsHousehold=(DpmsHousehold)objs[0];
+				DpmsPropertyCharge dpmsPropertyCharge=(DpmsPropertyCharge)objs[1];
+				int id =(int)objs[2];
+				String chargeTime=(String)objs[3];
+				String price = (String)objs[4];
+				String opPerson=(String)objs[5];
+				String opPhone=(String)objs[6];
+				dpmsPropertyChargeHis.setId(id);
+				dpmsPropertyChargeHis.setChargeTime(chargeTime);
+				dpmsPropertyChargeHis.setPrice(price);
+				dpmsPropertyChargeHis.setDpmsHousehold(dpmsHousehold);
+				dpmsPropertyChargeHis.setDpmsPropertyCharge(dpmsPropertyCharge);
+				dpmsPropertyChargeHis.setOpPerson(opPerson);
+				dpmsPropertyChargeHis.setOpPhone(opPhone);
+				dpmsPropertyChargeHiss.add(dpmsPropertyChargeHis);
+			}
+			return dpmsPropertyChargeHiss;
+		}
+		return null;
+	}
+	@Override
+	public int getHisTotalItem() {
+		// TODO Auto-generated method stub
+		return ((Number)(this.getCurrentSession().createQuery("select  count(*) from DpmsPropertyChargeHis ph").uniqueResult())).intValue();
+	}
+	@Override
+	public List<DpmsPropertyChargeHis> searchByHoldName(String holdName) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("select ph.dpmsHousehold,ph.dpmsPropertyCharge,ph.id,ph.chargeTime,ph.price,ph.opPerson,ph.opPhone,ph.id from DpmsPropertyChargeHis ph where ph.dpmsHousehold.holdName=?");
+		q.setString(0, holdName);
+		List<Object> objects=q.list();
+		List<DpmsPropertyChargeHis> dpmsPropertyChargeHiss=new ArrayList<>();
+		if(objects!=null&&!objects.isEmpty()){
+			for (Object object : objects) {
+				Object[] objs=(Object[])object;
+				DpmsPropertyChargeHis dpmsPropertyChargeHis = new DpmsPropertyChargeHis();
+				DpmsHousehold dpmsHousehold=(DpmsHousehold)objs[0];
+				DpmsPropertyCharge dpmsPropertyCharge=(DpmsPropertyCharge)objs[1];
+				int id =(int)objs[2];
+				String chargeTime=(String)objs[3];
+				String price = (String)objs[4];
+				String opPerson=(String)objs[5];
+				String opPhone=(String)objs[6];
+				dpmsPropertyChargeHis.setId(id);
+				dpmsPropertyChargeHis.setChargeTime(chargeTime);
+				dpmsPropertyChargeHis.setPrice(price);
+				dpmsPropertyChargeHis.setDpmsHousehold(dpmsHousehold);
+				dpmsPropertyChargeHis.setDpmsPropertyCharge(dpmsPropertyCharge);
+				dpmsPropertyChargeHis.setOpPerson(opPerson);
+				dpmsPropertyChargeHis.setOpPhone(opPhone);
+				dpmsPropertyChargeHiss.add(dpmsPropertyChargeHis);
+			}
+			return dpmsPropertyChargeHiss;
+		}
+		return null;
+	}
+	@Override
+	public DpmsPropertyChargeHis searchHisById(int id) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("select ph.dpmsHousehold,ph.dpmsPropertyCharge,ph.id,ph.chargeTime,ph.price,ph.opPerson,ph.opPhone,ph.id from DpmsPropertyChargeHis ph where ph.id=?");
+		q.setInteger(0, id);
+		List<Object> objects=q.list();
+		DpmsPropertyChargeHis dpmsPropertyChargeHis = new DpmsPropertyChargeHis();
+		if(objects!=null&&!objects.isEmpty()){
+			for (Object object : objects) {
+				Object[] objs=(Object[])object;
+				DpmsHousehold dpmsHousehold=(DpmsHousehold)objs[0];
+				DpmsPropertyCharge dpmsPropertyCharge=(DpmsPropertyCharge)objs[1];
+				String chargeTime=(String)objs[3];
+				String price = (String)objs[4];
+				String opPerson=(String)objs[5];
+				String opPhone=(String)objs[6];
+				dpmsPropertyChargeHis.setId(id);
+				dpmsPropertyChargeHis.setChargeTime(chargeTime);
+				dpmsPropertyChargeHis.setPrice(price);
+				dpmsPropertyChargeHis.setDpmsHousehold(dpmsHousehold);
+				dpmsPropertyChargeHis.setDpmsPropertyCharge(dpmsPropertyCharge);
+				dpmsPropertyChargeHis.setOpPerson(opPerson);
+				dpmsPropertyChargeHis.setOpPhone(opPhone);
+				break;
+			}
+			return dpmsPropertyChargeHis;
+		}
+		return null;
 	}
 	
 }

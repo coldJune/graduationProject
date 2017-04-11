@@ -17,6 +17,12 @@
         <property name="chargeTime" type="java.lang.String">
             <column name="CHARGE_TIME" />
         </property>
+        <property name="opPerson" type="java.lang.String">
+            <column name="OP_PERSON" />
+        </property>
+                <property name="opPhone" type="java.lang.String">
+            <column name="OP_PHONE" />
+        </property>
         <property name="price" type="java.lang.String">
         	<column name="PRICE"></column>
         </property>

@@ -62,4 +62,27 @@ public interface IDpmsPropertyChargeDao {
 	 * @param dpmsPropertyChargeHis
 	 */
 	public void addChargeHis(DpmsPropertyChargeHis dpmsPropertyChargeHis);
+	/**
+	 * 分页查询缴费
+	 * @param eachPage
+	 * @param currentPage
+	 * @return
+	 */
+	public List<DpmsPropertyChargeHis> findAllHis(int eachPage,int currentPage);
+	/*
+	 * 查询缴费记录总条数
+	 */
+	public int getHisTotalItem();
+	/**
+	 * 通过住户名查找
+	 * @param holdName
+	 * @return
+	 */
+	public List<DpmsPropertyChargeHis> searchByHoldName(String holdName);
+	/**
+	 * 通过id查找收费详情
+	 * @param id
+	 * @return
+	 */
+	public DpmsPropertyChargeHis searchHisById(int id);
 }

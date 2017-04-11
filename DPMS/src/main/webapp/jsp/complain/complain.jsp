@@ -76,8 +76,8 @@
             <li><a href="../sysUser/findAllSysUser" ><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
           <%} %>
             <li><a href="../realEstate/findAllRealEstate" ><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
-            <li><a href="#"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
-            <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
+            <li><a href="../property/findAllProperty"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
+            <li><a href="../park/findAllPark"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
             <li><a href="../household/findAllHousehold" ><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
             <li><a href="../repair/findAllRepair"><i class="fa fa-sliders fa-fw"></i>住户报修管理</a></li>
             <li><a href="findAllComplain" class="active"><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>

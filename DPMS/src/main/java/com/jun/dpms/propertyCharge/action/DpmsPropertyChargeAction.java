@@ -138,7 +138,9 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	public String addHis(){
 		DateFormat df =new  SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String chargeDate = df.format(new Date());
+		String opPerson="root";/*(String)ServletActionContext.getRequest().getAttribute("USERNAME");*/
 		dpmsPropertyChargeHis.setChargeTime(chargeDate);
+		dpmsPropertyChargeHis.setOpPerson(opPerson);
 		System.out.println(dpmsPropertyChargeHis.getDpmsPropertyCharge().getIsNecessary());
 		if(dpmsPropertyChargeHis.getDpmsPropertyCharge().getIsNecessary().equals("是")){
 			dpmsPropertyChargeService.addChargeHis(dpmsPropertyChargeHis);
@@ -148,6 +150,43 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 			
 			return "nonecessary";
 		}
+	}
+	/**
+	 * 分页查询缴费记录
+	 * @return
+	 */
+	public String findChargeHis(){
+		page.setEachPage(5);
+		page.setTotalItem(dpmsPropertyChargeService.getHisTotalItem());
+		page.setTotalPage(page.getTotalItem()/page.getEachPage()+(page.getTotalItem()%page.getEachPage()>0?1:0));
+		try {
+			page.setCurrentPage(Integer.valueOf(ServletActionContext.getRequest().getParameter("currentPage")).intValue());
+		} catch (Exception e) {
+			// TODO: handle exception
+			page.setCurrentPage(1);
+		}
+		dpmsPropertyChargeHiss=dpmsPropertyChargeService.findAllHis(page.getEachPage(), page.getCurrentPage());
+		for (DpmsPropertyChargeHis dpmsPropertyChargeHis : dpmsPropertyChargeHiss) {
+			System.out.println(dpmsPropertyChargeHis.getOpPerson()+"|||"+dpmsPropertyChargeHis.getChargeTime());
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 *查询历史记录
+	 * @return
+	 */
+	public String searchByHoldName(){
+		dpmsPropertyChargeHiss=dpmsPropertyChargeService.searchByHoldName(dpmsPropertyChargeHis.getDpmsHousehold().getHoldName());
+		return SUCCESS;
+	}
+	/**
+	 * 显示收费记录详情
+	 * @return
+	 */
+	public String showHisDetail(){
+		dpmsPropertyChargeHis=dpmsPropertyChargeService.searchHisById(dpmsPropertyChargeHis.getId());
+		return SUCCESS;
 	}
 	public IDpmsPropertyChargeService getDpmsPropertyChargeService() {
 		return dpmsPropertyChargeService;

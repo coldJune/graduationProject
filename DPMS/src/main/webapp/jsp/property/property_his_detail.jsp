@@ -83,7 +83,7 @@
 	    		
 	          <div class="templatemo-content-widget white-bg">
 		          <h2 class="margin-bottom-10">物业收费信息</h2>
-            		<p>>>收费</p>
+            		<p>>>缴费详情</p>
 		          
 			            <form  action="addChargeHis" class="templatemo-login-form" method="post" enctype="multipart/form-data">
 			              <div class="row form-group">	     
@@ -95,14 +95,14 @@
 				                </div>
  						  </div>
 			               <div class="row form-group">   
-					             <input   type="text" id="standard" name="dpmsPropertyChargeHis.dpmsPropertyCharge.standard" min="0" hidden="true" value="${dpmsPropertyChargeHis.dpmsPropertyCharge.standard}" required="required">
+					             <input   type="text" id="standard" name="dpmsPropertyChargeHis.dpmsPropertyCharge.standard" min="0" hidden="true" value="${dpmsPropertyChargeHis.dpmsPropertyCharge.standard}"  readonly="readonly" required="required">
 					            
 						            <div class="col-lg-6 col-md-6 form-group">
 						            	 <label for="standarddiv"><strong>收费标准</strong></label>
 					           			 <div class="row form-group" id="standarddiv"> 
 						            	<div class="col-lg-3 col-md-3 form-group">                  
 						                    <label for="standardPrice">收取单价(元)</label>
-						                    <input type="number"  class="form-control" id="standardPrice" readonly="readonly" required="required">                  
+						                    <input type="text"  class="form-control" id="standardPrice" readonly="readonly" required="required">                  
 							            </div>
 							            <div class="col-lg-3 col-md-3 form-group">                  
 							                    <label for="standardUnit">单位</label>
@@ -112,14 +112,14 @@
 					            </div>
 				          </div>
 				      	 <div class="row form-group">
-				      	 <input   type="number" name="dpmsPropertyChargeHis.dpmsHousehold.id" min="0" hidden="true" value="${dpmsPropertyChargeHis.dpmsHousehold.id}" required="required">
+				      	 <input   type="number" name="dpmsPropertyChargeHis.dpmsHousehold.id" min="0" hidden="true" value="${dpmsPropertyChargeHis.dpmsHousehold.id}" readonly="readonly"  required="required">
 				      		  <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="holdName">户主姓名</label>
 				                    <input type="text"  class="form-control" id="holdName" name="dpmsPropertyChargeHis.dpmsHousehold.holdName" value="${dpmsPropertyChargeHis.dpmsHousehold.holdName}" readonly="readonly">                  
 				                </div>
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="holdPhone">户主电话</label>
-				                    <input type="text" class="form-control" id="phone"  name="dpmsPropertyChargeHis.dpmsHousehold.holdPhone" value="${dpmsPropertyChargeHis.dpmsHousehold.holdPhone}" required="required">                  
+				                    <input type="text" class="form-control" id="phone"  name="dpmsPropertyChargeHis.dpmsHousehold.holdPhone" value="${dpmsPropertyChargeHis.dpmsHousehold.holdPhone}" readonly="readonly"  required="required">                  
 				                </div>
 				                
 				            </div>			               
@@ -127,47 +127,46 @@
 				          <div class="row form-group">
 			               		 <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="relateRealEstate">所属楼栋</label>
-				                    <input type="number" min="0" class="form-control" id="relateRealEstate" name="dpmsPropertyChargeHis.dpmsHousehold.relateRealEstate" value="${dpmsPropertyChargeHis.dpmsHousehold.relateRealEstate}" readonly="readonly" >                 
+				                    <input type="text" min="0" class="form-control" id="relateRealEstate" name="dpmsPropertyChargeHis.dpmsHousehold.relateRealEstate" value="${dpmsPropertyChargeHis.dpmsHousehold.relateRealEstate}" readonly="readonly" >                 
 				                </div> 
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="relateUnit">所属单元</label>
-				                    <input type="number" class="form-control" min="0" id="relateUnit" name="dpmsPropertyChargeHis.dpmsHousehold.relateUnit" value="${dpmsPropertyChargeHis.dpmsHousehold.relateUnit}" readonly="readonly">                  
+				                    <input type="text" class="form-control" min="0" id="relateUnit" name="dpmsPropertyChargeHis.dpmsHousehold.relateUnit" value="${dpmsPropertyChargeHis.dpmsHousehold.relateUnit}" readonly="readonly">                  
 				                </div>      
 			               </div>
 			               <div class="row form-group">
 			               		<div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="relateFloor">所属层数</label>
-				                    <input type="number" min="0" class="form-control" id="relateFloor" name="dpmsPropertyChargeHis.dpmsHousehold.relateFloor" value="${dpmsPropertyChargeHis.dpmsHousehold.relateFloor}" readonly="readonly">                 
+				                    <input type="text" min="0" class="form-control" id="relateFloor" name="dpmsPropertyChargeHis.dpmsHousehold.relateFloor" value="${dpmsPropertyChargeHis.dpmsHousehold.relateFloor}" readonly="readonly">                 
 				                </div>
 				                <div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="relateNo">门牌号</label>
-				                    <input type="number"min="0" class="form-control" id="relateNo"  name="dpmsPropertyChargeHis.dpmsHousehold.relateNo"  value="${dpmsPropertyChargeHis.dpmsHousehold.relateNo}" readonly="readonly" >                  
+				                    <input type="text"min="0" class="form-control" id="relateNo"  name="dpmsPropertyChargeHis.dpmsHousehold.relateNo"  value="${dpmsPropertyChargeHis.dpmsHousehold.relateNo}" readonly="readonly" >                  
 				                </div>     
 			               </div>
 			                <div class="row form-group">
 			                	<div class="col-lg-6 col-md-6 form-group">                  
 				                    <label for="area">面积</label>
-				                    <input type="number"min="0" class="form-control" id="area"  name="dpmsPropertyChargeHis.dpmsHousehold.area"  value="${dpmsPropertyChargeHis.dpmsHousehold.area}" readonly="readonly" >                  
+				                    <input type="text"min="0" class="form-control" id="area"  name="dpmsPropertyChargeHis.dpmsHousehold.area"  value="${dpmsPropertyChargeHis.dpmsHousehold.area}" readonly="readonly" >                  
 				                </div>
+				                 <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="price">共缴费用(元)</label>
+				                    <input type="text" class="form-control" id="price" name="dpmsPropertyChargeHis.price" value="${dpmsPropertyChargeHis.price}"  readonly="readonly" >                 
+				                </div> 
 				            </div>  
 			               <div class="row form-group">
 			               		 <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="price">应收费用(元)</label>
-				                    <input type="number" class="form-control" id="price" name="dpmsPropertyChargeHis.price" value="${dpmsPropertyChargeHis.price}" >                 
+				                    <label for="opPerson">操作人</label>
+				                    <input type="text" class="form-control" id="opPerson" name="dpmsPropertyChargeHis.opPerson" value="${dpmsPropertyChargeHis.opPerson}"  readonly="readonly" >                 
+				                </div> 
+				                 <div class="col-lg-6 col-md-6 form-group">                  
+				                    <label for="opPhone">操作人联系方式</label>
+				                    <input type="text" class="form-control" id="price" name="dpmsPropertyChargeHis.opPhone" value="${dpmsPropertyChargeHis.opPhone}" readonly="readonly"  >                 
 				                </div> 
 			               </div>
-			               <div class="row form-group">
-			               		<div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="realPrice">实收费用(元)</label>
-				                    <input type="number" min="0" class="form-control" id="realPrice"   required="required">                  
-				                </div>
-				                <div class="col-lg-6 col-md-6 form-group">                  
-				                    <label for="oddCharge">找零(元)</label>
-				                    <input type="number"min="0" class="form-control" id="oddCharge"   required="required" readonly="readonly">                 
-				                </div>
-				           </div>   
+			              
 			              <div class="form-group text-right">
-			                <button type="submit" class="templatemo-blue-button">收费</button>
+			                <button type="button" class="templatemo-white-button" onclick="javascript:history.back(-1);">返回</button>
 			              </div>                           
 		           	  </form>                                 
 	          </div>  

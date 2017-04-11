@@ -253,7 +253,7 @@
     </package>
     
     <!-- 物业收费管理 -->
-    <package name="propertyCharge" namespace="/propertyCharge" extends="struts-default,json-default">
+    <package name="property" namespace="/property" extends="struts-default,json-default">
     	<action name="findAllProperty" class="dpmsPropertyChargeAction" method="findAll">
     		<result>/jsp/property/property.jsp</result>
     	</action>
@@ -302,6 +302,15 @@
     	</action>
     	<action name="searchProperty" class="dpmsPropertyChargeAction" method="showDetail">
     		<result>/jsp/property/property_search.jsp</result>
+    	</action>
+    	<action name="findChargeHis" class="dpmsPropertyChargeAction" method="findChargeHis">
+    		<result>/jsp/property/property_his.jsp</result>
+    	</action>
+    	<action name="searchByName" class="dpmsPropertyChargeAction" method="searchByHoldName">
+    		<result>/jsp/property/property_his_search.jsp</result>
+    	</action>
+    	<action name="showHisDetail" class="dpmsPropertyChargeAction" method="showHisDetail">
+    		<result>/jsp/property/property_his_detail.jsp</result>
     	</action>
     </package>
 </struts>

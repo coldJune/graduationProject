@@ -91,10 +91,10 @@
           <%} %>
             <li><a href="../realEstate/findAllRealEstate" ><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="findAllProperty" class="active"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
-            <li><a href="#"><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
-            <li><a href="../household/findAllHousehold"><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
-            <li><a href="#"><i class="fa fa-sliders fa-fw"></i>住户保修管理</a></li>
-            <li><a href="#"><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
+            <li><a href="../park/findAllPark" ><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
+            <li><a href="../household/findAllHousehold" ><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
+            <li><a href="../repair/findAllRepair"><i class="fa fa-sliders fa-fw"></i>住户报修管理</a></li>
+            <li><a href="../complain/findAllComplain" ><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
             <li><a href="#"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
           </ul>  
         </nav>

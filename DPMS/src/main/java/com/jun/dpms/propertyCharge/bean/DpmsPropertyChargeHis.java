@@ -7,6 +7,8 @@ public class DpmsPropertyChargeHis {
 	private DpmsHousehold dpmsHousehold;
 	private DpmsPropertyCharge dpmsPropertyCharge;
 	private String chargeTime;
+	private String opPerson;
+	private String opPhone;
 	private String price;
 	public String getPrice() {
 		return price;
@@ -37,6 +39,18 @@ public class DpmsPropertyChargeHis {
 	}
 	public void setChargeTime(String chargeTime) {
 		this.chargeTime = chargeTime;
+	}
+	public String getOpPerson() {
+		return opPerson;
+	}
+	public void setOpPerson(String opPerson) {
+		this.opPerson = opPerson;
+	}
+	public String getOpPhone() {
+		return opPhone;
+	}
+	public void setOpPhone(String opPhone) {
+		this.opPhone = opPhone;
 	}
 	
 }

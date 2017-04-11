@@ -61,36 +61,67 @@
 	    	<div class="templatemo-content-container">
 	    		
 	          <div class="templatemo-content-widget white-bg">
-	           		<div style="width: 200px;margin: 0 auto;font-size: 18px;"><p><strong>物业收费信息(收费列表)</strong></p></div>
+	           		<div style="width: 150px;margin: 0 auto;font-size: 18px;"><p><strong>缴费记录</strong></p></div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">
+	            <div class="templatemo-top-nav-container" style="background-color:white;padding: 25px 30px;box-shadow: 0px 0px 2px 2px rgba(161, 159, 159, 0.18);">
+			          <div class="row">
+			            <nav class="templatemo-top-nav col-lg-12 col-md-12">
+			              <ul class="text-uppercase">
+			                <li><a href="findAllProperty">缴费项目</a></li>
+			                <li><a href="findChargeHis"  class="active">缴费记录</a></li>    
+			              </ul>  
+			            </nav> 
+			          </div>
+			        </div>
+			        <div style="margin: 0 auto;">
+			             <div class="form-group text-left" style="width:60%;float: left;height:40px">
+					          <form class="templatemo-search-form" role="search" style="width: 50%" method="post" action="searchByName">
+				          		<div class="input-group" >
+				          		
+				              		<button type="submit" class="fa fa-search"></button>
+				              		<input type="text" class="form-control" placeholder="请输入住户名" name="dpmsPropertyChargeHis.dpmsHousehold.holdName" id="srch-term">
+				         			
+				         		 </div>
+				         			
+				         		 
+				        	  </form>
+			        	 </div>
+			       </div>
 	              <table class="table table-bordered templatemo-user-table">
 	                <thead>
 	                  <tr>
-	                    <td class="white-text" style="text-align: center;"><i>需缴费人</i></td>   
+	                  	<td class="white-text" style="text-align: center;"><i>记录ID</i></td>
+	                  	<td class="white-text" style="text-align: center;"><i>缴费项目</i></td>
+	                    <td class="white-text" style="text-align: center;"><i>缴费人</i></td>   
 	                    <td class="white-text" style="text-align: center;"><i>所属楼栋</i></td>
 	                    <td class="white-text" style="text-align: center;"><i>所属单元</i></td>
 	                    <td class="white-text" style="text-align: center;"><i>所属楼层</i></td>   
-	                    <td class="white-text" style="text-align: center;"><i>门牌号</i></td>   
-	                    <td class="white-text" style="text-align: center;"><i>缴费项目</i></td>
-	                    <td class="white-text" style="text-align: center;"><i>操作</i></td>              	
+	                    <td class="white-text" style="text-align: center;"><i>门牌号</i></td>
+	                    <td class="white-text" style="text-align: center;"><i>联系电话</i></td>
+	                    <td class="white-text" style="text-align: center;"><i>操作人</i></td>   
+	                    <td class="white-text" style="text-align: center;"><i>操作人联系电话</i></td>              	           	
 	                  </tr>
 	                </thead>
 	                <tbody>
 						<c:forEach items="${dpmsPropertyChargeHiss}" var="dpmsPropertyChargeHis">
 							<tr>
+								<td style="text-align: center;"><a href="showHisDetail?dpmsPropertyChargeHis.id=${dpmsPropertyChargeHis.id}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPropertyChargeHis.id}</i></a></td>
+								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsPropertyCharge.propertyName }</td>								
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.holdName }</td>
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.relateRealEstate }</td>
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.relateUnit }</td>
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.relateFloor }</td>
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.relateNo }</td>
-								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsPropertyCharge.propertyName }</td>
-								<td style="text-align: center;"><a href="chargeDetail?dpmsPropertyChargeHis.dpmsHousehold.id=${dpmsPropertyChargeHis.dpmsHousehold.id}&dpmsPropertyChargeHis.dpmsPropertyCharge.propertyName=${dpmsPropertyChargeHis.dpmsPropertyCharge.propertyName }"  class="templatemo-edit-btn" >收费</a></td>
+								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.holdPhone }</td>
+								<td style="text-align: center;">${dpmsPropertyChargeHis.opPerson}</td>
+								<td style="text-align: center;">${dpmsPropertyChargeHis.opPhone}</td>
 							</tr>
 						</c:forEach>                
 	                </tbody>
 	              </table>    
 	            </div>                          
-	          </div>  
+	          </div> 
+	        <jsp:include page="property_his_footer.jsp"></jsp:include>  
 	      </div>
 	       
 	    </div >  

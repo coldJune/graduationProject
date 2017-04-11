@@ -7,6 +7,7 @@ import com.jun.dpms.propertyCharge.bean.DpmsPropertyCharge;
 import com.jun.dpms.propertyCharge.bean.DpmsPropertyChargeHis;
 import com.jun.dpms.propertyCharge.dao.IDpmsPropertyChargeDao;
 import com.jun.dpms.propertyCharge.service.IDpmsPropertyChargeService;
+import com.jun.dpms.sysUser.bean.DpmsSysUser;
 
 public class DpmsPropertyChargeServiceImpl implements IDpmsPropertyChargeService {
 	private IDpmsPropertyChargeDao dpmsPropertyChargeDao;
@@ -72,6 +73,30 @@ public class DpmsPropertyChargeServiceImpl implements IDpmsPropertyChargeService
 	public void addChargeHis(DpmsPropertyChargeHis dpmsPropertyChargeHis) {
 		// TODO Auto-generated method stub
 		dpmsPropertyChargeDao.addChargeHis(dpmsPropertyChargeHis);
+	}
+
+	@Override
+	public List<DpmsPropertyChargeHis> findAllHis(int eachPage, int currentPage) {
+		// TODO Auto-generated method stub
+		return dpmsPropertyChargeDao.findAllHis(eachPage, currentPage);
+	}
+
+	@Override
+	public int getHisTotalItem() {
+		// TODO Auto-generated method stub
+		return dpmsPropertyChargeDao.getHisTotalItem();
+	}
+
+	@Override
+	public List<DpmsPropertyChargeHis> searchByHoldName(String holdName) {
+		// TODO Auto-generated method stub
+		return dpmsPropertyChargeDao.searchByHoldName(holdName);
+	}
+
+	@Override
+	public DpmsPropertyChargeHis searchHisById(int id) {
+		// TODO Auto-generated method stub
+		return dpmsPropertyChargeDao.searchHisById(id);
 	}
 
 }

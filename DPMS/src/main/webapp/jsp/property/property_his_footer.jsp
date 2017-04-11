@@ -13,18 +13,18 @@
 <body>
 <div class="pagination-wrap">
  <ul class="pagination">
-	<li><a href="findChargeHis?currentPage=1">首页</a></li>
+	<li><a href="findAllProperty?currentPage=1">首页</a></li>
 	<c:choose>
 		<c:when test="${page.currentPage>5}">
-			<li><a href="findChargeHis?currentPage=${page.currentPage-5 }">&lt;&lt;</a></li>
+			<li><a href="findAllProperty?currentPage=${page.currentPage-5 }">&lt;&lt;</a></li>
 		</c:when>
 		<c:otherwise>
-			<li><a href="findChargeHis?currentPage=1">&lt;&lt;</a></li>
+			<li><a href="findAllProperty?currentPage=1">&lt;&lt;</a></li>
 		</c:otherwise>
 	</c:choose>
 	<c:choose>
 		<c:when test="${page.currentPage>1}">
-			<li><a href="findChargeHis?currentPage=${page.currentPage-1 }">&lt;</a></li>
+			<li><a href="findAllProperty?currentPage=${page.currentPage-1 }">&lt;</a></li>
 		</c:when>
 		<c:otherwise>
 			<li><a href="javascript:alert('已经是第一页')">&lt;</a></li>
@@ -35,10 +35,10 @@
 			<c:forEach var="x" begin="1" end="${page.totalPage }">
 				<c:choose>
 					<c:when test="${x==page.currentPage}">
-						<li class="active"><a href="findChargeHis?currentPage=${x}" >${x}</a></li>
+						<li class="active"><a href="findAllProperty?currentPage=${x}" >${x}</a></li>
 					</c:when>
 					<c:otherwise>
-						<li ><a href="findChargeHis?currentPage=${x}">${x}</a></li>
+						<li ><a href="findAllProperty?currentPage=${x}">${x}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -47,10 +47,10 @@
 			<c:forEach var="x" begin="1" end="${page.totalPage }">
 				<c:choose>
 					<c:when test="${x==page.currentPage}">
-						<li class="active"><a href="findChargeHis?currentPage=${x}">${x}</a></li>
+						<li class="active"><a href="findAllProperty?currentPage=${x}">${x}</a></li>
 					</c:when>
 					<c:otherwise>
-						<li ><a href="findChargeHis?currentPage=${x}">${x}</a></li>
+						<li ><a href="findAllProperty?currentPage=${x}">${x}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -59,10 +59,10 @@
 			<c:forEach var="x" begin="${page.totalPage-4}" end="${page.totalPage}">
 				<c:choose>
 					<c:when test="${x==page.currentPage}">
-						<li class="active"><a href="findChargeHis?currentPage=${x}">${x}</a></li>
+						<li class="active"><a href="findAllProperty?currentPage=${x}">${x}</a></li>
 					</c:when>
 					<c:otherwise>
-						<li ><a href="findChargeHis?currentPage=${x}">${x}</a></li>
+						<li ><a href="findAllProperty?currentPage=${x}">${x}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -71,10 +71,10 @@
 			<c:forEach var="x" begin="${page.currentPage-2}" end="${page.currentPage+2}">
 				<c:choose>
 					<c:when test="${x==page.currentPage}">
-						<li class="active"><a href="findChargeHis?currentPage=${x}">${x}</a></li>
+						<li class="active"><a href="findAllProperty?currentPage=${x}">${x}</a></li>
 					</c:when>
 					<c:otherwise>
-						<li ><a href="findChargeHis?currentPage=${x}">${x}</a></li>
+						<li ><a href="findAllProperty?currentPage=${x}">${x}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -82,7 +82,7 @@
 	</c:choose>	
 	<c:choose>
 		<c:when test="${page.currentPage<page.totalPage}">
-			<li><a href="findChargeHis?currentPage=${page.currentPage+1 }">&gt;</a></li>
+			<li><a href="findAllProperty?currentPage=${page.currentPage+1 }">&gt;</a></li>
 		</c:when>
 		<c:otherwise>
 			<li><a href="javascript:alert('已经是最末页')">&gt;</a></li>
@@ -90,16 +90,16 @@
 	</c:choose>
 	<c:choose>
 		<c:when test="${page.totalPage<=5}">
-			<li><a href="findChargeHis?currentPage=${page.totalPage }">&gt;&gt;</a></li>
+			<li><a href="findAllProperty?currentPage=${page.totalPage }">&gt;&gt;</a></li>
 		</c:when>
 		<c:when test="${page.currentPage<=5}">
-			<li><a href="findChargeHis?currentPage=${page.currentPage+5 }">&gt;&gt;</a></li>
+			<li><a href="findAllProperty?currentPage=${page.currentPage+5 }">&gt;&gt;</a></li>
 		</c:when>
 		<c:otherwise>
-			<li><a href="findChargeHis?currentPage=${page.totalPage}">&gt;&gt;</a></li>
+			<li><a href="findAllProperty?currentPage=${page.totalPage}">&gt;&gt;</a></li>
 		</c:otherwise>
 	</c:choose>
-	<li><a href="findChargeHis?currentPage=${page.totalPage}">末页</a></li>
+	<li><a href="findAllProperty?currentPage=${page.totalPage}">末页</a></li>
 	</ul>
 	</div>
 </body>
