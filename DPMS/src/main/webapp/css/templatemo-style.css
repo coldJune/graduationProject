@@ -532,7 +532,12 @@ input[type="radio"]:checked + label span {
 	background-color: #39ADB4;
 	color: white;
 }
-
+img {
+max-width:500px;
+myimg:expression(onload=function(){
+this.style.width=(this.offsetWidth > 500)?¡±500px¡±:¡±auto¡±}
+);
+}
 /* 7. Preferences
 -------------------------------*/
 .has-success .checkbox, .has-success .checkbox-inline, .has-success .control-label, .has-success .help-block, 

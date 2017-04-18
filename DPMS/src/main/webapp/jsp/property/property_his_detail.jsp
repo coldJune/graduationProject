@@ -16,28 +16,7 @@
     <link href="../css/table.css" rel="stylesheet">
     <script type="text/javascript" src="../jQuery/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../js/default.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			
-			var standard=$('#standard').val();
-			var standardPrice=standard.split('(')[0];
-			var standardUnit=standard.split('(')[1].replace(')','');
-			$('#standardPrice').val(standardPrice);
-			$('#standardUnit').val(standardUnit);
-			$('#realPrice').blur(function(){
-    			var price=$('#price').val();
-    			var realPrice=$(this).val();
-    			if(realPrice<price){
-    				alert('收取金额应大于等于应收金额');
-    				$(this).val('');
-    				$('#oddCharge').val('');
-    			}else{
-    				$('#oddCharge').val(realPrice-price);
-    			}
-    		});
-			
-		});
-	</script>
+
   </head>
   <body>
   	<div class="templatemo-flex-row">
@@ -46,26 +25,29 @@
           <div class="square"></div>
           <h1>Root</h1>
         </header>
-        <div class="profile-photo-container">
-          <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">  
-          <div class="profile-photo-overlay"></div>
+        <div class="profile-photo-container" style="text-align: center;vertical-align: middle;">
+       	<a href="../sysUser/showPersonal?dpmsSysUser.userName=root"> 
+          <img src="/DPMS/sysUser/showHead"  alt="头像" class="img-responsive"> 
+         <div class="profile-photo-overlay" ></div>
+        </a> 
         </div>
                 <div class="mobile-menu-icon">
             	<i class="fa fa-bars"></i>
         </div>
         <nav class="templatemo-left-nav">          
           <ul>
-            <% String sess=(String)session.getAttribute("USERNAME");
-          	 if(sess=="root"){
-          %>
-            <li><a href="。。/sysUser/findAllSysUser"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
-          <%} %>
+           
             <li><a href="../realEstate/findAllRealEstate" ><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="findAllProperty" class="active"><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="../park/findAllPark" ><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
             <li><a href="../household/findAllHousehold" ><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
             <li><a href="../repair/findAllRepair"><i class="fa fa-sliders fa-fw"></i>住户报修管理</a></li>
             <li><a href="../complain/findAllComplain" ><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
+             <% String sess=(String)session.getAttribute("USERNAME");
+          	 if(sess=="root"){
+          %>
+            <li><a href="。。/sysUser/findAllSysUser"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+          <%} %>
             <li><a href="#"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
           </ul>  
         </nav>

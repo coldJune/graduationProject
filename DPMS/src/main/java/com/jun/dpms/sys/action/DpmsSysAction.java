@@ -1,6 +1,8 @@
 package com.jun.dpms.sys.action;
 
 import java.io.ByteArrayInputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -149,11 +151,13 @@ public class DpmsSysAction extends ActionSupport {
 				
 				return "changeSysPass";
 			}else{
-				if(userName=="root"){
-					return "root";
-				}else{
+					DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:ss:mm");
+					String lastLogin=df.format(new Date());
+					q=this.getCurrentSession().createQuery("update DpmsSysUser u set u.lastLogin=? where u.userName=?");
+					q.setString(0, lastLogin);
+					q.setString(1, userName);
+					q.executeUpdate();
 					return SUCCESS;
-				}
 			}
 		}else{
 			return "fail";

@@ -17,8 +17,8 @@
 		<div class="wrapper">
 			<div class="container">
 				<form class="form" method="post" id="form" action="/DPMS/sys/setSysPass">
-					<input type="email" placeholder="邮箱" id="email" name="email"><label id="textfield1"></label><br>		
-					<button type="button"  id="sendMail" >发送邮件</button><br/>
+					<label style="font-size: 50px;color:white;;" ><i><strong>找不到你所访问的地址</strong></i></label>
+					<button type="button" onclick="javascript:history.back(-1);" >返回上一页</button><br/>
 				</form>
 			</div>
 		</div>

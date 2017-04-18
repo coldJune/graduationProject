@@ -192,7 +192,7 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 			imageStream=new FileInputStream(new File(dpmsSysUserService.searchByUserName("root").getImgPath()));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("文件读取出错");
 		}
 		return SUCCESS;
 	}

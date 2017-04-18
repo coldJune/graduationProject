@@ -13,6 +13,7 @@
 <body>
 	<div class="htmleaf-container">
 		<div class="wrapper">
+				<label style="font-size: 50px;color: #39ADB4;" ><i><strong>小区物业管理系统</strong></i></label>
 			<div class="container">
 				<form id="form" class="form" method="post" action="/DPMS/sys/changePass">
 					<input type="password" placeholder="原密码" id="syspass" name="syspass"><label id="textfield1"></label>			
@@ -22,6 +23,10 @@
 				</form>
 			</div>
 		</div>
+		<footer class="text-center" style="color: #39ADB4;">
+            <p>Copyright &copy; 2017 Company Name 
+            | coldJune 2013211526</p>
+          </footer>
 	</div>
 </body>
 </html>
