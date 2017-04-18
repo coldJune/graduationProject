@@ -39,6 +39,15 @@
 		<filter-name>loginFilter</filter-name>
 		<url-pattern>*.jsp</url-pattern>
 	</filter-mapping> -->
+	<!-- 用户过滤器 -->
+	<filter>
+		<filter-name>rootFilter</filter-name>
+		<filter-class>com.jun.dpms.sys.filter.RootFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>rootFilter</filter-name>
+		<url-pattern>/jsp/sysUser/*.jsp</url-pattern>
+	</filter-mapping>
 	<welcome-file-list>
 		<welcome-file>signIn.jsp</welcome-file>
 	</welcome-file-list>
