@@ -153,7 +153,7 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	public String uploadImg(){
 		try {
 			InputStream is = new FileInputStream(imgHead);
-			String userName="root";//(String)ServletActionContext.getRequest().getAttribute("USERNAME");
+			String userName=(String)ServletActionContext.getRequest().getAttribute("USERNAME");
 			String fileName=userName+imgHeadFileName.substring(imgHeadFileName.lastIndexOf('.'), imgHeadFileName.length());
 			String savePath=this.getClass().getClassLoader().getResource("").getPath();
 			savePath=savePath.split("WEB-INF/classes")[0]+"head/";
@@ -189,7 +189,7 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	public String showHead(){
 		try {
 			String userName=(String) ServletActionContext.getRequest().getAttribute("USERNAME");
-			imageStream=new FileInputStream(new File(dpmsSysUserService.searchByUserName("root").getImgPath()));
+			imageStream=new FileInputStream(new File(dpmsSysUserService.searchByUserName(userName).getImgPath()));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("文件读取出错");

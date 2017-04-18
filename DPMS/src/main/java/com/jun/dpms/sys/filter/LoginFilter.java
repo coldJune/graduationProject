@@ -17,8 +17,14 @@ import org.apache.commons.lang3.StringUtils;
 
 
 public class LoginFilter extends HttpServlet implements Filter{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8508188945890283404L;
 	private String excludePages;
 	private String[] excludePageArray;
+	private String rootPages;
+	private String[] rootPageArray;
 	
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -31,6 +37,15 @@ public class LoginFilter extends HttpServlet implements Filter{
 				break;
 			}
 		}
+		
+		/*boolean isRootPage=false;
+		for (String root : rootPageArray) {
+			if(((HttpServletRequest)servletRequest).getServletPath().equals(root)){
+				isRootPage=true;
+				break;
+			}
+			
+		}*/
 		// TODO Auto-generated method stub
 		if(isExcludePage){
 			filterChain.doFilter(servletRequest, servletResponse);
@@ -43,7 +58,13 @@ public class LoginFilter extends HttpServlet implements Filter{
 			
 			if(userName==null){
 				response.sendRedirect("/DPMS/signIn.jsp");
-			}
+			}/*else if(!userName.equals("root")){
+				if(isRootPage){
+					response.sendRedirect("/DPMS/sys/error404.jsp");
+				}else{
+					filterChain.doFilter(servletRequest,servletResponse);
+				}
+			}*/
 			filterChain.doFilter(servletRequest,servletResponse);
 		}
 	}
@@ -54,6 +75,10 @@ public class LoginFilter extends HttpServlet implements Filter{
 		excludePages =filterConfig.getInitParameter("excludePage");
 		if(StringUtils.isNotEmpty(excludePages)){
 			excludePageArray=excludePages.split(",");
+		}
+		rootPages = filterConfig.getInitParameter("rootPage");
+		if(StringUtils.isEmpty(rootPages)){
+			rootPageArray=rootPages.split(",");
 		}
 	}
 

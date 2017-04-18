@@ -15,6 +15,24 @@
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 	
+	<!-- 加入登录过滤器 -->
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>com.jun.dpms.sys.filter.LoginFilter</filter-class>
+		<!-- 过滤器例外页面-->
+		<init-param>
+			<param-name>excludePage</param-name>
+			<param-value>/signIn.jsp,/jsp/sys/refindPass.jsp,/sys/securityCodeImage,/sys/check,/sys/changePass,/sys/logIn</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rootPage</param-name>
+			<param-value>/sysUser/findAllSysUser,/sysUser/searchSysUser,/sysUser/showDetailSysUser,/sysUser/updateSysUser,/sysUser/addBSysUser,/sysUser/addSysUser,/sysUser/delSysUser,/sysUser/delSysUser,</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<!-- 加入struts2的核心过滤器 -->
 	<filter>
 		<filter-name>struts2</filter-name>
@@ -25,29 +43,9 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	 
-	<!-- 加入登录过滤器
-	<filter>
-		<filter-name>loginFilter</filter-name>
-		<filter-class>com.jun.dpms.sys.filter.LoginFilter</filter-class> -->
-		<!-- 过滤器例外页面
-		<init-param>
-			<param-name>excludePage</param-name>
-			<param-value>/signIn.jsp,/jsp/sys/refindPass.jsp</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>loginFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-	</filter-mapping> -->
+	
 	<!-- 用户过滤器 -->
-	<filter>
-		<filter-name>rootFilter</filter-name>
-		<filter-class>com.jun.dpms.sys.filter.RootFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>rootFilter</filter-name>
-		<url-pattern>/jsp/sysUser/*.jsp</url-pattern>
-	</filter-mapping>
+ 	
 	<welcome-file-list>
 		<welcome-file>signIn.jsp</welcome-file>
 	</welcome-file-list>

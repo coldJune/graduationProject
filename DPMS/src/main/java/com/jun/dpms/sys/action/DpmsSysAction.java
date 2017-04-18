@@ -148,7 +148,6 @@ public class DpmsSysAction extends ActionSupport {
 			int isSys= (int) q.list().get(0);
 			ActionContext.getContext().getSession().put("USERNAME", userName);
 			if(isSys==1){
-				
 				return "changeSysPass";
 			}else{
 					DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:ss:mm");

@@ -7,7 +7,7 @@
 <title>小区物业管理系统</title>
 <link rel="stylesheet" type="text/css" href="./css/default.css">
 <link rel="stylesheet" type="text/css" href="./css/style.css">
-<script type="text/javascript" src="../jQuery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="./jQuery/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="./js/login.js"></script>
 </head>
 <body>

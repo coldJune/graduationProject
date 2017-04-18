@@ -56,7 +56,8 @@
 		<!-- 登录 -->
 		<action name="logIn" class="dpmsSysAction" method="logIn">
 			<result name="success" type="redirectAction">
-				<param name="actionName">/realEstate/findAllRealEstate</param>
+				<param name="namespace">/realEstate</param>
+				<param name="actionName">findAllRealEstate</param>
 			</result>
 			<result name="fail" type="redirect">/signIn.jsp</result>
 			<result name="changeSysPass" type="dispatcher">/jsp/sys/changePass.jsp</result>
