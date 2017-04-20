@@ -27,9 +27,11 @@
           <div class="square"></div>
           <h1><%=sess %></h1>
         </header>
-        <div class="profile-photo-container">
-          <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">  
-          <div class="profile-photo-overlay"></div>
+       <div class="profile-photo-container" style="text-align: center;vertical-align: middle;">
+       	<a href="../sysUser/showPersonal?dpmsSysUser.userName=<%=sess %>"> 
+          <img src="/DPMS/sysUser/showHead"  alt="头像" class="img-responsive"> 
+         <div class="profile-photo-overlay" ></div>
+        </a> 
         </div>
                 <div class="mobile-menu-icon">
             	<i class="fa fa-bars"></i>

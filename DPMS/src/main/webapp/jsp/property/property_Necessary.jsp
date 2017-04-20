@@ -49,7 +49,7 @@
           <h1><%=sess %></h1>
         </header>
        <div class="profile-photo-container" style="text-align: center;vertical-align: middle;">
-       	<a href="../sysUser/showPersonal?dpmsSysUser.userName=root"> 
+       	<a href="../sysUser/showPersonal?dpmsSysUser.userName=<%=sess %>"> 
           <img src="/DPMS/sysUser/showHead"  alt="头像" class="img-responsive"> 
          <div class="profile-photo-overlay" ></div>
         </a> 
