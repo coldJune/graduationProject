@@ -75,7 +75,7 @@
             <li><a href="../household/findAllHousehold" ><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
             <li><a href="../repair/findAllRepair"><i class="fa fa-sliders fa-fw"></i>住户报修管理</a></li>
             <li><a href="../complain/findAllComplain" ><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
-            <li><a href="#"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
+            <li><a href="../sys/exit"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
           </ul>  
         </nav>
       </div>

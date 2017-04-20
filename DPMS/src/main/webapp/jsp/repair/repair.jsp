@@ -90,7 +90,7 @@
           <%
          	 }
           %>
-            <li><a href="#"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
+            <li><a href="../sys/exit"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
           </ul>  
         </nav>
       </div>
