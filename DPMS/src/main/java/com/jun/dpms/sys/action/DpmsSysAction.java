@@ -146,7 +146,8 @@ public class DpmsSysAction extends ActionSupport {
 			Query q = this.getCurrentSession().createQuery("select u.isSysPass from DpmsSysUser u where u.userName=?");
 			q.setString(0, userName);
 			int isSys= (int) q.list().get(0);
-			ActionContext.getContext().getSession().put("USERNAME", userName);
+			ServletActionContext.getRequest().getSession().setAttribute("USERNAME", userName);
+			System.out.println(ServletActionContext.getRequest().getSession().getAttribute("USERNAME")+"-------------------");
 			if(isSys==1){
 				return "changeSysPass";
 			}else{
@@ -267,6 +268,11 @@ public class DpmsSysAction extends ActionSupport {
 		setSessionMap(map);
 		return SUCCESS;
 		
+	}
+	
+	public String exit(){
+		ServletActionContext.getRequest().getSession().removeAttribute("USERNAME");
+		return SUCCESS;
 	}
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;

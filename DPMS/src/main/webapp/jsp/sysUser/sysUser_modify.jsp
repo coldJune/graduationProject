@@ -10,20 +10,22 @@
     <title>小区物业管理系统</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/templatemo-style.css" rel="stylesheet">
-    <link href="../css/table.css" rel="stylesheet">
-    <script type="text/javascript" src="../jQuery/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="../js/default.js"></script>
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/templatemo-style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/table.css" rel="stylesheet">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/default.js"></script>
 
   </head>
   <body>
+  	  <% String sess=(String)session.getAttribute("USERNAME");%>
+  
   	<div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <header class="templatemo-site-header">
           <div class="square"></div>
-          <h1>Root</h1>
+          <h1><%=sess %></h1>
         </header>
         <div class="profile-photo-container">
           <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">  
@@ -34,8 +36,8 @@
         </div>
         <nav class="templatemo-left-nav">          
           <ul>
-            <% String sess=(String)session.getAttribute("USERNAME");
-          	 if(sess=="root"){
+            <%
+          	 if(sess.equalsIgnoreCase("ROOT")){
           %>
             <li><a href="findAllSysUser" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
           <%} %>

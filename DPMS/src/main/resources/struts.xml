@@ -87,6 +87,11 @@
 				<param name="root">sessionMap</param>
 			</result>
 		</action>
+		
+		<!--主要登录  -->
+		<action name="exit" class="dpmsSysAction" method="exit">
+			<result type="redirect">/signIn.jsp</result>
+		</action>
    	</package>
     	
     <!-- 引入系统用户管理 -->

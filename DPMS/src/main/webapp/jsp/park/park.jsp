@@ -10,12 +10,12 @@
     <title>小区物业管理系统</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/templatemo-style.css" rel="stylesheet">
-    <link href="../css/table.css" rel="stylesheet">
-    <script type="text/javascript" src="../jQuery/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="../js/default.js"></script>
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/templatemo-style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/table.css" rel="stylesheet">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/default.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
 		$('#del').click(function(){
@@ -47,11 +47,13 @@
     </script>
   </head>
   <body>
+  	  <% String sess=(String)session.getAttribute("USERNAME");%>
+  
   	<div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <header class="templatemo-site-header">
           <div class="square"></div>
-          <h1>Root</h1>
+          <h1><%=sess %></h1>
         </header>
        <div class="profile-photo-container" style="text-align: center;vertical-align: middle;">
        	<a href="../sysUser/showPersonal?dpmsSysUser.userName=root"> 
@@ -71,8 +73,8 @@
             <li><a href="../household/findAllHousehold" ><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
             <li><a href="../repair/findAllRepair"><i class="fa fa-sliders fa-fw"></i>住户报修管理</a></li>
             <li><a href="../complain/findAllComplain" ><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
-             <% String sess=(String)session.getAttribute("USERNAME");
-          	 if(sess=="root"){
+             <% 
+          	 if(sess.equalsIgnoreCase("ROOT")){
           %>
             <li><a href="../sysUser/findAllSysUser" ><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
           <%} %>

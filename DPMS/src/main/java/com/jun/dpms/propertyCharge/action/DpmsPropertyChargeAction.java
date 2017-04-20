@@ -62,7 +62,7 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	public String add(){
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String createDate = df.format(new Date());
-		String createPerson="root";/*(String)ServletActionContext.getRequest().getAttribute("USERNAME");*/
+		String createPerson=(String)ServletActionContext.getRequest().getSession().getAttribute("USERNAME");
 		dpmsPropertyCharge.setCreateDate(createDate);
 		dpmsPropertyCharge.setCreatePerson(createPerson);
 		dpmsPropertyChargeService.addPropertyName(dpmsPropertyCharge);
@@ -90,7 +90,7 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	 * @return
 	 */
 	public String update(){
-		String modifyPerson="root";/*(String)ServletActionContext.getRequest().getAttribute("USERNAME");*/
+		String modifyPerson=(String)ServletActionContext.getRequest().getSession().getAttribute("USERNAME");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String modifyDate = df.format(new Date());
 		if(dpmsPropertyCharge.getIsNecessary().equals("·ñ")){
@@ -138,7 +138,7 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 	public String addHis(){
 		DateFormat df =new  SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String chargeDate = df.format(new Date());
-		String opPerson="root";/*(String)ServletActionContext.getRequest().getAttribute("USERNAME");*/
+		String opPerson=(String)ServletActionContext.getRequest().getSession().getAttribute("USERNAME");
 		dpmsPropertyChargeHis.setChargeTime(chargeDate);
 		dpmsPropertyChargeHis.setOpPerson(opPerson);
 		System.out.println(dpmsPropertyChargeHis.getDpmsPropertyCharge().getIsNecessary());

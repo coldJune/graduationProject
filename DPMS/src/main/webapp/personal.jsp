@@ -10,14 +10,14 @@
     <title>小区物业管理系统</title>
     <meta name="description" content="">
     <meta name="author" content="templatemo">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/templatemo-style.css" rel="stylesheet">
-    <link href="../css/table.css" rel="stylesheet">
-    <script type="text/javascript" src="../jQuery/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="../jQuery/jquery.form.js"></script>
-            <script type="text/javascript" src="../jQuery/ajaxfileupload.js"></script>
-    <script type="text/javascript" src="../js/default.js"></script>
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/templatemo-style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/table.css" rel="stylesheet">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/jquery.form.js"></script>
+            <script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/default.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('#imgUpload').click(function(){
@@ -126,7 +126,6 @@
 	});
 		
 	function uploadImg(){
-		alert('aaa');
 		var img=$('#imgHead').val();
 		var extention=img.substring(img.lastIndexOf('.')+1);
 		if(img==''){
@@ -150,11 +149,13 @@
 	</script>
   </head>
   <body>
+  	  <% String sess=(String)session.getAttribute("USERNAME");%>
+  
   	<div class="templatemo-flex-row">
       <div class="templatemo-sidebar">
         <header class="templatemo-site-header">
           <div class="square"></div>
-          <h1>Root</h1>
+          <h1><%=sess %></h1>
         </header>
 		<div class="profile-photo-container" style="text-align: center;vertical-align: middle;">
        	<a href="../sysUser/showPersonal?dpmsSysUser.userName=root"> 
@@ -167,17 +168,18 @@
         </div>
         <nav class="templatemo-left-nav">          
           <ul>
-            <% String sess=(String)session.getAttribute("USERNAME");
-          	 if(sess=="root"){
-          %>
-            <li><a href="../sys/findAllSysUser" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
-          <%} %>
+           
            <li><a href="../realEstate/findAllRealEstate" ><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="../property/findAllProperty" ><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="../park/findAllPark" ><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
             <li><a href="../household/findAllHousehold" ><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
             <li><a href="../repair/findAllRepair"><i class="fa fa-sliders fa-fw"></i>住户报修管理</a></li>
             <li><a href="../complain/findAllComplain" ><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
+             <% 
+          	 if(sess=="root"){
+          %>
+            <li><a href="../sys/findAllSysUser" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+          <%} %>
             <li><a href="#"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
           </ul>  
         </nav>
@@ -198,7 +200,7 @@
            				 <i class="fa fa-times"></i>
               			<h2 class="text-uppercase"><%=sess %></h2>
              			 <h3 class="text-uppercase margin-bottom-10">个人信息</h3>
-              			<a href='javascipt:void(0)' id="imgUpload"><img src="/DPMS/sysUser/showHead" alt="Bicycle" class="img-circle img-thumbnail" style="width: 100px;height: 100px"></a>
+              			<a href='javascript:void(0)' id="imgUpload"><img src="/DPMS/sysUser/showHead" alt="Bicycle" class="img-circle img-thumbnail" style="width: 100px;height: 100px"></a>
               			<input type="file" name='imgHead' hidden="true" id="imgHead" style="display: none" onchange="uploadImg()">
 			           	<form  action="" id="personalForm" class="templatemo-login-form" method="post" enctype="multipart/form-data">
 			              <div class="row form-group">

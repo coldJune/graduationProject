@@ -1,6 +1,11 @@
 
 package com.jun.dpms.sysUser.action;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,6 +18,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.json.annotations.JSON;
@@ -153,7 +160,7 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	public String uploadImg(){
 		try {
 			InputStream is = new FileInputStream(imgHead);
-			String userName=(String)ServletActionContext.getRequest().getAttribute("USERNAME");
+			String userName=(String)ServletActionContext.getRequest().getSession().getAttribute("USERNAME");
 			String fileName=userName+imgHeadFileName.substring(imgHeadFileName.lastIndexOf('.'), imgHeadFileName.length());
 			String savePath=this.getClass().getClassLoader().getResource("").getPath();
 			savePath=savePath.split("WEB-INF/classes")[0]+"head/";
@@ -161,13 +168,60 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 			if(!myPath.exists()){
 				myPath.mkdir();
 			}
+			BufferedImage bufImg=ImageIO.read(is);
+			//原始宽度
+			int old_w=bufImg.getWidth();
+			//原始高度
+			int old_h=bufImg.getHeight();
+			//压缩后图片宽度
+			int imageW;
+			//压缩后图片高度
+			int imageH;
+			BufferedImage squarePic;//正方形
+			if(old_w>old_h){
+				squarePic=new BufferedImage(old_w, old_w, BufferedImage.TYPE_INT_BGR);
+			}else if(old_w<old_h){
+				squarePic=new BufferedImage(old_h, old_h, BufferedImage.TYPE_INT_RGB);
+			}else{
+				squarePic=new BufferedImage(old_w, old_h, BufferedImage.TYPE_INT_RGB);
+			}
+			Graphics2D g =squarePic.createGraphics();
+			g.setColor(Color.BLACK);
+			if(old_w>old_h){
+				g.fillRect(0, 0, old_w, old_w);
+				g.drawImage(bufImg, 0, (old_w-old_h)/2,old_w, old_h,Color.BLACK,null);
+			}else{
+				if(old_w<old_h){
+					g.fillRect(0, 0, old_h, old_h);
+					g.drawImage(bufImg, (old_h-old_w)/2, 0, old_w,old_h, Color.BLACK,null);
+				}else{
+					g.drawImage(bufImg.getScaledInstance(old_w, old_h, Image.SCALE_SMOOTH), 0, 0,null);
+				}
+			}
+			g.dispose();
+			bufImg=squarePic;
+			old_h=bufImg.getHeight();
+			old_w=bufImg.getHeight();
+			if(old_w>=old_h){
+				imageW=800;
+				imageH=(int)Math.round((old_h*imageW*1.0/old_w));
+			}else{
+				imageH=600;
+				imageW=(int)Math.round((old_w*imageH*1.0/old_h));
+			}
+			BufferedImage newImage= new BufferedImage(imageW, imageH, BufferedImage.TYPE_INT_RGB);
+			newImage.getGraphics().drawImage(bufImg.getScaledInstance(imageH, imageW, Image.SCALE_SMOOTH),0,0,null);
 			String imgPath=savePath+fileName;
+
 			OutputStream os = new FileOutputStream(imgPath);
-			byte[] buffer = new byte[1024];
+			ImageIO.write(newImage, "gif", os);
+
+			/*byte[] buffer = new byte[1024];
 			int count=0;
 			while((count = is.read(buffer)) > 0){
 				os.write(buffer, 0, count);
-			}
+			}*/
+			newImage.flush();
 			os.flush();
 			os.close();
 			is.close();
@@ -188,7 +242,7 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	 */
 	public String showHead(){
 		try {
-			String userName=(String) ServletActionContext.getRequest().getAttribute("USERNAME");
+			String userName=(String) ServletActionContext.getRequest().getSession().getAttribute("USERNAME");
 			imageStream=new FileInputStream(new File(dpmsSysUserService.searchByUserName(userName).getImgPath()));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

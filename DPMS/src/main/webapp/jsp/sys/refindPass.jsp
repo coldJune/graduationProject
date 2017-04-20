@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>小区物业管理系统</title>
-<link rel="stylesheet" type="text/css" href="../../css/default.css">
-<link rel="stylesheet" type="text/css" href="../../css/style.css">
-<script type="text/javascript" src="../../jQuery/jquery-3.1.1.js"></script>
-<script type="text/javascript" src="../../js/sys/findPass.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/sys/findPass.js"></script>
 </head>
 <body>
 	<div class="htmleaf-container">

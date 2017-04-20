@@ -38,34 +38,40 @@ public class LoginFilter extends HttpServlet implements Filter{
 			}
 		}
 		
-		/*boolean isRootPage=false;
+		boolean isRootPage=false;
 		for (String root : rootPageArray) {
 			if(((HttpServletRequest)servletRequest).getServletPath().equals(root)){
 				isRootPage=true;
 				break;
 			}
 			
-		}*/
+		}
 		// TODO Auto-generated method stub
 		if(isExcludePage){
 			filterChain.doFilter(servletRequest, servletResponse);
 		}else{
-		
-			HttpServletRequest request= (HttpServletRequest)servletRequest;
-			HttpServletResponse response =(HttpServletResponse)servletResponse;
-			HttpSession session =request.getSession();
-			String userName= (String)session.getAttribute("USERNAME");
-			
-			if(userName==null){
-				response.sendRedirect("/DPMS/signIn.jsp");
-			}/*else if(!userName.equals("root")){
-				if(isRootPage){
-					response.sendRedirect("/DPMS/sys/error404.jsp");
+			if(((HttpServletRequest)servletRequest).getServletPath().contains(".css")||((HttpServletRequest)servletRequest).getServletPath().contains(".js")){
+				filterChain.doFilter(servletRequest, servletResponse);
+			}else{
+				HttpServletRequest request= (HttpServletRequest)servletRequest;
+				HttpServletResponse response =(HttpServletResponse)servletResponse;
+				HttpSession session =request.getSession();
+				String userName= (String)session.getAttribute("USERNAME");
+				
+				if(userName==null){
+					response.sendRedirect("/DPMS/signIn.jsp");
+				}else if(!userName.equals("root")){
+					if(isRootPage){
+						response.sendRedirect("/DPMS/sys/error404.jsp");
+					}else{
+						filterChain.doFilter(servletRequest,servletResponse);
+					}
 				}else{
 					filterChain.doFilter(servletRequest,servletResponse);
+
 				}
-			}*/
-			filterChain.doFilter(servletRequest,servletResponse);
+			}
+			
 		}
 	}
 
@@ -77,7 +83,7 @@ public class LoginFilter extends HttpServlet implements Filter{
 			excludePageArray=excludePages.split(",");
 		}
 		rootPages = filterConfig.getInitParameter("rootPage");
-		if(StringUtils.isEmpty(rootPages)){
+		if(StringUtils.isNotEmpty(rootPages)){
 			rootPageArray=rootPages.split(",");
 		}
 	}

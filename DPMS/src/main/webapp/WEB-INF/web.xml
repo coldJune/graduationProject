@@ -26,7 +26,7 @@
 		</init-param>
 		<init-param>
 			<param-name>rootPage</param-name>
-			<param-value>/sysUser/findAllSysUser,/sysUser/searchSysUser,/sysUser/showDetailSysUser,/sysUser/updateSysUser,/sysUser/addBSysUser,/sysUser/addSysUser,/sysUser/delSysUser,/sysUser/delSysUser,</param-value>
+			<param-value>/sysUser/findAllSysUser,/sysUser/searchSysUser,/sysUser/showDetailSysUser,/sysUser/updateSysUser,/sysUser/addBSysUser,/sysUser/addSysUser,/sysUser/delSysUser</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
