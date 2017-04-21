@@ -72,6 +72,9 @@ public class DpmsSysAction extends ActionSupport {
 					map.put("msg", "用户名不存在");
 					this.setSessionMap(map);
 					flag=false;
+				}else{
+					map.put("msg", "true");
+					this.setSessionMap(map);
 				}
 				return "CHECKUSERNAME";
 		}
@@ -104,7 +107,6 @@ public class DpmsSysAction extends ActionSupport {
 		if(operateType.equalsIgnoreCase("checkSysPass")){
 			String user=(String) ActionContext.getContext().getSession().get("USERNAME");
 			sql=sql+" and u.passWord=?";
-			System.out.println(syspass+":"+user);
 			syspass=MD5Util.encode2hex(syspass);
 			q=this.getCurrentSession().createQuery(sql);
 			q.setString(0, user);
@@ -121,12 +123,13 @@ public class DpmsSysAction extends ActionSupport {
 		}
 		//检查邮箱是否存在
 		if(operateType.equalsIgnoreCase("checkEmail")){
-			sql ="from DpmsSysUser u where u.email=?";
+			sql ="from DpmsSysUser u where u.email=? and u.userName=?";
 			q =this.getCurrentSession().createQuery(sql);
 			Map<String, String> map = new HashMap<>();
 			q.setString(0, email);
+			q.setString(1, userName);
 			if(q.list()==null||q.list().isEmpty()){
-				map.put("mail","邮箱不存在");
+				map.put("mail","邮箱不存在或与用户名不匹配");
 				this.setSessionMap(map);
 			}
 			return "checkEmail";
@@ -181,13 +184,14 @@ public class DpmsSysAction extends ActionSupport {
 	 */
 	public String setSysPass(){
 		String newPass=SecurityCode.getSecurityCode();
-		
-		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.passWord=?,u.isSysPass=1 where u.email=?");
+		Query q = this.getCurrentSession().createQuery("update DpmsSysUser u set u.passWord=?,u.isSysPass=1 where u.email=? and u.userName=?");
 		String md5pass = MD5Util.encode2hex(newPass);
 		q.setString(0, md5pass);
 		q.setString(1, email);
+		q.setString(2, userName);
 		q.executeUpdate();
-		SendMail.send(email, "<p>您正在使用小区物业管理系统的找回密码服务，下面是由系统为您生成的随机密码，请注意保管并及时修改</p><br/>"+"<Strong>"+newPass+"</Strong>");
+		SendMail.send(email, "<p>您正在使用小区物业管理系统的找回密码服务，下面是由系统为您生成的随机密码，请注意保管并及时修改</p><br/>"+"<Strong>"+newPass+"</Strong>"
+				+ "</br><a href='http://localhost:8080/DPMS'>跳转到登录页面</a>");
 		return "setSysPass";
 		
 	}

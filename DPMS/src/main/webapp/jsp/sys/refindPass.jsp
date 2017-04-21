@@ -17,8 +17,12 @@
 		<div class="wrapper">
 			<div class="container">
 				<form class="form" method="post" id="form" action="/DPMS/sys/setSysPass">
-					<input type="email" placeholder="邮箱" id="email" name="email"><label id="textfield1"></label><br>		
-					<button type="button"  id="sendMail" >发送邮件</button><br/>
+					<input type="text" placeholder="用户名" id="userName" name="userName"><label id="textfield1"></label>			
+					<div id="emaildiv" hidden="true"><input type="email" placeholder="邮箱" id="email" name="email" ><label id="textfield2"></label></div>	
+					<button type="button"  id="sendMail" hidden="true">发送邮件</button>
+					<button type="button"  id="userNameOk" >确定</button><br/>
+					<button type="button"  id="refresh" hidden="true" >刷新</button><br/>
+					
 				</form>
 			</div>
 		</div>

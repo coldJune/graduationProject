@@ -22,7 +22,7 @@
 		<!-- 过滤器例外页面-->
 		<init-param>
 			<param-name>excludePage</param-name>
-			<param-value>/signIn.jsp,/jsp/sys/refindPass.jsp,/sys/securityCodeImage,/sys/check,/sys/changePass,/sys/logIn</param-value>
+			<param-value>/signIn.jsp,/jsp/sys/refindPass.jsp,/sys/securityCodeImage,/sys/check,/sys/changePass,/sys/logIn,/sys/setSysPass</param-value>
 		</init-param>
 		<init-param>
 			<param-name>rootPage</param-name>
