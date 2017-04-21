@@ -214,7 +214,7 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 			String imgPath=savePath+fileName;
 
 			OutputStream os = new FileOutputStream(imgPath);
-			ImageIO.write(newImage, "gif", os);
+			ImageIO.write(newImage, "PNG", os);
 
 			/*byte[] buffer = new byte[1024];
 			int count=0;

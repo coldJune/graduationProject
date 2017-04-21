@@ -4,7 +4,7 @@
 <!-- Generated 2017-3-23 15:21:13 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.jun.dpms.repair.bean.DpmsRepair" table="DPMSREPAIR">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="native" />
         </id>

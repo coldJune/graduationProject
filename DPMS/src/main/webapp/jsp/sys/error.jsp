@@ -15,7 +15,7 @@
 		<div class="wrapper">
 			<div class="container">
 				<form class="form" method="post" id="form" action="/DPMS/sys/setSysPass">
-					<label style="font-size: 50px;color:white;;" ><i><strong>服务器出错</strong></i></label>
+					<label style="font-size: 50px;color:white;;" ><i><strong>服务器出错</strong></i></label></br>
 					<button type="button" onclick="javascript:history.back(-1);" >返回上一页</button><br/>
 				</form>
 			</div>

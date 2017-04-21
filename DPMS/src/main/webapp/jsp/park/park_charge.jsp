@@ -33,8 +33,8 @@
     		夜间收费（19:00-次日8:00），统一为每4个小时2元钱（不足4小时按4小时计算）
     		*/
     		//计算应收费用
-    		var startTime= new Date(('2017-03-28 16:00:00').replace(/-/g,"/"));
-    		//var startTime=new Date($('#startTime').val().replace(/-/g,"/"));
+    		//var startTime= new Date(('2017-03-28 16:00:00').replace(/-/g,"/"));
+    		var startTime=new Date($('#startTime').val().replace(/-/g,"/"));
     		var endTime=new Date();
     		var days=Math.abs(endTime.getTime()-startTime.getTime())/(1000*60*60*24.0);
     		var hours=Math.abs(endTime.getTime()-startTime.getTime())/(1000*60*60.0);

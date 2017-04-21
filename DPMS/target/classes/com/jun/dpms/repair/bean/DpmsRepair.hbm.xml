@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-4-5 16:00:00 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-3-23 15:21:13 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.jun.dpms.repair.bean.DpmsRepair" table="DPMSREPAIR">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <many-to-one name="dpmsHousehold" class="com.jun.dpms.household.bean.DpmsHousehold" fetch="join">
-            <column name="DPMSHOUSEHOLD" />
+            <column name="HOUSEHOLD_ID" />
         </many-to-one>
         <property name="details" type="java.lang.String">
             <column name="DETAILS" />
         </property>
         <property name="repairDate" type="java.lang.String">
-            <column name="REPAIRDATE" />
+            <column name="REPAIR_DATE" />
         </property>
         <property name="isDeal" type="java.lang.String">
-            <column name="ISDEAL" />
+            <column name="IS_DEAL" />
         </property>
         <property name="sparePhone" type="java.lang.String">
-            <column name="SPAREPHONE" />
+            <column name="SPARE_PHONE" />
         </property>
     </class>
 </hibernate-mapping>

@@ -74,7 +74,7 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 	@Override
 	public List<DpmsPark> searchByPlateNumber(String plateNumber) {
 		// TODO Auto-generated method stub
-		Query q = this.getCurrentSession().createQuery("select p.dpmsHousehold,p.startTime,p.endTime,p.price,p.isCharge from DpmsPark p where p.plateNumber=?");
+		Query q = this.getCurrentSession().createQuery("select p.dpmsHousehold,p.startTime,p.endTime,p.price,p.isCharge,p.id from DpmsPark p where p.plateNumber=?");
 		q.setString(0, plateNumber);
 		List<Object> objs=q.list();
 		List<DpmsPark> dpmsParks=new ArrayList<>();
@@ -86,7 +86,7 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 				String endTime=(String)objects[2];
 				String price=(String)objects[3];
 				String isCharge=(String)objects[4];
-				
+				int id=(int)objects[5];
 				DpmsPark dpmsPark=new DpmsPark();
 				dpmsPark.setDpmsHousehold(dpmsHousehold);
 				dpmsPark.setPlateNumber(plateNumber);
@@ -94,6 +94,7 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 				dpmsPark.setEndTime(endTime);
 				dpmsPark.setPrice(price);
 				dpmsPark.setIsCharge(isCharge);
+				dpmsPark.setId(id);
 				dpmsParks.add(dpmsPark);
 			}
 			return dpmsParks;

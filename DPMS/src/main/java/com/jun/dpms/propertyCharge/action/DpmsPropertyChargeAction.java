@@ -166,9 +166,7 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 			page.setCurrentPage(1);
 		}
 		dpmsPropertyChargeHiss=dpmsPropertyChargeService.findAllHis(page.getEachPage(), page.getCurrentPage());
-		for (DpmsPropertyChargeHis dpmsPropertyChargeHis : dpmsPropertyChargeHiss) {
-			System.out.println(dpmsPropertyChargeHis.getOpPerson()+"|||"+dpmsPropertyChargeHis.getChargeTime());
-		}
+
 		return SUCCESS;
 	}
 	

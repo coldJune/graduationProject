@@ -190,9 +190,14 @@ public class DpmsSysAction extends ActionSupport {
 		q.setString(1, email);
 		q.setString(2, userName);
 		q.executeUpdate();
-		SendMail.send(email, "<p>您正在使用小区物业管理系统的找回密码服务，下面是由系统为您生成的随机密码，请注意保管并及时修改</p><br/>"+"<Strong>"+newPass+"</Strong>"
-				+ "</br><a href='http://localhost:8080/DPMS'>跳转到登录页面</a>");
-		return "setSysPass";
+		try {
+			SendMail.send(email, "<p>您正在使用小区物业管理系统的找回密码服务，下面是由系统为您生成的随机密码，请注意保管并及时修改</p><br/>"+"<Strong>"+newPass+"</Strong>"
+					+ "</br><a href='http://localhost:8080/DPMS'>跳转到登录页面</a>");
+			return "setSysPass";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return ERROR;
+		}
 		
 	}
 	/**

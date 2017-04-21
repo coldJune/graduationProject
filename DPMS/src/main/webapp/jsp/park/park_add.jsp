@@ -25,7 +25,7 @@
     				data:{'dpmsPark.plateNumber':$(this).val()},
     				type:'post',
     				success:function(response){
-    					if(response.result='false'){
+    					if(response.result=='false'){
     						alert(response.msg);
     						$(this).val('');
     					}

@@ -19,7 +19,7 @@
 					<input type="password" placeholder="原密码" id="syspass" name="syspass"><label id="textfield1"></label>			
 					<input type="password" placeholder="新密码" name="passWord" id="newpass"><label id="textfield2"></label>
 					<input type="password" placeholder="确认密码" name="passagain" id="passagain"><label id="textfield3"></label><br/>
-					<input value="common" name="type" id="type" hidden="true"><br/>
+					<div hidden="true"><input value="common" name="type" id="type" ><br/></div>
 					<button type="button"  id="changePass" >修改密码</button><br/>
 				</form>
 			</div>

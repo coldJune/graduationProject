@@ -105,7 +105,7 @@
 			        	 </div>
 			        	<div class="form-group text-right" style="width: 40%;float: right;">
 				                <a href="addBSysUser"><button type="button" class="templatemo-blue-button" >添加</button></a>
-				                <button id="delSysUser" type="button" class="templatemo-white-button">删除</button>
+				                <button id="del" type="button" class="templatemo-white-button">删除</button>
 				       	</div>
 	          		</div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">
@@ -131,12 +131,14 @@
 						<c:forEach items="${dpmsSysUsers}" var="dpmsSysUser">
 							<tr>
 								<td>
+									<c:if test="${dpmsSysUser.userName!='root' }">
 									<div style="z-index: 2px;">
 										<div class="margin-right-15 templatemo-inline-block" style="z-index: 1px;">
 	                      					<input type="checkbox" name="check" id="${dpmsSysUser.userName}" value="${dpmsSysUser.userName}">
 	                     					 <label for="${dpmsSysUser.userName}" class="font-weight-400"><span></span></label>                      
 	                    				</div>
                     				</div>
+                    				</c:if>
                     			</td>
 								<td>${dpmsSysUser.userId}</td>
 								<td><a href="showDetailSysUser?userName=${dpmsSysUser.userName}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsSysUser.userName}</i></a></td>

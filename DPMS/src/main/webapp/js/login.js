@@ -18,7 +18,7 @@ $(document).ready(function(){
 				data:{'operateType':'checkUserName',userName:input},
 				dataType:'json',
 				success:function(data){
-					if(data.msg!=undefined){
+					if(data.msg!='true'){
 						$('#textfield1').text("*"+data.msg);
 						$('#textfield1').offset({top:offset.top+10,left:offset.left+300})
 						$('#textfield1').show();
