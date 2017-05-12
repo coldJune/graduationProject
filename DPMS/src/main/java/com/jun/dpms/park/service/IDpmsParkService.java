@@ -41,7 +41,7 @@ public interface IDpmsParkService {
 	 * ¿Î≥°
 	 * @param plateNumber
 	 */
-	public boolean updateLeave(String plateNumber);
+	public boolean updateLeave(int id);
 	/**
 	 *  ’∑—
 	 * @param dpmsPark
@@ -58,4 +58,5 @@ public interface IDpmsParkService {
 	 * @param ids
 	 */
 	public void delPark(int[] ids);
+	public DpmsPark searchById(int id);
 }

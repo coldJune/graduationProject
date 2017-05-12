@@ -53,4 +53,5 @@ public class DpmsPark {
 		this.isCharge = isCharge;
 	}
 	
+	
 }

@@ -152,7 +152,7 @@ $(document).ready(function(){
 	$('#leavePark').click(function(){
 		$.ajax({
 			url:'leavePark',
-			data:{'dpmsPark.plateNumber':$(this).find('input').val()},
+			data:{'dpmsPark.id':$(this).find('input').val()},
 			type:'post',
 			async:false,
 			success:function(response){

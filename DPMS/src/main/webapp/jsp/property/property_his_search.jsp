@@ -111,7 +111,7 @@
 	                <tbody>
 						<c:forEach items="${dpmsPropertyChargeHiss}" var="dpmsPropertyChargeHis">
 							<tr>
-								<td style="text-align: center;"><a href="" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPropertyChargeHis.id}</i></a></td>
+								<td style="text-align: center;"><a href="showHisDetail?dpmsPropertyChargeHis.id=${dpmsPropertyChargeHis.id}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPropertyChargeHis.id}</i></a></td>
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsPropertyCharge.propertyName }</td>								
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.holdName }</td>
 								<td style="text-align: center;">${dpmsPropertyChargeHis.dpmsHousehold.relateRealEstate }</td>

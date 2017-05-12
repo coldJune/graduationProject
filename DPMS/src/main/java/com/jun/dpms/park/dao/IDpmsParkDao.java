@@ -39,7 +39,7 @@ public interface IDpmsParkDao {
 	 * ¿Î≥°
 	 * @param plateNumber
 	 */
-	public boolean updateLeave(String plateNumber);
+	public boolean updateLeave(int id);
 	/**
 	 *  ’∑—
 	 * @param dpmsPark
@@ -56,4 +56,5 @@ public interface IDpmsParkDao {
 	 * @param ids
 	 */
 	public void delPark(int[] ids);
+	public DpmsPark searchById(int id);
 }

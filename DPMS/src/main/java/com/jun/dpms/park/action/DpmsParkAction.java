@@ -79,7 +79,7 @@ public class DpmsParkAction extends ActionSupport{
 	 * @return
 	 */
 	public String leave(){
-		if(dpmsParkService.updateLeave(dpmsPark.getPlateNumber())){
+		if(dpmsParkService.updateLeave(dpmsPark.getId())){
 			Map<String, String> map = new HashMap<>();
 			map.put("msg", "已成功离场");
 			map.put("result", "true");
@@ -97,13 +97,11 @@ public class DpmsParkAction extends ActionSupport{
 	 * @return
 	 */
 	public String chargeB(){
-		List<DpmsPark> dpmsParks =dpmsParkService.searchByPlateNumber(dpmsPark.getPlateNumber());
-		for (DpmsPark dpmsPars : dpmsParks) {
-			if(dpmsPars.getIsCharge().equals("否")){
-				dpmsPark=dpmsPars;
+		DpmsPark dpmsPar =dpmsParkService.searchById(dpmsPark.getId());
+			if(dpmsPar.getIsCharge().equals("否")){
+				dpmsPark=dpmsPar;
 				return SUCCESS;
 			}
-		}
 		return SUCCESS;
 	}
 	/**

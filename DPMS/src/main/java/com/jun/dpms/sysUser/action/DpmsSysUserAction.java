@@ -73,7 +73,7 @@ public class DpmsSysUserAction extends ActionSupport implements ModelDriven{
 	 * 查询所有的数据
 	 */
 	public String findAll(){
-		page.setEachPage(3);
+		page.setEachPage(5);
 		page.setTotalItem(dpmsSysUserService.getTotalItem());
 		page.setTotalPage(page.getTotalItem()/page.getEachPage()+(page.getTotalItem()%page.getEachPage()>0?1:0));
 		try{

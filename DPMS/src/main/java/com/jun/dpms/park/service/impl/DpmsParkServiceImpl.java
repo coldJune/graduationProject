@@ -48,9 +48,9 @@ public class DpmsParkServiceImpl implements IDpmsParkService {
 	}
 
 	@Override
-	public boolean updateLeave(String plateNumber) {
+	public boolean updateLeave(int id) {
 		// TODO Auto-generated method stub
-		return dpmsParkDao.updateLeave(plateNumber);
+		return dpmsParkDao.updateLeave(id);
 	}
 
 	@Override
@@ -69,5 +69,11 @@ public class DpmsParkServiceImpl implements IDpmsParkService {
 	public void delPark(int[] ids) {
 		// TODO Auto-generated method stub
 		dpmsParkDao.delPark(ids);
+	}
+
+	@Override
+	public DpmsPark searchById(int id) {
+		// TODO Auto-generated method stub
+		return dpmsParkDao.searchById(id);
 	}
 }

@@ -139,6 +139,7 @@ public class DpmsPropertyChargeAction extends ActionSupport {
 		DateFormat df =new  SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String chargeDate = df.format(new Date());
 		String opPerson=(String)ServletActionContext.getRequest().getSession().getAttribute("USERNAME");
+		System.out.println(opPerson);
 		dpmsPropertyChargeHis.setChargeTime(chargeDate);
 		dpmsPropertyChargeHis.setOpPerson(opPerson);
 		System.out.println(dpmsPropertyChargeHis.getDpmsPropertyCharge().getIsNecessary());

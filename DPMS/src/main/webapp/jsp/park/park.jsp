@@ -146,10 +146,10 @@
 								<td style="text-align: center;">${dpmsPark.startTime}</td>
 								<c:choose>						
 									<c:when test="${dpmsPark.dpmsHousehold.hasPackin=='是'&&dpmsPark.dpmsHousehold.plateNumber==dpmsPark.plateNumber}">
-										<td style="text-align: center;"><a href="#" id="leavePark" class="templatemo-edit-btn" ><input value="${dpmsPark.plateNumber }" hidden="true"/>离场</a></td>
+										<td style="text-align: center;"><a href="#" id="leavePark" class="templatemo-edit-btn" ><input value="${dpmsPark.id }" hidden="true"/>离场</a></td>
 									</c:when>
 									<c:otherwise>
-										<td style="text-align: center;"><a href="chargeBPark?dpmsPark.plateNumber=${dpmsPark.plateNumber}" id="chargePark" class="templatemo-edit-btn" >收费</a></td>
+										<td style="text-align: center;"><a href="chargeBPark?dpmsPark.id=${dpmsPark.id}" id="chargePark" class="templatemo-edit-btn" >收费</a></td>
 									</c:otherwise>
 								</c:choose>
 							</tr>

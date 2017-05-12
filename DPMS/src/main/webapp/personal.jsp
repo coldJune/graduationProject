@@ -123,6 +123,21 @@
 				$('#passagain').val('');
 			}
 		});
+		$('#updateUser').click(function(){
+				$.ajax({
+					url:'../sysUser/updateSysUser?type=personal',
+					data: $("#personalForm").serialize(),
+					type:'POST',
+					dataType:'json',
+					success:function(data){
+						alert(data.msg);
+						window.location.reload();
+					},
+					failure:function(){
+						alert('修改失败');
+					}
+				});
+		});
 	});
 		
 	function uploadImg(){
@@ -271,7 +286,7 @@
 			               </div>
 							<input type="text" name="type" value="personal" hidden="true">
 			              <div class="form-group text-right">
-			                <button type="button" id="changePass" class="templatemo-blue-button">修改</button>
+			                <button type="button" id="updateUser" class="templatemo-blue-button">修改</button>
 			                <button type="reset" class="templatemo-white-button">重置</button>
 			              </div>                           
 		           	  </form>  
@@ -294,7 +309,7 @@
 							                    <label for="passagain">确认密码</label>
 							                    <input type="password" class="form-control" id="passagain" name="passagain" required="required"><label id="textfield3"></label>                  
 							                </div>
-							                <button type="button" id="submitPassForm" class="templatemo-blue-button">修改</button>
+							                <button type="button" id="changePass" class="templatemo-blue-button">修改</button>
 			                				<button type="reset" class="templatemo-white-button">重置</button> 
 			 						  </div>
 						   </form>

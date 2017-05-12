@@ -27,7 +27,7 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 	@Override
 	public int getTotalItem() {
 		// TODO Auto-generated method stub
-		return ((Number)this.getCurrentSession().createQuery("select count(*) from DpmsPark p where p.isCharge='否' or p.isCharge=null").uniqueResult()).intValue();
+		return ((Number)this.getCurrentSession().createQuery("select count(*) from DpmsPark p where p.isCharge='否' and  p.endTime is null").uniqueResult()).intValue();
 	}
 
 	@Override
@@ -39,11 +39,11 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 	@Override
 	public List<DpmsPark> findAll(int eachPage, int currentPage) {
 		// TODO Auto-generated method stub
-		Query q = this.getCurrentSession().createQuery(" from DpmsPark p where p.isCharge='否' or p.isCharge=null");
+		Query q = this.getCurrentSession().createQuery(" from DpmsPark p where p.isCharge='否'   and p.endTime is null");
 		q.setMaxResults(eachPage);
 		q.setFirstResult((currentPage-1)*eachPage);
 		List<DpmsPark> results=q.list();
-		List<String> plateNumbers=new ArrayList<>();
+		/*List<String> plateNumbers=new ArrayList<>();
 		List<DpmsPark> dpmsParks=new ArrayList<>();
 		if(!results.isEmpty()&&results!=null){
 			for (DpmsPark result : results) {
@@ -58,9 +58,9 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 					dpmsParks.add(dpmsPark);
 				}
 			}
-		}
+		}*/
 		
-		return dpmsParks;
+		return results;
 	}
 
 	@Override
@@ -106,14 +106,14 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 		}
 	}
 	@Override
-	public boolean updateLeave(String plateNumber) {
+	public boolean updateLeave(int id) {
 		// TODO Auto-generated method stub
 		try {
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String endTime = df.format(new Date());
-			Query q = this.getCurrentSession().createQuery("update DpmsPark p set p.isCharge='是',p.price='0',p.endTime=? where p.plateNumber=?");
+			Query q = this.getCurrentSession().createQuery("update DpmsPark p set p.isCharge='是',p.price='0',p.endTime=? where p.id=?");
 			q.setString(0, endTime);
-			q.setString(1, plateNumber);
+			q.setInteger(1, id);
 			q.executeUpdate();
 			return true;
 		} catch (HibernateException e) {
@@ -125,11 +125,11 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 	public boolean updateCharge(DpmsPark dpmsPark) {
 		// TODO Auto-generated method stub
 		try {
-			Query q = this.getCurrentSession().createQuery("update DpmsPark p set p.isCharge='是',p.price=?,p.endTime=? where p.plateNumber=?");
+			Query q = this.getCurrentSession().createQuery("update DpmsPark p set p.isCharge='是',p.price=?,p.endTime=? where p.id=?");
 			System.out.println(dpmsPark.getPlateNumber());
 			q.setString(0, dpmsPark.getPrice());
 			q.setString(1, dpmsPark.getEndTime());
-			q.setString(2, dpmsPark.getPlateNumber());
+			q.setInteger(2, dpmsPark.getId());
 			q.executeUpdate();
 			return true;
 		} catch (HibernateException e) {
@@ -163,6 +163,44 @@ public class DpmsParkDaoImpl implements IDpmsParkDao{
 			q.setInteger(0, i);
 			q.executeUpdate();
 		}
+	}
+	@Override
+	public DpmsPark searchById(int id) {
+		// TODO Auto-generated method stub
+		Query q = this.getCurrentSession().createQuery("select p.dpmsHousehold,p.startTime,p.endTime,p.price,p.isCharge,p.plateNumber from DpmsPark p where p.id=?");
+		q.setInteger(0, id);
+		List<Object> objs=q.list();
+		if(objs!=null&&!objs.isEmpty()){
+			for (Object object : objs) {
+				Object[] objects=(Object[])object;
+				DpmsHousehold dpmsHousehold = (DpmsHousehold)objects[0];
+				String startTime=(String)objects[1];
+				String endTime=(String)objects[2];
+				String price=(String)objects[3];
+				String isCharge=(String)objects[4];
+				String plateNumber=(String)objects[5];
+				DpmsPark dpmsPark=new DpmsPark();
+				dpmsPark.setDpmsHousehold(dpmsHousehold);
+				dpmsPark.setPlateNumber(plateNumber);
+				dpmsPark.setStartTime(startTime);
+				dpmsPark.setEndTime(endTime);
+				dpmsPark.setPrice(price);
+				dpmsPark.setIsCharge(isCharge);
+				dpmsPark.setId(id);
+				return dpmsPark;
+			}
+			
+		}else{
+			q=this.getCurrentSession().createQuery("from DpmsPark p where p.id=?");
+			q.setInteger(0, id);
+			List<DpmsPark> dpmsParks=q.list();
+			if(dpmsParks!=null&&!dpmsParks.isEmpty()){
+				for (DpmsPark dpmsPark : dpmsParks) {
+					return dpmsPark;
+				}
+			}
+		}
+		return null;
 	}
 	
 }

@@ -25,7 +25,7 @@
 				data:{'operateType':'checkUserName',userName:$(this).val()},
 				dataType:'json',
 				success:function(data){
-					if(data==null){
+					if(data.msg=='true'){
 						alert('用户名已存在');
 						$('#userName').val('');
 						return false;
@@ -58,17 +58,18 @@
         </div>
         <nav class="templatemo-left-nav">          
           <ul>
-            <% 
-          	 if(sess.equalsIgnoreCase("ROOT")){
-          %>
-            <li><a href="findAllSysUser" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
-          <%} %>
+            
             <li><a href="../realEstate/findAllRealEstate"><i class="fa fa-bar-chart fa-fw"></i>楼盘信息管理</a></li>
             <li><a href="../property/findAllProperty" ><i class="fa fa-database fa-fw"></i>物业收费管理</a></li>
             <li><a href="../park/findAllPark" ><i class="fa fa-map-marker fa-fw"></i>停车场信息管理</a></li>
             <li><a href="../household/findAllHousehold" ><i class="fa fa-users fa-fw"></i>住户信息管理</a></li>
             <li><a href="../repair/findAllRepair" ><i class="fa fa-sliders fa-fw"></i>住户报修管理</a></li>
             <li><a href="../complain/findAllComplain" ><i class="fa fa-question fa-fw"></i>住户投诉管理</a></li>
+            <% 
+          	 if(sess.equalsIgnoreCase("ROOT")){
+          %>
+            <li><a href="findAllSysUser" class="active"><i class="fa fa-home fa-fw"></i>系统用户管理</a></li>
+          <%} %>
             <li><a href="../sys/exit"><i class="fa fa-eject fa-fw"></i>注销登录</a></li>
           </ul>  
         </nav>

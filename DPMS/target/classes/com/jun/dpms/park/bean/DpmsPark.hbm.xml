@@ -24,6 +24,7 @@
         <property name="isCharge" type="java.lang.String">
             <column name="IS_CHARGE" />
         </property>
+       
           <many-to-one name="dpmsHousehold" class="com.jun.dpms.household.bean.DpmsHousehold" lazy="false">
             <column name="HOUSEHOLD_ID" />
         </many-to-one> 

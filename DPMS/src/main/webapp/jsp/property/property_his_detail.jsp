@@ -16,7 +16,16 @@
     <link href="${pageContext.request.contextPath}/css/table.css" rel="stylesheet">
     <script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/default.js"></script>
-
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var standard=$('#standard').val();
+		var standardPrice=standard.split('(')[0];
+		var standardUnit=standard.split('(')[1].replace(')','');
+		$('#standardPrice').val(standardPrice);
+		$('#standardUnit').val(standardUnit);
+	});
+	
+	</script>
   </head>
   <body>
   	  <% String sess=(String)session.getAttribute("USERNAME");%>
