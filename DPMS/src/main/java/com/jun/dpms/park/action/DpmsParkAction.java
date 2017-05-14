@@ -146,7 +146,7 @@ public class DpmsParkAction extends ActionSupport{
 		if(results!=null&&!results.isEmpty()){
 			for (DpmsPark dpmsPar : results) {
 				if(dpmsPar!=null){
-					if(!dpmsPar.getIsCharge().equals("是")){
+					if(!dpmsPar.getIsCharge().equals("是")&&(dpmsPar.getEndTime().equals(""))||dpmsPar.getEndTime()==null){
 						Map<String, String> map = new HashMap<>();
 						map.put("result", "false");
 						map.put("msg", "该车已经在库中");

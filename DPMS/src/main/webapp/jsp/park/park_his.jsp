@@ -114,15 +114,15 @@
 				         		 </div>
 				        	  </form>
 			        	 </div>
-			        	<div class="form-group text-right" style="width: 40%;float: right;">
+			        	<!-- <div class="form-group text-right" style="width: 40%;float: right;">
 				                <button id="del" type="button" class="templatemo-white-button">删除</button>
-				       	</div>
+				       	</div> -->
 	          		</div>
 	            <div class="panel panel-default table-responsive" style="width: 100%;">
 	              <table class="table table-bordered templatemo-user-table">
 	                <thead>
 	                  <tr>
-	                    <td class="white-text"><i>删除数据</i></td>
+	                   <!--  <td class="white-text"><i>删除数据</i></td> -->
 	                    <td class="white-text">ID</td>
 	                    <td class="white-text">车牌号</td>
 	                    <td class="white-text">停车费用</td>
@@ -133,14 +133,14 @@
 	                <tbody>
 						<c:forEach items="${dpmsParks}" var="dpmsPark">
 							<tr>
-								<td style="text-align: center;" >
+								<%-- <td style="text-align: center;" >
 									<div style="z-index: 2px;">
 										<div class="margin-right-15 templatemo-inline-block" style="z-index: 1px;">
 	                      					<input type="checkbox" name="check" id="${dpmsPark.id}" value="${dpmsPark.id}">
 	                     					 <label  for="${dpmsPark.id}" class="font-weight-400"><span></span></label>                      
 	                    				</div>
                     				</div>
-                    			</td>
+                    			</td> --%>
                   				<td style="text-align: center;">${dpmsPark.id}</td>
 								<td style="text-align: center;"><a href="showDetailPark?dpmsPark.plateNumber=${dpmsPark.plateNumber}&dpmsPark.id=${dpmsPark.id}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPark.plateNumber}</i></a></td>
 								<td style="text-align: center;">${dpmsPark.price}<c:if test="${dpmsPark.price!=null }">元</c:if></td>

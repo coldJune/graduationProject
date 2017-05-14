@@ -129,12 +129,16 @@
 						<c:forEach items="${dpmsParks}" var="dpmsPark">
 							<tr>
 								<td style="text-align: center;" >
+									<c:choose>
+									<c:when test="${dpmsPark.isCharge!='是'}">
 									<div style="z-index: 2px;">
 										<div class="margin-right-15 templatemo-inline-block" style="z-index: 1px;">
 	                      					<input type="checkbox" name="check" id="${dpmsPark.id}" value="${dpmsPark.id}">
 	                     					 <label  for="${dpmsPark.id}" class="font-weight-400"><span></span></label>                      
 	                    				</div>
                     				</div>
+                    				</c:when>
+                    				</c:choose>
                     			</td>
                   				<td style="text-align: center;">${dpmsPark.id}</td>
 								<td style="text-align: center;"><a href="showDetailPark?dpmsPark.plateNumber=${dpmsPark.plateNumber}&dpmsPark.id=${dpmsPark.id}" style="color:blue;text-decoration: underline;" class="templatemo-sort-by"><i>${dpmsPark.plateNumber}</i></a></td>
